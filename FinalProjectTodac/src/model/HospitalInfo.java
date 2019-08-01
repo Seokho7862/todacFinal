@@ -1,9 +1,7 @@
 package model;
 
-import java.util.Scanner;
 
 public class HospitalInfo {
-	Scanner sc = new Scanner(System.in);
 	private String hpid;
 	private String dutyName;
 	private String postCdn1;
