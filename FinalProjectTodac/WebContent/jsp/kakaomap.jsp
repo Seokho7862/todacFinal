@@ -102,7 +102,8 @@ function makeOutListener(infowindow) {
  }
 </script>
 <input type="text" id="page" name="page" />
-<button id="insertDB" onclick="insertDB()">값 입력</button>
 
+<button id="insertDB" onclick="insertDB()">값 입력</button>
+<input type="text" id="page" name="page1" />
 </body>
 </html>
