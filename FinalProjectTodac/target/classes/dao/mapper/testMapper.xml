@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="dao.ITestDao">
+  <sql id="dutyAddr">
+  	<choose>
+  		<when test="dutyAddr==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyAddr}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="postCdn1">
+  	<choose>
+  		<when test="postCdn1==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{postCdn1}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="postCdn2">
+  	<choose>
+  		<when test="postCdn2==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{postCdn2}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTel1">
+  	<choose>
+  		<when test="dutyTel1==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTel1}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTel3">
+  	<choose>
+  		<when test="dutyTel3==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTel3}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime1c">
+  	<choose>
+  		<when test="dutyTime1c==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime1c}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime2c">
+  	<choose>
+  		<when test="dutyTime2c==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime2c}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime3c">
+  	<choose>
+  		<when test="dutyTime3c==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime3c}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime4c">
+  	<choose>
+  		<when test="dutyTime4c==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime4c}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime5c">
+  	<choose>
+  		<when test="dutyTime5c==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime5c}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime6c">
+  	<choose>
+  		<when test="dutyTime6c==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime6c}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime7c">
+  	<choose>
+  		<when test="dutyTime7c==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime7c}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime8c">
+  	<choose>
+  		<when test="dutyTime8c==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime8c}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime1s">
+  	<choose>
+  		<when test="dutyTime1s==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime1s}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime2s">
+  	<choose>
+  		<when test="dutyTime2s==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime2s}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime3s">
+  	<choose>
+  		<when test="dutyTime3s==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime3s}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime4s">
+  	<choose>
+  		<when test="dutyTime4s==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime4s}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime5s">
+  	<choose>
+  		<when test="dutyTime5s==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime5s}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime6s">
+  	<choose>
+  		<when test="dutyTime6s==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime6s}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime7s">
+  	<choose>
+  		<when test="dutyTime7s==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime7s}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dutyTime8s">
+  	<choose>
+  		<when test="dutyTime8s==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dutyTime8s}
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="dgidldName">
+  	<choose>
+  		<when test="dgidldName==null">
+  			default
+  		</when>
+  		<otherwise>
+  			#{dgidldName}
+  		</otherwise>
+  	</choose>
+  </sql>
+  	<insert id="insertHostpital" parameterType="hospitalInfo">
+  		insert into hospitalInfo values(#{hpid},#{dutyName},<include refid="postCdn1"/>,<include refid="postCdn2"/>,<include refid="dutyAddr"/>,<include refid="dutyTel1"/>,<include refid="dutyTel3"/>,<include refid="dutyTime1c"/>,<include refid="dutyTime2c"/>,<include refid="dutyTime3c"/>,<include refid="dutyTime4c"/>,<include refid="dutyTime5c"/>,<include refid="dutyTime6c"/>,<include refid="dutyTime7c"/>,<include refid="dutyTime8c"/>,<include refid="dutyTime1s"/>,<include refid="dutyTime2s"/>,<include refid="dutyTime3s"/>,<include refid="dutyTime4s"/>,<include refid="dutyTime5s"/>,<include refid="dutyTime6s"/>,<include refid="dutyTime7s"/>,<include refid="dutyTime8s"/>,<include refid="dgidldName"/>,#{wgs84Lon},#{wgs84Lat})
+  	</insert>
+  	<insert id="insertHostpital1" parameterType="hospitalInfo">
+  		insert into hospitalInfo values(#{hpid},#{dutyName},#{postCdn1},#{postCdn2},#{dutyAddr},<include refid="dutyTel1"/>,<include refid="dutyTel3"/>,<include refid="dutyTime1c"/>,<include refid="dutyTime2c"/>,<include refid="dutyTime3c"/>,<include refid="dutyTime4c"/>,<include refid="dutyTime5c"/>,<include refid="dutyTime6c"/>,<include refid="dutyTime7c"/>,<include refid="dutyTime8c"/>,<include refid="dutyTime1s"/>,<include refid="dutyTime2s"/>,<include refid="dutyTime3s"/>,<include refid="dutyTime4s"/>,<include refid="dutyTime5s"/>,<include refid="dutyTime6s"/>,<include refid="dutyTime7s"/>,<include refid="dutyTime8s"/>,<include refid="dgidldName"/>,#{wgs84Lon},#{wgs84Lat})
+  	</insert>
+  	<select id="selectHostpital1" parameterType="String" resultType="hospitalInfo">
+  		select * from hospitalInfo where hpid = #{hpid} 
+  	</select>
+  </mapper>
