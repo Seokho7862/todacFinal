@@ -132,5 +132,17 @@
 	    <artifactId>xmlpull-xpp3</artifactId>
 	    <version>3.0.0.20130526</version>
 	</dependency>
+	 <dependency>
+	    <groupId>aspectj</groupId>
+	    <artifactId>aspectjrt</artifactId>
+	    <version>1.5.3</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>1.8.9</version>
+	</dependency>
+	
+	
   </dependencies>
 </project>
