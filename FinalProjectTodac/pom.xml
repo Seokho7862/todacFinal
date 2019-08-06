@@ -57,7 +57,14 @@
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-webmvc</artifactId>
 	    <version>4.3.3.RELEASE</version>
-	</dependency>  		
+	</dependency>  	
+	<!-- aop 관련 -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-aop</artifactId>
+	    <version>4.3.3.RELEASE</version>
+	</dependency>  	
+
    <!-- jstl 관련 dependency -->
    <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 	<dependency>
