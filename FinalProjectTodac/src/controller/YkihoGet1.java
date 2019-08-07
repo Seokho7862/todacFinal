@@ -79,9 +79,9 @@ public class YkihoGet1 {
     		case XmlPullParser.END_DOCUMENT:
     			break;
     		case XmlPullParser.END_TAG:
-    			if(parser.getName().equals("items")) {
-    				ykiList.add(ykiho);
-    				ykiho=null; 
+    			if(parser.getName().equals("item")) {
+//    				ykiList.add(ykiho);
+//    				ykiho=null; 
     			}
     			break;
     		case XmlPullParser.START_TAG:
@@ -92,8 +92,8 @@ public class YkihoGet1 {
     				break;
     			case "ykiho" :
     				//null값 예외처리
-    				if(ykiho!=null)
-    					ykiho = parser.nextText();
+//    				if(ykiho!=null)
+    					ykiList.add(parser.nextText());
     				break;
     			
     		}
@@ -106,7 +106,7 @@ public class YkihoGet1 {
     	}
     	
     	for(String y: ykiList) {
-    		System.out.println(y);
+    		System.out.println(y+" api쪽");
     	}
         
         
