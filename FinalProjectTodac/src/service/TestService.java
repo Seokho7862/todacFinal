@@ -3,10 +3,12 @@ package service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,21 +17,34 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import dao.IDisease_dbDao;
+import dao.IHealthInfoDao;
+import dao.IMember_userDao;
 import dao.ITestDao;
+import model.HealthInfo;
 import model.HospitalInfo;
+import model.MEMBER_USER;
+import model.disease_db;
 
 @Service
 public class TestService {
 	@Autowired
+	private IHealthInfoDao hDao;
+	@Autowired
 	private ITestDao tdao;
+	@Autowired
+	private IDisease_dbDao disDao;
+	@Autowired
+	private IMember_userDao muDao;
+	
 	private static String ServiceKey = "=lVxTWoXqXosjGsm%2BJEUMoOlm%2BMCgvW%2FwNcb4I54miUQc9K5DAbBPOwOQAP3ZhGsNLHxtWZev2W2HxL92vNMrbg%3D%3D";
 	public void insertHospitalInfo1() {
 		HospitalInfo h = new HospitalInfo();
 		h.setHpid("A1200021");
-		h.setDutyName("»ïÀ°ºÎ»êº´¿ø");
+		h.setDutyName("ï¿½ï¿½ï¿½ï¿½ï¿½Î»êº´ï¿½ï¿½");
 		h.setPostCdn1("492");
 		h.setPostCdn2("30");
-		h.setDutyAddr("ºÎ»ê±¤¿ª½Ã ¼­±¸ ´ëÆ¼·Î 170 (¼­´ë½Åµ¿2°¡)");
+		h.setDutyAddr("ï¿½Î»ê±¤ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼ï¿½ï¿½ 170 (ï¿½ï¿½ï¿½ï¿½Åµï¿½2ï¿½ï¿½)");
 		h.setDutyTel1("051-242-9751");
 		h.setDutyTel3("051-600-7750");
 		h.setDutyTime1c("1730");
@@ -48,7 +63,7 @@ public class TestService {
 		h.setDutyTime6s("0830");
 		h.setDutyTime7s("0830");
 		h.setDutyTime8s(null);
-		h.setDgidldName("°¡Á¤ÀÇÇÐ°ú,±¸°­³»°ú,±¸°­º´¸®°ú,±¸°­¾Ç¾È¸é¹æ»ç¼±°ú,³»°ú,¸¶ÃëÅëÁõÀÇÇÐ°ú,¹æ»ç¼±Á¾¾çÇÐ°ú,º´¸®°ú,º¸°Ç(ÀÇ·á¿ø)¼Ò,ºñ´¢±â°ú,»êºÎÀÎ°ú,¼Ò¾ÆÃ»¼Ò³â°ú,¼Ò¾ÆÄ¡°ú,½Å°æ°ú,½Å°æ¿Ü°ú,¾È°ú,¿µ»óÀÇÇÐ°ú,¿¹¹æÄ¡°ú,¿Ü°ú,ÀÀ±ÞÀÇÇÐ°ú,ÀÌºñÀÎÈÄ°ú,ÀçÈ°ÀÇÇÐ°ú,Á¤½Å°Ç°­ÀÇÇÐ°ú,Á¤Çü¿Ü°ú,Á¶»ê¿ø,Áø´Ü°Ë»çÀÇÇÐ°ú,Ä¡°ú±³Á¤°ú,Ä¡°úº¸Á¸°ú,Ä¡°úº¸Ã¶°ú,Ä¡ÁÖ°ú");
+		h.setDgidldName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð°ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾È¸ï¿½ï¿½ç¼±ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð°ï¿½,ï¿½ï¿½ç¼±ï¿½ï¿½ï¿½ï¿½ï¿½Ð°ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½(ï¿½Ç·ï¿½ï¿½)ï¿½ï¿½,ï¿½ñ´¢±ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Î°ï¿½,ï¿½Ò¾ï¿½Ã»ï¿½Ò³ï¿½ï¿½,ï¿½Ò¾ï¿½Ä¡ï¿½ï¿½,ï¿½Å°ï¿½ï¿½,ï¿½Å°ï¿½Ü°ï¿½,ï¿½È°ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð°ï¿½,ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½,ï¿½Ü°ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð°ï¿½,ï¿½Ìºï¿½ï¿½ï¿½ï¿½Ä°ï¿½,ï¿½ï¿½È°ï¿½ï¿½ï¿½Ð°ï¿½,ï¿½ï¿½ï¿½Å°Ç°ï¿½ï¿½ï¿½ï¿½Ð°ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ü°ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ü°Ë»ï¿½ï¿½ï¿½ï¿½Ð°ï¿½,Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Ä¡ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½,Ä¡ï¿½Ö°ï¿½");
 		h.setWgs84Lon(129.01074979097717);
 		h.setWgs84Lat(35.11177720675051);
 		System.out.println("error1");
@@ -63,9 +78,9 @@ public class TestService {
 		try {
 	    	StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B552657/HsptlAsembySearchService/getHsptlBassInfoInqire"); /*URL*/
 	        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + ServiceKey); /*Service Key*/
-	        //urlBuilder.append("&" + URLEncoder.encode("HPID","UTF-8") + "=" + URLEncoder.encode("A1105950", "UTF-8")); /*±â°üID*/
-	        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(String.valueOf(page), "UTF-8")); /*ÆäÀÌÁö ¹øÈ£*/
-	        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10000", "UTF-8")); /*¸ñ·Ï °Ç¼ö*/
+	        //urlBuilder.append("&" + URLEncoder.encode("HPID","UTF-8") + "=" + URLEncoder.encode("A1105950", "UTF-8")); /*ï¿½ï¿½ï¿½ID*/
+	        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(String.valueOf(page), "UTF-8")); /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£*/
+	        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10000", "UTF-8")); /*ï¿½ï¿½ï¿½ ï¿½Ç¼ï¿½*/
 	        URL url = new URL(urlBuilder.toString());
 	        
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -93,7 +108,7 @@ public class TestService {
 		    	
 		    	case 1 : break;
 		    	
-		    	case 2: //ÅÂ±×ÀÇ ½ÃÀÛ
+		    	case 2: //ï¿½Â±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		    		if(parser.getText().equals("<item>")) {
 		    			h = new HospitalInfo();
 		    			while(eventType != 1 && !(parser.getText().equals("</item>"))){
@@ -130,10 +145,10 @@ public class TestService {
 		    }
 		    int i=0;
 		    for(HospitalInfo hh:hospList) {
-		    	if(tdao.selectHostpital1(hh.getHpid())!=null) { //Á¸ÀçÇÒ¶§
+		    	if(tdao.selectHostpital1(hh.getHpid())!=null) { //ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½
 		    		//Thread.sleep(50);
 		    		if((tdao.selectHostpital1(hh.getHpid()).getHpid()).equals(hh.getHpid())) {
-			    		System.out.println("Áßº¹µÈ hpid :" + tdao.selectHostpital1(hh.getHpid()).getHpid() +" gethpid" + hh.getHpid());
+			    		System.out.println("ï¿½ßºï¿½ï¿½ï¿½ hpid :" + tdao.selectHostpital1(hh.getHpid()).getHpid() +" gethpid" + hh.getHpid());
 			    		//Thread.sleep(50);
 			    		continue;
 		    		}
@@ -152,6 +167,72 @@ public class TestService {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		System.out.println("¸®½ºÆ® ±æÀÌ" + hospList.size());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½" + hospList.size());
 	}
+	
+	public ArrayList<HealthInfo> selectHealthInfoList(HashMap<String, Object> pageinfo) {
+		
+	return hDao.selectHealthInfoList(pageinfo);	
+	}
+	
+	public ArrayList<HealthInfo> searchHealthInfoList(HashMap<String, Object> pageinfo){
+		return hDao.searchHealthInfoList(pageinfo);
+	}
+	
+	
+	public void healthInfoWrite(HealthInfo healthInfo) {
+		hDao.writeHealthInfo(healthInfo);
+		
+	}
+	
+	public HealthInfo selecthealthInfo(HashMap<String, Object> iid2){
+		
+		iid2.put("rc", hDao.selectHealthInfo(iid2).getReadcount());
+		hDao.readcountUp(iid2);
+		return hDao.selectHealthInfo(iid2);
+	}
+	public int getNumberOfHealthInfo(HashMap<String, Object> pageinfo){
+		return hDao.getNumberOfHealthInfo(pageinfo);
+	}
+	
+	public int getNumberOfHealthInfo2(HashMap<String, Object> pageinfo){
+		return hDao.getNumberOfHealthInfo2(pageinfo);
+	}
+	
+	public void deleteHealthInfo(HashMap<String, Object> iid2) {
+		hDao.deleteHealthInfo(iid2);
+	} 
+	
+	public void updateHealthInfo(HealthInfo hi) {
+		hDao.updateHealthInfo(hi);
+	};
+	
+	public ArrayList<String> getSubjectList(HashMap<String, String> dis){
+	
+		ArrayList<disease_db> dise=disDao.getSubjectList(dis);
+		ArrayList<String> subjects = new ArrayList<String>();
+		for(int i=0;i<dise.size();i++) {
+			subjects.add(dise.get(i).getSubject());
+		}
+		
+		return subjects;
+	}
+	
+	public void createMember_user(MEMBER_USER member) {
+		muDao.createMember_user(member);
+	}
+	public int idCheck(HashMap<String, Object>param) {
+		if(muDao.searchMemberByID(param)==null) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	public  ArrayList<HealthInfo> getListOfTop3(int getType){
+		HashMap<String,Object > pageinfo= new HashMap<String, Object>();
+		pageinfo.put("getType", getType);		
+		return hDao.getListOfTop3(pageinfo);
+	}
+	
 }

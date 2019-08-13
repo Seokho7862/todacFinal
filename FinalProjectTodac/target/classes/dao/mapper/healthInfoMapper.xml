@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.IHealthInfoDao">
+
+	<select id="selectHealthInfoList" resultType="HealthInfo">
+	<![CDATA[select * from (select rownum as rnum, A.* from (select * from healthinfo order by iid desc) A where rownum<=(${page}*10)) where rnum>((${page}-1)*10)]]>
+	</select>
+
+	<select id="searchHealthInfoList" resultType="HealthInfo">
+		<if test="searchType==1">
+			<![CDATA[select * from (select rownum as rnum, A.* from (select * from healthinfo where title like '%${keyword}%' order by iid desc) A where rownum<=(${page}*10)) where rnum>((${page}-1)*10)]]>
+		</if>
+
+		<if test="searchType==2"> 
+			<![CDATA[select * from (select rownum as rnum, A.* from (select * from healthinfo where content like '%${keyword}%' order by iid desc) A where rownum<=(${page}*10)) where rnum>((${page}-1)*10)]]></if>
+
+		<if test="searchType==3"> 
+			<![CDATA[select * from (select rownum as rnum, A.* from (select * from healthinfo where writer like '%${keyword}%' order by iid desc) A where rownum<=(${page}*10)) where rnum>((${page}-1)*10)]]></if>
+	</select>
+
+	<select id="selectHealthInfo" parameterType="java.util.HashMap"
+		resultType="HealthInfo">
+		select * from healthInfo where iid=${iid}
+	</select>
+
+	<select id="getNumberOfHealthInfo"
+		parameterType="java.util.HashMap" resultType="int">
+		select count(*) from healthInfo where
+		<if test="searchType==1">title</if>
+		<if test="searchType==2">content</if>
+		<if test="searchType==3">writer</if>
+		like '%${keyword}%'
+	</select>
+
+	<select id="getNumberOfHealthInfo2" resultType="int">
+		select count(*)
+		from healthInfo
+	</select>
+
+	<insert id="writeHealthInfo" parameterType="HealthInfo">
+		insert into
+		healthinfo values((select max(iid) from
+		healthinfo)+1,#{muid},
+		#{writer},default,#{title},#{content},<if test="hfile==null">null</if><if test="hfile!=null">#{hfile}</if>,default)
+	</insert>
+
+	<update id="readcountUp" parameterType="java.util.HashMap">
+		update healthinfo set
+		readcount=${rc}+1 where iid=${iid}
+	</update>
+
+	<delete id="deleteHealthInfo" parameterType="java.util.HashMap">
+		delete from
+		healthInfo where iid=${iid}
+	</delete>
+
+	<update id="updateHealthInfo" parameterType="HealthInfo">
+		update healthInfo set title='${title}', content='${content}',
+		hfile='${hfile}' where iid=${iid}
+	</update>
+	
+	<select id="getListOfTop3" parameterType="java.util.HashMap" resultType="HealthInfo">
+		<if test="getType==1">
+			<![CDATA[select * from (select rownum as rnum, A.* from (select * from healthinfo where idate between sysdate-7 and sysdate order by readcount desc) A where rownum<=3) where rnum>0]]>
+		</if>
+			<if test="getType==2">
+			<![CDATA[select * from (select rownum as rnum, A.* from (select * from healthinfo where idate between sysdate-31 and sysdate order by readcount desc) A where rownum<=3) where rnum>0]]>
+		</if>
+			<if test="getType==3">
+			<![CDATA[select * from (select rownum as rnum, A.* from (select * from healthinfo order by readcount desc) A where rownum<=3) where rnum>0]]>
+		</if>
+	</select>
+	
+
+</mapper>
