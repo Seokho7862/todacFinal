@@ -40,5 +40,15 @@ public class HospitalInfoService {
 		params.put("neLng", neLng);
 		return hdao.getFirstMarker(params);
 	}
+	
+	public HospitalInfo HospitalInfo_InfoForm(String hpid) {
+		HashMap<String,String> params = new HashMap<String, String>();
+		params.put("hpid", hpid);
+		System.out.println("서비스단");
+		System.out.println(hpid);
+		System.out.println(hdao.HospitalInfo_InfoForm(params));
+		System.out.println("서비스단");
+		return hdao.HospitalInfo_InfoForm(params);
+	}
 }
 
