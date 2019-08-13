@@ -5,32 +5,96 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
 <script type="text/javascript">
 
 $(function(){
-	$('#injectBtn').on('click',function(){
-		$.ajax({
-			url : 'rateinfo.do',
-			data : {
-				
-			},
-			type : 'post',
-			success : function(){
-				
-			}
+	
+		var sub ="";
+			
+	$('#injectBtn').click(function(){
+	sub = $('#injectBtn').val();
+		}); 
+
+		
+	$('#antiBtn').click(function(){
+	sub = $('#injectBtn').val();
+		});
+	$('#opBtn').click(function(){
+	sub = $('#antiBtn').val();
+		});
+	$('#costBtn').click(function(){
+	sub = $('#costBtn').val();
 		});
 		
 		
-		
+	$('#search').on('click',function(){
+	var list = [];
+	var index = 0;
+	$('input[name="check"]:checked').each(function(){
+		var test = $(this).val();
+		list[index] = test;
+		index++;
+	});
+		alert(list);
+		jQuery.ajaxSettings.traditional = true;
+
+		$.ajax({
+			url :'rateinfo.do',
+			data : {
+				subject : sub,
+				hname:$('#hname').val(),
+				code1:$('#sel1').val(),
+				code2:$('#sel2').val(),
+				check : list
+				},
+			
+			type:"post",
+			success : function(data){
+			 	/* $('#rateinfo tr.gt(0)').remove(); */
+			 	alert("성공");
+			 	var input="";
+				for(var i in data){
+					//alert(data[i].yadmNm);
+					
+				  	input += "<tr>";
+				  	input += "<td>" + i + "</td>";
+				  	input += "<td>" + data[i].yadmNm + "</td>";
+				  	input += "<td> 주사제 처방률 </td>";
+				  	input += "<td>" + data[i].injection_rate + "</td>";
+				  	input += "<td>" + data[i].addr + "</td>";
+				  	input += "</tr>";
+				} 
+			/* 	var input ="";
+				 input +="<tr>"; 
+				 input +="<td>그만</td>"; 
+				 input +="</tr>";  */
+				$('#ratebody').prepend(input);
+				
+				
+			},
+			error : function(){
+				alert("다시 시도해주세요");
+			}
+			
+			
+			
+		});
 		
 	});
 	
 	
 	
-});
+	
+	
+		
+	
+	});
 
 </script>
 
@@ -73,22 +137,22 @@ $(function(){
     	<div class="col-md-4" style="background-color:lavenderblush;"></div>
 </div>
   <div class="row">
-		<div class="col-md-1">
-      <label for="sel1">시/도</label>
+		<div class="col-md-2">
       <select class="form-control" id="sel1">
-        <option value="">1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
+        <option value="" disabled="disabled" selected="selected">시/도</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
       </select>
  	 </div>
-	<div class="col-md-1">
-      <label for="sel1">시/군/구</label>
+	<div class="col-md-2">
       <select class="form-control" id="sel2">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
+        <option value="" disabled="disabled" selected="selected">시/군/구</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
       </select>
 	<input id="hname" type="text">
   <button id="search" class="btn btn-default">검색</button>
@@ -96,16 +160,16 @@ $(function(){
   </div>
   <hr>
   <div class="container">
-  <button id="injectBtn"> <span class="btn btn-default">주사제처방률</span></button>
-  <button id="antiBtn" class="btn btn-default">항생제처방률</button>
-  <button id="opBtn" class="btn btn-default">수술의 예방적 항생제</button>
-  <button id="costBtn" class="btn btn-default">처방약품비</button>
+  <button id="injectBtn" class="btn btn-default" value="1">주사제처방률</button>
+  <button id="antiBtn" class="btn btn-default" value="2">항생제처방률</button>
+  <button id="opBtn" class="btn btn-default" value="3">수술의 예방적 항생제</button>
+  <button id="costBtn" class="btn btn-default" value="4">처방약품비</button>
   </div>
   <hr>
   <div class="row">
   
   
-  <table class="table table-striped">
+  <table class="table table-striped" id="rateinfo">
     <thead>
       <tr>
         <th>NO.</th>
@@ -115,29 +179,10 @@ $(function(){
         <th>소재지</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td>john@example.com</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-        <td>mary@example.com</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>july@example.com</td>
-        <td>july@example.com</td>
-      </tr>
+    <tbody id="ratebody">
+    
     </tbody>
+    
   </table>
 </div>
   
