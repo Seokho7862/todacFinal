@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.IDisease_dbDao">
+
+	<select id="getSubjectList" parameterType="java.util.HashMap" resultType="disease_db">
+		select distinct * from disease where disease_name like '${disease}'
+	</select>
+	
+</mapper>
