@@ -13,7 +13,6 @@ import model.disease_web;
 import service.NaverSearchAPI;
 import service.TestService;
 
-<<<<<<< HEAD
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,9 +25,7 @@ import java.util.Locale;
 import java.util.StringTokenizer;
 
 import javax.swing.plaf.multi.MultiFileChooserUI;
-=======
 import javax.servlet.http.HttpSession;
->>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;;
@@ -243,7 +240,7 @@ public class TestController {
 	}
 
 	@RequestMapping("signUp.do")
-	public void signUp(String muid, String pw, String name, String birth, String email, String phone, String latitude,
+	public void signUp(String muid, String pwd, String name, String birth, String email, String phone, String latitude,
 			String longitude, String sample4_postcode, String sample4_detailAddress, @RequestParam(defaultValue="")String sample4_jibunAddress,
 			String sample4_roadAddress) {
 
@@ -268,7 +265,7 @@ public class TestController {
 		
 		
 		
-		MEMBER_USER member = new MEMBER_USER(muid, pw, name, birth, age, email, phone, Double.parseDouble(latitude),Double.parseDouble(longitude), sample4_postcode, sample4_jibunAddress,add_base, sample4_roadAddress);
+		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birth, age, email, phone, Double.parseDouble(latitude),Double.parseDouble(longitude), sample4_postcode, sample4_jibunAddress,add_base, sample4_roadAddress);
 		tservice.createMember_user(member);
 		System.out.println("회원 삽입");
 	}

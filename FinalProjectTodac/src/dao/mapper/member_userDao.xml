@@ -5,7 +5,7 @@
 <mapper namespace="dao.IMember_userDao">
 
 	<insert id="createMember_user" parameterType="MEMBER_USER">
-	insert into member_user values('${muid}','${pw}','${name}','${birth}',${age},'${email}','${phone}',${latitude},${longitude},'${post_num}','${address_detail}','${address_base}','${address_road}',default,default,default)
+	insert into member_user values('${muid}','${pwd}','${name}','${birth}',${age},'${email}','${phone}',${latitude},${longitude},'${post_num}','${address_detail}','${address_base}','${address_road}',default,default,default)
 	</insert>
 	<select id="searchMemberByID" parameterType="java.util.HashMap" resultType="MEMBER_USER">
 	select * from member_user where muid like '${muid}%'

@@ -135,7 +135,7 @@ function locAndBirth(){
 			alert("ID를 입력하지 않으셨습니다. 다시 확인해주세요.")
 			return false;
 		}
-		else if($('#pw').val()==""){
+		else if($('#pwd').val()==""){
 			alert("비밀번호를 입력하지 않으셨습니다. 다시 확인해주세요.")
 			return false;
 		}else if($('#pwchk').val()==""){
@@ -157,7 +157,7 @@ function locAndBirth(){
 			alert("ID중복확인을 진행해주세요.")
 			return false;
 		}
-		else if($('#pw').val()!=($('#pwchk').val())){
+		else if($('#pwd').val()!=($('#pwchk').val())){
 			alert("비밀번호 확인이 일치하지 않습니다. 다시 확인해주세요.");
 			return false;
 		}
@@ -183,7 +183,7 @@ function locAndBirth(){
 이름: <input type="text" name="name" id="name"><br>
 아이디: <input type="text" name="muid" id="muid"><br>
 <div id="idCheckDiv" style="color: red"></div>
-비밀번호 : <input type="text" name="pw" id="pw"> <br>
+비밀번호 : <input type="text" name="pwd" id="pwd"> <br>
 비밀번호 확인: <input type="text" name="pwchk" id="pwchk"><br>
 생년월일:
 <select id="birth1">
