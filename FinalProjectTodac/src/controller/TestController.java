@@ -6,6 +6,7 @@ import org.springframework.web.servlet.View;
 
 import service.TestService;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;;
