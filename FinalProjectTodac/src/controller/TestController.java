@@ -13,6 +13,7 @@ import model.disease_web;
 import service.NaverSearchAPI;
 import service.TestService;
 
+<<<<<<< HEAD
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,6 +26,9 @@ import java.util.Locale;
 import java.util.StringTokenizer;
 
 import javax.swing.plaf.multi.MultiFileChooserUI;
+=======
+import javax.servlet.http.HttpSession;
+>>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;;
