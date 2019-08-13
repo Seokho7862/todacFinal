@@ -50,7 +50,7 @@
 	<script>
 
 		var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
-	        center : new kakao.maps.LatLng(37.5012581268, 127.0397092587), // 지도의 중심좌표
+	        center : new kakao.maps.LatLng(37.6099919254131, 127.0134185658836), // 지도의 중심좌표
 	        level : 3 // 지도의 확대 레벨
 	    });
 		

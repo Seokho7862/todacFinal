@@ -10,4 +10,5 @@ public interface IHospitalInfoDao {
 	public List<HashMap<String,Object>> getMarkers();
 	public List<HashMap<String,Object>> searchKeyword(HashMap<String,Object> params);
 	public List<HashMap<String,Object>> getFirstMarker(HashMap<String,Object> params);
+	public HospitalInfo HospitalInfo_InfoForm(HashMap<String,String> params);
 }

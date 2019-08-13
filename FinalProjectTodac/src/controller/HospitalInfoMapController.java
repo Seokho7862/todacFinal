@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -54,5 +55,18 @@ public class HospitalInfoMapController {
 		System.out.println(neLng);
 		System.out.println(hsvc.getFirstMarker(swLat, swLng, neLat, neLng));
 		return hsvc.getFirstMarker(swLat, swLng, neLat, neLng);
+	}
+	
+	@RequestMapping("HospitalInfo_InfoForm.do")
+	public ModelAndView HospitalInfo_Review(
+			@RequestParam String hpid) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("-----infoForm.do ³»-----------");
+		System.out.println(hpid);
+		System.out.println(hsvc.HospitalInfo_InfoForm(hpid));
+		System.out.println("------------------------------");
+		mav.addObject("hlist",hsvc.HospitalInfo_InfoForm(hpid));
+		mav.setViewName("HospitalInfoForm");
+		return mav;
 	}
 }
