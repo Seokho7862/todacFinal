@@ -1,9 +1,11 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,12 +21,15 @@ public class HospitalRateController {
 		return "hosRate";
 	}
 	
+	
+	
 	@RequestMapping("rateinfo.do")
-	public @ResponseBody List<Rate> getYkiho(@RequestParam(required=false) String code1, 
+	public @ResponseBody HashMap<String, Object> getYkiho(@RequestParam(required=false) String code1, 
 				@RequestParam(required=false)String code2,
 				@RequestParam(required=false)String hname,
 				@RequestParam(required=false)String[] check,
 				@RequestParam(required=false)String subject) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
 		
 		System.out.println(code1 +","+code2+", check:"+check+","+subject+","+hname);
 		
@@ -48,7 +53,29 @@ public class HospitalRateController {
 //			}
 //		}
 		
-		return newlist;
+		String key = subject;
+		System.out.println(subject);
+		System.out.println(key);
+		switch (key) {
+		case "1":
+			key="1";
+			break;
+		case "2":
+			key="2";
+			break;
+		case "3":
+			key="3";
+			break;
+		case "4":
+			key="4";
+			break;
+
+		default:
+			break;
+		}
+		param.put("key", key);
+		param.put("newlist", newlist);
+		return param;
 		
 		
 		
