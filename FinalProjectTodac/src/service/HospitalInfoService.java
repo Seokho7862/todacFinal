@@ -40,6 +40,36 @@ public class HospitalInfoService {
 		params.put("neLng", neLng);
 		return hdao.getFirstMarker(params);
 	}
+	public List<HashMap<String,Object>> HospitalInfo_DiagnosisByName(String swLat,
+			String swLng, String neLat, String neLng, String keyword){
+		
+		HashMap<String,Object> params = new HashMap<String,Object>();
+		params.put("swLat", swLat);
+		params.put("swLng", swLng);
+		params.put("neLat", neLat);
+		params.put("neLng", neLng);
+		
+		if(keyword.equals("전체")) {
+			params.put("keyword", keyword);
+			return hdao.getFirstMarker(params);
+		}
+		//진료과 split했을때 10개 이상 되는 것만
+		else if(keyword.equals("종합")) {
+			params.put("keyword", keyword);
+			return hdao.getMarkerByKeyword_GHosp(params);
+		}
+		//이름으로 검색
+		else if(keyword.equals("요양")) {
+			params.put("keyword", keyword);
+			return hdao.getMarkerByKeyword_SHosp(params);
+		}
+		//진료과로 검색
+		else {
+			params.put("keyword", keyword);
+			return hdao.getMarkerByKeyword_Diag(params);
+		}
+		
+	}
 	
 	public HospitalInfo HospitalInfo_InfoForm(String hpid) {
 		HashMap<String,String> params = new HashMap<String, String>();
@@ -50,5 +80,7 @@ public class HospitalInfoService {
 		System.out.println("서비스단");
 		return hdao.HospitalInfo_InfoForm(params);
 	}
+	
+	
 }
 
