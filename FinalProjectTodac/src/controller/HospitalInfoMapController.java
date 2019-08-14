@@ -49,10 +49,7 @@ public class HospitalInfoMapController {
 	@RequestMapping("HospitalInfo_FirstMarker.do")
 	public @ResponseBody List<HashMap<String,Object>> HospitalInfo_FirstMarker(String swLat,
 			String swLng, String neLat, String neLng){
-		System.out.println(swLat);
-		System.out.println(swLng);
-		System.out.println(neLat);
-		System.out.println(neLng);
+		
 		System.out.println(hsvc.getFirstMarker(swLat, swLng, neLat, neLng));
 		return hsvc.getFirstMarker(swLat, swLng, neLat, neLng);
 	}
@@ -68,5 +65,14 @@ public class HospitalInfoMapController {
 		mav.addObject("hlist",hsvc.HospitalInfo_InfoForm(hpid));
 		mav.setViewName("HospitalInfoForm");
 		return mav;
+	}
+	
+	@RequestMapping("HospitalInfo_DiagnosisByName.do")
+	public @ResponseBody List<HashMap<String,Object>> HospitalInfo_DiagnosisByName(String swLat,
+			String swLng, String neLat, String neLng, String keyword){
+		
+		List<HashMap<String,Object>> list = hsvc.HospitalInfo_DiagnosisByName(swLat, swLng, neLat, neLng, keyword);
+		
+		return hsvc.HospitalInfo_DiagnosisByName(swLat, swLng, neLat, neLng, keyword);
 	}
 }
