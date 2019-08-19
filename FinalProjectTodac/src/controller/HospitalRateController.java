@@ -1,7 +1,9 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -48,39 +50,43 @@ public class HospitalRateController {
 		
 //		List<Rate> end = new ArrayList<Rate>();
 //		for(int i =0;i<newlist.size();i++) {
-//			if(newlist.get(i).getAnti_rate().equals("1")) {
+//			if(newlist.get(i).getInjection_rate().equals("1")) {
 //				end.add(newlist.get(i));
 //			}
 //		}
 		
-		String key = subject;
-		System.out.println(subject);
-		System.out.println(key);
-		switch (key) {
-		case "1":
-			key="1";
-			break;
-		case "2":
-			key="2";
-			break;
-		case "3":
-			key="3";
-			break;
-		case "4":
-			key="4";
-			break;
-
-		default:
-			break;
-		}
-		param.put("key", key);
+//		System.out.println(subject);
+//		switch (subject) {
+//		case "1":
+//			subject="1";
+//			break;
+//		case "2":
+//			subject="2";
+//			break;
+//		case "3":
+//			subject="3";
+//			break;
+//		case "4":
+//			subject="4";
+//			break;
+//
+//		default:
+//			break;
+//		}
+		param.put("key", subject);
 		param.put("newlist", newlist);
 		return param;
 		
+	}
+	@RequestMapping("getaddress.do")
+	public @ResponseBody HashSet<List<String>> test(@RequestParam(required=false) String code1) {
+		HashSet<List<String>>set = new YkihoGet1().getadrress(code1);
 		
+		for(List<String> s : set) {
+			System.out.println(s +": 결과출력");
+		}
 		
-		
-		
+	return set;
 	}
 		
 }

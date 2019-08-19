@@ -29,7 +29,7 @@ $(function(){
 				muid : $('#muid').val(),
 				pwd : $('#pwd').val()
 			},
-			type : 'post',
+		
 			success : function(data){
 				alert(data);
 				if(data=="1"){
