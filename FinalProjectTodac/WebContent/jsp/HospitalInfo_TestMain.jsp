@@ -14,6 +14,14 @@
 <title>Insert title here</title>
 
 <style type="text/css">
+.overlay_info {border-radius: 5px; margin-bottom: 7px; float:left;position: relative; border: 1px solid #ccc; border-bottom: 2px solid #ddd;background-color:#fff;}
+    .overlay_info:nth-of-type(n) {border:0; box-shadow: 0px 1px 2px #888;}
+    .overlay_info a {display: block; background: #d95050; background: #d95050 url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center; text-decoration: none; color: #fff; padding:12px 36px 12px 14px; font-size: 12px; border-radius: 6px 6px 0 0}
+    .overlay_info a strong {background: #d95050 src(image/hospicon.png) no-repeat; padding-left: 17px;}
+    .overlay_info .desc {padding:10px;position: relative; min-width: 180px; height: 40px}
+    .overlay_info .address {font-size: 10px; color: #333; position: absolute; margin : auto; white-space: normal}
+    .overlay_info:after {content:'';position: absolute; margin-left: -11px; left: 50%; bottom: -12px; width: 19px; height: 12px; background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;}
+	
 	div#container-fluid{
 		border : solid;
 		width : 25%;
@@ -38,10 +46,7 @@
 		overflow : scroll;
 	}
 	
-	a#hospitalListDutyName:hover{
-		background-color: teal;
-		
-	}
+	
 	button{
 		width : 100%;
 		height : 40px;
@@ -66,9 +71,6 @@
 	}
 	table#diagnosisTalbe{
 		margin : auto;
-	}
-	div#map{
-		
 	}
 	
 </style>
@@ -149,11 +151,13 @@
 					      			<td><button value="재활">재활의학과</button></td>
 					      			<td><button value="신경">신경과</button></td>
 					      		</tr>	
+					      	
 					      	</table>
 			    		</div>
 			    		<div id ="diag_tab2">
 			    			<ul id="hosptialListByDiagnosis">
 			      			</ul>
+			      			
 			    		</div>
 			    	</div>	
 			    </div>
@@ -168,20 +172,21 @@
 			    </div>
 			</div>	
 		</div>
-	     
 	    
+	   
 	    <div class="col-sm-8" style="width : 75%;">
 	    	<input type="text" id="findLocation" placeholder="찾으시는 주소를 입력해주세요"/>
 	    	<input type="button" onclick="findAddr()" value="주소검색"/>
 	    	
 	    	<div id="searchLocList" style="display : none;">
 	    		<ul id="searchLocList_ul">
-	    		
+	    			
 	    		</ul>
 	    	</div>
 	    	<div id="map">map</div> 
 		</div>
 	  </div>
+	  
 	</div>
 
 		
@@ -215,10 +220,11 @@
 				    		$('#hospitalList hr').remove();
 							var list= "";
 							for(var i = 0; i < data.length ; i++){
-								list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" id="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' + data[i].DUTYNAME +'</a><br><a style="font-size: 7px">' + data[i].DUTYADDR+ '</a></li>';
+								list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'" >' + data[i].DUTYNAME +'</a><br><a style="font-size: 7px">' + data[i].DUTYADDR+ '</a></li>';
 								list += '<hr>'
 							}
 							$('#hospitalList').append(list);
+							
 				    	},
 				    	error :function(){
 							alert("error");
@@ -231,6 +237,7 @@
 				$('#diag_tab2').hide();
 				$('#diag_tab1').show();
 			});
+			
 			
 		});		
 		
@@ -256,11 +263,16 @@
 	            }
 	        }).open();   
 		}
+		
+		
+	
 	</script>
 	
 	 
 	 
 	<script type="text/javascript">
+	
+	
 	function mapMove(){
 		
 	    var mapBounds = map.getBounds();
@@ -289,7 +301,7 @@
 	    		$('#hospitalList hr').remove();
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" id="hospitalListDutyName">' + data[i].DUTYNAME +'</a><br><a style="font-size: 7px">' + data[i].DUTYADDR+ '</a></li>';
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" >' + data[i].DUTYNAME +'</a><br><a style="font-size: 7px">' + data[i].DUTYADDR+ '</a></li>';
 					list += '<hr>'
 				}
 				$('#hospitalList').append(list);
@@ -372,8 +384,11 @@
 	    		$('#hosptialListByDiagnosis hr').remove();
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" id="hospitalListDutyName">' + data[i].DUTYNAME +'</a><br><a style="font-size: 7px">' + data[i].DUTYADDR+ '</a></li>';
+					var latlng = new kakao.maps.LatLng(data[i].WGS84LAT, data[i].WGS84LON);
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
+					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>'
+					
 				}
 				
 				$('#hosptialListByDiagnosis').append(list);
@@ -445,7 +460,8 @@
 	        level : 3 // 지도의 확대 레벨
 	    });
 		var geocoder = new daum.maps.services.Geocoder();
-		
+		var pointedMarker;
+		var customOverlay;
 		//키워드 부분 
 		var keywordVal="";
 		
@@ -491,9 +507,11 @@
 				
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 17px" id="hospitalListDutyName" ><input type="hidden" value="'+data[i].HPID+'">' + data[i].DUTYNAME +'</a><br><a style="font-size: 10px">' + data[i].DUTYADDR+ '</a></li>';
-					list += '<hr>'
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"></a><br>'
+					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
+					list += '<hr>';
 				}
+				
 				$('#hospitalList').append(list);
 				
 				
@@ -553,14 +571,12 @@
 		
 		kakao.maps.event.addListener(map, 'idle', function() {
 			clusterer.clear();
-			if(keywordVal=""){
+			if(keywordVal==""){	
 				mapMove();
 			}
 			else{
 				markerByCategoryName(keywordVal);
 			}
-		    
-			
 		});
 		
 		
@@ -571,18 +587,48 @@
 			$('#diag_tab2').show();
 			markerByCategoryName(keywordVal);
 		});
-	</script>
-	
-	<!-- 위의 주소 검색을 햇을때  -->
-	<script type="text/javascript">
-	$(function(){		
-	
 		
 		
-	});
-	
 	</script>
 	
+	<script>
+		
+		$(document).on('mouseover','.hospitalListDutyName',function(){
+			
+			var lat = $(this).closest('li').find('input:eq(0)').val();
+			var lon = $(this).closest('li').find('input:eq(1)').val();
+			var name = $(this).closest('li').find('input:eq(2)').val();
+			var hpid = $(this).closest('li').find('input:eq(3)').val();
+			var addr = $(this).closest('li').find('input:eq(4)').val();
+			pointedMarker = new kakao.maps.Marker({
+				position : new kakao.maps.LatLng(lat, lon)
+			});
+			
+			var content = '<div class="overlay_info">';
+			content += '    <a href="HospitalInfo_InfoForm.do?hpid='+ hpid +'" target="_blank"><img src="image/hospicon.png" style="width:30px;"><strong>'+name+'</strong></a>';
+			content += '    <div class="desc">';
+			content += '        <span class="address">'+ addr +'</span>';
+			content += '    </div>';
+			content += '</div>';
+			
+			customOverlay = new kakao.maps.CustomOverlay({
+			    position: new kakao.maps.LatLng(lat, lon),
+			    content : content,
+			    xAnchor: 0.5, 
+			    yAnchor: 1.23
+			});
+			customOverlay.setMap(map);
+			
+			
+		});
+		$(document).on('mouseout','.hospitalListDutyName',function(){
+			
+			customOverlay.setMap(null);
+		});
+		
+		
+		
+	</script>
 	
 	<!-- 풋터 부분-->
 </body>
