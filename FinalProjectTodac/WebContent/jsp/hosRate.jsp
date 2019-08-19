@@ -7,11 +7,80 @@
 <title>Insert title here</title>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script type="text/javascript" src="js/location.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<style type="text/css">
+#my-spinner {
+	width: 100%; height: 100%;
+	top: 0; left: 0;
+	display: none;
+	opacity: .6;
+	background: silver;
+	position: fixed;
+}
+#my-spinner div {
+	width: 100%; height: 100%;
+	display: table;
+}
+#my-spinner span {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+#my-spinner img {
+	background: white;
+	padding: 1em;
+	border-radius: .7em;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+
+	$('#sel1').on('change',function(){
+		alert($('#sel1').val());
+			$.ajax({
+				url : 'getaddress.do',
+				data:{
+					code1:$('#sel1').val()
+				},
+				type:'post',
+				beforeSend : function(){
+					$('#spins').show();
+				}
+				,
+				success :function(data){
+					$('#spins').hide();
+					alert("alert");
+					alert(data);
+					
+					$('#sel2 > option:gt(0)').remove();
+					var adop="";
+					for(var i in data){
+					adop+="<option value='"+data[i][0]+"'>"+data[i][1]+"</option>";
+					}
+					$('#sel2').append(adop);
+					
+				},
+				error : function(){
+					alert("다시시도해주세요");
+				}
+				
+				
+			});
+	});
+	
+	
+});
+
+</script>
 <script type="text/javascript">
 function openInj(){
 	$('#con_injection').show();
@@ -188,7 +257,7 @@ $(function(){
   <div class="row">
 		<div class="col-md-2">
       <select class="form-control" id="sel1">
-        <option value="" disabled="disabled" selected="selected">시/도</option>
+        <option value="" selected="selected">시/도</option>
         <option value="110000">서울</option>
         <option value="210000">부산</option>
         <option value="220000">인천</option>
@@ -210,7 +279,7 @@ $(function(){
  	 </div>
 	<div class="col-md-2">
       <select class="form-control" id="sel2">
-        <option value="" disabled="disabled" selected="selected">시/군/구</option>
+        <option value="" selected="selected">시/군/구</option>
  
       </select>
 	<input id="hname" type="text">
@@ -229,6 +298,7 @@ $(function(){
   
   <dl>
   <p>
+  
   <dt>
 <b>주사제 처방률 </b> :  항목을 평가하는 이유는 무엇인가요?
   </dt>
@@ -426,6 +496,11 @@ $(function(){
   
   
   
+</div>
+<div id='spins'>
+	<div><span>
+		<img src='//cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif'>
+	</span></div>
 </div>
 
 </body>
