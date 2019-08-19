@@ -121,8 +121,28 @@ public class TestController {
 	@RequestMapping("healthInfoWrite.do")
 	public String healthInfoWrite(HealthInfo healthInfo, @RequestParam(value="infoFile", required=false)MultipartFile file) {
 
-		ArrayList<String> fileResult = FileUploadClass.FileUpload(file);
-		healthInfo.sethfile(fileResult.get(1));
+		String savePath = "C:\\Users\\student\\git\\todacFinal\\FinalProjectTodac\\WebContent\\UploadFolder";
+		System.out.println(file.getSize());
+		if(file.getSize()!=0) {
+		String originalFilename = file.getOriginalFilename();
+		String onlyFileName = originalFilename.substring(0, originalFilename.indexOf("."));
+		String extension = originalFilename.substring(originalFilename.indexOf("."));
+		String rename = onlyFileName + "_" + getCurrentDayTime() + extension;
+		String fullPath = savePath + "\\" + rename;
+		String relatePath = "UploadFolder"+"\\" +rename;
+		healthInfo.sethfile(relatePath);
+		if (!file.isEmpty()) {
+	        try {
+	            byte[] bytes = file.getBytes();
+	            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
+	            stream.write(bytes);
+	            stream.close();
+	           
+	        } catch (Exception e) {
+	           
+	        }
+	    } 
+		}
 		System.out.println(healthInfo.toString());
 		tservice.healthInfoWrite(healthInfo);
 		return "redirect: healthInfoList.do";
