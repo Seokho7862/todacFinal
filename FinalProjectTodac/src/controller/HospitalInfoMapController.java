@@ -75,4 +75,11 @@ public class HospitalInfoMapController {
 		
 		return hsvc.HospitalInfo_DiagnosisByName(swLat, swLng, neLat, neLng, keyword);
 	}
+	
+	@RequestMapping("HospitalInfo_searchLocList.do")
+	public @ResponseBody List<HashMap<String,Object>> HospitalInfo_searchLocList(String keyword){
+		
+		return null;
+	}
+	
 }

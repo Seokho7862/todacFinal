@@ -50,9 +50,25 @@
 	}
 	input#findLocation{
 		width:100%;
+		position: static;
+		
+	}
+	div#searchLocList{
+		width:100%;
+		overflow : scroll;
+		border : 1px solid;
+		position: absolute;
+		background-color : white;
+		max-height : 200px;
+		top : 28px;
+		
+		
 	}
 	table#diagnosisTalbe{
 		margin : auto;
+	}
+	div#map{
+		
 	}
 	
 </style>
@@ -77,8 +93,8 @@
 			    		<div >
 			    			<h5>원하시는 진료과를 선택하세요</h5>
 			    			<div style="border: solid; font-size:10px;">
-			    				<div style="width: 100%; border: solid;">
-			    					<i>진료과목    </i>   <i>   전체선택</i>
+			    				<div style="width: 100%; border: solid;" id="selector">
+			    					<i>진료과목    </i><i id="diag_keyword" style="margin-left: 20%;">전체선택</i>
 			    				</div> 
 			    			</div>
 			    		</div>
@@ -86,7 +102,7 @@
 			    			해당 지역에 <i>몇건</i> 검색되었습니다
 			    		</div>
 			    		<hr>
-			    		<div>
+			    		<div id="diag_tab1">
 			    			<table id="diagnosisTalbe">
 				      		
 					      		<tr>
@@ -135,20 +151,17 @@
 					      		</tr>	
 					      	</table>
 			    		</div>
-			    	</div>
-			    	
-			    	<div>
-			    		<ul id="hosptialListByDiagnosis">
-			      		</ul>
-			    	</div>
-			    	
-			      	
-			      	
+			    		<div id ="diag_tab2">
+			    			<ul id="hosptialListByDiagnosis">
+			      			</ul>
+			    		</div>
+			    	</div>	
 			    </div>
 			    
 			    <div id="menu1" class="tab-pane fade">
 			      	<div id="navigation" >
 						<input type="search" style="left : 10%" placeholder="여기서 검색하세요 " id="Keyword">
+					
 						<ul id="hospitalList">			
 						</ul>
 					</div>
@@ -158,7 +171,14 @@
 	     
 	    
 	    <div class="col-sm-8" style="width : 75%;">
-	    	<input type="search" id="findLocation" placeholder="찾으시는 위치를 입력해주세요"/>
+	    	<input type="text" id="findLocation" placeholder="찾으시는 주소를 입력해주세요"/>
+	    	<input type="button" onclick="findAddr()" value="주소검색"/>
+	    	
+	    	<div id="searchLocList" style="display : none;">
+	    		<ul id="searchLocList_ul">
+	    		
+	    		</ul>
+	    	</div>
 	    	<div id="map">map</div> 
 		</div>
 	  </div>
@@ -169,11 +189,12 @@
 	
 	
 	<p id="result"></p>
-
+	<!-- 주소 검색 스크립트 부분 -->
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<!-- 맵관련 스크립트 부분 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	-->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7100ed85365a3b66382c0f7cab33b611&libraries=clusterer"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7100ed85365a3b66382c0f7cab33b611&libraries=clusterer,services"></script>
 	
 	<!-- 함수 기능 정리 -->
 	<script type="text/javascript">
@@ -205,7 +226,36 @@
 					});
 				}
 			});
+			
+			$('#selector').on('click',function(){
+				$('#diag_tab2').hide();
+				$('#diag_tab1').show();
+			});
+			
 		});		
+		
+		function findAddr() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                var addr = data.address; // 최종 주소 변수
+	                // 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById("findLocation").value = addr;
+	                // 주소로 상세 정보를 검색
+	                geocoder.addressSearch(data.address, function(results, status) {
+	                    // 정상적으로 검색이 완료됐으면
+	                    if (status === daum.maps.services.Status.OK) {					
+	                        var result = results[0]; //첫번째 결과의 값을 활용
+	                        // 해당 주소에 대한 좌표를 받아서
+	                        var coords = new daum.maps.LatLng(result.y, result.x);
+
+	                        // 지도 중심을 변경한다.
+	                        map.setCenter(coords);
+	                        // 마커를 결과값으로 받은 위치로 옮긴다.
+	                    }
+	                });
+	            }
+	        }).open();   
+		}
 	</script>
 	
 	 
@@ -233,7 +283,8 @@
 	    	datatype :  "json",
 	    	success : function(data){
 	    		
-	    		//clusterer.clear();
+	    		
+	    		
 	    		$('#hospitalList li').remove();
 	    		$('#hospitalList hr').remove();
 				var list= "";
@@ -313,10 +364,10 @@
 	    	},
 	    	datatype :  "json",
 	    	success : function(data){
-	    		alert(data);
 	    		clusterer.clear();
 	    		
-	    		$('#diagnosisTalbe').hide();
+	    		$('#diag_tab1').hide();
+	    		
 	    		$('#hosptialListByDiagnosis li').remove();
 	    		$('#hosptialListByDiagnosis hr').remove();
 				var list= "";
@@ -324,6 +375,7 @@
 					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" id="hospitalListDutyName">' + data[i].DUTYNAME +'</a><br><a style="font-size: 7px">' + data[i].DUTYADDR+ '</a></li>';
 					list += '<hr>'
 				}
+				
 				$('#hosptialListByDiagnosis').append(list);
 	    		
 	    		var markers = $(data).map(function(i, position) {
@@ -392,7 +444,11 @@
 	        center : new kakao.maps.LatLng(37.5012581268, 127.0397092587), // 지도의 중심좌표
 	        level : 3 // 지도의 확대 레벨
 	    });
-
+		var geocoder = new daum.maps.services.Geocoder();
+		
+		//키워드 부분 
+		var keywordVal="";
+		
 		var markerImage;
 		var level = map.getLevel();
 	    if (1 <= level && level <= 2) {
@@ -418,6 +474,7 @@
 	        disableClickZoom: true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 	    });
 		
+	
 		$.ajax({
 	    	url : "HospitalInfo_FirstMarker.do",
 	    	type : "post",
@@ -429,7 +486,6 @@
 	    	},
 	    	datatype :  "json",
 	    	success : function(data){
-	    		alert("success");
 	    		
 				$('#hospitalList li').remove();
 				
@@ -497,17 +553,35 @@
 		
 		kakao.maps.event.addListener(map, 'idle', function() {
 			clusterer.clear();
-		    mapMove();
+			if(keywordVal=""){
+				mapMove();
+			}
+			else{
+				markerByCategoryName(keywordVal);
+			}
+		    
+			
 		});
 		
 		
 		$('button').click(function(){
 			var value= $(this).val();
-			markerByCategoryName(value);
+			keywordVal= $(this).val();
+			$('#diag_keyword').innelHTML=value;
+			$('#diag_tab2').show();
+			markerByCategoryName(keywordVal);
 		});
 	</script>
 	
+	<!-- 위의 주소 검색을 햇을때  -->
+	<script type="text/javascript">
+	$(function(){		
 	
+		
+		
+	});
+	
+	</script>
 	
 	
 	<!-- 풋터 부분-->
