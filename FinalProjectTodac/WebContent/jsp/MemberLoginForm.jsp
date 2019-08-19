@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -21,7 +21,7 @@
 $(function(){
 	
 	$('#managerbtn').on('click',function(){
-		alert("È®ÀÎ");
+		alert("í™•ì¸");
 		
 		$.ajax({
 			url : 'loginManager.do',
@@ -33,17 +33,17 @@ $(function(){
 			success : function(data){
 				alert(data);
 				if(data=="1"){
-					alert("${muid} ´Ô È¯¿µÇÕ´Ï´Ù.");
+					alert("${muid} ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.");
 					
 					location.href='openMain.do';
 					
 					
 				}
 				else
-					alert("Á¸ÀçÇÏÁö ¾Ê´Â È¸¿øÀÔ´Ï´Ù.");
+					alert("ì¡´ì¬í•˜ì§€ ì•ŠëŠ” íšŒì›ì…ë‹ˆë‹¤.");
 			},
 			error : function(request,status,error){
-				alert("´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.");				
+				alert("ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.");				
 			}
 		});
 		
@@ -59,29 +59,29 @@ $(function(){
 <div class="tabbable" id="tabs-343454">
 				<ul class="nav nav-tabs">
 					<li class="nav-item">
-						<a class="nav-link active show" href="#tab1" data-toggle="tab">»ç¿ëÀÚ</a>
+						<a class="nav-link active show" href="#tab1" data-toggle="tab">ì‚¬ìš©ì</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#tab2" data-toggle="tab">°ü°èÀÚ</a>
+						<a class="nav-link" href="#tab2" data-toggle="tab">ê´€ê³„ì</a>
 					</li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="tab1">
 					<p>
-<h1>»ç¿ëÀÚ ·Î±×ÀÎ</h1>
+<h1>ì‚¬ìš©ì ë¡œê·¸ì¸</h1>
 <form action="loginUser.do">
-¾ÆÀÌµğ<input type="text" name="muid"> <br>
-ºñ¹Ğ¹øÈ£<input type="password" name="pwd">
-<input type="submit" value="·Î±×ÀÎ">
+ì•„ì´ë””<input type="text" name="muid"> <br>
+ë¹„ë°€ë²ˆí˜¸<input type="password" name="pwd">
+<input type="submit" value="ë¡œê·¸ì¸">
 </form>
 					</p>
 					</div>
 					<div class="tab-pane" id="tab2">
 						<p>
-<h1>°ü°èÀÚ ·Î±×ÀÎ</h1>
-¾ÆÀÌµğ<input type="text" id="muid"> <br>
-ºñ¹Ğ¹øÈ£<input type="password" id="pwd">
-<input type="button" id="managerbtn" value="·Î±×ÀÎ">
+<h1>ê´€ê³„ì ë¡œê·¸ì¸</h1>
+ì•„ì´ë””<input type="text" id="muid"> <br>
+ë¹„ë°€ë²ˆí˜¸<input type="password" id="pwd">
+<input type="button" id="managerbtn" value="ë¡œê·¸ì¸">
 						</p>
 					</div>
 				</div>
