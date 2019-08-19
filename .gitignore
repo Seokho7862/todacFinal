@@ -40,4 +40,3 @@ local.properties
 .tern-project
 .springBeans
 .recommenders/
-*.properties

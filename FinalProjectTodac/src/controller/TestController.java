@@ -240,7 +240,7 @@ public class TestController {
 	}
 
 	@RequestMapping("signUp.do")
-	public void signUp(String muid, String pwd, String name, String birth, String email, String phone, String latitude,
+	public void signUp(String muid, String pw, String name, String birth, String email, String phone, String latitude,
 			String longitude, String sample4_postcode, String sample4_detailAddress, @RequestParam(defaultValue="")String sample4_jibunAddress,
 			String sample4_roadAddress) {
 
@@ -265,7 +265,7 @@ public class TestController {
 		
 		
 		
-		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birth, age, email, phone, Double.parseDouble(latitude),Double.parseDouble(longitude), sample4_postcode, sample4_jibunAddress,add_base, sample4_roadAddress);
+		MEMBER_USER member = new MEMBER_USER(muid, pw, name, birth, age, email, phone, Double.parseDouble(latitude),Double.parseDouble(longitude), sample4_postcode, sample4_jibunAddress,add_base, sample4_roadAddress);
 		tservice.createMember_user(member);
 		System.out.println("회원 삽입");
 	}

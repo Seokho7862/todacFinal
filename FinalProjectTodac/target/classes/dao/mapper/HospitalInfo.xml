@@ -35,5 +35,9 @@
   		select * from todac.hospitalInfo where hpid = '${hpid}'
   	</select>
   	
+  	<select id="searchByHname" parameterType="java.util.HashMap" resultType="hospitalInfo" >
+  		select * from todac.hospitalInfo where hname like '%${hname}%'
+  	</select>
+  	
   </mapper>
   
