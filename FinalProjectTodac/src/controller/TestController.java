@@ -12,7 +12,8 @@ import model.HospitalInfo;
 import model.MEMBER_USER;
 import model.apply_manager;
 import model.disease_web;
-import service.FileUploadClass;
+import service.HealthInfoFileUploadClass;
+import service.ManagerApplyFileUploadClass;
 import service.NaverSearchAPI;
 import service.TestService;
 
@@ -121,30 +122,9 @@ public class TestController {
 	@RequestMapping("healthInfoWrite.do")
 	public String healthInfoWrite(HealthInfo healthInfo, @RequestParam(value="infoFile", required=false)MultipartFile file) {
 
-//		String savePath = "C:\\Users\\student\\git\\todacFinal\\FinalProjectTodac\\WebContent\\UploadFolder";
-//		System.out.println(file.getSize());
-//		if(file.getSize()!=0) {
-//		String originalFilename = file.getOriginalFilename();
-//		String onlyFileName = originalFilename.substring(0, originalFilename.indexOf("."));
-//		String extension = originalFilename.substring(originalFilename.indexOf("."));
-//		String rename = onlyFileName + "_" + getCurrentDayTime() + extension;
-//		String fullPath = savePath + "\\" + rename;
-//		String relatePath = "UploadFolder"+"\\" +rename;
-
-//		if (!file.isEmpty()) {
-//	        try {
-//	            byte[] bytes = file.getBytes();
-//	            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
-//	            stream.write(bytes);
-//	            stream.close();
-//	           
-//	        } catch (Exception e) {
-//	           
-//	        }
-//	    } 
-//		}
-		ArrayList<String > result = FileUploadClass.FileUpload(file);
-		healthInfo.sethfile(result.get(0));
+		if(file.getSize()>0) {
+		ArrayList<String > result = HealthInfoFileUploadClass.FileUpload(file);
+		healthInfo.sethfile(result.get(0));}
 		System.out.println(healthInfo.toString());
 		tservice.healthInfoWrite(healthInfo);
 		return "redirect: healthInfoList.do";
@@ -303,15 +283,18 @@ public class TestController {
 	}
 	@RequestMapping("managerApply.do")
 	public void managerApply(apply_manager apply, MultipartFile file) {
-		ArrayList<String> fileResult = FileUploadClass.FileUpload(file);
+		System.out.println(file);
+		if(file!=null) {
+		ArrayList<String> fileResult =ManagerApplyFileUploadClass.FileUpload(file);
 		String absLoc = fileResult.get(0);
 		String relLoc = fileResult.get(1);
-		
 		apply.setAbsFile(absLoc);
 		apply.setRelFile(relLoc);
+		System.out.println("여기 실행함");
+		}
+		else {System.out.println("파일 못 읽음");}
 		
-		
+		System.out.println(apply);
 	}
-	
 	
 }

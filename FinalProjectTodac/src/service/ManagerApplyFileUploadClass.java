@@ -10,7 +10,7 @@ import java.util.Locale;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class FileUploadClass {
+public class ManagerApplyFileUploadClass {
 
 	public static String getCurrentDayTime(){
 	    long time = System.currentTimeMillis();
@@ -20,7 +20,7 @@ public class FileUploadClass {
 	
 	public static ArrayList<String> FileUpload(MultipartFile file){
 		ArrayList<String> result = new ArrayList<String>();
-		String savePath = "C:\\Users\\student\\git\\todacFinal\\FinalProjectTodac\\WebContent\\UploadFolder";
+		String savePath = "C:\\Users\\student\\git\\todacFinal\\FinalProjectTodac\\WebContent\\ApplyTempFileFolder";
 		System.out.println(file.getSize());
 		if(file.getSize()!=0) {
 		String originalFilename = file.getOriginalFilename();
@@ -28,7 +28,7 @@ public class FileUploadClass {
 		String extension = originalFilename.substring(originalFilename.indexOf("."));
 		String rename = onlyFileName + "_" + getCurrentDayTime() + extension;
 		String fullPath = savePath + "\\" + rename;
-		String relatePath = "UploadFolder"+"\\" +rename;
+		String relatePath = "ApplyTempFileFolder"+"\\" +rename;
 		
 		if (!file.isEmpty()) {
 	        try {

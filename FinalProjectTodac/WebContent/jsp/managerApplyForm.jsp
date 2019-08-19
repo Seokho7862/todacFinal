@@ -51,7 +51,7 @@
 <body>
 	<h1>병원 관계자 계정 신청</h1>
 
-	<form action="managerApply.do">
+	<form action="managerApply.do" enctype="multipart/form-data" method="post">
 		<table border="1">
 
 			<tr>
@@ -82,14 +82,18 @@
 
 			<tr>
 				<td>사업자 등록증 사진</td>
-				<td><input type="file" name="afile"></td>
+				<td><input type="file" name="file" id="file"></td>
+			
 			</tr>
 			<tr>
 				<td><input type="submit" value="확인"></td>
 			</tr>
 
 		</table>
-<input type="text" id="hpid">
+<input type="text" id="hpid" name="hpid">
+
+<input type="text" id="muid" name="muid" value="매니저 지원 테스트 아이디">
+
 	</form>
 
 
