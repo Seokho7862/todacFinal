@@ -36,7 +36,9 @@
   	</select>
   	
   	<select id="searchByHname" parameterType="java.util.HashMap" resultType="hospitalInfo" >
-  		select * from todac.hospitalInfo where hname like '%${hname}%'
+  		select * from todac.hospitalInfo where 
+  		<if test="searchType==1">dutyname</if> 
+  		<if test="searchType==2">dutyAddr</if> like '%${keyword}%'
   	</select>
   	
   </mapper>

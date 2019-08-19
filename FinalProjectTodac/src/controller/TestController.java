@@ -8,8 +8,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
 import model.HealthInfo;
+import model.HospitalInfo;
 import model.MEMBER_USER;
+import model.apply_manager;
 import model.disease_web;
+import service.FileUploadClass;
 import service.NaverSearchAPI;
 import service.TestService;
 
@@ -117,28 +120,9 @@ public class TestController {
 	
 	@RequestMapping("healthInfoWrite.do")
 	public String healthInfoWrite(HealthInfo healthInfo, @RequestParam(value="infoFile", required=false)MultipartFile file) {
-		String savePath = "C:\\Users\\student\\git\\todacFinal\\FinalProjectTodac\\WebContent\\UploadFolder";
-		System.out.println(file.getSize());
-		if(file.getSize()!=0) {
-		String originalFilename = file.getOriginalFilename();
-		String onlyFileName = originalFilename.substring(0, originalFilename.indexOf("."));
-		String extension = originalFilename.substring(originalFilename.indexOf("."));
-		String rename = onlyFileName + "_" + getCurrentDayTime() + extension;
-		String fullPath = savePath + "\\" + rename;
-		String relatePath = "UploadFolder"+"\\" +rename;
-		healthInfo.sethfile(relatePath);
-		if (!file.isEmpty()) {
-	        try {
-	            byte[] bytes = file.getBytes();
-	            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
-	            stream.write(bytes);
-	            stream.close();
-	           
-	        } catch (Exception e) {
-	           
-	        }
-	    } 
-		}
+
+		ArrayList<String> fileResult = FileUploadClass.FileUpload(file);
+		healthInfo.sethfile(fileResult.get(1));
 		System.out.println(healthInfo.toString());
 		tservice.healthInfoWrite(healthInfo);
 		return "redirect: healthInfoList.do";
@@ -286,6 +270,26 @@ public class TestController {
 		
 		return tservice.getListOfTop3(getType);
 	}
-	
+	@RequestMapping("managerApplyForm.do")
+	public void managerApplyForm() {}
 
+	@RequestMapping("hospitalSearch.do")
+	public @ResponseBody ArrayList<HospitalInfo> hospitalSearch(String keyword, String searchType){
+		
+		return tservice.hospitalSearch(keyword, searchType);
+		
+	}
+	@RequestMapping("managerApply.do")
+	public void managerApply(apply_manager apply, MultipartFile file) {
+		ArrayList<String> fileResult = FileUploadClass.FileUpload(file);
+		String absLoc = fileResult.get(0);
+		String relLoc = fileResult.get(1);
+		
+		apply.setAbsFile(absLoc);
+		apply.setRelFile(relLoc);
+		
+		
+	}
+	
+	
 }

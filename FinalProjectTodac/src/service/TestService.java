@@ -19,6 +19,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import dao.IDisease_dbDao;
 import dao.IHealthInfoDao;
+import dao.IHospitalInfoDao;
 import dao.IMember_userDao;
 import dao.ITestDao;
 import model.HealthInfo;
@@ -36,6 +37,8 @@ public class TestService {
 	private IDisease_dbDao disDao;
 	@Autowired
 	private IMember_userDao muDao;
+	@Autowired
+	private IHospitalInfoDao hosDao;
 	
 	private static String ServiceKey = "=lVxTWoXqXosjGsm%2BJEUMoOlm%2BMCgvW%2FwNcb4I54miUQc9K5DAbBPOwOQAP3ZhGsNLHxtWZev2W2HxL92vNMrbg%3D%3D";
 	public void insertHospitalInfo1() {
@@ -233,6 +236,14 @@ public class TestService {
 		HashMap<String,Object > pageinfo= new HashMap<String, Object>();
 		pageinfo.put("getType", getType);		
 		return hDao.getListOfTop3(pageinfo);
+	}
+	public ArrayList<HospitalInfo> hospitalSearch(String keyword, String searchType){
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("keyword", keyword);
+		params.put("searchType", searchType);
+		
+		return hosDao.searchByHname(params);
+		
 	}
 	
 }

@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface IHospitalInfoDao {
 	public List<HashMap<String,Object>> getMarkerByKeyword_SHosp(HashMap<String,Object> params);
 	public List<HashMap<String,Object>> getMarkerByKeyword_Diag(HashMap<String,Object> params);
 	public HospitalInfo HospitalInfo_InfoForm(HashMap<String,String> params);
+	public ArrayList<HospitalInfo> searchByHname (HashMap<String, String> params);
 }
