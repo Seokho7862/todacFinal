@@ -29,18 +29,18 @@ public class YkihoGet1 {
         urlBuilder = new StringBuilder("http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList"); /*URL*/
         try {
 			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=P6WiytSwjecJ9Xc3948rlZ9HNqdUFVZafMD6PiuQAT0XrcVOAy5MMaDyudgW9AzuNB9a5kpTaSY6%2BFcTJVrBBw%3D%3D");
-//        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/
-        urlBuilder.append("&" + URLEncoder.encode("sidoCd","UTF-8") + "=" + URLEncoder.encode(code1, "UTF-8")); /*시도코드*/
-        urlBuilder.append("&" + URLEncoder.encode("sgguCd","UTF-8") + "=" + URLEncoder.encode(code2, "UTF-8")); /*시군구코드*/
-//        urlBuilder.append("&" + URLEncoder.encode("emdongNm","UTF-8") + "=" + URLEncoder.encode("신내동", "UTF-8")); /*읍면동명*/
-        urlBuilder.append("&" + URLEncoder.encode("yadmNm","UTF-8") + "=" + URLEncoder.encode(hname, "UTF-8")); /*병원명 (UTF-8 인코딩 필요)*/
-//        urlBuilder.append("&" + URLEncoder.encode("zipCd","UTF-8") + "=" + URLEncoder.encode("2010", "UTF-8")); /*2010:종합병원, 2030:병원, 2040:요양병원, 2050:치과, 2060:한방, 2070:의원, 2080:보건기관, 2090:조산원*/
-//        urlBuilder.append("&" + URLEncoder.encode("clCd","UTF-8") + "=" + URLEncoder.encode("11", "UTF-8")); /*종별코드*/
-//        urlBuilder.append("&" + URLEncoder.encode("dgsbjtCd","UTF-8") + "=" + URLEncoder.encode("01", "UTF-8")); /*진료과목코드*/
-//        urlBuilder.append("&" + URLEncoder.encode("xPos","UTF-8") + "=" + URLEncoder.encode("127.09854004628151", "UTF-8")); /*x좌표(소수점 15)*/
-//        urlBuilder.append("&" + URLEncoder.encode("yPos","UTF-8") + "=" + URLEncoder.encode("37.6132113197367", "UTF-8")); /*y좌표(소수점 15)*/
-//        urlBuilder.append("&" + URLEncoder.encode("radius","UTF-8") + "=" + URLEncoder.encode("3000", "UTF-8")); /*단위 : 미터(m)*/
+//        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*�럹�씠吏�踰덊샇*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*�븳 �럹�씠吏� 寃곌낵 �닔*/
+        urlBuilder.append("&" + URLEncoder.encode("sidoCd","UTF-8") + "=" + URLEncoder.encode(code1, "UTF-8")); /*�떆�룄肄붾뱶*/
+        urlBuilder.append("&" + URLEncoder.encode("sgguCd","UTF-8") + "=" + URLEncoder.encode(code2, "UTF-8")); /*�떆援곌뎄肄붾뱶*/
+//        urlBuilder.append("&" + URLEncoder.encode("emdongNm","UTF-8") + "=" + URLEncoder.encode("�떊�궡�룞", "UTF-8")); /*�쓭硫대룞紐�*/
+        urlBuilder.append("&" + URLEncoder.encode("yadmNm","UTF-8") + "=" + URLEncoder.encode(hname, "UTF-8")); /*蹂묒썝紐� (UTF-8 �씤肄붾뵫 �븘�슂)*/
+//        urlBuilder.append("&" + URLEncoder.encode("zipCd","UTF-8") + "=" + URLEncoder.encode("2010", "UTF-8")); /*2010:醫낇빀蹂묒썝, 2030:蹂묒썝, 2040:�슂�뼇蹂묒썝, 2050:移섍낵, 2060:�븳諛�, 2070:�쓽�썝, 2080:蹂닿굔湲곌�, 2090:議곗궛�썝*/
+//        urlBuilder.append("&" + URLEncoder.encode("clCd","UTF-8") + "=" + URLEncoder.encode("11", "UTF-8")); /*醫낅퀎肄붾뱶*/
+//        urlBuilder.append("&" + URLEncoder.encode("dgsbjtCd","UTF-8") + "=" + URLEncoder.encode("01", "UTF-8")); /*吏꾨즺怨쇰ぉ肄붾뱶*/
+//        urlBuilder.append("&" + URLEncoder.encode("xPos","UTF-8") + "=" + URLEncoder.encode("127.09854004628151", "UTF-8")); /*x醫뚰몴(�냼�닔�젏 15)*/
+//        urlBuilder.append("&" + URLEncoder.encode("yPos","UTF-8") + "=" + URLEncoder.encode("37.6132113197367", "UTF-8")); /*y醫뚰몴(�냼�닔�젏 15)*/
+//        urlBuilder.append("&" + URLEncoder.encode("radius","UTF-8") + "=" + URLEncoder.encode("3000", "UTF-8")); /*�떒�쐞 : 誘명꽣(m)*/
         URL url = new URL(urlBuilder.toString());
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -66,12 +66,12 @@ public class YkihoGet1 {
 			factory = XmlPullParserFactory.newInstance();
 		XmlPullParser parser = factory.newPullParser();
 		
-		parser.setInput(new StringReader(sb.toString())); //파서에 데이터 인풋 
-		int eventType = parser.getEventType(); //int 리턴
-		String ykiho = null; //담을 책 객체 
+		parser.setInput(new StringReader(sb.toString())); //�뙆�꽌�뿉 �뜲�씠�꽣 �씤�뭼 
+		int eventType = parser.getEventType(); //int 由ы꽩
+		String ykiho = null; //�떞�쓣 梨� 媛앹껜 
     	
     	
-    	// 문서가 끝날때 까지 while문 실행
+    	// 臾몄꽌媛� �걹�궇�븣 源뚯� while臾� �떎�뻾
     	while(eventType!=XmlPullParser.END_DOCUMENT) {
     		
     		switch (eventType) {
@@ -88,13 +88,13 @@ public class YkihoGet1 {
     			}
     			break;
     		case XmlPullParser.START_TAG:
-    			//이중스위치를 써도 좋음 
+    			//�씠以묒뒪�쐞移섎�� �뜥�룄 醫뗭쓬 
     			
     			switch(parser.getName()){
     			case"item" : 
     				break;
     			case "ykiho" :
-    				//null값 예외처리
+    				//null媛� �삁�쇅泥섎━
 //    				if(ykiho!=null)
     					ykiho=parser.nextText();
     				break;
@@ -105,18 +105,13 @@ public class YkihoGet1 {
     			break;
     		}
     		
-    		eventType= parser.next(); //다음 이벤트를 가져오기
+    		eventType= parser.next(); //�떎�쓬 �씠踰ㅽ듃瑜� 媛��졇�삤湲�
     	}
     	
     	for(String y: ykiList) {
-    		System.out.println(y+" api쪽");
+    		System.out.println(y+" api履�");
     	}
-        
-        
-        
-        
-        
-        
+    	
         } catch (UnsupportedEncodingException e) {
         	// TODO Auto-generated catch block
         	e.printStackTrace();
@@ -138,18 +133,18 @@ public class YkihoGet1 {
 			urlBuilder = new StringBuilder("http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList"); /*URL*/
 			try {
 				urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=P6WiytSwjecJ9Xc3948rlZ9HNqdUFVZafMD6PiuQAT0XrcVOAy5MMaDyudgW9AzuNB9a5kpTaSY6%2BFcTJVrBBw%3D%3D");
-//        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
-				urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/
-				urlBuilder.append("&" + URLEncoder.encode("sidoCd","UTF-8") + "=" + URLEncoder.encode(code1, "UTF-8")); /*시도코드*/
-//				urlBuilder.append("&" + URLEncoder.encode("sgguCd","UTF-8") + "=" + URLEncoder.encode(code2, "UTF-8")); /*시군구코드*/
-//        urlBuilder.append("&" + URLEncoder.encode("emdongNm","UTF-8") + "=" + URLEncoder.encode("신내동", "UTF-8")); /*읍면동명*/
-//				urlBuilder.append("&" + URLEncoder.encode("yadmNm","UTF-8") + "=" + URLEncoder.encode(hname, "UTF-8")); /*병원명 (UTF-8 인코딩 필요)*/
-//        urlBuilder.append("&" + URLEncoder.encode("zipCd","UTF-8") + "=" + URLEncoder.encode("2010", "UTF-8")); /*2010:종합병원, 2030:병원, 2040:요양병원, 2050:치과, 2060:한방, 2070:의원, 2080:보건기관, 2090:조산원*/
-//        urlBuilder.append("&" + URLEncoder.encode("clCd","UTF-8") + "=" + URLEncoder.encode("11", "UTF-8")); /*종별코드*/
-//        urlBuilder.append("&" + URLEncoder.encode("dgsbjtCd","UTF-8") + "=" + URLEncoder.encode("01", "UTF-8")); /*진료과목코드*/
-//        urlBuilder.append("&" + URLEncoder.encode("xPos","UTF-8") + "=" + URLEncoder.encode("127.09854004628151", "UTF-8")); /*x좌표(소수점 15)*/
-//        urlBuilder.append("&" + URLEncoder.encode("yPos","UTF-8") + "=" + URLEncoder.encode("37.6132113197367", "UTF-8")); /*y좌표(소수점 15)*/
-//        urlBuilder.append("&" + URLEncoder.encode("radius","UTF-8") + "=" + URLEncoder.encode("3000", "UTF-8")); /*단위 : 미터(m)*/
+//        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*�럹�씠吏�踰덊샇*/
+				urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*�븳 �럹�씠吏� 寃곌낵 �닔*/
+				urlBuilder.append("&" + URLEncoder.encode("sidoCd","UTF-8") + "=" + URLEncoder.encode(code1, "UTF-8")); /*�떆�룄肄붾뱶*/
+//				urlBuilder.append("&" + URLEncoder.encode("sgguCd","UTF-8") + "=" + URLEncoder.encode(code2, "UTF-8")); /*�떆援곌뎄肄붾뱶*/
+//        urlBuilder.append("&" + URLEncoder.encode("emdongNm","UTF-8") + "=" + URLEncoder.encode("�떊�궡�룞", "UTF-8")); /*�쓭硫대룞紐�*/
+//				urlBuilder.append("&" + URLEncoder.encode("yadmNm","UTF-8") + "=" + URLEncoder.encode(hname, "UTF-8")); /*蹂묒썝紐� (UTF-8 �씤肄붾뵫 �븘�슂)*/
+//        urlBuilder.append("&" + URLEncoder.encode("zipCd","UTF-8") + "=" + URLEncoder.encode("2010", "UTF-8")); /*2010:醫낇빀蹂묒썝, 2030:蹂묒썝, 2040:�슂�뼇蹂묒썝, 2050:移섍낵, 2060:�븳諛�, 2070:�쓽�썝, 2080:蹂닿굔湲곌�, 2090:議곗궛�썝*/
+//        urlBuilder.append("&" + URLEncoder.encode("clCd","UTF-8") + "=" + URLEncoder.encode("11", "UTF-8")); /*醫낅퀎肄붾뱶*/
+//        urlBuilder.append("&" + URLEncoder.encode("dgsbjtCd","UTF-8") + "=" + URLEncoder.encode("01", "UTF-8")); /*吏꾨즺怨쇰ぉ肄붾뱶*/
+//        urlBuilder.append("&" + URLEncoder.encode("xPos","UTF-8") + "=" + URLEncoder.encode("127.09854004628151", "UTF-8")); /*x醫뚰몴(�냼�닔�젏 15)*/
+//        urlBuilder.append("&" + URLEncoder.encode("yPos","UTF-8") + "=" + URLEncoder.encode("37.6132113197367", "UTF-8")); /*y醫뚰몴(�냼�닔�젏 15)*/
+//        urlBuilder.append("&" + URLEncoder.encode("radius","UTF-8") + "=" + URLEncoder.encode("3000", "UTF-8")); /*�떒�쐞 : 誘명꽣(m)*/
 				URL url = new URL(urlBuilder.toString());
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				conn.setRequestMethod("GET");
@@ -175,14 +170,14 @@ public class YkihoGet1 {
 				factory = XmlPullParserFactory.newInstance();
 				XmlPullParser parser = factory.newPullParser();
 				
-				parser.setInput(new StringReader(sb.toString())); //파서에 데이터 인풋 
-				int eventType = parser.getEventType(); //int 리턴
-				String sgName = null; //시군구 이름
-				String code=null; //시군구 코드
+				parser.setInput(new StringReader(sb.toString())); //�뙆�꽌�뿉 �뜲�씠�꽣 �씤�뭼 
+				int eventType = parser.getEventType(); //int 由ы꽩
+				String sgName = null; //�떆援곌뎄 �씠由�
+				String code=null; //�떆援곌뎄 肄붾뱶
 				ArrayList<String> list =null;
 				set = new HashSet<List<String>>();
 				
-				// 문서가 끝날때 까지 while문 실행
+				// 臾몄꽌媛� �걹�궇�븣 源뚯� while臾� �떎�뻾
 				while(eventType!=XmlPullParser.END_DOCUMENT) {
 					
 					switch (eventType) {
@@ -201,19 +196,19 @@ public class YkihoGet1 {
 						}
 						break;
 					case XmlPullParser.START_TAG:
-						//이중스위치를 써도 좋음 
+						//�씠以묒뒪�쐞移섎�� �뜥�룄 醫뗭쓬 
 						
 						switch(parser.getName()){
 						case"item" : 
 							list = new ArrayList<String>();
 							break;
 						case "sgguCd" :
-							//null값 예외처리
+							//null媛� �삁�쇅泥섎━
 //    				if(ykiho!=null)
 							code=parser.nextText();
 							break;
 						case "sgguCdNm" :
-							//null값 예외처리
+							//null媛� �삁�쇅泥섎━
 							sgName=parser.nextText();
 							break;
 							
@@ -223,11 +218,11 @@ public class YkihoGet1 {
 						break;
 					}
 					
-					eventType= parser.next(); //다음 이벤트를 가져오기
+					eventType= parser.next(); //�떎�쓬 �씠踰ㅽ듃瑜� 媛��졇�삤湲�
 				}
 				
 				for(List<String> l: set) {
-					System.out.println(l+" api쪽");
+					System.out.println(l+" api履�");
 				}
 				
 				
