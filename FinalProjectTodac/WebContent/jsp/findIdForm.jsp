@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script type="text/javascript">
@@ -21,7 +21,7 @@ $(function(){
 					alert("??");
 					var input = "";
 					input += "<input type='text' id='checknum'>";
-					input += "<input type='button' id='chk' value='idÃ£±â'>";
+					input += "<input type='button' id='chk' value='idì°¾ê¸°'>";
 					$('#authPhone').after(input);
 					
 					$.ajax({
@@ -34,14 +34,14 @@ $(function(){
 							alert(d.key);
 							if(d.result==""){
 								$('#chk').on('click',function(){
-								alert($('#checknum').val()+" ÀÔ·Â°ª");
+								alert($('#checknum').val()+" ì…ë ¥ê°’");
 									if(d.key==$('#checknum').val()){
 										
 										alert(data);
 										location.href='loginForm.do';
 									}
 									else{
-										alert("½ÇÆĞ");
+										alert("ì‹¤íŒ¨");
 									}
 								});
 							}
@@ -52,11 +52,11 @@ $(function(){
 					
 				}
 				else{
-				alert("Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");	
+				alert("ì •ë³´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");	
 				}
 			},
 			error : function(){
-				alert("Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
+				alert("ì •ë³´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
 			}
 			
 			
@@ -71,10 +71,10 @@ $(function(){
 <body>
 
 <form>
-ÀÌ¸§<input type="text" id="name">
-ÇÚµåÆù<input type="text" id="phone">
+ì´ë¦„<input type="text" id="name">
+í•¸ë“œí°<input type="text" id="phone">
 <div id="message"></div>
-<input type="button" id="authPhone" value="ÀÎÁõÇÏ±â">
+<input type="button" id="authPhone" value="ì¸ì¦í•˜ê¸°">
 </form>
 
 </body>
