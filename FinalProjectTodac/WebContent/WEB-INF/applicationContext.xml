@@ -17,9 +17,9 @@
 
 <bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
  	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
-	<property name="username" value="multi"></property>
-	<property name="password" value="multi1234"></property>
+	<property name="url" value="jdbc:oracle:thin:@70.12.109.72:1521:xe"></property>
+	<property name="username" value="todac"></property>
+	<property name="password" value="todac1234"></property>
 	<property name="maxActive" value="8"></property>
 	<property name="maxIdle" value="8"></property>
 	<property name="minIdle" value="0"></property>
@@ -54,7 +54,6 @@
 	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	<property name="mapperInterface" value="dao.IMember_userDao"/>
 </bean>
-
 
 <bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="hospitalInfoDao">
 	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>

@@ -2,29 +2,29 @@ package model;
 
 public class MEMBER_USER {
 
-		String	muid;	
-		String 	pw;	
-		String	name;	
-		String	birth;	
-		int 	age;	
-		String	email;	
-		String	phone;	
-		double	latitude;	
-		double longitude;	
-		String post_num;	
-		String address_detail;	
-		String address_base;	
-		String address_road;	
-		int  status;	
-		int chk_num;	
-		int	report_count;
+		private String	muid;	
+		private String 	pwd;	
+		private String	name;	
+		private String	birth;	
+		private int 	age;	
+		private String	email;	
+		private String	phone;	
+		private double	latitude;	
+		private double longitude;	
+		private String post_num;	
+		private String address_detail;	
+		private String address_base;	
+		private String address_road;	
+		private int  status;	
+		private int chk_num;	
+		private int	report_count;
 		
 		
 		
 		
 		@Override
 		public String toString() {
-			return "MEMBER_USER [muid=" + muid + ", pw=" + pw + ", name=" + name + ", birth=" + birth + ", age=" + age
+			return "MEMBER_USER [muid=" + muid + ", pwd=" + pwd + ", name=" + name + ", birth=" + birth + ", age=" + age
 					+ ", email=" + email + ", phone=" + phone + ", latitude=" + latitude + ", longitude=" + longitude
 					+ ", post_num=" + post_num + ", address_detail=" + address_detail + ", address_base=" + address_base
 					+ ", address_road=" + address_road + ", status=" + status + ", chk_num=" + chk_num
@@ -54,15 +54,15 @@ public class MEMBER_USER {
 
 
 
-		public String getPw() {
-			return pw;
+		public String getPwd() {
+			return pwd;
 		}
 
 
 
 
-		public void setPw(String pw) {
-			this.pw = pw;
+		public void setPwd(String pwd) {
+			this.pwd = pwd;
 		}
 
 
@@ -264,12 +264,11 @@ public class MEMBER_USER {
 
 
 
-		public MEMBER_USER(String muid, String pw, String name, String birth, int age, String email, String phone,
+		public MEMBER_USER(String muid, String pwd, String name, String birth, int age, String email, String phone,
 				double latitude, double longitude, String sample4_postcode, String address_detail, String address_base,
 				String address_road) {
-			super();
 			this.muid = muid;
-			this.pw = pw;
+			this.pwd = pwd;
 			this.name = name;
 			this.birth = birth;
 			this.age = age;

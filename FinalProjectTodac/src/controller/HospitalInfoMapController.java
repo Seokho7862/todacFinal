@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,11 +49,30 @@ public class HospitalInfoMapController {
 	@RequestMapping("HospitalInfo_FirstMarker.do")
 	public @ResponseBody List<HashMap<String,Object>> HospitalInfo_FirstMarker(String swLat,
 			String swLng, String neLat, String neLng){
-		System.out.println(swLat);
-		System.out.println(swLng);
-		System.out.println(neLat);
-		System.out.println(neLng);
+		
 		System.out.println(hsvc.getFirstMarker(swLat, swLng, neLat, neLng));
 		return hsvc.getFirstMarker(swLat, swLng, neLat, neLng);
+	}
+	
+	@RequestMapping("HospitalInfo_InfoForm.do")
+	public ModelAndView HospitalInfo_Review(
+			@RequestParam String hpid) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("-----infoForm.do ³»-----------");
+		System.out.println(hpid);
+		System.out.println(hsvc.HospitalInfo_InfoForm(hpid));
+		System.out.println("------------------------------");
+		mav.addObject("hlist",hsvc.HospitalInfo_InfoForm(hpid));
+		mav.setViewName("HospitalInfoForm");
+		return mav;
+	}
+	
+	@RequestMapping("HospitalInfo_DiagnosisByName.do")
+	public @ResponseBody List<HashMap<String,Object>> HospitalInfo_DiagnosisByName(String swLat,
+			String swLng, String neLat, String neLng, String keyword){
+		
+		List<HashMap<String,Object>> list = hsvc.HospitalInfo_DiagnosisByName(swLat, swLng, neLat, neLng, keyword);
+		
+		return hsvc.HospitalInfo_DiagnosisByName(swLat, swLng, neLat, neLng, keyword);
 	}
 }

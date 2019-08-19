@@ -13,7 +13,6 @@ import model.disease_web;
 import service.NaverSearchAPI;
 import service.TestService;
 
-
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
