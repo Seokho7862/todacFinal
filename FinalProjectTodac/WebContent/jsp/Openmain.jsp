@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>메인</h1>
-<button id="myPage" onclick="location.href='show_pwd_form.do'">마이페이지</button>
+<button id="myPage" onclick="location.href='show_mypage.do'">마이페이지</button>
 </body>
 </html>

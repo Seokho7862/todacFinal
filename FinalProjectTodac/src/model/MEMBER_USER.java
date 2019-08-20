@@ -1,6 +1,10 @@
 package model;
 
+<<<<<<< HEAD
+import java.util.Date;
+=======
 import java.sql.*;
+>>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 
 public class MEMBER_USER {
 
@@ -12,7 +16,7 @@ public class MEMBER_USER {
 		private String	email;	
 		private String	phone;	
 		private double	latitude;	
-		private double longitude;	
+		private double logitude;	
 		private String post_num;	
 		private String address_detail;	
 		private String address_base;	
@@ -27,7 +31,7 @@ public class MEMBER_USER {
 		@Override
 		public String toString() {
 			return "MEMBER_USER [muid=" + muid + ", pwd=" + pwd + ", name=" + name + ", birth=" + birth + ", age=" + age
-					+ ", email=" + email + ", phone=" + phone + ", latitude=" + latitude + ", longitude=" + longitude
+					+ ", email=" + email + ", phone=" + phone + ", latitude=" + latitude + ", logitude=" + logitude
 					+ ", post_num=" + post_num + ", address_detail=" + address_detail + ", address_base=" + address_base
 					+ ", address_road=" + address_road + ", status=" + status + ", chk_num=" + chk_num
 					+ ", report_count=" + report_count + "]";
@@ -154,15 +158,15 @@ public class MEMBER_USER {
 
 
 
-		public double getLongitude() {
-			return longitude;
+		public double getLogitude() {
+			return logitude;
 		}
 
 
 
 
-		public void setLongitude(double longitude) {
-			this.longitude = longitude;
+		public void setLogitude(double logitude) {
+			this.logitude = logitude;
 		}
 
 
@@ -266,8 +270,13 @@ public class MEMBER_USER {
 
 
 
+<<<<<<< HEAD
+		public MEMBER_USER(String muid, String pwd, String name, String birth, int age, String email, String phone,
+				double latitude, double logitude, String sample4_postcode, String address_detail, String address_base,
+=======
 		public MEMBER_USER(String muid, String pwd, String name, Date birth, int age, String email, String phone,
 				double latitude, double longitude, String sample4_postcode, String address_detail, String address_base,
+>>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 				String address_road) {
 			this.muid = muid;
 			this.pwd = pwd;
@@ -277,7 +286,7 @@ public class MEMBER_USER {
 			this.email = email;
 			this.phone = phone;
 			this.latitude = latitude;
-			this.longitude = longitude;
+			this.logitude = logitude;
 			this.post_num = sample4_postcode;
 			this.address_detail = address_detail;
 			this.address_base = address_base;

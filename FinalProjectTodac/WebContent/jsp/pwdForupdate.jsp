@@ -27,12 +27,14 @@ $(function(){
 				pwd : $('#pwd').val()
 			},
 			success : function(data){
-				alert("성공");
 				if(data==1){
 					location.href='update_form.do';
 				}
-				else
+				else{
+					
+					alert("정확한 정보를 입력해주세요");
 					location.href='show_pwd_form.do';
+				}
 			},
 			error : function(){
 				alert("다시 입력해주세요");

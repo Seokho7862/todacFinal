@@ -1,8 +1,11 @@
 package controller;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -168,15 +171,48 @@ public class MemberController {
 //		
 //	}
 	
+	@RequestMapping("show_mypage.do")
+	public String showMypage() {
+		return "myPage";
+	}
+	
+	
 	//회원수정폼 불러오기
 	@RequestMapping("update_form.do")
 	public ModelAndView modifyMemForm(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		if(session.getAttribute("muid")==null) {
+			mav.setViewName("redirect:loginForm.do");
+			return mav;
+		}
+		else {
+		
 		String muid=(String) session.getAttribute("muid");
 		MEMBER_USER m =  service.findUserById(muid);
 		mav.addObject("member", m);
 		mav.setViewName("myFormUpdate");
 		return mav;
+		}
+	}
+	
+	//회원 수정하기
+	@RequestMapping("modify_member.do")
+	public void ModifyMember(MEMBER_USER m) {
+		int age = 0;
+		SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd");  
+		try {
+			Date birthDay = format.parse(m.getBirth());
+			Date today = format.parse(format.format(System.currentTimeMillis()));
+			System.out.println(birthDay);
+			System.out.println(today);
+		 age =(int)((((-birthDay.getTime()+today.getTime())/(24*60*60*1000))/365));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		m.setAge(age);
+		service.updateMember(m);
+		System.out.println(m);
 	}
 	
 	//수정을 위한 비밀번호폼 
@@ -188,6 +224,7 @@ public class MemberController {
 	//수정을 위해서 비밀번호 일치 확인
 	@RequestMapping("chk_pwd.do")
 	public @ResponseBody String checkForUpdate(HttpSession session, String pwd) {
+		System.out.println(pwd);
 		String muid = (String)session.getAttribute("muid");
 		if(service.loginUser(muid, pwd)==1) {
 			return "1";
@@ -195,7 +232,39 @@ public class MemberController {
 		else
 			return "0";
 	}
+	//비밀번호만 수정하는 수정폼
+	@RequestMapping("renew_form.do")
+	public String renewForm() {
+		return "RenewPwd";
+	}
 	
+	//비밀번호 수정하기
+	@RequestMapping("re_pwd.do")
+	public @ResponseBody String renewPwd(HttpSession session, String pwd,String newPwd) {
+		if(session.getAttribute("muid")==null) {
+			return "redirect:loginForm.do";
+		}
+		else {
+			
+			String muid =(String)session.getAttribute("muid");
+			HashMap<String, String> param = new HashMap<String, String>();
+			if(service.loginUser(muid, pwd)==1) {
+				param.put("muid", muid);
+				param.put("pwd", newPwd);
+				service.updatePwd(param);
+				return "1";
+			}
+			else
+				return "0";
+			
+		}
+		
+	}
+	
+	@RequestMapping("addressApi.do")
+	public String addressapi() {
+		return "addressApi";
+	}
 	
 	
 

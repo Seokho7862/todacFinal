@@ -10,4 +10,7 @@ public class AdminController {
 	public String hosApplyList() {
 		return "applylist2";
 	}
+	
+	
+	
 }
