@@ -19,14 +19,14 @@
 <script type="text/javascript">
 $(function(){
 	
-	$('#detailCon').hide();
+		$('#detailCon').hide();
 	
 	
 	
-	$('#userId').click(function(){
+	$('.userId').click(function(){
 		alert("?");
 		
-		$('#detailCon').show();
+		$('#detailCon').slideToggle();
 		
 	});
 	
@@ -49,7 +49,7 @@ $(function(){
 </thead>
 <tbody>
 <tr>
-<td onclick="openDiv()" id="userId">아이디</td>
+<td class="userId">아이디</td>
 <td>병원명</td>
 <td>사업자번호</td>
 <td>사업자번호</td>
@@ -57,11 +57,14 @@ $(function(){
 <td> <button>거부</button> </td>
 </tr>
 <tr>
-<div id="detailCon">
 <td>
+<div id="detailCon">
 사진첨부
-</td>
+대표자
+사업번호
+<button></button>
 </div>
+</td>
 </tr>
 </tbody>
 </table>

@@ -13,4 +13,6 @@ public interface IMemberDao {
 	
 	//관계자 로그인시 확인하기
 	public MEMBER_USER selectManagerById(String muid);
+	
+	public int updateMember(MEMBER_USER m);
 }

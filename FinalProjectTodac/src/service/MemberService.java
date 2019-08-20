@@ -79,5 +79,12 @@ public class MemberService {
 		return m;
 	}
 	
+	//회원 수정하기
+	public int updateMember(MEMBER_USER m) {
+		
+		int i = dao.updateMember(m);
+		System.out.println(i);
+		return i;
+	}
 
 }
