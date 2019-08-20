@@ -198,6 +198,23 @@ public class MemberController {
 	//회원 수정하기
 	@RequestMapping("modify_member.do")
 	public void ModifyMember(MEMBER_USER m) {
+<<<<<<< HEAD
+=======
+		int age = 0;
+		SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd");  
+		try {
+			Date birthDay = m.getBirth();
+			Date today = format.parse(format.format(System.currentTimeMillis()));
+			System.out.println(birthDay);
+			System.out.println(today);
+		 age =(int)((((-birthDay.getTime()+today.getTime())/(24*60*60*1000))/365));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		m.setAge(age);
+		service.updateMember(m);
+>>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 		System.out.println(m);
 		
 		service.updateMember(m);
