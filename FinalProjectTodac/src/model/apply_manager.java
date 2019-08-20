@@ -4,23 +4,28 @@ public class apply_manager {
 
 	
 	String aid;
-	String hid;
+	String hpid;
 	String muid;
 	String bisunessNumber;
 	String relFile;//(상대 주소)
 	String absFile; //(절대주소)
 	
+	@Override
+	public String toString() {
+		return "apply_manager [aid=" + aid + ", hpid=" + hpid + ", muid=" + muid + ", bisunessNumber=" + bisunessNumber
+				+ ", relFile=" + relFile + ", absFile=" + absFile + "]";
+	}
 	public String getAid() {
 		return aid;
 	}
 	public void setAid(String aid) {
 		this.aid = aid;
 	}
-	public String getHid() {
-		return hid;
+	public String gethpid() {
+		return hpid;
 	}
-	public void setHid(String hid) {
-		this.hid = hid;
+	public void sethpid(String hpid) {
+		this.hpid = hpid;
 	}
 	public String getMuid() {
 		return muid;
@@ -50,17 +55,17 @@ public class apply_manager {
 	public apply_manager() {
 	}
 	
-	public apply_manager(String aid, String hid, String muid, String bisunessNumber, String relFile, String absFile) {
+	public apply_manager(String aid, String hpid, String muid, String bisunessNumber, String relFile, String absFile) {
 		this.aid = aid;
-		this.hid = hid;
+		this.hpid = hpid;
 		this.muid = muid;
 		this.bisunessNumber = bisunessNumber;
 		this.relFile = relFile;
 		this.absFile = absFile;
 	}
 	
-	public apply_manager(String hid, String muid, String bisunessNumber) {
-		this.hid = hid;
+	public apply_manager(String hpid, String muid, String bisunessNumber) {
+		this.hpid = hpid;
 		this.muid = muid;
 		this.bisunessNumber = bisunessNumber;
 	}
