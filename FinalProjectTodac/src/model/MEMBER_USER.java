@@ -1,11 +1,13 @@
 package model;
 
+import java.sql.*;
+
 public class MEMBER_USER {
 
 		private String	muid;	
 		private String 	pwd;	
 		private String	name;	
-		private String	birth;	
+		private Date	birth;	
 		private int 	age;	
 		private String	email;	
 		private String	phone;	
@@ -82,14 +84,14 @@ public class MEMBER_USER {
 
 
 
-		public String getBirth() {
+		public Date getBirth() {
 			return birth;
 		}
 
 
 
 
-		public void setBirth(String birth) {
+		public void setBirth(Date birth) {
 			this.birth = birth;
 		}
 
@@ -264,7 +266,7 @@ public class MEMBER_USER {
 
 
 
-		public MEMBER_USER(String muid, String pwd, String name, String birth, int age, String email, String phone,
+		public MEMBER_USER(String muid, String pwd, String name, Date birth, int age, String email, String phone,
 				double latitude, double longitude, String sample4_postcode, String address_detail, String address_base,
 				String address_road) {
 			this.muid = muid;
