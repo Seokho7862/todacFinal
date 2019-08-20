@@ -2,7 +2,6 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<< HEAD
   <mapper namespace="dao.IApplyManagerDao">
   
   
@@ -14,16 +13,11 @@
   select * from apply_manager where aid=#{}
   </select>
   
-  </mapper>
-=======
-<mapper namespace="dao.IApplyManagerDao">
-
 <insert id="applyManager" parameterType="apply_manager" >
 <selectKey>
 
 </selectKey>
 	insert into apply_manager values((select max(aid) from apply_manager)+1,'${hpid}','${muid}','${bisunessNumber}','${relFile}','${absFile}')
 </insert>
+  </mapper>
 	
-</mapper>
->>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal

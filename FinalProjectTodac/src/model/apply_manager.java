@@ -3,8 +3,7 @@ package model;
 public class apply_manager {
 
 	
-<<<<<<< HEAD
-	private String aid;
+	private int aid;
 	private String name;
 	private String hpid;
 	private String dutyName;
@@ -13,15 +12,6 @@ public class apply_manager {
 	private String relFile;//(상대 주소)
 	private String absFile; //(절대주소)
 	
-	
-=======
-	int aid;
-	String hpid;
-	String muid;
-	String bisunessNumber;
-	String relFile;//(상대 주소)
-	String absFile; //(절대주소)
->>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 	
 	@Override
 	public String toString() {
@@ -71,7 +61,6 @@ public class apply_manager {
 		this.absFile = absFile;
 	}
 	
-<<<<<<< HEAD
 	public String getDutyName() {
 		return dutyName;
 	}
@@ -81,11 +70,8 @@ public class apply_manager {
 	public apply_manager() {}
 	
 
-	public apply_manager(String aid, String name, String hpid, String dutyName, String muid, String bisunessNumber,
+	public apply_manager(int aid, String name, String hpid, String dutyName, String muid, String bisunessNumber,
 			String relFile, String absFile) {
-=======
-	public apply_manager(int aid, String hpid, String muid, String bisunessNumber, String relFile, String absFile) {
->>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 		this.aid = aid;
 		this.name = name;
 		this.hpid = hpid;
