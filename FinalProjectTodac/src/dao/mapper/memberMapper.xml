@@ -22,8 +22,8 @@
   update member_user set pwd=#{pwd} where muid=#{muid}
   </update>
   <update id="updateMember" parameterType="MEMBER_USER">
-  update member_user set birth=#{birth}, phone=#{phone}, post_num=#{post_num}, address_detail=#{address_detail},
-  address_base=#{address_base}, address_road=#{address_road},latitude=#{latitude},logitude=#{logitude},age=#{age} where muid=#{muid}
+  update member_user set phone=#{phone}, post_num=#{post_num}, address_detail=#{address_detail},
+  address_base=#{address_base}, address_road=#{address_road},latitude=#{latitude},logitude=#{logitude} where muid=#{muid}
   </update>
   
   </mapper>

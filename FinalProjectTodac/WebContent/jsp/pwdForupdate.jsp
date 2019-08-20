@@ -20,6 +20,7 @@
 <script type="text/javascript">
 
 $(function(){
+	
 	$('#pwdBtn').on('click',function(){
 		$.ajax({
 			url :'chk_pwd.do',
@@ -28,7 +29,13 @@ $(function(){
 			},
 			success : function(data){
 				if(data==1){
+					if(${from=='member'}){
+						
 					location.href='update_form.do';
+					}else{
+						
+					location.href='hos_update_form.do';
+					}
 				}
 				else{
 					

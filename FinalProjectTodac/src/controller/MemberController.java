@@ -198,27 +198,23 @@ public class MemberController {
 	//회원 수정하기
 	@RequestMapping("modify_member.do")
 	public void ModifyMember(MEMBER_USER m) {
-		int age = 0;
-		SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd");  
-		try {
-			Date birthDay = format.parse(m.getBirth());
-			Date today = format.parse(format.format(System.currentTimeMillis()));
-			System.out.println(birthDay);
-			System.out.println(today);
-		 age =(int)((((-birthDay.getTime()+today.getTime())/(24*60*60*1000))/365));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		m.setAge(age);
-		service.updateMember(m);
 		System.out.println(m);
+		
+		service.updateMember(m);
 	}
 	
 	//수정을 위한 비밀번호폼 
 	@RequestMapping("show_pwd_form.do")
-	public String pwdForUpdate() {
-		return "pwdForupdate";
+	public ModelAndView pwdForUpdate(String from) {
+		ModelAndView mav = new ModelAndView();
+		if(from.equals("member")) {
+			mav.addObject("from", "member");
+		}
+		else {
+			mav.addObject("from", "hos");
+		}
+		mav.setViewName("pwdForupdate");
+		return mav;
 	}
 	
 	//수정을 위해서 비밀번호 일치 확인
@@ -266,6 +262,16 @@ public class MemberController {
 		return "addressApi";
 	}
 	
+	@RequestMapping("hos_update_form.do")
+	public String hosUpdateForm(HttpSession session) {
+		if(session.getAttribute("muid")==null) {
+			return "redirect:loginForm.do";
+		}
+		else {
+			
+			return "hosinfoUpdate";
+		}
+	}
 	
 
 }
