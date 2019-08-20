@@ -3,7 +3,7 @@ package model;
 public class apply_manager {
 
 	
-	String aid;
+	int aid;
 	String hpid;
 	String muid;
 	String bisunessNumber;
@@ -15,10 +15,10 @@ public class apply_manager {
 		return "apply_manager [aid=" + aid + ", hpid=" + hpid + ", muid=" + muid + ", bisunessNumber=" + bisunessNumber
 				+ ", relFile=" + relFile + ", absFile=" + absFile + "]";
 	}
-	public String getAid() {
+	public int getAid() {
 		return aid;
 	}
-	public void setAid(String aid) {
+	public void setAid(int aid) {
 		this.aid = aid;
 	}
 	public String gethpid() {
@@ -55,7 +55,7 @@ public class apply_manager {
 	public apply_manager() {
 	}
 	
-	public apply_manager(String aid, String hpid, String muid, String bisunessNumber, String relFile, String absFile) {
+	public apply_manager(int aid, String hpid, String muid, String bisunessNumber, String relFile, String absFile) {
 		this.aid = aid;
 		this.hpid = hpid;
 		this.muid = muid;

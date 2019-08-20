@@ -286,8 +286,8 @@ public class TestController {
 		System.out.println(file);
 		if(file!=null) {
 		ArrayList<String> fileResult =ManagerApplyFileUploadClass.FileUpload(file);
-		String absLoc = fileResult.get(0);
-		String relLoc = fileResult.get(1);
+		String absLoc = fileResult.get(1);
+		String relLoc = fileResult.get(0);
 		apply.setAbsFile(absLoc);
 		apply.setRelFile(relLoc);
 		System.out.println("여기 실행함");
@@ -295,6 +295,7 @@ public class TestController {
 		else {System.out.println("파일 못 읽음");}
 		
 		System.out.println(apply);
+		tservice.ApplyManager(apply);
 	}
 	
 }
