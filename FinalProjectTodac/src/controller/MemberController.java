@@ -201,7 +201,7 @@ public class MemberController {
 		int age = 0;
 		SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd");  
 		try {
-			Date birthDay = format.parse(m.getBirth());
+			Date birthDay = m.getBirth();
 			Date today = format.parse(format.format(System.currentTimeMillis()));
 			System.out.println(birthDay);
 			System.out.println(today);
