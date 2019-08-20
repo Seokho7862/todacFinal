@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,8 @@
 
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+
 <script type="text/javascript">
 function goPopup(){
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrCoordUrl.do)를 호출하게 됩니다.
@@ -39,32 +42,36 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 $(function(){
 	$('#modBtn').on('click',function(){
 		alert("클릭확인");
+		$.ajax({url: 'https://dapi.kakao.com/v2/local/geo/transcoord.json?input_coord=WTM&output_coord=WGS84',
+			data : {'x': $('#latitude').val(),
+					'y': $('#logitude').val()},
+			headers: { 'Authorization': 'KakaoAK 00695ec487505656d830c294acef3108'
+						}, 
+			type: 'GET',
+			error : function(){
+				alert("다시 시도해주세요.");
+			},
+			success : function(data){
+			alert("되라");
 		$.ajax({
 			url : 'modify_member.do',
 			data : {
 				muid:$('#muid').val(),
-				birth :$('#birth').val(),
 				phone : $('#phone').val(),
 				post_num:$('#post_num').val(),
 				address_detail : $('#address_detail').val(),
 				address_base : $('#address_base').val(),
 				address_road : $('#address_road').val(),
-				latitude : $('#latitude').val(),
-				logitude : $('#logitude').val()
-			},
-			success : function(){
-				alert("회원수정이 완료되었습니다.")
-			},
-			error : function(){
-				alert("다시 시도해주세요.");
+				latitude : data.documents[0].x,
+				logitude : data.documents[0].y
 			}
-			
 		});
+				alert("회원수정이 완료되었습니다.");
+			}
 		
 	});
 	
-	
-	
+});
 });
 </script>
 
@@ -88,7 +95,7 @@ $(function(){
 		
 		<tr>
 		<td>생년월일</td>
-		<td><input type="text" id="birth" value="${member.birth}"></td>
+		<td><fmt:formatDate value="${member.birth}" type="date" pattern="yyyy-MM-dd"/></td>
 		</tr>
 		
 		<tr>
@@ -122,6 +129,7 @@ $(function(){
 					<td>
 						<input type="text" id="latitude" style="width:40%" value="${member.latitude}">
 						<input type="text" id="logitude"  style="width:40%" value="${member.logitude}">
+						<button id="xych">좌표변환</button>
 					</td>
 				</tr>
 		<tr>

@@ -2,13 +2,22 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.IApplyManagerDao">
-
+  <mapper namespace="dao.IApplyManagerDao">
+  
+  
+  <select id="selectAllApply" resultType="apply_manager">
+  select * from member_user m, apply_manager a, hospitalinfo h where a.hpid=h.hpid and a.muid=m.muid
+  </select>
+  
+  <select id="selectOne" parameterType="int" resultType="apply_manager">
+  select * from apply_manager where aid=#{}
+  </select>
+  
 <insert id="applyManager" parameterType="apply_manager" >
 <selectKey>
 
 </selectKey>
 	insert into apply_manager values((select max(aid) from apply_manager)+1,'${hpid}','${muid}','${bisunessNumber}','${relFile}','${absFile}')
 </insert>
+  </mapper>
 	
-</mapper>

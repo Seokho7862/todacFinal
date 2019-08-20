@@ -22,8 +22,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <a href="#" class="w3-bar-item w3-button">Like</a>
     <a href="#" class="w3-bar-item w3-button">ReviewList</a>
     <a href="show_pwd_form.do" class="w3-bar-item w3-button">회원정보</a>
-    <a href="show_pwd_form.do" class="w3-bar-item w3-button">회원정보수정</a>
+    <a href="show_pwd_form.do?from=member" class="w3-bar-item w3-button">회원정보수정</a>
     <a href="renew_form.do" class="w3-bar-item w3-button">비밀번호수정</a>
+    <a href="show_pwd_form.do?from=hos" class="w3-bar-item w3-button">병원정보수정</a>
  
  
 </nav>
