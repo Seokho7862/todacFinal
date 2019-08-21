@@ -33,7 +33,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	document.form.address_base.value = jibunAddr;
 	document.form.post_num.value = zipNo;
 	document.form.latitude.value = entX;
-	document.form.logitude.value = entY;
+	document.form.longitude.value = entY;
 }
 
 </script>
@@ -44,7 +44,7 @@ $(function(){
 		alert("클릭확인");
 		$.ajax({url: 'https://dapi.kakao.com/v2/local/geo/transcoord.json?input_coord=WTM&output_coord=WGS84',
 			data : {'x': $('#latitude').val(),
-					'y': $('#logitude').val()},
+					'y': $('#longitude').val()},
 			headers: { 'Authorization': 'KakaoAK 00695ec487505656d830c294acef3108'
 						}, 
 			type: 'GET',
@@ -63,7 +63,7 @@ $(function(){
 				address_base : $('#address_base').val(),
 				address_road : $('#address_road').val(),
 				latitude : data.documents[0].x,
-				logitude : data.documents[0].y
+				longitude : data.documents[0].y
 			}
 		});
 				alert("회원수정이 완료되었습니다.");
@@ -128,7 +128,7 @@ $(function(){
 					<th>좌표정보</th>
 					<td>
 						<input type="text" id="latitude" style="width:40%" value="${member.latitude}">
-						<input type="text" id="logitude"  style="width:40%" value="${member.logitude}">
+						<input type="text" id="longitude"  style="width:40%" value="${member.longitude}">
 						<button id="xych">좌표변환</button>
 					</td>
 				</tr>

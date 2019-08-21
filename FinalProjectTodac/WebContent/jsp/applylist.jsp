@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<div class="container mt-3">
+<div class="container mt-3 no-drag text_blur">
   <h2>Centered Modal Example</h2>
   <p class="text_blur no-drag">Center the modal vertically and horizontally within the page, with the .modal-dialog-centered class.</p>
   <!-- Button to Open the Modal -->

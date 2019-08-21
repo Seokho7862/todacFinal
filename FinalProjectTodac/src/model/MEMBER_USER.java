@@ -13,7 +13,7 @@ public class MEMBER_USER {
 		private String	email;	
 		private String	phone;	
 		private double	latitude;	
-		private double logitude;	
+		private double longitude;	
 		private String post_num;	
 		private String address_detail;	
 		private String address_base;	
@@ -28,7 +28,7 @@ public class MEMBER_USER {
 		@Override
 		public String toString() {
 			return "MEMBER_USER [muid=" + muid + ", pwd=" + pwd + ", name=" + name + ", birth=" + birth + ", age=" + age
-					+ ", email=" + email + ", phone=" + phone + ", latitude=" + latitude + ", logitude=" + logitude
+					+ ", email=" + email + ", phone=" + phone + ", latitude=" + latitude + ", longitude=" + longitude
 					+ ", post_num=" + post_num + ", address_detail=" + address_detail + ", address_base=" + address_base
 					+ ", address_road=" + address_road + ", status=" + status + ", chk_num=" + chk_num
 					+ ", report_count=" + report_count + "]";
@@ -155,15 +155,15 @@ public class MEMBER_USER {
 
 
 
-		public double getLogitude() {
-			return logitude;
+		public double getLongitude() {
+			return longitude;
 		}
 
 
 
 
-		public void setLogitude(double logitude) {
-			this.logitude = logitude;
+		public void setLongitude(double longitude) {
+			this.longitude = longitude;
 		}
 
 
@@ -281,7 +281,7 @@ public class MEMBER_USER {
 			this.email = email;
 			this.phone = phone;
 			this.latitude = latitude;
-			this.logitude = logitude;
+			this.longitude = longitude;
 			this.post_num = sample4_postcode;
 			this.address_detail = address_detail;
 			this.address_base = address_base;
