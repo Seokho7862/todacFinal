@@ -10,7 +10,7 @@
   </select>
   
   <select id="selectOne" parameterType="int" resultType="apply_manager">
-  select * from apply_manager where aid=#{}
+  select * from apply_manager where aid=#{aid}
   </select>
   
 <insert id="applyManager" parameterType="apply_manager" >

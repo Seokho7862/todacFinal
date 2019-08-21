@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -174,52 +178,64 @@ function locAndBirth(){
 	
 
 </script>
+<style type="text/css">
+.table-borderless{
+width: 70%;
+margin-left:auto;
+font-size:large;
+font-weight: bold;
+}
+.form-control{
+width: 50%;}
 
+</style>
 
 </head>
 <body>
 <h1>회원가입</h1>
-<form action="signUp.do" method="get" onsubmit='return signUpCheck()'> 
-이름: <input type="text" name="name" id="name"><br>
-아이디: <input type="text" name="muid" id="muid"><br>
-<div id="idCheckDiv" style="color: red"></div>
-비밀번호 : <input type="text" name="pwd" id="pwd"> <br>
-비밀번호 확인: <input type="text" name="pwchk" id="pwchk"><br>
-생년월일:
-<select id="birth1">
+<form action="signUp.do" method="get" onsubmit='return signUpCheck()' class="form-group"> 
+<table class="table-borderless">
+<tr><td>이름:<br><input type="text" name="name" id="name" class="form-control"></td></tr>
+<tr><td>아이디 <br><input type="text" name="muid" id="muid" class="form-control"><br><div id="idCheckDiv" style="color: red"></div></td></tr>
+
+<tr><td>비밀번호 : <br><input type="text" name="pwd" id="pwd" class="form-control"></td></tr>
+<tr><td>비밀번호 확인: <br><input type="text" name="pwchk" id="pwchk" class="form-control"></td></tr>
+<tr><td>생년월일: <br>
+<div class="form-inline">
+<select id="birth1" class="form-control" style="width: 100px;">
        <%for(int i=2013; i>=1900; i--){ %>
        <option value="<%=i %>"><%=i %></option>
        <%} %>
-     </select>년&nbsp;
-     <select id="birth2">
+     </select>년 &nbsp;
+     <select id="birth2" class="form-control" style="width: 100px;">
        <%for(int i=1; i<=12; i++){ %>
        <option value="<%=i %>"><%=i %></option>
        <%} %>
-     </select>월
-     <select id="birth3">
+     </select>월  &nbsp;
+     <select id="birth3" class="form-control" style="width: 100px;">
        <%for(int i=1; i<=31; i++){ %>
        <option value="<%=i %>"><%=i %></option>
        <%} %>
-     </select>일<br><br>
-생년월일:<input name="birth" type="text" id="birth"><br>
-이메일: <input name="email" type="email" id="email"><br>
-휴대전화번호:<input type="text" name="phone" placeholder=" - 없이 숫자만 입력해주세요. "><br>
-주소 검색: 
-<input type="text" id="sample4_postcode" name="sample4_postcode" placeholder="우편번호" readonly="readonly">
-<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" name="sample4_roadAddress" id="sample4_roadAddress" placeholder="도로명주소" readonly="readonly"><br>
-<input type="text" name="sample4_jibunAddress" id="sample4_jibunAddress" placeholder="지번주소" readonly="readonly">
+     </select>일</div></td></tr>
+
+<tr><td>이메일:<br><input name="email" type="email" id="email" class="form-control"></td></tr>
+<tr><td>휴대전화번호:<br><input type="text" name="phone" placeholder=" - 없이 숫자만 입력해주세요. " class="form-control"></td></tr>
+
+<tr><td>주소 검색<br><input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="form-control"><br>
+<input type="text" id="sample4_postcode" name="sample4_postcode" placeholder="우편번호" readonly="readonly" class="form-control"><br>
+<input type="text" name="sample4_roadAddress" id="sample4_roadAddress" placeholder="도로명주소" readonly="readonly" class="form-control"><br>
+<input type="text" name="sample4_jibunAddress" id="sample4_jibunAddress" placeholder="지번주소" readonly="readonly" class="form-control"><br>
+<input type="text" name="sample4_extraAddress" id="sample4_extraAddress" placeholder="참고항목" class="form-control">
 <span id="guide" style="color:#999;display:none"></span><br>
+</td></tr>
 
-<input type="text" name="sample4_extraAddress" id="sample4_extraAddress" placeholder="참고항목">
-<br>
-<input type="button" value="위도, 경도 변환하기" id="changBtn"> 나중엔 히든 타입으로 변경하고 회원가입 완료 버튼 누를 때 변경되서 입력되는 형식으로 변경 예정
-<br>
+<tr><td ><br><input type="text" name="latitude" id="latitude" class="form-control"></td></tr>
+<tr><td ><br><input type="text" name="longitude" id="longitude" class="form-control"><br><input name="birth" type="text" id="birth" class="form-control"></td></tr>
 
-X:<input type="text" name="latitude" id="latitude"><br>
-Y:<input type="text" name="longitude" id="longitude"><br>
-
-<input type="submit" value="회원가입 완료" id="submitBtn">
+<tr><td><input type="submit" value="회원가입 완료" id="submitBtn"></td></tr>
+</table>
 </form>
+<input type="button" id="changBtn" hidden="true">
+
 </body>
 </html>
