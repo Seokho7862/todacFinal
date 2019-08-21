@@ -6,7 +6,9 @@
   	<select id="selectAllMarker" resultType="hospitalInfo">
   		 select * from hospitalInfo <![CDATA[where rownum <= 1000]]>
   	</select> 
-  	
+  	<select id="SelectOneHospital" parameterType="String" resultType="hospitalInfo">
+  		select * from hospitalInfo where hpid like #{hpid}
+  	</select>
   	<select id="getMarkers" resultType="java.util.HashMap">
   		 select hpid, dutyname, wgs84lon, wgs84lat from todac.hospitalInfo <![CDATA[where rownum <= 1000]]>
   	</select> 

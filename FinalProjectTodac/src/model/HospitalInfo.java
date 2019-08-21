@@ -1,6 +1,7 @@
 package model;
 
 
+
 public class HospitalInfo {
 	private String hpid;
 	private String dutyName;

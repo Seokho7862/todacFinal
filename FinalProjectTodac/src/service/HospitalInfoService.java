@@ -15,7 +15,6 @@ public class HospitalInfoService {
 	private IHospitalInfoDao hdao;
 	
 	public List<HospitalInfo> selectAllMarker(){
-		System.out.println(hdao.selectAllMarker().size());
 		return hdao.selectAllMarker();
 	}
 	
@@ -26,7 +25,6 @@ public class HospitalInfoService {
 	public List<HashMap<String,Object>> searchKeyword(String keyword){
 		HashMap<String,Object> params = new HashMap<String, Object>();
 		params.put("keyword", keyword);
-		System.out.println("서비스 : " + hdao.searchKeyword(params));
 		return hdao.searchKeyword(params);
 	}
 	
@@ -74,11 +72,11 @@ public class HospitalInfoService {
 	public HospitalInfo HospitalInfo_InfoForm(String hpid) {
 		HashMap<String,String> params = new HashMap<String, String>();
 		params.put("hpid", hpid);
-		System.out.println("서비스단");
-		System.out.println(hpid);
-		System.out.println(hdao.HospitalInfo_InfoForm(params));
-		System.out.println("서비스단");
 		return hdao.HospitalInfo_InfoForm(params);
+	}
+	
+	public HospitalInfo SelectOneHospital(String hpid) {
+		return hdao.SelectOneHospital(hpid);
 	}
 	
 	

@@ -163,8 +163,10 @@
 			    </div>
 			    
 			    <div id="menu1" class="tab-pane fade">
+			    	<input type="search" style="left : 30%;" placeholder="여기서 검색하세요 " id="Keyword">
+			    	
 			      	<div id="navigation" >
-						<input type="search" style="left : 10%" placeholder="여기서 검색하세요 " id="Keyword">
+						
 					
 						<ul id="hospitalList">			
 						</ul>
@@ -220,7 +222,7 @@
 				    		$('#hospitalList hr').remove();
 							var list= "";
 							for(var i = 0; i < data.length ; i++){
-								list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'" >' + data[i].DUTYNAME +'</a><br><a style="font-size: 7px">' + data[i].DUTYADDR+ '</a></li>';
+								list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href=HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'>' +  data[i].HPID + data[i].DUTYNAME +'</a><br><a style="font-size: 7px">' + data[i].DUTYADDR+ '</a></li>';
 								list += '<hr>'
 							}
 							$('#hospitalList').append(list);
@@ -301,8 +303,11 @@
 	    		$('#hospitalList hr').remove();
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" >' + data[i].DUTYNAME +'</a><br><a style="font-size: 7px">' + data[i].DUTYADDR+ '</a></li>';
-					list += '<hr>'
+					
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>';
+					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
+					list += '<hr>';
+					
 				}
 				$('#hospitalList').append(list);
 	    		
@@ -385,9 +390,9 @@
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
 					var latlng = new kakao.maps.LatLng(data[i].WGS84LAT, data[i].WGS84LON);
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
 					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
-					list += '<hr>'
+					list += '<hr>';
 					
 				}
 				
@@ -443,10 +448,7 @@
 	}
 	
 	</script>
-	
-	
-	
-	
+
 	<!-- 맵 부분 -->
 	<script type="text/javascript">
 		//마커 이미지 선언부
@@ -507,7 +509,10 @@
 				
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"></a><br>'
+					//list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"></a><br>'
+					//list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
+					//list += '<hr>';
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
 					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 				}
@@ -625,9 +630,6 @@
 			
 			customOverlay.setMap(null);
 		});
-		
-		
-		
 	</script>
 	
 	<!-- 풋터 부분-->
