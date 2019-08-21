@@ -20,6 +20,7 @@
 <script type="text/javascript">
 
 $(function(){
+	
 	$('#pwdBtn').on('click',function(){
 		$.ajax({
 			url :'chk_pwd.do',
@@ -27,12 +28,20 @@ $(function(){
 				pwd : $('#pwd').val()
 			},
 			success : function(data){
-				alert("성공");
 				if(data==1){
+					if(${from=='member'}){
+						
 					location.href='update_form.do';
+					}else{
+						
+					location.href='hos_update_form.do';
+					}
 				}
-				else
+				else{
+					
+					alert("정확한 정보를 입력해주세요");
 					location.href='show_pwd_form.do';
+				}
 			},
 			error : function(){
 				alert("다시 입력해주세요");

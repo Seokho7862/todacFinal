@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,14 +20,13 @@
 <script type="text/javascript">
 $(function(){
 	
-	$('#detailCon').hide();
+		$('.detailCon').hide();
 	
 	
 	
-	$('#userId').click(function(){
-		alert("?");
-		
-		$('#detailCon').show();
+	$('.userId').click(function(){
+		var index = $(this).attr('id');
+		$(this).parents('tr').siblings('tr').find('td#'+index).find('.detailCon').slideToggle();
 		
 	});
 	
@@ -41,28 +41,33 @@ $(function(){
 <thead>
 <tr>
 <th>아이디</th>
+<th>신청자</th>
 <th>병원명</th>
-<th>사업자번호</th>
 <th>사업자번호</th>
 <th colspan="2">승인여부</th>
 </tr>
 </thead>
 <tbody>
+<c:forEach items="${applylist}" var="a" varStatus="status">
 <tr>
-<td onclick="openDiv()" id="userId">아이디</td>
-<td>병원명</td>
-<td>사업자번호</td>
-<td>사업자번호</td>
+<td id="${status.index}" class="userId">${a.muid}</td>
+<td>${a.name}</td>
+<td>${a.dutyName}</td>
+<td>${a.bisunessNumber}</td>
 <td><button id="acceptHos">승인</button> </td>
 <td> <button>거부</button> </td>
 </tr>
 <tr>
-<div id="detailCon">
-<td>
-사진첨부
-</td>
+<td id="${status.index}" colspan="4">
+<div class="detailCon">
+${a.relFile} <br>
+${a.name} <br>
+${a.bisunessNumber}
+<button>check</button>
 </div>
+</td>
 </tr>
+</c:forEach>
 </tbody>
 </table>
   <div class="modal fade" id="myModal" >

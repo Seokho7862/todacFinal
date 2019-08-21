@@ -17,15 +17,21 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import dao.IApplyManagerDao;
 import dao.IDisease_dbDao;
 import dao.IHealthInfoDao;
 import dao.IHospitalInfoDao;
 import dao.IMember_userDao;
+import dao.INoticeDao;
+import dao.ISearchDao;
 import dao.ITestDao;
 import model.HealthInfo;
 import model.HospitalInfo;
 import model.MEMBER_USER;
+import model.apply_manager;
 import model.disease_db;
+import model.notice;
+import model.search;
 
 @Service
 public class TestService {
@@ -39,6 +45,12 @@ public class TestService {
 	private IMember_userDao muDao;
 	@Autowired
 	private IHospitalInfoDao hosDao;
+	@Autowired
+	private IApplyManagerDao applyDao;
+	@Autowired
+	private INoticeDao noticeDao;
+	@Autowired
+	private ISearchDao sDao;
 	
 	private static String ServiceKey = "=lVxTWoXqXosjGsm%2BJEUMoOlm%2BMCgvW%2FwNcb4I54miUQc9K5DAbBPOwOQAP3ZhGsNLHxtWZev2W2HxL92vNMrbg%3D%3D";
 	public void insertHospitalInfo1() {
@@ -243,7 +255,47 @@ public class TestService {
 		params.put("searchType", searchType);
 		
 		return hosDao.searchByHname(params);
-		
 	}
+	public void ApplyManager(apply_manager apply) {
+		applyDao.applyManager(apply);
+	}
+	
+	//여기부터 공지사항
+	public void noticeWrite(notice notice) {
+		noticeDao.noticeWrite(notice);
+	}
+	public ArrayList<notice> getNoticeList(){
+		return noticeDao.getNoticeList();
+	}
+	public notice getNotice(int nid) {
+		HashMap<String, Integer> param = new HashMap<String, Integer>();
+		param.put("nid", nid);	
+		return noticeDao.getNotice(param);
+	}
+	
+	public void noticeModify(notice notice) {
+		noticeDao.modifyNotice(notice);
+	}
+
+	public void noticeDelete(int nid) {
+		HashMap<String, Integer> param = new HashMap<String, Integer>();
+		param.put("nid", nid);	
+		noticeDao.deleteNotice(param);		
+	}
+	public void Search(search s) {
+		sDao.Search(s);
+	}
+	public ArrayList<search> getListOfSearch(int age){
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("age", age);
+		ArrayList<search> sl = sDao.getListOfSearch(param);
+		ArrayList<search> rl = new ArrayList<search>();
+		for(int i=0;i<sl.size();i++) {
+			if(i==10) {break;}
+			rl.add(rl.get(i));
+		}
+		return rl;
+	}
+	
 	
 }
