@@ -5,20 +5,24 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 
+import model.HospitalInfo;
 import service.HospitalInfoService;
+import service.ReivewService;
 
 @Controller
 public class HospitalInfoMapController {
 	@Autowired
 	private HospitalInfoService hsvc;
+	@Autowired
+	private ReivewService rsvc;
+
 	
 	@RequestMapping("HospitalInfo_Main.do")
 	public ModelAndView HospitalInfo_Main() {
@@ -30,14 +34,11 @@ public class HospitalInfoMapController {
 	}
 	@RequestMapping("HospitalInfo_MakingMarker.do")
 	public @ResponseBody List<HashMap<String,Object>> getMarker(){
-		//System.out.println(hsvc.getMarker());
 		return hsvc.getMarker();
 	}
 	
 	@RequestMapping("HospitalInfo_searchKeyword.do")
 	public @ResponseBody List<HashMap<String,Object>> searchKeyword(String keyword){
-		System.out.println(keyword);
-		System.out.println("컨트롤러 단 : "+ hsvc.searchKeyword(keyword));
 		return hsvc.searchKeyword(keyword);
 	}
 	
@@ -50,22 +51,9 @@ public class HospitalInfoMapController {
 	public @ResponseBody List<HashMap<String,Object>> HospitalInfo_FirstMarker(String swLat,
 			String swLng, String neLat, String neLng){
 		
-		System.out.println(hsvc.getFirstMarker(swLat, swLng, neLat, neLng));
 		return hsvc.getFirstMarker(swLat, swLng, neLat, neLng);
 	}
 	
-	@RequestMapping("HospitalInfo_InfoForm.do")
-	public ModelAndView HospitalInfo_Review(
-			@RequestParam String hpid) {
-		ModelAndView mav = new ModelAndView();
-		System.out.println("-----infoForm.do 내-----------");
-		System.out.println(hpid);
-		System.out.println(hsvc.HospitalInfo_InfoForm(hpid));
-		System.out.println("------------------------------");
-		mav.addObject("hlist",hsvc.HospitalInfo_InfoForm(hpid));
-		mav.setViewName("HospitalInfoForm");
-		return mav;
-	}
 	
 	@RequestMapping("HospitalInfo_DiagnosisByName.do")
 	public @ResponseBody List<HashMap<String,Object>> HospitalInfo_DiagnosisByName(String swLat,
@@ -76,10 +64,24 @@ public class HospitalInfoMapController {
 		return hsvc.HospitalInfo_DiagnosisByName(swLat, swLng, neLat, neLng, keyword);
 	}
 	
-	@RequestMapping("HospitalInfo_searchLocList.do")
-	public @ResponseBody List<HashMap<String,Object>> HospitalInfo_searchLocList(String keyword){
+	@RequestMapping("HospitalInfo_InfoForm.do")
+	public ModelAndView HospitalInfo_Review(
+			@RequestParam String hpid) {
+		ModelAndView mav = new ModelAndView();
+		HospitalInfo h = hsvc.HospitalInfo_InfoForm(hpid);
+		String[] str;
+		if(h.getDgidldName() != null) {
+			str =  h.getDgidldName().split("/");
+		}
+		else {
+			str =  null;
+		}
 		
-		return null;
+		mav.addObject("dlist", str);
+		mav.addObject("hlist",h);
+		mav.addObject("rlist",rsvc.selectOneHospitalInfo(h.getHpid()));
+		mav.setViewName("HospitalInfoForm");
+		return mav;
 	}
 	
 }
