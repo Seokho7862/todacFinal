@@ -16,4 +16,5 @@ public interface IHospitalInfoDao {
 	public List<HashMap<String,Object>> getMarkerByKeyword_Diag(HashMap<String,Object> params);
 	public HospitalInfo HospitalInfo_InfoForm(HashMap<String,String> params);
 	public ArrayList<HospitalInfo> searchByHname (HashMap<String, String> params);
+	public HospitalInfo SelectOneHospital(String hpid);
 }

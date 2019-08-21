@@ -12,8 +12,11 @@ import model.HospitalInfo;
 import model.MEMBER_USER;
 import model.apply_manager;
 import model.disease_web;
+import model.notice;
+import model.search;
 import service.HealthInfoFileUploadClass;
 import service.ManagerApplyFileUploadClass;
+import service.MemberService;
 import service.NaverSearchAPI;
 import service.TestService;
 
@@ -38,6 +41,8 @@ import org.springframework.stereotype.*;;
 public class TestController {
 	@Autowired
 	private TestService tservice;
+	@Autowired
+	private MemberService ms;
 
 	@RequestMapping("Map.do")
 	public String Map() {
@@ -51,8 +56,8 @@ public class TestController {
 		return "kakaomap";
 	}
 
-	//여기부터 맨 밑까지 작업함. 합칠 때 임포트 한 것들도 합쳐주세요. 
-	
+	// 여기부터 맨 밑까지 작업함. 합칠 때 임포트 한 것들도 합쳐주세요.
+
 	@RequestMapping("TestStartForm.do")
 	public void TestStartForm() {
 	}
@@ -83,7 +88,7 @@ public class TestController {
 		}
 		int endPage = 0;
 
-		int startPage = (((page-1)/10)*10) + 1;
+		int startPage = (((page - 1) / 10) * 10) + 1;
 		int lastPage = ((num - 1) / 10) + 1;
 		if (lastPage >= startPage + 9) {
 			endPage = startPage + 9;
@@ -113,18 +118,20 @@ public class TestController {
 	public void healthInfoWriteForm() {
 	}
 
-	public String getCurrentDayTime(){
-	    long time = System.currentTimeMillis();
-	    SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss", Locale.KOREA);
-	    return dayTime.format(new Date(time));
+	public String getCurrentDayTime() {
+		long time = System.currentTimeMillis();
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss", Locale.KOREA);
+		return dayTime.format(new Date(time));
 	}
-	
-	@RequestMapping("healthInfoWrite.do")
-	public String healthInfoWrite(HealthInfo healthInfo, @RequestParam(value="infoFile", required=false)MultipartFile file) {
 
-		if(file.getSize()>0) {
-		ArrayList<String > result = HealthInfoFileUploadClass.FileUpload(file);
-		healthInfo.sethfile(result.get(0));}
+	@RequestMapping("healthInfoWrite.do")
+	public String healthInfoWrite(HealthInfo healthInfo,
+			@RequestParam(value = "infoFile", required = false) MultipartFile file) {
+
+		if (file.getSize() > 0) {
+			ArrayList<String> result = HealthInfoFileUploadClass.FileUpload(file);
+			healthInfo.sethfile(result.get(0));
+		}
 		System.out.println(healthInfo.toString());
 		tservice.healthInfoWrite(healthInfo);
 		return "redirect: healthInfoList.do";
@@ -209,14 +216,22 @@ public class TestController {
 	}
 
 	@RequestMapping("diseaseSearch.do")
-	public @ResponseBody HashMap<String, Object> diseaseSearch(String keyword) {
+	public @ResponseBody HashMap<String, Object> diseaseSearch(String keyword, HttpSession session) {
 		System.out.println(keyword);
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		HashMap<String, String> dis = new HashMap<String, String>();
 		dis.put("disease", keyword);
-
 		result.put("data", NaverSearchAPI.diseaseSearch(keyword));
 		result.put("subjects", tservice.getSubjectList(dis));
+		search s = new search(keyword);
+		String id = (String) session.getAttribute("muid");
+		if (id != null) {
+			System.out.println(id);
+			HashMap<String, String> param = new HashMap<String, String>();
+			param.put("muid", id);
+			s.setAge(ms.findUserById(id).getAge());
+		}
+		tservice.Search(s);
 
 		return result;
 	}
@@ -227,70 +242,137 @@ public class TestController {
 
 	@RequestMapping("signUp.do")
 	public void signUp(String muid, String pwd, String name, String birth, String email, String phone, String latitude,
+<<<<<<< HEAD
 			String logitude, String sample4_postcode, String sample4_detailAddress, @RequestParam(defaultValue="")String sample4_jibunAddress,
 			String sample4_roadAddress) {
+=======
+			String longitude, String sample4_postcode, String sample4_detailAddress,
+			@RequestParam(defaultValue = "") String sample4_jibunAddress, String sample4_roadAddress) {
+>>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 
-	
 		int age = 0;
-		SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd");  
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			Date birthDay = format.parse(birth);
 			Date today = format.parse(format.format(System.currentTimeMillis()));
 			System.out.println(birthDay);
 			System.out.println(today);
-		 age =(int)((((-birthDay.getTime()+today.getTime())/(24*60*60*1000))/365));
+			age = (int) ((((-birthDay.getTime() + today.getTime()) / (24 * 60 * 60 * 1000)) / 365));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		StringTokenizer tk = new StringTokenizer(sample4_jibunAddress, " ");
-		String add_base="";
-		
-		add_base=add_base+tk.nextToken()+" ";
-		add_base=add_base+tk.nextToken();
+		String add_base = "";
+
+		add_base = add_base + tk.nextToken() + " ";
+		add_base = add_base + tk.nextToken();
 
 		java.sql.Date birthd = java.sql.Date.valueOf(birth);
+<<<<<<< HEAD
 		
 		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birthd, age, email, phone, Double.parseDouble(latitude),Double.parseDouble(logitude), sample4_postcode, sample4_jibunAddress,add_base, sample4_roadAddress);
+=======
+
+		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birthd, age, email, phone, Double.parseDouble(latitude),
+				Double.parseDouble(longitude), sample4_postcode, sample4_jibunAddress, add_base, sample4_roadAddress);
+>>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 		tservice.createMember_user(member);
 		System.out.println("회원 삽입");
 	}
-	
+
 	@RequestMapping("idCheck.do")
 	public @ResponseBody int idCheck(String muid) {
-		int result=0;
+		int result = 0;
 		System.out.println(muid);
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("muid", muid);
 		result = tservice.idCheck(param);
 
 		return result;
-	} 
-	
+	}
+
 	@RequestMapping("getListOfTop3.do")
-	public @ResponseBody ArrayList<HealthInfo> getListOfTop3(int getType){
-		
+	public @ResponseBody ArrayList<HealthInfo> getListOfTop3(int getType) {
+
 		return tservice.getListOfTop3(getType);
 	}
+
 	@RequestMapping("managerApplyForm.do")
-	public void managerApplyForm() {}
+	public void managerApplyForm() {
+	}
 
 	@RequestMapping("hospitalSearch.do")
-	public @ResponseBody ArrayList<HospitalInfo> hospitalSearch(String keyword, String searchType){
-		
+	public @ResponseBody ArrayList<HospitalInfo> hospitalSearch(String keyword, String searchType) {
+
 		return tservice.hospitalSearch(keyword, searchType);
-		
+
 	}
+
 	@RequestMapping("managerApply.do")
 	public void managerApply(apply_manager apply, MultipartFile file) {
-		if(file!=null) {
-		ArrayList<String> fileResult =ManagerApplyFileUploadClass.FileUpload(file);
-		String absLoc = fileResult.get(1);
-		String relLoc = fileResult.get(0);
-		apply.setAbsFile(absLoc);
-		apply.setRelFile(relLoc);
+		if (file != null) {
+			ArrayList<String> fileResult = ManagerApplyFileUploadClass.FileUpload(file);
+			String absLoc = fileResult.get(1);
+			String relLoc = fileResult.get(0);
+			apply.setAbsFile(absLoc);
+			apply.setRelFile(relLoc);
 		}
 		tservice.ApplyManager(apply);
 	}
+
+	@RequestMapping("noticeWriteForm.do")
+	public void noticeWriteForm() {
+	}
+
+	@RequestMapping("noticeWirte.do")
+	public String noticeWrite(notice notice) {
+		tservice.noticeWrite(notice);
+		return "redirect: noticeListForm.do";
+	}
+
+	@RequestMapping("noticeListForm.do")
+	public ModelAndView noticeListForm() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("noticeList", tservice.getNoticeList());
+		mav.setViewName("noticeListForm");
+
+		return mav;
+	}
+
+	@RequestMapping("noticeReadForm.do")
+	public ModelAndView noticeReadForm(int nid) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("notice", tservice.getNotice(nid));
+		mav.setViewName("noticeReadForm");
+		return mav;
+	}
+
+	@RequestMapping("noticeModifyForm.do")
+	public ModelAndView noticeModifyForm(int nid) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("notice", tservice.getNotice(nid));
+		mav.setViewName("noticeModifyForm");
+
+		return mav;
+	}
+
+	@RequestMapping("noticeModify.do")
+	public String noticeModify(notice notice) {
+		tservice.noticeModify(notice);
+		return "redirect: noticeReadForm.do?nid=" + notice.getNid();
+	}
+
+	@RequestMapping("noticeDelete.do")
+	public String noticeDelete(int nid) {
+		tservice.noticeDelete(nid);
+		return "redirect: noticeListForm.do";
+	}
 	
+	public ArrayList<search> getListOfSearch(int age){
+		ArrayList<search> sList = new ArrayList<search>();
+		
+		return sList;
+	}
+
 }
