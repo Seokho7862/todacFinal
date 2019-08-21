@@ -8,8 +8,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$('document').ready(function() {
+		$('#hospitalListTd').css("display", "none");
+		
 		$('#hospitalSearchBtn').bind('click',function(){
 			$.ajax({
 				data:{ keyword: $('input[name=keyword]').val(), searchType: $('select[name=searchType]').val()},
@@ -35,6 +41,7 @@
 						var sHosAddr = $(this).children().eq(2).html()
 						
 						content = content+ '<tr><td hidden="true">'+sHpid+'</td>+<td>'+sHosName+'</td><td>'+sHosAddr+'</td></tr></table>'
+						$('#hospitalListTd').css("display", "show");
 						$('#hospitalListDiv').html(content);
 						$('#hpid').val(sHpid);
 			
@@ -52,7 +59,7 @@
 	<h1>병원 관계자 계정 신청</h1>
 
 	<form action="managerApply.do" enctype="multipart/form-data" method="post">
-		<table border="1">
+		<table border="1" class="table">
 
 			<tr>
 				<td>사업자 번호</td>
@@ -73,8 +80,8 @@
 			</tr>
 		
 			<tr>
-				<td colspan="2">
-					<div id="hospitalListDiv" style="overflow: auto;">
+				<td colspan="2" style="height: 0px;" id="hospitalListTd">
+					<div id="hospitalListDiv">
 						
 					</div>
 				</td>

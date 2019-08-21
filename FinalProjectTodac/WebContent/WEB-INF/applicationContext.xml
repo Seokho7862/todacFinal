@@ -63,6 +63,7 @@
 	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	<property name="mapperInterface" value="dao.IMemberDao"/>
 </bean> 
+<<<<<<< HEAD
 
 <bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="reviewDao">
 	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
@@ -85,6 +86,23 @@
 
 
 
+=======
+<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="applyDao">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	<property name="mapperInterface" value="dao.IApplyManagerDao"/>
+</bean> 
+<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="noticeDao">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	<property name="mapperInterface" value="dao.INoticeDao"/>
+</bean> 
+<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="searchDao">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	<property name="mapperInterface" value="dao.ISearchDao"/>
+</bean> 
+
+
+
+>>>>>>> refs/remotes/origin/master
 <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="txManager">
 	<property name="dataSource" ref="dataSource"/>
 </bean>
