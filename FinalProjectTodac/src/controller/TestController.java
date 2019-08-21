@@ -242,13 +242,8 @@ public class TestController {
 
 	@RequestMapping("signUp.do")
 	public void signUp(String muid, String pwd, String name, String birth, String email, String phone, String latitude,
-<<<<<<< HEAD
-			String logitude, String sample4_postcode, String sample4_detailAddress, @RequestParam(defaultValue="")String sample4_jibunAddress,
-			String sample4_roadAddress) {
-=======
 			String longitude, String sample4_postcode, String sample4_detailAddress,
 			@RequestParam(defaultValue = "") String sample4_jibunAddress, String sample4_roadAddress) {
->>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 
 		int age = 0;
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -269,14 +264,9 @@ public class TestController {
 		add_base = add_base + tk.nextToken();
 
 		java.sql.Date birthd = java.sql.Date.valueOf(birth);
-<<<<<<< HEAD
-		
-		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birthd, age, email, phone, Double.parseDouble(latitude),Double.parseDouble(logitude), sample4_postcode, sample4_jibunAddress,add_base, sample4_roadAddress);
-=======
 
-		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birthd, age, email, phone, Double.parseDouble(latitude),
+		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birth, age, email, phone, Double.parseDouble(latitude),
 				Double.parseDouble(longitude), sample4_postcode, sample4_jibunAddress, add_base, sample4_roadAddress);
->>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 		tservice.createMember_user(member);
 		System.out.println("회원 삽입");
 	}
