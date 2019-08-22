@@ -575,6 +575,7 @@ $(function(){
 <div id='spins'>
 	<div><span>
 		<img src='//cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif'>
+		
 	</span></div>
 </div>
 
