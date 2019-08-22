@@ -10,7 +10,9 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <div style="margin-left: 300px">
+
 <h1>즐겨찾기</h1>
+
 <form action="">
 <table>
   <tr>
