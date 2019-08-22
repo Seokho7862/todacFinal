@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import model.Report;
 import model.Review;
 
 public interface IReviewDao {
@@ -10,4 +11,7 @@ public interface IReviewDao {
 	public Review selectAroundReview(String rid);
 	//리뷰작성
 	public void reviewWrite(Review r);
+	public void ReportInsert(Report r);
+	public void updateReivewStatus(int rid);
+	
 }
