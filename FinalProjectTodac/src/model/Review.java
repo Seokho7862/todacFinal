@@ -12,10 +12,11 @@ public class Review {
 	private int grade;
 	private String hpid;
 	private String muid;
+	private int status;
 	
 	public Review() {}
 	public Review(int rid, String title, String content, Date rdate, String rfile, int readcount, int grade,
-			String hpid, String muid) {
+			String hpid, String muid,int status) {
 		this.rid = rid;
 		this.title = title;
 		this.content = content;
@@ -25,8 +26,15 @@ public class Review {
 		this.grade = grade;
 		this.hpid = hpid;
 		this.muid = muid;
+		this.status = status;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public int getRid() {
 		return rid;
 	}
@@ -102,7 +110,7 @@ public class Review {
 	@Override
 	public String toString() {
 		return "Review [rid=" + rid + ", title=" + title + ", content=" + content + ", rdate=" + rdate + ", rfile="
-				+ rfile + ", readcount=" + readcount + ", grade=" + grade + ", hpid=" + hpid + ", muid=" + muid + "]";
+				+ rfile + ", readcount=" + readcount + ", grade=" + grade + ", hpid=" + hpid + ", muid=" + muid + "]"+status;
 	}
 	
 	
