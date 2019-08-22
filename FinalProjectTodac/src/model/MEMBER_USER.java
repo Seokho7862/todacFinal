@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Date;
 import java.sql.*;
 
 public class MEMBER_USER {
@@ -155,14 +154,14 @@ public class MEMBER_USER {
 
 
 
-		public double getLongitude() {
+		public double getlongitude() {
 			return longitude;
 		}
 
 
 
 
-		public void setLongitude(double longitude) {
+		public void setlongitude(double longitude) {
 			this.longitude = longitude;
 		}
 
@@ -259,22 +258,20 @@ public class MEMBER_USER {
 
 
 
+
 		public void setReport_count(int report_count) {
 			this.report_count = report_count;
 		}
 
 
+
+
 		public MEMBER_USER(String muid, String pwd, String name, String birth, int age, String email, String phone,
 				double latitude, double longitude, String sample4_postcode, String address_detail, String address_base,
-				String address_road) {
-		}
-
-
-
-
+				String address_road) {}
 		public MEMBER_USER(String muid, String pwd, String name, Date birth, int age, String email, String phone,
-				double latitude, double longitude, String post_num, String address_detail, String address_base,
-				String address_road, int status, int chk_num, int report_count) {
+				double latitude, double longitude, String sample4_postcode, String address_detail, String address_base,
+				String address_road) {
 			this.muid = muid;
 			this.pwd = pwd;
 			this.name = name;
@@ -284,15 +281,12 @@ public class MEMBER_USER {
 			this.phone = phone;
 			this.latitude = latitude;
 			this.longitude = longitude;
-			this.post_num = post_num;
+			this.post_num = sample4_postcode;
 			this.address_detail = address_detail;
 			this.address_base = address_base;
 			this.address_road = address_road;
-			this.status = status;
-			this.chk_num = chk_num;
-			this.report_count = report_count;
 		}
-
+		
 		
 }
 		
