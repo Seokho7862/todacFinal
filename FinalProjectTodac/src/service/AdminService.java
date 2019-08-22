@@ -45,7 +45,7 @@ public class AdminService {
 		dao.updateAccept(param);
 	}
 	
-	//관리자로그인
+	//관리자로그인하기
 	public int adminLogin(HashMap<String, Object>param) {
 		String maid=(String) param.get("maid");
 		String pwd = (String) param.get("pw");

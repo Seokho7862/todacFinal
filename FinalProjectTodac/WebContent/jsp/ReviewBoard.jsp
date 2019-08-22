@@ -74,7 +74,7 @@
 			<tr>
 				<td style="width : 40%;"><a>작성자</a> ${review.muid} </td>
 				<td style="width : 40%;"><a>작성일자</a> ${review.rdate} </td>
-				<td style="width : 20%;" > 신고 ${review.rid} </td>
+				<td style="width : 20%;"> 신고 ${review.rid} </td>
 			</tr>
 		
 			<tr>

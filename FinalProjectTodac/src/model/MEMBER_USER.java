@@ -147,12 +147,7 @@ public class MEMBER_USER {
 
 
 
-		public void setLatitude(double latitude) {
-			this.latitude = latitude;
-		}
-
-
-
+		
 		public double getlongitude() {
 			return longitude;
 		}
@@ -160,10 +155,10 @@ public class MEMBER_USER {
 
 
 
-
 		public void setlongitude(double longitude) {
 			this.longitude = longitude;
 		}
+
 
 
 
@@ -268,7 +263,6 @@ public class MEMBER_USER {
 		public MEMBER_USER(String muid, String pwd, String name, String birth, int age, String email, String phone,
 				double latitude, double longitude, String sample4_postcode, String address_detail, String address_base,
 				String address_road) {}
-
 		public MEMBER_USER(String muid, String pwd, String name, Date birth, int age, String email, String phone,
 				double latitude, double longitude, String sample4_postcode, String address_detail, String address_base,
 				String address_road) {

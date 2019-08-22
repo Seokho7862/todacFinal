@@ -59,7 +59,8 @@ public class HospitalInfoMapController {
 	public @ResponseBody List<HashMap<String,Object>> HospitalInfo_DiagnosisByName(String swLat,
 			String swLng, String neLat, String neLng, String keyword){
 		
-		List<HashMap<String,Object>> list = hsvc.HospitalInfo_DiagnosisByName(swLat, swLng, neLat, neLng, keyword);	
+		List<HashMap<String,Object>> list = hsvc.HospitalInfo_DiagnosisByName(swLat, swLng, neLat, neLng, keyword);
+		
 		return hsvc.HospitalInfo_DiagnosisByName(swLat, swLng, neLat, neLng, keyword);
 	}
 	
@@ -79,9 +80,7 @@ public class HospitalInfoMapController {
 		mav.addObject("dlist", str);
 		mav.addObject("hlist",h);
 		mav.addObject("rlist",rsvc.selectOneHospitalInfo(h.getHpid()));
-		mav.addObject("sessionid", "say7862");
 		mav.setViewName("HospitalInfoForm");
-		
 		return mav;
 	}
 	

@@ -39,7 +39,7 @@ public class MemberService {
 	//관계자 로그인 하기
 	public int loginManager(String muid, String pwd) {
 		MEMBER_USER m = dao.selectManagerById(muid);
-		System.out.println(m+"�꽌鍮꾩뒪");
+		System.out.println(m+"서비스");
 		if(m!=null) {
 			if(m.getPwd().equals(pwd)) {
 				return 1;
@@ -72,6 +72,7 @@ public class MemberService {
 		else
 			return 0;
 	}
+	//관계자인지 아닌지 체크
 	public int selectManager(String muid) {
 		MEMBER_USER m =dao.selectManagerById(muid);
 		if(m!=null) {
@@ -91,7 +92,7 @@ public class MemberService {
 		return m;
 	}
 	
-	//�쉶�썝 �닔�젙�븯湲�
+	//회원 수정하기
 	public int updateMember(MEMBER_USER m) {
 		
 		int i = dao.updateMember(m);
@@ -99,14 +100,17 @@ public class MemberService {
 		return i;
 	}
 	
+	//마이페이지 리뷰 목록 불러오기 나중에 리뷰 서비스로 옮기기
 	public List<reviewTest> selectAllreview(String muid){
 		return dao.selectAllReview(muid);
 	}
 	
+	//마이페이지 즐겨찾기불러오기
 	public List<Favorites> selectAllLike(String muid){
 		return dao.selectAllLike(muid);
 	}
 	
+	//마이페이지에서 자신의 병원 불러오기
 	public HashMap<String, Object> selectOwnHos(String muid){
 		
 		return dao.selectOwnHos(muid);
