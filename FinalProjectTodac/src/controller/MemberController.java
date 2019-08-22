@@ -256,22 +256,62 @@ public class MemberController {
 		}
 		
 	}
-	
+	//주소api열기
 	@RequestMapping("addressApi.do")
 	public String addressapi() {
 		return "addressApi";
 	}
-	
+	//병원 업데이트 폼 띄우기
 	@RequestMapping("hos_update_form.do")
-	public String hosUpdateForm(HttpSession session) {
+	public ModelAndView hosUpdateForm(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
 		if(session.getAttribute("muid")==null) {
-			return "redirect:loginForm.do";
+			mav.setViewName("redirect:loginForm.do");
+			return mav;
 		}
 		else {
-			
-			return "hosinfoUpdate";
+			String muid = (String)session.getAttribute("muid");
+			System.out.println(service.selectOwnHos(muid));
+			mav.addObject("hoslist", service.selectOwnHos(muid));
+			mav.setViewName("hosinfoUpdate");
+			return mav;
 		}
 	}
 	
+	@RequestMapping("review_list.do")
+	public ModelAndView reviewList(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		if(session.getAttribute("muid")==null) {
+			mav.setViewName("redirect:loginForm.do");
+		}
+		else {
+			if(service.selectManager((String)session.getAttribute("muid"))==1) {
+				String muid =(String)session.getAttribute("muid");
+				mav.addObject("reviewlist", service.selectAllreview(muid));
+				mav.setViewName("reviewList");
+			}
+			else {
+				
+				mav.setViewName("redirect:loginForm.do");
+			}
+		}
+		return mav;
+	}
+	@RequestMapping("like_list.do")
+	public ModelAndView getlikeList(HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		if(session.getAttribute("muid")==null) {
+			
+			mav.setViewName("redirect:loginForm.do");
+		}else {
+			
+			String muid =(String)session.getAttribute("muid");
+		System.out.println(service.selectAllLike(muid));
+		mav.addObject("likelist", service.selectAllLike(muid));
+		mav.setViewName("likeHos");
+		}
+		return mav;
+	}
 
 }

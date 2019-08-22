@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Todac</title>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -17,7 +17,10 @@
 
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 <script type="text/javascript">
+
+
 $(function(){
 	
 		$('.detailCon').hide();
@@ -30,7 +33,57 @@ $(function(){
 		
 	});
 	
+	$('.busBtn').on('click',function(){
+		 var a = window.open("https://teht.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/ab/a/a/UTEABAAA13.xml",'subWin','width=600,height=300');
+	});
 	
+	$('.acceptHos').on('click',function(){
+		alert("승인하시겠습니까?");//시간나면 모달로 받아서 승인,거부 다시 물어보기
+		alert($(this).parents('tr').find('td.userId').text());
+		alert($(this).text());
+		alert($(this).parents('tr').find('td').find('input.hpid').val());
+		alert($(this).parents('tr').find('td').find('input.aid').val());
+		
+		var findb = $(this).parents('tr').find('td').find('button.acceptHos');
+		var muid = $(this).parents('tr').find('td.userId').text();
+		var hpid = $(this).parents('tr').find('td').find('input.hpid').val();
+		var aid = $(this).parents('tr').find('td').find('input.aid').val();
+		var change = $(this).text();
+		
+		function disChange(){
+			alert(findb);
+			findb.text("승인완료");
+			findb.attr('disabled','disabled');
+		}
+		
+		$.ajax({
+			url:'accept_manager.do',
+			data:{
+				muid : muid,
+				hpid : hpid,
+				said : aid
+			},
+			success : function(data){
+				alert(data)
+				if(data==1){
+					
+				alert("성공");
+				disChange();
+				
+			
+				}
+				else{
+					alert("실패");
+				}
+				
+			},
+			error : function(){
+				alert("다시시도해주세요.");
+				
+			}
+			
+		});
+	});
 	
 });
 </script>
@@ -47,23 +100,27 @@ $(function(){
 <th colspan="2">승인여부</th>
 </tr>
 </thead>
-<tbody>
+<tbody id="applyl">
 <c:forEach items="${applylist}" var="a" varStatus="status">
 <tr>
 <td id="${status.index}" class="userId">${a.muid}</td>
 <td>${a.name}</td>
+<td>${a.hpid}</td>
+<td><input class="hpid" type="hidden" value="${a.hpid}"></td>
+<td><input class="aid" type="hidden" value="${a.aid}"></td>
 <td>${a.dutyName}</td>
 <td>${a.bisunessNumber}</td>
-<td><button id="acceptHos">승인</button> </td>
-<td> <button>거부</button> </td>
+<td><button class="acceptHos">승인</button> </td>
+<td><button class=".denyHos">거부</button> </td>
 </tr>
 <tr>
 <td id="${status.index}" colspan="4">
 <div class="detailCon">
-${a.relFile} <br>
+<img width="100px" height="200px" src="download.do?aid=${a.aid}">
+ <br>
 ${a.name} <br>
 ${a.bisunessNumber}
-<button>check</button>
+<button class="busBtn">check</button>
 </div>
 </td>
 </tr>
@@ -83,7 +140,7 @@ ${a.bisunessNumber}
         <!-- Modal body -->
         <div class="modal-body">
         <p class="text_blur">
-          Modal body..
+          	승인하시겠습니까?
         </p>
         </div>
         

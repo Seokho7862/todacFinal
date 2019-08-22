@@ -23,7 +23,22 @@
   </update>
   <update id="updateMember" parameterType="MEMBER_USER">
   update member_user set phone=#{phone}, post_num=#{post_num}, address_detail=#{address_detail},
-  address_base=#{address_base}, address_road=#{address_road},latitude=#{latitude},logitude=#{logitude} where muid=#{muid}
+  address_base=#{address_base}, address_road=#{address_road},latitude=#{latitude},longitude=#{longitude} where muid=#{muid}
   </update>
+  
+  <select id="selectAllReview" parameterType="String" resultType="reviewTest">
+  select * from review r, hospitalinfo h where r.hpid=h.hpid and muid=#{muid}
+  </select>
+  
+  <!-- 즐겨찾기 목록불러오기 -->
+  <select id="selectAllLike" resultType="favorites">
+  select * from favorites natural join hospitalinfo where muid=#{muid}
+  </select>
+  
+  <!-- 병원관계자라면 자신 병원 불러오기 -->
+  <select id="selectOwnHos" parameterType="String" resultType="java.util.HashMap">
+  select * from member_user u, member_manager m, hospitalinfo h where u.chk=m.chk and m.hpid=h.hpid and
+ muid=#{muid}
+  </select>
   
   </mapper>

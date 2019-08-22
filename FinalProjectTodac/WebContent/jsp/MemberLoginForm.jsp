@@ -87,7 +87,7 @@ $(function(){
 				</div>
 			</div>
 
-
+<button onclick="location.href='admin_login_form.do'">관리자로그인</button>
 
 </body>
 </html>
