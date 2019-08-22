@@ -265,10 +265,8 @@ public class TestController {
 
 		java.sql.Date birthd = java.sql.Date.valueOf(birth);
 
-		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birthd, age, email, phone, Double.parseDouble(latitude),
+		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birth, age, email, phone, Double.parseDouble(latitude),
 				Double.parseDouble(longitude), sample4_postcode, sample4_jibunAddress, add_base, sample4_roadAddress);
-		
-		System.out.println(member);
 		tservice.createMember_user(member);
 		System.out.println("회원 삽입");
 	}

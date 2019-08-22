@@ -90,16 +90,7 @@
   		.writeReview{
   			color : blue; 
   		}
-  		.modal_ul{
-  			list-style: none;
-  			list-style-position: inherit;
-  			float: none;
-  		}
-  		.modal-body{
-  			text-align: inherit;
-  			text-overflow: inherit;
-  			
-  		}
+  		
   	
   	</style>
 <title>Insert title here</title>
@@ -116,10 +107,9 @@
 	</div>
 	<!-- 즐겨찾기, 후기 작성 버튼-->
 	<hr>
-	<div>
-		${sessionid } 
-		<a href="#" data-toggle="tooltip" title="즐겨찾기를 해보세요!"><img class="clickLikeBtn" src="image/like_none.jpg" style="height: 50px; width: 50px"></a>
-		<a data-toggle="tooltip" title="작성 페이지로 이동해요" class="writeReview">후기작성<input type="hidden" value="${hlist.hpid}"></a>
+	<div> 
+		<a href="#" data-toggle="tooltip" title="관심있는 병원으로 등록하세요">즐겨찾기</a>
+		<a data-toggle="tooltip" title="후기작성 페이지로 이동합니다" class="writeReview">후기작성<input type="hidden" value="${hlist.hpid}"></a>
 		<a>별점</a>
 		<script>
 		$(document).ready(function(){
@@ -270,9 +260,7 @@
 						<td>${l.readcount}</td>
 						<td>${l.grade}</td>
 						<td class="reportBtn"> 
-							<button style="size : inherit;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-							   	신고 
-							</button>
+							신고 
 							<input type="hidden" value="${l.rid}"/>
 						</td>
 					</tr>
@@ -282,97 +270,9 @@
 		</div>
 	</div>
 </div>
-
-<div class="modal" id="myModal">
-		    <div class="modal-dialog">
-		      <div class="modal-content">
-		      
-		        <!-- Modal Header -->
-		        <div class="modal-header">
-		          <h4 class="modal-title">신고</h4>
-		         	<!--  <button type="button" class="close" data-dismiss="modal">&times;</button>  -->
-		        </div>
-		        
-		        <!-- Modal body -->
-		        <div class="modal-body">
-		          	<table>
-		          		<tr style="height: 60px;">
-		          			<th>작성자</th>
-		          			<td>session id<td>
-		          		</tr>
-		          		<tr style="height: 90px; max-height : 80px; overflow: scroll;">
-		          			<th>내용</th>
-		          			<td></td>
-		          		</tr>
-		          		<tr style="height: 40px;">
-		          			<th>사유선택</th>
-		          			<td>여러사유에 해당 될 경우 대표적인 사유 1개를 선택해주세요</td>
-		          		</tr>
-		          		<tr style="height: 200px; ">
-		          			<td colspan="2">
-		          				<ul class="modal_ul">
-		          					<li> <input type="radio" name="radiogroup"  value="부적절한 홍보 게시물" checked="checked" /> 부적절한 홍보 게시물</li>
-		          					<li> <input type="radio" name="radiogroup" value="음란성 또는 청소년에게 부적합한 내용"/> 음란성 또는 청소년에게 부적합한 내용</li>
-		          					<li> <input type="radio" name="radiogroup" value="특정인 대상의 비방/욕설"/> 특정인 대상의 비방/욕설</li>
-		          					<li> <input type="radio" name="radiogroup" value="명예훼손/사생활 침해 및 저작권 활동"/> 명예훼손/사생활 침해 및 저작권 활동</li>
-		          					<li> <input type="radio" name="radiogroup" value="기타 사유(자유 양식)"/> 기타 사유(자유 양식)</li>
-		          				</ul>
-		          				<input type="hidden" class="modal-transit-Data" value="">
-		          				
-		          			<td>
-		          			
-		          		</tr>
-		          		<tr>
-		          			<td></td>
-		          		</tr>
-		          	</table>
-		        </div>
-		        
-		        <!-- Modal footer -->
-		        <div class="modal-footer">
-		          <button type="button" onclick="modalCheck()" class="btn btn-danger" data-dismiss="modal">확인</button>
-		          <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
-		        </div>
-		        
-		      </div>
-		    </div>
-		  </div>
 <!-- 페이지 함수 부분 -->
-
 <script type="text/javascript">
-	function modalCheck(){
-		var checked = $('.modal_ul').find('input[name="radiogroup"]');
-		var rid = $('.modal-transit-Data').val();
-		var reportreason=null;
-		for(var i=0; i<checked.length; i++){		
-			if(checked[i].checked == true){
-				reportreason=checked[i].value;
-				alert(reportreason);
-				alert(rid);	
-			}
-		}
-		
-		$.ajax({
-			url : "ReportInsert.do",
-			type : "post",
-			data : { 
-				rid : rid,
-				reportreason : reportreason 
-			},
-			datatype : "json",
-			success : function(){
-				alert("성공");
-			},
-			error :  function(){
-				alert("json 에러");
-			}
-			
-			
-		});
-		
-	
-	}
-		
+
 	//제목 버튼 클릭시 <병원 후기 게시글 이동>
 	$('.titleClick').on('click',function(){
 		var rid = $(this).find('input:eq(0)').val();
@@ -383,14 +283,12 @@
 	$('.reportBtn').on('click',function(){
 		var rid = $(this).find('input').val();
 		alert(rid+"를 신고합니다");
-		var x = $('.modal-transit-Data').val(rid).val();
-
 	});
 	
 	$('.writeReview').on('click',function(){
 		var hpid = $(this).find('input').val();
 		location.href = "HospitalInfo_ReviewWriteForm.do?hpid="+hpid;
-		alert(hpid+"병원의 리뷰작성 페이지로 이동합니다");
+		alert(hpid+"병원의 리뷰작성 페이지로 이동합니다")
 	});
 	
 	$(document).ready(function(){
@@ -402,54 +300,7 @@
 	})
 	
 	
-	$(document).on('click','.clickLikeBtn',function(){
-		var muid = "${sessionid}";
-		var	hpid = "${hlist.hpid}";
-		var imgsrc = $(this).attr('src');
-		
-		if(imgsrc=="image/like_none.jpg"){
-			$(this).attr('src','image/like_done.jpg');
-			
-			$.ajax({
-				url : "InsertFavorite.do",
-				type : "post",
-				data : { 
-					muid : muid,
-					hpid : hpid
-				},
-				datatype : "json",
-				success : function(){
-					alert("성공");
-				},
-				error :  function(){
-					alert("json 에러");
-				}
 	
-			});
-			
-		}else{
-			$(this).attr('src','image/like_none.jpg');
-			
-			$.ajax({
-				url : "DeleteFavorite.do",
-				type : "post",
-				data : { 
-					muid : muid,
-					hpid : hpid
-				},
-				datatype : "json",
-				success : function(){
-					alert("성공");
-				},
-				error :  function(){
-					alert("json 에러");
-				}
-	
-			});
-		}
-			
-
-	});
 	
 	
 </script>

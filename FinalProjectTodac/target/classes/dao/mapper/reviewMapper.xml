@@ -29,14 +29,6 @@
  	</select>
  	
  	<select id="reviewWrite" parameterType="Review">
- 		insert into review values((select max(rid) from review)+1 , #{title} , #{content} , sysdate , #{rfile} , default , ${grade} , #{hpid} , 'say7862' ,default )
- 	</select>
- 	
- 	<select id="ReportInsert" parameterType="Report">
- 		insert into report values((select max(reportid) from report)+1 , #{rid}, #{reportreason}, sysdate, 'hong')
- 	</select>
- 	
-  	<select id="updateReivewStatus" parameterType="int">
- 		update review set status = 0 where rid = #{rid}
+ 		insert into review values((select max(rid) from review)+1 , #{title} , #{content} , sysdate , #{rfile} , default , ${grade} , #{hpid} , 'say7862' )
  	</select>
  </mapper>

@@ -1,8 +1,8 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 
-public class Review {
+public class reviewTest {
 	private int rid;
 	private String title;
 	private String content;
@@ -12,10 +12,13 @@ public class Review {
 	private int grade;
 	private String hpid;
 	private String muid;
+	private String dutyName;
+	private String dutyAddr;
 	
-	public Review() {}
-	public Review(int rid, String title, String content, Date rdate, String rfile, int readcount, int grade,
-			String hpid, String muid) {
+	public reviewTest() {}
+	
+	public reviewTest(int rid, String title, String content, Date rdate, String rfile, int readcount, int grade,
+			String hpid, String muid, String dutyName, String dutyAddr) {
 		this.rid = rid;
 		this.title = title;
 		this.content = content;
@@ -25,6 +28,8 @@ public class Review {
 		this.grade = grade;
 		this.hpid = hpid;
 		this.muid = muid;
+		this.dutyName = dutyName;
+		this.dutyAddr = dutyAddr;
 	}
 
 	public int getRid() {
@@ -32,7 +37,7 @@ public class Review {
 	}
 
 	public void setRid(int rid) {
-		this.rid = Integer.valueOf(rid);
+		this.rid = rid;
 	}
 
 	public String getTitle() {
@@ -40,7 +45,7 @@ public class Review {
 	}
 
 	public void setTitle(String title) {
-		this.title = String.valueOf(title);
+		this.title = title;
 	}
 
 	public String getContent() {
@@ -48,7 +53,7 @@ public class Review {
 	}
 
 	public void setContent(String content) {
-		this.content = String.valueOf(content);
+		this.content = content;
 	}
 
 	public Date getRdate() {
@@ -64,7 +69,7 @@ public class Review {
 	}
 
 	public void setRfile(String rfile) {
-		this.rfile = String.valueOf(rfile);
+		this.rfile = rfile;
 	}
 
 	public int getReadcount() {
@@ -72,7 +77,7 @@ public class Review {
 	}
 
 	public void setReadcount(int readcount) {
-		this.readcount = Integer.valueOf(readcount);
+		this.readcount = readcount;
 	}
 
 	public int getGrade() {
@@ -80,7 +85,7 @@ public class Review {
 	}
 
 	public void setGrade(int grade) {
-		this.grade = Integer.valueOf(grade);
+		this.grade = grade;
 	}
 
 	public String getHpid() {
@@ -88,7 +93,7 @@ public class Review {
 	}
 
 	public void setHpid(String hpid) {
-		this.hpid = String.valueOf(hpid);
+		this.hpid = hpid;
 	}
 
 	public String getMuid() {
@@ -96,13 +101,30 @@ public class Review {
 	}
 
 	public void setMuid(String muid) {
-		this.muid = String.valueOf(muid);
+		this.muid = muid;
+	}
+
+	public String getDutyName() {
+		return dutyName;
+	}
+
+	public void setDutyName(String dutyName) {
+		this.dutyName = dutyName;
+	}
+
+	public String getDutyAddr() {
+		return dutyAddr;
+	}
+
+	public void setDutyAddr(String dutyAddr) {
+		this.dutyAddr = dutyAddr;
 	}
 
 	@Override
 	public String toString() {
-		return "Review [rid=" + rid + ", title=" + title + ", content=" + content + ", rdate=" + rdate + ", rfile="
-				+ rfile + ", readcount=" + readcount + ", grade=" + grade + ", hpid=" + hpid + ", muid=" + muid + "]";
+		return "reviewTest [rid=" + rid + ", title=" + title + ", content=" + content + ", rdate=" + rdate + ", rfile="
+				+ rfile + ", readcount=" + readcount + ", grade=" + grade + ", hpid=" + hpid + ", muid=" + muid
+				+ ", dutyName=" + dutyName + ", dutyAddr=" + dutyAddr + "]";
 	}
 	
 	
