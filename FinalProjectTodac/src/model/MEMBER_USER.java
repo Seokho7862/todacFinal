@@ -153,11 +153,6 @@ public class MEMBER_USER {
 
 
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 		public double getlongitude() {
 			return longitude;
 		}
@@ -273,12 +268,7 @@ public class MEMBER_USER {
 		public MEMBER_USER(String muid, String pwd, String name, String birth, int age, String email, String phone,
 				double latitude, double longitude, String sample4_postcode, String address_detail, String address_base,
 				String address_road) {}
-<<<<<<< HEAD
-=======
-		
-	
-		
->>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
+
 		public MEMBER_USER(String muid, String pwd, String name, Date birth, int age, String email, String phone,
 				double latitude, double longitude, String sample4_postcode, String address_detail, String address_base,
 				String address_road) {
