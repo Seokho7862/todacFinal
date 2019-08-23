@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body>	<!--::header part start::-->
+	<jsp:include page="header2.jsp"></jsp:include>
+	<!-- Header part end-->
 <h1>공지사항 읽기</h1>
 <table border="1">
 <tr><td style="width: 800px;">${notice.title }</td><td>${notice.readcount }</td></tr>

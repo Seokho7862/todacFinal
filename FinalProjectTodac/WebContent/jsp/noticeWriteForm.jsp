@@ -8,7 +8,9 @@
 </head>
 <body>
 <h1>공지사항 작성</h1>
-
+	<!--::header part start::-->
+	<jsp:include page="header2.jsp"></jsp:include>
+	<!-- Header part end-->
 <form action="noticeWirte.do">
 <table>
 <tr><td><input type="text" name="title"> </td></tr>
