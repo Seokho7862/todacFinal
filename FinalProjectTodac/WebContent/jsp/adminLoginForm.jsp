@@ -12,19 +12,18 @@ $(function(){
 	
 	$('#adminbtn').on('click',function(){
 		alert("확인");
-		var maid = $('#maid').val();
+		
 		$.ajax({
 			url : 'admin_login.do',
 			data : {
-				maid : maid,
-				pw : $('#pwd').val()
+				muid : $('#maid').val(),
+				pwd : $('#pwd').val()
 			},
 		
 			success : function(data){
 				alert(data);
 				if(data=="1"){
-					alert(maid+"님 환영합니다.");
-					
+					alert("${muid} 님 환영합니다.");
 					
 					location.href='openMain.do';
 					

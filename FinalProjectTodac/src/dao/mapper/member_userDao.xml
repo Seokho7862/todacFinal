@@ -7,7 +7,7 @@
 	<insert id="createMember_user" parameterType="MEMBER_USER">
 	insert into member_user values('${muid}','${pwd}','${name}','${birth}',(${age}/10),'${email}','${phone}',${latitude},${longitude},'${post_num}','${address_detail}','${address_base}','${address_road}',default,default,default)
 	</insert>
-	<select id="searchMemberByID" parameterType="java.util.HashMap" resultType="MEMBER_USER">
+	<select id="searchMemberByID" parameterType="String" resultType="MEMBER_USER">
 	select * from member_user where muid like '${muid}%'
 	</select>
 	

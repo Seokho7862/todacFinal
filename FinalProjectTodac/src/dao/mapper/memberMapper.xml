@@ -41,19 +41,4 @@
  muid=#{muid}
   </select>
   
-  <!-- 병원정보 수정 -->
-	<update id="updateHosInfo" parameterType="java.util.HashMap">
-	update hospitalinfo set postcdn1=#{postcdn1},postcdn2=#{postcdn2},dutyaddr=#{address_road},dutytel1=#{dutyTel1},
-	dutytime1s=#{dutyTime1s},dutytime1c=#{dutyTime1c},
-	dutytime2s=#{dutyTime2s},dutytime2c=#{dutyTime2c},
-	dutytime3s=#{dutyTime3s},dutytime3c=#{dutyTime3c},
-	dutytime4s=#{dutyTime4s},dutytime4c=#{dutyTime4c},
-	dutytime5s=#{dutyTime5s},dutytime5c=#{dutyTime5c},
-	dutytime6s=#{dutyTime6s},dutytime6c=#{dutyTime6c},
-	dutytime7s=#{dutyTime7s},dutytime7c=#{dutyTime7c},
-	dutytime8s=#{dutyTime8s},dutytime8c=#{dutyTime8c},
-	wgs84lon=#{latitude},wgs84lat=#{longitude},hfile=#{hfile,jdbcType=VARCHAR}
-	where hpid=#{hpid}
-	</update>  
-  
   </mapper>

@@ -26,17 +26,16 @@ public class HospitalRateController {
 	
 	
 	@RequestMapping("rateinfo.do")
-	public @ResponseBody HashMap<String, Object> getYkiho(@RequestParam(defaultValue="1")String page ,@RequestParam(required=false) String code1, 
+	public @ResponseBody HashMap<String, Object> getYkiho(@RequestParam(required=false) String code1, 
 				@RequestParam(required=false)String code2,
 				@RequestParam(required=false)String hname,
 				@RequestParam(required=false)String[] check,
 				@RequestParam(required=false)String subject) {
-		
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		
 		System.out.println(code1 +","+code2+", check:"+check+","+subject+","+hname);
 		
-		List<String> ykiList = new YkihoGet1().getYkiho(code1, code2, hname, page);
+		List<String> ykiList = new YkihoGet1().getYkiho(code1, code2, hname);
 //		for(String y: ykiList) {
 //    		System.out.println(y+" controller");
 //    	}
@@ -48,23 +47,7 @@ public class HospitalRateController {
 				newlist.add(rlist.get(i));
 			}
 		}
-		//페이지
-//		HashMap<String, Object> pageinfo = new HashMap<String, Object>();
-//		int offset = (page-1)*10+1;
-//		int num =newlist.size();
 		
-//		List<Rate> nlist = new ArrayList<Rate>();
-//		for(int j=offset;j<=(offset+10)-1;j++) {
-//			nlist.add(newlist.get(j));
-//		}
-//		pageinfo.put("current",page);
-//		pageinfo.put("newlist",newlist);
-//		pageinfo.put("key", subject);
-//		pageinfo.put("start", page-((page-1)%10));
-//		pageinfo.put("end", page-((page-1)%10)+(10-1));
-//		pageinfo.put("total", num);
-//		pageinfo.put("last", (num-1)/10+1);
-//		
 //		List<Rate> end = new ArrayList<Rate>();
 //		for(int i =0;i<newlist.size();i++) {
 //			if(newlist.get(i).getInjection_rate().equals("1")) {
@@ -92,7 +75,6 @@ public class HospitalRateController {
 //		}
 		param.put("key", subject);
 		param.put("newlist", newlist);
-		System.out.println(page);
 		return param;
 		
 	}

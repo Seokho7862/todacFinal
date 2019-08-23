@@ -1,11 +1,8 @@
 package controller;
 
 
-import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
@@ -21,14 +18,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import model.HospitalInfo;
 import model.MEMBER_USER;
 import net.nurigo.java_sdk.Coolsms;
 import net.nurigo.java_sdk.api.Message;
-import service.HealthInfoFileUploadClass;
 import service.MemberService;
 
 @Controller
@@ -267,6 +261,22 @@ public class MemberController {
 	public String addressapi() {
 		return "addressApi";
 	}
+	//병원 업데이트 폼 띄우기
+	@RequestMapping("hos_update_form.do")
+	public ModelAndView hosUpdateForm(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		if(session.getAttribute("muid")==null) {
+			mav.setViewName("redirect:loginForm.do");
+			return mav;
+		}
+		else {
+			String muid = (String)session.getAttribute("muid");
+			System.out.println(service.selectOwnHos(muid));
+			mav.addObject("hoslist", service.selectOwnHos(muid));
+			mav.setViewName("hosinfoUpdate");
+			return mav;
+		}
+	}
 	
 	@RequestMapping("review_list.do")
 	public ModelAndView reviewList(HttpSession session) {
@@ -304,43 +314,4 @@ public class MemberController {
 		return mav;
 	}
 
-	//병원 업데이트 폼 띄우기
-	@RequestMapping("hos_update_form.do")
-	public ModelAndView hosUpdateForm(HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		if(service.selectManager((String)session.getAttribute("muid"))==0) {
-			mav.setViewName("redirect:loginForm.do");
-			return mav;
-		}
-		else {
-			String muid = (String)session.getAttribute("muid");
-			System.out.println(service.selectOwnHos(muid));
-			mav.addObject("hoslist", service.selectOwnHos(muid));
-			mav.setViewName("hosinfoUpdate");
-			return mav;
-		}
-	}
-	//병원수정
-	@RequestMapping("hos_update.do")
-	public String hosupdate(@RequestParam HashMap<String, String>param, MultipartFile hfile) {
-		String modhfile=null;
-		if(hfile.getOriginalFilename()!="") {
-			
-			ArrayList<String> result = HealthInfoFileUploadClass.FileUpload(hfile);
-			modhfile = (result.get(0));
-			System.out.println(modhfile);
-			
-		}
-		System.out.println(param);
-		System.out.println(modhfile);
-	 if(service.updateHosInfo(param, modhfile)==1) {
-		 return "redirect:hos_update_form.do";
-	 }
-	 else {
-		return "redirect:loginForm.do";
-	 } 
-		
-	}
-	
-	
 }

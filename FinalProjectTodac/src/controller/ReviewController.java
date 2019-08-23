@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -64,12 +63,5 @@ public class ReviewController {
 		mav.setViewName("HospitalInfoForm");
 		
 		return mav;
-	}
-	
-	@RequestMapping("ReportInsert.do")
-	public @ResponseBody void ReportInsert(String rid, String reportreason){
-		System.out.println(rid);
-		System.out.println(reportreason);
-		rsvc.ReportInsert(rid,reportreason);
 	}
 }

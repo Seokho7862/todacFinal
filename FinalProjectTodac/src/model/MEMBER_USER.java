@@ -147,7 +147,13 @@ public class MEMBER_USER {
 
 
 
-		
+		public void setLatitude(double latitude) {
+			this.latitude = latitude;
+		}
+
+
+
+
 		public double getlongitude() {
 			return longitude;
 		}

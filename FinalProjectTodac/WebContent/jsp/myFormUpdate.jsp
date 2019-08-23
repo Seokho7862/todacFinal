@@ -12,6 +12,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -100,7 +102,7 @@ $(function(){
 		<td>폰번호</td>
 		<td><input type="text" id="phone" value="${member.phone }"></td>
 		</tr>
-			<tr>
+		
 					<th>우편번호</th>
 					<td>
 					    <input type="hidden" id="confmKey" name="confmKey" value="">
@@ -127,6 +129,7 @@ $(function(){
 					<td>
 						<input type="text" id="latitude" style="width:40%" value="${member.latitude}">
 						<input type="text" id="longitude"  style="width:40%" value="${member.longitude}">
+						<button id="xych">좌표변환</button>
 					</td>
 				</tr>
 		<tr>

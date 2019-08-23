@@ -4,40 +4,31 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="dao.IReviewDao">
-
-
-<resultMap id="selectOneHospitalReview" type="map">
-
-<result javaType="int" property="column" column="rid"/>
-
-<result javaType="String" property="column" column="title"/>
-
-<result javaType="String" property="column" column="content"/>
-
-<result javaType="java.sql.Date" property="column" column="rdate"/>
-
-<result javaType="String" property="column" column="rfile"/>
-
-<result javaType="String" property="column" column="readcount"/>
-
-<result javaType="int" property="column" column="grade"/>
-
-<result javaType="String" property="column" column="hpid"/>
-
-<result javaType="String" property="column" column="muid"/>
-
-</resultMap>
-
-<select id="selectOneHospitalReview" resultType="review" parameterType="String"> select * from review where hpid like #{hpid} order by rdate desc </select>
-
-<select id="selectOneReviewBoard" resultType="review" parameterType="String"> select * from review where rid = #{rid} </select>
-
-<select id="selectAroundReview" resultType="review" parameterType="String"> select * from review where rid =#{rid} </select>
-
-<select id="reviewWrite" parameterType="Review"> insert into review values((select max(rid) from review)+1 , #{title} , #{content} , sysdate , #{rfile} , default , ${grade} , #{hpid} , 'say7862' ,default ) </select>
-
-<select id="ReportInsert" parameterType="Report"> insert into report values((select max(reportid) from report)+1 , #{rid}, #{reportreason}, sysdate, 'hong') </select>
-
-<select id="updateReivewStatus" parameterType="int"> update review set status = 0 where rid = #{rid} </select>
-
-</mapper>
+ 	<resultMap type="map" id="selectOneHospitalReview">
+ 		<result column="rid" property="column" javaType="int"/>
+ 		<result column="title" property="column" javaType="String"/>
+ 		<result column="content" property="column" javaType="String"/>
+ 		<result column="rdate" property="column" javaType="java.sql.Date"/>
+ 		<result column="rfile" property="column" javaType="String"/>
+ 		<result column="readcount" property="column" javaType="String"/>
+ 		<result column="grade" property="column" javaType="int"/>
+ 		<result column="hpid" property="column" javaType="String"/>
+ 		<result column="muid" property="column" javaType="String"/>
+ 	</resultMap>
+ 	
+ 	<select id="selectOneHospitalReview" parameterType="String" resultType="review">
+ 		select * from review where hpid like #{hpid} order by rdate desc
+ 	</select>
+ 	
+ 	<select id="selectOneReviewBoard" parameterType="String" resultType="review">
+ 		select * from review where rid = #{rid}
+ 	</select>
+ 	
+ 	<select id="selectAroundReview" parameterType="String" resultType="review">
+ 		select * from review where rid =#{rid}
+ 	</select>
+ 	
+ 	<select id="reviewWrite" parameterType="Review">
+ 		insert into review values((select max(rid) from review)+1 , #{title} , #{content} , sysdate , #{rfile} , default , ${grade} , #{hpid} , 'say7862' )
+ 	</select>
+ </mapper>

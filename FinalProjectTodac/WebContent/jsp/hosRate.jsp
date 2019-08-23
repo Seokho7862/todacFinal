@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Todac</title>
+<title>Insert title here</title>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<!-- 새로운 스타일 적용-->
-<!-- Required meta tags -->
+
 <style type="text/css">
 #my-spinner {
 	width: 100%; height: 100%;
@@ -135,14 +135,11 @@ $(function(){
 	sub = $('#costBtn').val();
 	openMe();
 		});
-	
-	//검색
-			var num =0;
+		
+		
 	$('#search').on('click',function(){
-		num=1;
 	var list = [];
 	var index = 0;
-	var page = num;
 	$('input[name="check"]:checked').each(function(){
 		var test = $(this).val();
 		list[index] = test;
@@ -158,8 +155,7 @@ $(function(){
 				hname:$('#hname').val(),
 				code1:$('#sel1').val(),
 				code2:$('#sel2').val(),
-				check : list,
-				page : page
+				check : list
 				},
 			
 			type:"post",
@@ -210,78 +206,9 @@ $(function(){
 		
 	});
 	
-		$('#nextBtn').on('click',function(){
-			num++;
-			alert(num);
-			var page = num;
-			var list = [];
-			var index = 0;
-			$('input[name="check"]:checked').each(function(){
-				var test = $(this).val();
-				list[index] = test;
-				index++;
-			});
-				alert(list);
-				jQuery.ajaxSettings.traditional = true;
+	
 
-			$.ajax({
-				url :'rateinfo.do',
-				data : {
-					subject : sub,
-					hname:$('#hname').val(),
-					code1:$('#sel1').val(),
-					code2:$('#sel2').val(),
-					check : list,
-					page : page
-					},
-				
-				type:"post",
-				success : function(data){
-					
-				 	//$('#ratebody tr:gt(0)').remove();
-				 	
-				 	alert("성공");
-				 	var key = data.key;
-				 	var newlist = data.newlist;
-				 	var input ="";
-					for(var i in newlist){
-						//alert(data[i].yadmNm);
-					  	input += "<tr>";
-					  	input += "<td>" + i + "</td>";
-					  	input += "<td>" + newlist[i].yadmNm + "</td>";
-					  	if(key=="1"){
-					  	input += "<td>주사제 처방률</td>";
-					  	input += "<td>" + newlist[i].injection_rate + "</td>";
-					  	}
-					  	if(key=="2"){
-					  	input += "<td>항생제 처방률</td>";
-					  	input += "<td>" + newlist[i].anti_rate + "</td>";
-					  	}
-					  	if(key=="3"){
-					  	input += "<td>수술의 예방적 항생제</td>";
-					  	input += "<td>" + newlist[i].op_anti_rate + "</td>";
-					  	}
-					  	if(key=="4"){
-					  	input += "<td>처방약품비</td>";
-					  	input += "<td>" + newlist[i].medi_cost_rate + "</td>";
-					  	}
-					  	input += "<td>" + newlist[i].addr + "</td>";
-					  	input += "</tr>";
-					} 
-				
-					$('#ratebody').find('tr:last').after(input);
-					
-					
-				},
-				error : function(){
-					alert("다시 시도해주세요");
-				}
-				
-				
-				
-			});
-		});
-		
+	
 	
 		
 	
@@ -543,9 +470,9 @@ $(function(){
   
   
   <table class="table table-striped" id="rateinfo">
-    <thead class="thead-light">
-      <tr class="table-row">
-        <th class="serial">NO.</th>
+    <thead>
+      <tr>
+        <th>NO.</th>
         <th>병원이름</th>
         <th>평가항목</th>
         <th>평가등급<a>▲</a><a>▼</a></th>
@@ -557,7 +484,6 @@ $(function(){
     </tbody>
     
   </table>
-    <button id="nextBtn">다음</button>
 </div>
   
   
@@ -574,7 +500,6 @@ $(function(){
 <div id='spins'>
 	<div><span>
 		<img src='//cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif'>
-		
 	</span></div>
 </div>
 

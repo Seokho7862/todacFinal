@@ -23,17 +23,11 @@ public class AdminController {
 	private AdminService service;
 
 	@RequestMapping("apply_list.do")
-	public ModelAndView hosApplyList(HttpSession session) {
+	public ModelAndView hosApplyList() {
 		ModelAndView mav = new ModelAndView();
-		if(service.checkAdmin((String)session.getAttribute("muid"))==null) {
-			
-			mav.setViewName("redirect:loginForm.do");
-		}else {
-			
 		System.out.println(service.selectAllapply());
 		mav.addObject("applylist", service.selectAllapply());
 		mav.setViewName("applylist2");
-		}
 		return mav;
 	}
 	
@@ -64,16 +58,14 @@ public class AdminController {
 	}	
 	
 	@RequestMapping("admin_login_form.do")
-	public String adminLoginForm(HttpSession session) {
-		session.invalidate();
+	public String adminLoginForm() {
 		return "adminLoginForm";
 	}
 	
 	@RequestMapping("admin_login.do")
-	public @ResponseBody String adminLogin(HttpSession session ,@RequestParam HashMap<String, Object> param) {
+	public @ResponseBody String adminLogin(@RequestParam HashMap<String, Object> param) {
 		System.out.println(param);
 		if(service.adminLogin(param)==1) {
-			session.setAttribute("muid", (String)param.get("maid"));
 			return "1";
 		}
 		else {

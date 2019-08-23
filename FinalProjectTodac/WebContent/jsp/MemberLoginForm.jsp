@@ -22,18 +22,18 @@ $(function(){
 	
 	$('#managerbtn').on('click',function(){
 		alert("확인");
-		var muid =$('#muid').val();
+		
 		$.ajax({
 			url : 'loginManager.do',
 			data : {
-				muid : muid,
+				muid : $('#muid').val(),
 				pwd : $('#pwd').val()
 			},
 		
 			success : function(data){
 				alert(data);
 				if(data=="1"){
-					alert(muid+" 님 환영합니다.");
+					alert("${muid} 님 환영합니다.");
 					
 					location.href='openMain.do';
 					
@@ -88,7 +88,6 @@ $(function(){
 			</div>
 
 <button onclick="location.href='admin_login_form.do'">관리자로그인</button>
-<button onclick="location.href='logout.do'">로그아웃</button>
 
 </body>
 </html>
