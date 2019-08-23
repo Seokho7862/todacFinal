@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
@@ -29,36 +30,19 @@
     <link rel="stylesheet" href="sy_css/aos.css">
 
     <link rel="stylesheet" href="sy_css/style.css">
-    <script> 
-$(function(){ 
 
-var $win = $(window); 
-var top = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다. 
-/*사용자 설정 값 시작*/ 
-var speed = 500; 
-// 따라다닐 속도 : "slow", "normal", or "fast" or numeric(단위:msec) 
+<script type="text/javascript">
+$(function(){
+	
+$('.list-group').hide();
 
-var easing = 'linear'; 
-// 따라다니는 방법 기본 두가지 linear, swing 
 
-var $layer = $('.float_sidebar'); 
-// 레이어 셀렉팅 
-var layerTopOffset = 0; 
-// 레이어 높이 상한선, 단위:px 
 
-$layer.css('position', 'relative').css('z-index', '1'); 
-/*사용자 설정 값 끝*/ 
-// 스크롤 바를 내린 상태에서 리프레시 했을 경우를 위해 
-if (top > 0 ) $win.scrollTop(layerTopOffset+top); 
-else $win.scrollTop(0); 
-//스크롤이벤트가 발생하면 
+$('.panel-heading').click(function(){
+	$(this).parents('div.panel').find('ul.list-group').slideToggle();
 
-$(window).scroll(function(){ yPosition = $win.scrollTop() - 1100; 
-
-//이부분을 조정해서 화면에 보이도록 맞추세요 
-
-if (yPosition < 0) { yPosition = 0; } $layer.animate({"top":yPosition }, {duration:speed, easing:easing, queue:false}); }); 
-}); 
+});
+});
 </script>
 
 
@@ -134,7 +118,7 @@ if (yPosition < 0) { yPosition = 0; } $layer.animate({"top":yPosition }, {durati
     </header>
   
 
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(sy_images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(sy_images/mypage.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
 
@@ -153,39 +137,41 @@ if (yPosition < 0) { yPosition = 0; } $layer.animate({"top":yPosition }, {durati
   <!-- 패널 타이틀1 -->
 <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title">Panel Title</h3>
+      <h3 class="panel-title">회원정보</h3>
     </div>
     <!-- 사이드바 메뉴목록1 -->
     <ul class="list-group">
-      <li class="list-group-item"><a href="#">HTML</a></li>
-      <li class="list-group-item"><a href="#">CSS</a></li>
-      <li class="list-group-item"><a href="#">ECMAScript5</a></li>
+      <li class="list-group-item"><a href="#">내 정보 수정</a></li>
+      <li class="list-group-item"><a href="#">비밀번호 재설정</a></li>
+      <li class="list-group-item"><a href="#">내 병원정보 수정</a></li>
     </ul>
 </div>
   <!-- 패널 타이틀2 -->
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Panel Title</h3>
+    <h3 class="panel-title">나의 목록</h3>
   </div>
     <!-- 사이드바 메뉴목록2 -->
       <ul class="list-group">
-        <li class="list-group-item"><a href="#">jQuery</a></li>
-        <li class="list-group-item"><a href="#">BootStrap</a></li>
+        <li class="list-group-item"><a href="#">병원 즐겨찾기</a></li>
+        <li class="list-group-item"><a href="#">내가 쓴 리뷰</a></li>
       </ul>
 </div>      
-  <!-- 패널 타이틀3 -->
-<div class="panel panel-info">
+
+<!-- 패널 타이틀3 -->
+<!-- <div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">Panel Title</h3>
   </div>
-      <!-- 사이드바 메뉴목록3 -->
+      사이드바 메뉴목록3
       <ul class="list-group">
         <li class="list-group-item"><a href="#">About</a></li>
         <li class="list-group-item"><a href="#">Help</a></li>
       </ul>
-    </div>
-</div>
+    </div> -->
     
+    
+</div> 
     
     
       
