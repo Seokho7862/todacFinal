@@ -39,8 +39,6 @@ local.properties
 .target
 .tern-project
 .springBeans
-<<<<<<< HEAD
 .recommenders/
-=======
-.recommenders/
->>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal.git
+.MANIFEST.MF
+.pom.properties
