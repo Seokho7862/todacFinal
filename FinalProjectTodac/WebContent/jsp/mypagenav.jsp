@@ -5,7 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="css/style.css">
+<script type="text/javascript">
+$(function(){
+	
+$('.list-group').hide();
+
+
+
+$('.panel-heading').click(function(){
+	$(this).parents('div.panel').find('ul.list-group').slideToggle();
+
+});
+});
+</script>
 </head>
 <body>
 <div class="col-md-4">
@@ -30,7 +55,7 @@
     <!-- 사이드바 메뉴목록2 -->
       <ul class="list-group">
         <li class="list-group-item"><a href="like_list.do">병원 즐겨찾기</a></li>
-        <li class="list-group-item"><a href="review_list.dos">내가 쓴 리뷰</a></li>
+        <li class="list-group-item"><a href="review_list.do">내가 쓴 리뷰</a></li>
       </ul>
 </div>      
     

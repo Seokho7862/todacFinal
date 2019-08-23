@@ -49,7 +49,7 @@ public class AdminService {
 	public int adminLogin(HashMap<String, Object>param) {
 		String maid=(String) param.get("maid");
 		String pwd = (String) param.get("pwd");
-		System.out.println("ㅅㅂ");
+		
 		HashMap<String, Object> result = addao.selectAdminById(maid);
 		System.out.println(result);
 		String pw = (String)result.get("PW");
@@ -59,8 +59,7 @@ public class AdminService {
 			}else {
 			return 0;}
 		}
-		else 
-		return 0;
+		else return 0;
 	}
 	
 	

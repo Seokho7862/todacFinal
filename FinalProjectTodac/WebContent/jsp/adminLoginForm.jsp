@@ -46,9 +46,16 @@ $(function(){
 </script>			
 </head>
 <body>
+<jsp:include page="header2.jsp"></jsp:include>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4" style="margin-top: 150px">
 <h1>관리자 로그인</h1>
 아이디<input type="text" id="maid"> <br>
 비밀번호<input type="password" id="pwd">
 <input type="button" id="adminbtn" value="로그인">
+</div>
+<div class="col-md-4"></div>
+</div>
 </body>
 </html>

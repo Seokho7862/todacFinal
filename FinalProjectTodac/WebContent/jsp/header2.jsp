@@ -106,7 +106,7 @@
 													+ '<div class="card-header" style="height: 30px; text-align:left; padding: 0px;">'
 													+ data + '님 환영합니다!</div>'
 											text = text
-													+ '<div class="card-body" style="height: 70px;"><a href="show_mypage.do">내 정보  </a> 　　　<a href="logout.do">로그아웃 </a></div>'
+													+ '<div class="card-body" style="height: 70px;"><a href="show_pwd_form.do">내 정보  </a> 　　　<a href="logout.do">로그아웃 </a></div>'
 											text = text + '</div>'
 
 											$('#loginDiv').html("")
@@ -189,7 +189,7 @@
 										href="healthInfoList.do"><font face="Jua"
 											size="5px">건강 정보</font></a></li>
 
-									<li class="nav-item"><a class="nav-link" href="#"><font
+									<li class="nav-item"><a class="nav-link" href="rateinfoform.do"><font
 											face="Jua" size="5px">병원 평가 정보</font></a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="noticeListForm.do"><font face="Jua" size="5px">공지사항</font></a>
