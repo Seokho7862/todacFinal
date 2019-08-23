@@ -63,9 +63,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping("admin_login.do")
-	public @ResponseBody String adminLogin(@RequestParam HashMap<String, Object> param) {
+	public @ResponseBody String adminLogin(@RequestParam HashMap<String, Object> param,HttpSession session) {
 		System.out.println(param);
 		if(service.adminLogin(param)==1) {
+			
+			session.setAttribute("muid", param.get("maid"));
 			return "1";
 		}
 		else {

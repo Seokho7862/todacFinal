@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<!--::header part start::-->
+	<jsp:include page="header2.jsp"></jsp:include>
+	<!-- Header part end-->
 <h1>공지사항 수정</h1>
 
 <form action="noticeModify.do">

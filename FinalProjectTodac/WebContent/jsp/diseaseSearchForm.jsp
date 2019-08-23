@@ -15,8 +15,26 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+
+
+
+
 	$('document').ready(function() {
-		$(bttn).bind('click', function() {
+		function getParam(sname) {
+		    var params = location.search.substr(location.search.indexOf("?") + 1);
+		    var sval = "";
+		    params = params.split("&");
+		    for (var i = 0; i < params.length; i++) {
+		        temp = params[i].split("=");
+		        if ([temp[0]] == sname) { sval = temp[1]; }
+		    }
+		    return sval;
+		}
+		var para= decodeURIComponent(getParam("keyword"));
+		$('#keyword').val(para);
+		
+		
+		$(bttn).bind('click', function diseaseSearch() {
 			var text = $('#keyword').val();
 			 $.ajax({
 				url : 'diseaseSearch.do',
@@ -56,6 +74,7 @@
 			});
 			
 		})
+		 $(bttn).trigger('click');
 	})
 	
 </script>
@@ -91,7 +110,10 @@ width: 100%;
 
 </head>
 <body>
-	<h1>질병 검색 페이지</h1>
+<!--::header part start::-->
+	<jsp:include page="header2.jsp"></jsp:include>
+	<!-- Header part end-->
+	
 
 	<div id="diseaseSearchDiv">
 
@@ -120,7 +142,7 @@ width: 100%;
  -->
 
 	</div>
-	
+	<c:set var="keyword" value='#{request.getParameter("keyword")}'></c:set>
 
 
 </body>

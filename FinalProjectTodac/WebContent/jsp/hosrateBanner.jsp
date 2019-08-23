@@ -18,17 +18,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-
-
-
 </head>
 <body>
 
-
-
 <div class="jumbotron text-center text-light" style="margin-bottom:0">
    <div class="container">
-    <h1 style="font-family: 'Jua'; color: white">MY PAGE</h1>
+    <h1 style="font-family: 'Jua'; color: white">Hospital Grade</h1>
     <p></p>
     <p></p>
     <p></p>
@@ -36,8 +31,6 @@
     <p><a class="btn btn-primary btn-lg" role="button" style="font-family: 'Jua'; color: white">HOME&raquo;</a></p>
   </div>
 </div>
-
-
 
 </body>
 </html>
