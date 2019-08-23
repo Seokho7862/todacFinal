@@ -383,7 +383,6 @@ public class TestController {
 	public @ResponseBody String getSessionId(HttpSession session) {
 		String id="";
 		id = (String)session.getAttribute("muid");		
-		System.out.println("ㅅㅂ");
 		return id;
 	}
 	@RequestMapping("todacMainForm.do")

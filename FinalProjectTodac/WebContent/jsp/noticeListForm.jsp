@@ -62,7 +62,7 @@ width: 100%;
 	</table>
 	</div>
 
-<input class="btn" type="button" value="공지사항 작성" onclick="location.href='noticeWriteForm.do'">
+<input class="btn btn-outline-secondary" type="button" value="공지사항 작성" onclick="location.href='noticeWriteForm.do'">
 
 
 </body>

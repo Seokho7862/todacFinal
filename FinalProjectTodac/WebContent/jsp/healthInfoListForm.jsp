@@ -51,10 +51,11 @@ div{cursor: pointer;}
 
 #pageDiv{
 position: relative;
-width: 500px;
+width: 600px;
 margin-top:20px;
-margin-right: auto;
-margin-left: auto;}
+margin-left: 360px;
+
+}
 #searchDiv{
 position: relative;
 width:500px;
@@ -82,9 +83,12 @@ margin-bottom: -15px;
 </style>
 </head>
 <body>
+	<!--::header part start::-->
+	<jsp:include page="header2.jsp"></jsp:include>
+	<!-- Header part end-->
 
 <div id="top3Div">
-		<h1>인기 게시물</h1>
+		<h1>　　　인기 게시물</h1>
 	<div class="btn-group" style="margin-left: 1000px;" >
 		<input type="button" value="주간" id="weeklyBest" class="btn btn-outline-secondary">
 		<input type="button" value="월간" id="monthlyBest" class="btn btn-outline-secondary">
@@ -108,7 +112,7 @@ margin-bottom: -15px;
 
 
 
-	<h1>건강정보 리스트</h1>
+	<h1>　　　건강정보 리스트</h1>
 
 	<table class="table-borderless" style="width: 100%; max-width: 1250px;">
 		

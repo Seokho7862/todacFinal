@@ -16,14 +16,14 @@ $(function(){
 		$.ajax({
 			url : 'admin_login.do',
 			data : {
-				muid : $('#maid').val(),
+				maid : $('#maid').val(),
 				pwd : $('#pwd').val()
 			},
 		
 			success : function(data){
 				alert(data);
 				if(data=="1"){
-					alert("${muid} 님 환영합니다.");
+					alert($('#maid').val()+" 님 환영합니다.");
 					
 					location.href='openMain.do';
 					

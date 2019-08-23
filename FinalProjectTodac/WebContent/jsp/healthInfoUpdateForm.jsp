@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!--::header part start::-->
+	<jsp:include page="header2.jsp"></jsp:include>
+	<!-- Header part end-->
+
 <h1>건강정보 수정폼</h1>
 
 <form action="updateHealthInfo.do">
