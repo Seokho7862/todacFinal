@@ -1,4 +1,4 @@
-#�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝占� �뜝�룞�삕�뜝�뙟諭꾩삕
+﻿#�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝占� �뜝�룞�삕�뜝�뙟諭꾩삕
 *.com
 *.class
 *.dll
@@ -39,5 +39,11 @@ local.properties
 .target
 .tern-project
 .springBeans
+<<<<<<< HEAD
 .recommenders/
 
+=======
+.recommenders/
+.MANIFEST.MF
+.pom.properties
+>>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal

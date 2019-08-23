@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="forcss/todac.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -34,9 +35,12 @@ $('.panel-heading').click(function(){
 });
 </script>
 
+=======
+>>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 </head>
 <body>
 <h1>마이페이지</h1>
+<<<<<<< HEAD
 <%-- <jsp:include page="header.jsp"></jsp:include> --%>
 
 
@@ -150,5 +154,8 @@ $('.panel-heading').click(function(){
 </div> 
 
 
+=======
+<jsp:include page="header.jsp"></jsp:include>
+>>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 </body>
 </html>
