@@ -121,9 +121,9 @@
 							success : function(data) {
 								var res = "";
 								for (var i = 0; i < data.length; i++) {
-									res = res + '<tr><td class="popTd">'
+									res = res + '<tr><td class="popTd"><a href="diseaseSearchForm.do?keyword='+data[i].keyword+'">'
 											+ (i + 1) + "." + data[i].keyword
-											+ "</td></tr>"
+											+ "</a></td></tr>"
 
 								}
 								$('#popBody').html(res);
