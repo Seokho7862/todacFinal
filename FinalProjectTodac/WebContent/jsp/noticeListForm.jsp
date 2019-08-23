@@ -40,7 +40,7 @@ overflow: scroll;
 
 
 	<div id="header">
-	<jsp:include page="header2.jsp"></jsp:include>
+	<%-- <jsp:include page="header2.jsp"></jsp:include> --%>
 	</div>
 
 <div id="tableDiv">

@@ -5,31 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="forcss/todac.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> 
-    <link rel="stylesheet" href="sy_fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="sy_css/bootstrap.min.css">
-    <link rel="stylesheet" href="sy_css/magnific-popup.css">
-    <link rel="stylesheet" href="sy_css/jquery-ui.css">
-    <link rel="stylesheet" href="sy_css/owl.carousel.min.css">
-    <link rel="stylesheet" href="sy_css/owl.theme.default.min.css">
-
-    <link rel="stylesheet" href="sy_css/bootstrap-datepicker.css">
-
-    <link rel="stylesheet" href="sy_fonts/flaticon/font/flaticon.css">
-
-
-
-    <link rel="stylesheet" href="sy_css/aos.css">
-
-    <link rel="stylesheet" href="sy_css/style.css">
 
 <script type="text/javascript">
 $(function(){
@@ -45,97 +34,48 @@ $('.panel-heading').click(function(){
 });
 </script>
 
-
-    
-=======
->>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal
 </head>
 <body>
-<<<<<<< HEAD
-    <script src="sy_js/jquery-3.3.1.min.js"></script>
-  <script src="sy_js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="sy_js/jquery-ui.js"></script>
-  <script src="sy_js/popper.min.js"></script>
-  <script src="sy_js/bootstrap.min.js"></script>
-  <script src="sy_js/owl.carousel.min.js"></script>
-  <script src="sy_js/jquery.stellar.min.js"></script>
-  <script src="sy_js/jquery.countdown.min.js"></script>
-  <script src="sy_js/jquery.magnific-popup.min.js"></script>
-  <script src="sy_js/bootstrap-datepicker.min.js"></script>
-  <script src="sy_js/aos.js"></script>
-
-  <script src="sy_js/main.js"></script>
-
+<h1>마이페이지</h1>
 <%-- <jsp:include page="header.jsp"></jsp:include> --%>
- 
-  <div class="site-wrap">
-
-    <div class="site-mobile-menu">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-    
-   <header class="site-navbar py-3" role="banner">
-
-      <div class="container">
-        <div class="row align-items-center">
-          
-          <div class="col-11 col-xl-2">
-            <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0">Logistics</a></h1>
-          </div>
-          <div class="col-12 col-md-10 d-none d-xl-block">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-
-              <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li class="has-children">
-                  <a href="services.html">Services</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Air Freight</a></li>
-                    <li><a href="#">Ocean Freight</a></li>
-                    <li><a href="#">Ground Shipping</a></li>
-                    <li><a href="#">Warehousing</a></li>
-                    <li><a href="#">Storage</a></li>
-                  </ul>
-                </li>
-                <li><a href="industries.html">Industries</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li class="active"><a href="contact.html">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
 
 
-          <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
-          </div>
+<div class="jumbotron text-center text-light" style="margin-bottom:0">
+   <div class="container">
+    <h1>MY PAGE</h1>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p><a class="btn btn-primary btn-lg" role="button">자세히 알아보기 &raquo;</a></p>
+  </div>
+</div>
 
-        </div>
-      </div>
-      
-    </header>
-  
 
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(sy_images/mypage.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
+<div class="container" style="margin-top:30px">
+  <div class="row">
+<!--     <div class="col-sm-4">
+   
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <hr class="d-sm-none">
+    </div> -->
 
-          <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
-            <h1 class="text-white font-weight-light text-uppercase font-weight-bold">Mypage</h1>
-            <p class="breadcrumb-custom"><a href="index.html">Home</a> <span class="mx-2">&gt;</span> <span>Mypage</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-<div class="col-md-3">
+
+<div class="col-md-4">
 <!-- 사이드 바 메뉴-->
   <!-- 패널 타이틀1 -->
 <div class="panel panel-info">
@@ -144,9 +84,9 @@ $('.panel-heading').click(function(){
     </div>
     <!-- 사이드바 메뉴목록1 -->
     <ul class="list-group">
-      <li class="list-group-item"><a href="#">내 정보 수정</a></li>
-      <li class="list-group-item"><a href="#">비밀번호 재설정</a></li>
-      <li class="list-group-item"><a href="#">내 병원정보 수정</a></li>
+      <li class="list-group-item"><a href="show_pwd_form.do?from=member">내 정보 수정</a></li>
+      <li class="list-group-item"><a href="renew_form.do">비밀번호 재설정</a></li>
+      <li class="list-group-item"><a href="show_pwd_form.do?from=hos">내 병원정보 수정</a></li>
     </ul>
 </div>
   <!-- 패널 타이틀2 -->
@@ -156,8 +96,8 @@ $('.panel-heading').click(function(){
   </div>
     <!-- 사이드바 메뉴목록2 -->
       <ul class="list-group">
-        <li class="list-group-item"><a href="#">병원 즐겨찾기</a></li>
-        <li class="list-group-item"><a href="#">내가 쓴 리뷰</a></li>
+        <li class="list-group-item"><a href="like_list.do">병원 즐겨찾기</a></li>
+        <li class="list-group-item"><a href="review_list.dos">내가 쓴 리뷰</a></li>
       </ul>
 </div>      
 
@@ -173,10 +113,42 @@ $('.panel-heading').click(function(){
       </ul>
     </div> -->
     
+    </div>
+    <div class="col-md-8">
+    <div class="container contact-form">
+            <div class="contact-image">
+                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+            </div>
+            <form method="post">
+                <h3>Drop Us a Message</h3>
+               <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+</div>
+    
+    </div>
     
 </div> 
-    
-    
-      
+
+
 </body>
 </html>
