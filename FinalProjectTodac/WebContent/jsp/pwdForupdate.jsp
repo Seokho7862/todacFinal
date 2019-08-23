@@ -53,15 +53,19 @@ $(function(){
 
 </head>
 <body>
-
-
+<jsp:include page="header2.jsp"></jsp:include>
 <jsp:include page="myPage.jsp"></jsp:include>
-<div style="margin-left: 300px">
 
-<h1>비밀번호입력</h1>
+<div class="container">
+<div class="row">
+<jsp:include page="mypagenav.jsp"></jsp:include>
+<div class="col-md-8">
+<h1 style="font-family: 'Jua';">비밀번호입력</h1>
 비밀번호
 <input type="password" id="pwd">
 <input type="button" id="pwdBtn" value="확인">
+</div>
+</div>
 </div>
 </body>
 </html>

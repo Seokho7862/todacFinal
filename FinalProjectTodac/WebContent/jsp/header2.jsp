@@ -12,7 +12,9 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <title>Todac</title>
+<link rel="stylesheet" href="forcss/todac.css">
 <link rel="icon" href="img/todac_ori.png">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/animate.css">
@@ -23,17 +25,8 @@
 <link rel="stylesheet" href="css/nice-select.css">
 <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/style.css">
-<link
-	href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
-	rel="stylesheet">
 <style type="text/css">
-.container {
-	font-family: 'Jua', sans-serif;
-}
 
-a {
-	font-family: 'Jua', sans-serif;
-}
 
 #menuIcon {
 	position: fixed;

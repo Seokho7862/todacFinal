@@ -56,6 +56,11 @@ $(function(){
 </script>			
 </head>
 <body>
+<jsp:include page="header2.jsp"></jsp:include>
+<div class="row">
+<div class="col-md-4">
+</div>
+<div class="col-md-4" style="margin-top: 150px">
 <div class="tabbable" id="tabs-343454">
 				<ul class="nav nav-tabs">
 					<li class="nav-item">
@@ -88,6 +93,10 @@ $(function(){
 			</div>
 
 <button onclick="location.href='admin_login_form.do'">관리자로그인</button>
+</div>
 
+<div class="col-md-4">
+</div>
+</div>
 </body>
 </html>
