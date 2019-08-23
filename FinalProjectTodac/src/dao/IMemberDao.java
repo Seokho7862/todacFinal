@@ -27,4 +27,7 @@ public interface IMemberDao {
 	
 	//자신의 병원불러오기
 	public HashMap<String, Object> selectOwnHos(String muid);
+	
+	//병원수정
+	public int updateHosInfo(HashMap<String, String> param);
 }

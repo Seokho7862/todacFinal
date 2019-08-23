@@ -8,8 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-<div style="margin-left: 300px">
+
+<jsp:include page="header2.jsp"></jsp:include>
+<jsp:include page="myPage.jsp"></jsp:include>
+<div class="container">
+<div class="row">
+<jsp:include page="mypagenav.jsp"></jsp:include>
+
+<div class="col-md-8">
 <h1>즐겨찾기</h1>
 <form action="">
 <table>
@@ -31,6 +37,8 @@
 </table>
 
 </form>
+</div>
+</div>
 </div>
 </body>
 </html>

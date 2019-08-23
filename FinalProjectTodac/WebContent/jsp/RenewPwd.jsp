@@ -57,8 +57,15 @@ $(function(){
 </script>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-<div style="margin-left: 300px">
+<jsp:include page="header2.jsp"></jsp:include>
+<jsp:include page="myPage.jsp"></jsp:include>
+
+<div class="container">
+<div class="row">
+
+<jsp:include page="mypagenav.jsp"></jsp:include>
+
+<div class="col-md-8">
 <h1>비밀번호수정</h1>
 <hr>
 비밀번호입력
@@ -71,6 +78,8 @@ $(function(){
 <input type="password" id="newCheck">
 
 <input type="button" value="확인" id="renewBtn">
+</div>
+</div>
 </div>
 </body>
 </html>

@@ -96,7 +96,7 @@ font-weight: bold;
 				
 				text = text+ '<div class="card" style="margin-top:40px;">'
 				text = text+ '<div class="card-header" style="height: 30px; text-align:left; padding: 0px;">'+data+'님 환영합니다!</div>'
-				text = text+ '<div class="card-body" style="height: 70px;"><a href="show_mypage.do">내 정보  </a> 　　　<a href="logout.do">로그아웃 </a></div>'
+				text = text+ '<div class="card-body" style="height: 70px;"><a href="update_form.do">내 정보  </a> 　　　<a href="logout.do">로그아웃 </a></div>'
 				text = text+ '</div>'
 				
 				$('#loginDiv').html("")
@@ -169,7 +169,7 @@ font-weight: bold;
 										href="HospitalInfo_TestMain.do"><font face="Jua"
 											size="6px">병원 검색</font></a></li>
 
-									<li class="nav-item"><a class="nav-link" href="#"><font
+									<li class="nav-item"><a class="nav-link" href="rateinfoform.do"><font
 											face="Jua" size="6px">병원 평가 정보</font></a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="noticeListForm.do"><font face="Jua" size="6px">공지사항</font></a>
@@ -191,7 +191,8 @@ font-weight: bold;
 			height="30px;">
 		<div id="loginDiv">
 
-	 	<button type="button" class="btn btn-primary" id="loginBtn"
+	 	<button onclick="location.href='loginForm.do'" type="button" class="btn btn-primary" id="loginBtn"
+	 	
 			style="width: 200px; height: 70px; border-color: #ccdcff; background-color: #ccdcff; font-size: large; font-weight: bold; color: #808080; margin-top: 40px;">통합
 			로그인</button> 
 			
