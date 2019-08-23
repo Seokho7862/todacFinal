@@ -5,19 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Todac</title>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
+<!-- 새로운 스타일 적용-->
+<!-- Required meta tags -->
 <style type="text/css">
 #my-spinner {
 	width: 100%; height: 100%;
@@ -544,9 +543,9 @@ $(function(){
   
   
   <table class="table table-striped" id="rateinfo">
-    <thead>
-      <tr>
-        <th>NO.</th>
+    <thead class="thead-light">
+      <tr class="table-row">
+        <th class="serial">NO.</th>
         <th>병원이름</th>
         <th>평가항목</th>
         <th>평가등급<a>▲</a><a>▼</a></th>
