@@ -205,7 +205,7 @@ public class MemberController {
 	
 	//수정을 위한 비밀번호폼 
 	@RequestMapping("show_pwd_form.do")
-	public ModelAndView pwdForUpdate(String from) {
+	public ModelAndView pwdForUpdate(@RequestParam(defaultValue="member")String from) {
 		ModelAndView mav = new ModelAndView();
 		if(from.equals("member")) {
 			mav.addObject("from", "member");

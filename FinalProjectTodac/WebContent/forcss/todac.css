@@ -1,5 +1,18 @@
 /* @charset "UTF-8"; */
 .jumbotron{
-	background-image: url(../ApplyTempFileFolder/mypage.jpg);
+	background-image: url(../ApplyTempFileFolder/mypagebanner.jpg);
 	background-size: 100%;
+}
+
+body{
+  font-family: 'Jua';
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+h1{
+  font-family: 'Jua';
+}
+.container{
+  font-family: 'Jua';
 }

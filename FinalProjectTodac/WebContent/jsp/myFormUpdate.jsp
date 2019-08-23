@@ -69,10 +69,14 @@ $(function(){
 
 </head>
 <body>
+<jsp:include page="header2.jsp"></jsp:include>
 <jsp:include page="myPage.jsp"></jsp:include>
+<div class="container">
+<div class="row">
+<jsp:include page="mypagenav.jsp"></jsp:include>
+<div class="col-md-8">
 		<form id="form" name="form" method="post">
-<div style="margin-left: 300px">
-	<h1>My Info</h1>
+	<h1 style="font-family: 'Jua'">My Info</h1>
 		<table>
 		<tr>
 		<td>아이디</td>
@@ -136,9 +140,44 @@ $(function(){
 	
 		</tr>
 		</table>
+				</form>
+</div>
+</div>
 	</div>
 	
-				</form>
+				
+				   <div class="col-md-8">
+    <div class="container contact-form">
+            <div class="contact-image">
+                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+            </div>
+            <form method="post">
+                <h3>Drop Us a Message</h3>
+               <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+</div>
+    
+    </div>
 				
 				
 				
@@ -152,9 +191,7 @@ $(function(){
 				
 				
 				
-				
-				
-				<footer class="site-footer">
+	<footer class="site-footer">
       <div class="container">
         <div class="row">
           <div class="col-md-9">
