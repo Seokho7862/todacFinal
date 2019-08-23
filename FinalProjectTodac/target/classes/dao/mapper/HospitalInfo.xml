@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="dao.IHospitalInfoDao">
+  	<select id="selectAllMarker" resultType="hospitalInfo">
+  		 select * from hospitalInfo <![CDATA[where rownum <= 1000]]>
+  	</select> 
+  	<select id="SelectOneHospital" parameterType="String" resultType="hospitalInfo">
+  		select * from hospitalInfo where hpid like #{hpid}
+  	</select>
+  	<select id="getMarkers" resultType="java.util.HashMap">
+  		 select hpid, dutyname, wgs84lon, wgs84lat from todac.hospitalInfo <![CDATA[where rownum <= 1000]]>
+  	</select> 
+  	
+  	<select id="searchKeyword" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  		 select hpid, dutyname, dutyaddr ,dgidldname ,wgs84lon, wgs84lat from todac.hospitalInfo where dutyname like '%${keyword}%' and <![CDATA[rownum <= 1000]]>
+  	</select> 
+  	
+  	<select id="getFirstMarker" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  		select hpid, dutyname, dutyaddr ,dgidldname ,wgs84lon, wgs84lat from todac.hospitalInfo <![CDATA[where rownum <= 500 and wgs84lat between ${swLat} and ${neLat} and wgs84lon between ${swLng} and ${neLng}]]>
+  	</select>
+  	
+  	<select id="getMarkerByKeyword_GHosp" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  		select hpid, dutyname, dutyaddr ,dgidldname ,wgs84lon, wgs84lat from todac.hospitalInfo <![CDATA[where rownum <= 500 and wgs84lat between ${swLat} and ${neLat} and wgs84lon between ${swLng} and ${neLng} and length(dgidldname)-length(replace(dgidldname,'/','')) >= 11 and dutyname not like '%한의원%']]>
+  	</select>
+  	
+  	<select id="getMarkerByKeyword_SHosp" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  		select hpid, dutyname, dutyaddr ,dgidldname ,wgs84lon, wgs84lat from todac.hospitalInfo <![CDATA[where rownum <= 500 and wgs84lat between ${swLat} and ${neLat} and wgs84lon between ${swLng} and ${neLng} and dutyname like '%${keyword}%']]>
+  	</select>
+  	
+  	<select id="getMarkerByKeyword_Diag" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  		select hpid, dutyname, dutyaddr ,dgidldname ,wgs84lon, wgs84lat from todac.hospitalInfo <![CDATA[where rownum <= 500 and wgs84lat between ${swLat} and ${neLat} and wgs84lon between ${swLng} and ${neLng} and dgidldname like '%${keyword}%']]>
+  	</select>
+  	
+  	<select id="HospitalInfo_InfoForm" parameterType="java.util.HashMap" resultType="hospitalInfo">
+  		select * from todac.hospitalInfo where hpid = '${hpid}'
+  	</select>
+  	
+  	<select id="searchByHname" parameterType="java.util.HashMap" resultType="hospitalInfo" >
+  		select * from todac.hospitalInfo where 
+  		<if test="searchType==1">dutyname</if> 
+  		<if test="searchType==2">dutyAddr</if> like '%${keyword}%'
+  	</select>
+  	
+  </mapper>
+  

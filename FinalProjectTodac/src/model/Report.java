@@ -9,6 +9,7 @@ public class Report {
 	private Date reportdate;
 	
 	public Report() {}
+<<<<<<< HEAD
 	public Report(int reportid, int rid, String reportreason, Date reportdate) {
 		this.reportid = reportid;
 		this.rid = rid;
@@ -48,6 +49,46 @@ public class Report {
 	public void none() {
 		System.out.println("테스토");
 	}
+=======
+
+	public Report(int reportid, int rid, String reportreason, Date reportdate) {
+		this.reportid = reportid;
+		this.rid = rid;
+		this.reportreason = reportreason;
+		this.reportdate = reportdate;
+	}
+
+	public int getReportid() {
+		return reportid;
+	}
+	public void setReportid(int reportid) {
+		this.reportid = reportid;
+	}
+	public int getRid() {
+		return rid;
+	}
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
+	public String getReportreason() {
+		return reportreason;
+	}
+	public void setReportreason(String reportreason) {
+		this.reportreason = reportreason;
+	}
+	public Date getReportdate() {
+		return reportdate;
+	}
+	public void setReportdate(Date reportdate) {
+		this.reportdate = reportdate;
+	}
+	@Override
+	public String toString() {
+		return "Report [reportid=" + reportid + ", rid=" + rid + ", reportreason=" + reportreason + ", reportdate="
+				+ reportdate + "]";
+	}
+	
+>>>>>>> branch 'master' of https://github.com/Seokho7862/todacFinal.git
 	
 	
 }

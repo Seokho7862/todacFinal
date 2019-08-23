@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ISearchDao">
+
+
+<insert id="Search" parameterType="search">
+	insert into search values(#{keyword},
+	<if test="age!=null">${age}</if>
+	<if test="age==null">null</if>,default)
+</insert>
+<select id="getListOfSearch" parameterType="java.util.HashMap" resultType="search">
+ select keyword from (select count(*),keyword from search <if test="age!=0"> where age=${age} </if> GROUP by keyword order by 1 desc)
+</select>
+	
+</mapper>
