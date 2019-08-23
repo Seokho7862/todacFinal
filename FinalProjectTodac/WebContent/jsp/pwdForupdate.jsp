@@ -7,16 +7,9 @@
 <title>Insert title here</title>
 
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-
-<!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 <script type="text/javascript">
 
 $(function(){
@@ -32,7 +25,8 @@ $(function(){
 					if(${from=='member'}){
 						
 					location.href='update_form.do';
-					}else{
+					}
+					else{
 						
 					location.href='hos_update_form.do';
 					}
@@ -59,8 +53,11 @@ $(function(){
 
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+
+
+<jsp:include page="myPage.jsp"></jsp:include>
 <div style="margin-left: 300px">
+
 <h1>비밀번호입력</h1>
 비밀번호
 <input type="password" id="pwd">
