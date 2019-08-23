@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.IReviewDao;
-import model.Report;
 import model.Review;
 
 @Service
@@ -50,13 +49,5 @@ public class ReivewService {
 		r.setRfile(path+fileName);
 		System.out.println(r);
 		rdao.reviewWrite(r);
-	}
-	public void ReportInsert(String rid, String reportreason) {
-		Report r = new Report();
-		r.setRid(Integer.valueOf(rid));
-		r.setReportreason(reportreason);
-		
-		rdao.ReportInsert(r);
-		rdao.updateReivewStatus(Integer.valueOf(rid));
 	}
 }

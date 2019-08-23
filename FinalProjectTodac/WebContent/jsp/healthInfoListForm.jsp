@@ -47,6 +47,7 @@
 
 <style type="text/css">
 td{padding: 30px;}
+div{cursor: pointer;}
 
 #pageDiv{
 position: relative;

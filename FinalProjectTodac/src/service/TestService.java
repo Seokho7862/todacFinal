@@ -290,9 +290,10 @@ public class TestService {
 		param.put("age", age);
 		ArrayList<search> sl = sDao.getListOfSearch(param);
 		ArrayList<search> rl = new ArrayList<search>();
+		
 		for(int i=0;i<sl.size();i++) {
 			if(i==10) {break;}
-			rl.add(rl.get(i));
+			rl.add(sl.get(i));
 		}
 		return rl;
 	}

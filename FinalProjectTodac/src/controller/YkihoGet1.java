@@ -25,12 +25,12 @@ public class YkihoGet1 {
 		private StringBuilder sb;
 		private List<String> ykiList = null;
 		private HashSet<List<String>> set;
-		public List<String> getYkiho(String code1,String code2,String hname,String page) {
+		public List<String> getYkiho(String code1,String code2,String hname) {
         urlBuilder = new StringBuilder("http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList"); /*URL*/
         try {
 			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=P6WiytSwjecJ9Xc3948rlZ9HNqdUFVZafMD6PiuQAT0XrcVOAy5MMaDyudgW9AzuNB9a5kpTaSY6%2BFcTJVrBBw%3D%3D");
-        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(page, "UTF-8")); /*�럹�씠吏�踰덊샇*/
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*�븳 �럹�씠吏� 寃곌낵 �닔*/
+//        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*�럹�씠吏�踰덊샇*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*�븳 �럹�씠吏� 寃곌낵 �닔*/
         urlBuilder.append("&" + URLEncoder.encode("sidoCd","UTF-8") + "=" + URLEncoder.encode(code1, "UTF-8")); /*�떆�룄肄붾뱶*/
         urlBuilder.append("&" + URLEncoder.encode("sgguCd","UTF-8") + "=" + URLEncoder.encode(code2, "UTF-8")); /*�떆援곌뎄肄붾뱶*/
 //        urlBuilder.append("&" + URLEncoder.encode("emdongNm","UTF-8") + "=" + URLEncoder.encode("�떊�궡�룞", "UTF-8")); /*�쓭硫대룞紐�*/

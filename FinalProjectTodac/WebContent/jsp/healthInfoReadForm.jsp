@@ -32,7 +32,7 @@ margin-bottom: 0px;
 		</tr>
 		<tr>
 			<td colspan="4">
-			<img src="${healthInfo.hfile}" style="margin-top:-200px; margin-left:400px; width: 400px; height: auto;">
+			<img src="${healthInfo.hfile}" style="margin-top:0px; padding-top:0px; margin-left:400px; width: 400px; height: auto;">
 					  
 
 			<br>

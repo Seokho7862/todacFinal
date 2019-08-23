@@ -9,6 +9,7 @@ public class Favorites {
 	
 	public Favorites() {}
 	
+
 	public Favorites(int lid, String muid, String hpid, String dutyName, String dutyAddr) {
 		this.lid = lid;
 		this.muid = muid;
