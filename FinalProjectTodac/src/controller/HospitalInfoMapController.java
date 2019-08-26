@@ -3,12 +3,16 @@ package controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import model.Favorites;
 
 //import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -66,7 +70,7 @@ public class HospitalInfoMapController {
 	
 	@RequestMapping("HospitalInfo_InfoForm.do")
 	public ModelAndView HospitalInfo_Review(
-			@RequestParam String hpid) {
+			@RequestParam String hpid,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		HospitalInfo h = hsvc.HospitalInfo_InfoForm(hpid);
 		String[] str;
@@ -76,11 +80,24 @@ public class HospitalInfoMapController {
 		else {
 			str =  null;
 		}
+		String muid = String.valueOf(session.getAttribute("muid"));
 		
+
+		if(muid != null) {
+			Favorites f = rsvc.findLidByFavoritesModel(hpid,muid);
+			if(f==null) { //라이크가 없을때 1
+				mav.addObject("f_img",0);
+			}
+			else { //라이크가 잇을대 1
+				mav.addObject("f_img",1);
+			}
+		}
+	
 		mav.addObject("dlist", str);
 		mav.addObject("hlist",h);
 		mav.addObject("rlist",rsvc.selectOneHospitalInfo(h.getHpid()));
 		mav.setViewName("HospitalInfoForm");
+		
 		return mav;
 	}
 	

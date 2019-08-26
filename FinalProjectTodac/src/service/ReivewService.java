@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.IReviewDao;
+import model.Favorites;
 import model.Report;
 import model.Review;
 
@@ -58,5 +59,22 @@ public class ReivewService {
 		
 		rdao.ReportInsert(r);
 		rdao.updateReivewStatus(Integer.valueOf(rid));
+	}
+	
+	public void ClickFavorite(Favorites f, String status) {
+		int stat = Integer.valueOf(status);
+		System.out.println("서비스단"+f);
+		//좋아요를 하지 않았을 때 insert
+		if(stat == 0) {
+			System.out.println();
+			rdao.insertClickFavorite(f);
+		}else {
+			rdao.deleteClickFavorite(f);
+		}
+	}
+	public Favorites findLidByFavoritesModel(String hpid, String muid) {
+		Favorites f = new Favorites();
+		f.setHpid(hpid); f.setMuid(muid);
+		return rdao.findLidByFavoritesModel(f);
 	}
 }

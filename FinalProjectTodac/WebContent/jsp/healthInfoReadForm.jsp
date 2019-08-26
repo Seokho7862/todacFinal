@@ -19,6 +19,9 @@ margin-bottom: 0px;
 </style>
 </head>
 <body>
+	<!--::header part start::-->
+	<jsp:include page="header2.jsp"></jsp:include>
+	<!-- Header part end-->
 
 	<h1>건강정보 읽기</h1>
 

@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!--::header part start::-->
+	<jsp:include page="header2.jsp"></jsp:include>
+	<!-- Header part end-->
+
 <h1>건강정보 글쓰기</h1>
 <form action="healthInfoWrite.do" method="post" enctype="multipart/form-data">
 ID<input type="text" name="muid" value="testID"><br>

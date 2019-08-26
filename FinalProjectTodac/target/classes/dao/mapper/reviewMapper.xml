@@ -28,14 +28,26 @@
  		select * from review where rid =#{rid}
  	</select>
  	
- 	<select id="reviewWrite" parameterType="Review">
+ 	<insert id="reviewWrite" parameterType="Review">
  		insert into review values((select max(rid) from review)+1 , #{title} , #{content} , sysdate , #{rfile} , default , ${grade} , #{hpid} , 'say7862' )
- 	</select>
- 	<select id="ReportInsert" parameterType="Report">
+ 	</insert>
+ 	<insert id="ReportInsert" parameterType="Report">
  		insert into report values((select max(reportid) from report)+1 , #{rid}, #{reportreason}, sysdate, 'hong') 
- 	</select>
+ 	</insert>
 
-	<select id="updateReivewStatus" parameterType="int">
+	<update id="updateReivewStatus" parameterType="int">
 		 update review set status = 0 where rid = #{rid}
+	</update>
+	
+	<insert id="insertClickFavorite" parameterType="favorites">
+		insert into favorites values((select max(lid) from favorites)+1,#{muid},#{hpid})
+	</insert>
+	<!-- 삭제해야담 rid 가져와서  -->
+	<delete id="deleteClickFavorite" parameterType="favorites">
+		delete from favorites where muid like #{muid} and hpid like #{hpid}
+	</delete>
+	
+	<select id="findLidByFavoritesModel" parameterType="favorites" resultType="favorites" >
+		select * from favorites where muid like #{muid} and hpid like #{hpid}
 	</select>
  </mapper>

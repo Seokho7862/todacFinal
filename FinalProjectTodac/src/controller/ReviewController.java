@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import model.Favorites;
 import model.HospitalInfo;
 import model.Review;
 import service.HospitalInfoService;
@@ -68,8 +69,17 @@ public class ReviewController {
 	
 	@RequestMapping("ReportInsert.do")
 	public @ResponseBody void ReportInsert(String rid, String reportreason){
-		System.out.println(rid);
-		System.out.println(reportreason);
 		rsvc.ReportInsert(rid,reportreason);
 	}
+	
+	@RequestMapping("ClickFavorite.do")
+	public @ResponseBody void ClickFavorite(String muid, String hpid,String status) {
+		Favorites f = new Favorites();
+		//status 좋아요하지 않았을때 0넘어오면 아니면 1넘어오면
+		f.setMuid(muid); f.setHpid(hpid);
+		System.out.println("컨트롤러 단"+f);
+		rsvc.ClickFavorite(f,status);
+	}
+	
+	
 }

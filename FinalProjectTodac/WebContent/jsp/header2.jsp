@@ -106,6 +106,25 @@
 				$('#loginDiv').html(text)
 				}
 			}
+	$('document')
+			.ready(
+					function() {
+						$
+								.ajax({
+									url : "getSessionId.do",
+									success : function(data) {
+										var res = data;
+										if (data != "") {
+											var text = "";
+
+											text = text
+													+ '<div class="card" style="margin-top:40px;">'
+											text = text
+													+ '<div class="card-header" style="height: 30px; text-align:left; padding: 0px;">'
+													+ data + '님 환영합니다!</div>'
+											text = text
+													+ '<div class="card-body" style="height: 70px;"><a href="show_pwd_form.do">내 정보  </a> 　　　<a href="logout.do">로그아웃 </a></div>'
+											text = text + '</div>'
 
 
 								});
@@ -162,10 +181,10 @@
 								id="navbarSupportedContent">
 								<ul class="navbar-nav align-items-center">
 									<li class="nav-item dropdown"><a
-										class="nav-link dropdown-toggle" href="blog.html"
+										class="nav-link dropdown-toggle" href="#"
 										id="navbarDropdown" role="button" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false"><font
-											face="Jua" size="6px"> 서비스 소개</font> </a>
+											face="Jua" size="5px"> 서비스 소개</font> </a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="dropdown-item" href="#">토닥이란?</a> <a
 												class="dropdown-item" href="#">팀 토닥 소개</a> <a
@@ -173,18 +192,22 @@
 										</div></li>
 									<li class="nav-item active"><a class="nav-link"
 										href="HospitalInfo_TestMain.do"><font face="Jua"
-											size="6px">병원 검색</font></a></li>
+											size="5px">병원 검색</font></a></li>
 
 
 									<li class="nav-item active"><a class="nav-link"
 										href="diseaseSearchForm.do"><font face="Jua"
-											size="6px">질병 정보 검색</font></a></li>
+											size="5px">질병 정보 검색</font></a></li>
+									
+									<li class="nav-item active"><a class="nav-link"
+										href="healthInfoList.do"><font face="Jua"
+											size="5px">건강 정보</font></a></li>
 
 									<li class="nav-item"><a class="nav-link" href="rateinfoform.do">
 									<font face="Jua" size="6px">병원 평가 정보</font></a></li>
 									
 									<li class="nav-item"><a class="nav-link"
-										href="noticeListForm.do"><font face="Jua" size="6px">공지사항</font></a>
+										href="noticeListForm.do"><font face="Jua" size="5px">공지사항</font></a>
 									</li>
 								</ul>
 							</div>

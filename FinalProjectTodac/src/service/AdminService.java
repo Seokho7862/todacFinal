@@ -49,14 +49,15 @@ public class AdminService {
 	public int adminLogin(HashMap<String, Object>param) {
 		String maid=(String) param.get("maid");
 		String pwd = (String) param.get("pwd");
+		
 		HashMap<String, Object> result = addao.selectAdminById(maid);
 		System.out.println(result);
 		String pw = (String)result.get("PW");
 		if(result!=null) {
 			if(pw.equals(pwd)) {
 				return 1;
-			}
-			else return 0;
+			}else {
+			return 0;}
 		}
 		else return 0;
 	}
