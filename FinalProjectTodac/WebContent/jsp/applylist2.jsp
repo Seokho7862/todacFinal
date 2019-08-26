@@ -6,18 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Todac</title>
- <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
  
+
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<!-- <!-- Popper JS -->
+ <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
- -->
+ 
 <script type="text/javascript">
 
 
@@ -88,10 +85,15 @@ $(function(){
 });
 </script>
 </head>
+
+
 <body>
 <jsp:include page="header2.jsp"></jsp:include>
 <jsp:include page="myPage.jsp"></jsp:include>
+
 <h1>병원신청자리스트</h1>
+<div class="container">
+<div class="row">
 <table>
 <thead>
 <tr>
@@ -130,6 +132,8 @@ ${a.bisunessNumber}
 </c:forEach>
 </tbody>
 </table>
+
+
   <div class="modal fade" id="myModal" >
     <div class="modal-dialog modal-dialog-centered" >
       <div class="modal-content">
@@ -155,5 +159,8 @@ ${a.bisunessNumber}
       </div>
     </div>
   </div>
+</div>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

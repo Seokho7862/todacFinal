@@ -17,7 +17,7 @@
  	</resultMap>
  	
  	<select id="selectOneHospitalReview" parameterType="String" resultType="review">
- 		select * from review where hpid like #{hpid} order by rdate desc
+ 		select * from review where hpid like #{hpid} and status = 1 order by rdate desc
  	</select>
  	
  	<select id="selectOneReviewBoard" parameterType="String" resultType="review">
@@ -49,5 +49,9 @@
 	
 	<select id="findLidByFavoritesModel" parameterType="favorites" resultType="favorites" >
 		select * from favorites where muid like #{muid} and hpid like #{hpid}
+	</select>
+	
+	<select id="averageRate" parameterType="String" resultType="Double">
+		select round(avg(grade),2) from review where hpid like #{hpid}
 	</select>
  </mapper>

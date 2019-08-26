@@ -77,4 +77,8 @@ public class ReivewService {
 		f.setHpid(hpid); f.setMuid(muid);
 		return rdao.findLidByFavoritesModel(f);
 	}
+	
+	public Double averageRate(String hpid) {
+		return rdao.averageRate(hpid);
+	}
 }

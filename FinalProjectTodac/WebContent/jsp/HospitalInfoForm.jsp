@@ -107,12 +107,14 @@
 <body>
 
 <!-- 헤더부분 -->
-
+<jsp:include page="header2.jsp"></jsp:include>
+<!-- 헤더 -->
 <div class="mainFrame">
 	<!-- 병원 이미지 맵으로 구현 -->
 	<div >
 		<div id="map"></div>
 		<h2>${hlist.dutyName}</h2>
+		session 아이디 체크 muid : ${muid} manager : ${manager};
 	</div>
 	<!-- 즐겨찾기, 후기 작성 버튼-->
 	<hr>
@@ -127,7 +129,7 @@
 			</c:otherwise>
 		</c:choose></a>
 		<a data-toggle="tooltip" title="작성 페이지로 이동해요" class="writeReview">후기작성<input type="hidden" value="${hlist.hpid}"></a>
-		<a>별점</a>
+		<a>평점 : ${avgRate}</a>
 		<script>
 		$(document).ready(function(){
 		  $('[data-toggle="tooltip"]').tooltip();   
@@ -264,7 +266,9 @@
 					<th>제목</th>
 					<th>조회수</th>
 					<th>별점</th>
-					<th>신고</th>					
+					<c:if test="${adminchk != null}">
+						<th>신고</th>					
+					</c:if>
 				</tr>
 				<c:forEach items="${rlist}" var="l"> 
 					<tr>
@@ -276,15 +280,17 @@
 						</td>
 						<td>${l.readcount}</td>
 						<td>${l.grade}</td>
-						<td class="reportBtn"> 
-							<button style="size : inherit;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-							   	신고 
-							</button>
-							<input type="hidden" value="${l.rid}"/>
-							<input type="hidden" value="${l.muid}"/>
-							<input type="hidden" value="${l.title}"/>
-							
-						</td>
+						<c:if test="${manager != null}">
+							<td class="reportBtn"> 
+								<button style="size : inherit;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+								   	신고 
+								</button>
+								<input type="hidden" value="${l.rid}"/>
+								<input type="hidden" value="${l.muid}"/>
+								<input type="hidden" value="${l.title}"/>
+								
+							</td>
+						</c:if>
 					</tr>
 				</c:forEach>
 				
@@ -325,8 +331,8 @@
 		          					<li> <input type="radio" name="radiogroup" value="음란성 또는 청소년에게 부적합한 내용"/> 음란성 또는 청소년에게 부적합한 내용<br></li>
 		          					<li> <input type="radio" name="radiogroup" value="특정인 대상의 비방/욕설"/> 특정인 대상의 비방/욕설<br></li>
 		          					<li> <input type="radio" name="radiogroup" value="명예훼손/사생활 침해 및 저작권 활동"/>명예훼손/사생활 침해 및 저작권 활동<br></li>
-		          					<li> <input type="radio" name="radiogroup" value="기타"/><a class="etc_TextDiv" >기타 자유양식 작성</a></li>
-		          					<li class="etc_TextInput"> 내용 입력  :  <input class="etc_TextInput" type="text" placeholder="내용을 입력해 주세요" /></li>
+		          					<li> <input type="radio" name="radiogroup" value="기타"/><a >기타 자유양식 작성 </a> | <a style="color: blue;"class="etc_TextDiv">사유작성</a></li>
+		          					<li class="etc_TextInput"> 내용 입력  :  <input class="etc_TextInput" type="text" placeholder="내용을 입력해 주세요"/></li>
 		          						
 		          				</ul>
 		          				<input type="hidden" class="modal-transit-Data_rid" value=""> <!-- 신고당하는 rid -->
@@ -357,29 +363,30 @@
 		$('.etc_TextInput').hide();
 	});
 	
+	
+	
 	function modalCheck(){
-		alert("?");
 		
-		var checked = $('.modal_ul').find('input[name="radiogroup"]');
-		alert(checked);
-		var rid = $('.modal-transit-Data').val();
-		alert(rid);
+		
+		var checked = $('.modal_ul').find('input[name="radiogroup"]:checked').val();// find('input[name="radiogroup"]:selected');
+		
+		var rid = $('.modal-transit-Data_rid').val();
+		
 		var reportreason=null;
-		for(var i=0; i<checked.length; i++){
-			
-			if(checked[i].checked == true){
-				if(checked[i].value=="기타"){
-					var etc = $('.etc_TextInput').val()
-					alert(etc);
-					reportreason = etc;
-				}
-				else{					
-					reportreason = checked[i].value;
-				}
-					
-			}
-		}
 		
+		if(checked == "기타"){
+			reportreason = $('.etc_TextInput').find('.etc_TextInput').val(); // $('.etc_TextInput').text();
+			alert("기타일때");
+			
+		}
+		else{
+			reportreason = checked;
+			
+		}
+		alert(rid);
+		alert(reportreason);
+		
+	
 		$.ajax({
 			url : "ReportInsert.do",
 			type : "post",
@@ -389,10 +396,10 @@
 			},
 			datatype : "json",
 			success : function(){
-				alert("성공");
+				alert("성공적으로 신고하였습니다");
 			},
 			error :  function(){
-				alert("json 에러");
+				alert("에러가 발생했습니다.");
 			}
 			
 			
@@ -441,7 +448,7 @@
 	});
 	
 	$('.etc_TextDiv').on('click',function(){
-		 alert("뿌");
+		 
 		 $('.etc_TextInput').slideToggle();
 	});
 	

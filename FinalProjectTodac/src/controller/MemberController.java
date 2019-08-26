@@ -54,7 +54,10 @@ public class MemberController {
 			//세션에 아이디 저장하기
 			session.setAttribute("muid", muid);
 			//status 리턴함
-			session.setAttribute("status", 1);
+			session.setAttribute("status", service.selectMemreturnStatus(muid).getStatus());
+			//x,y좌표
+			session.setAttribute("longitude", service.selectMemreturnStatus(muid).getlongitude());
+			session.setAttribute("latitude", service.selectMemreturnStatus(muid).getLatitude());
 			return "Openmain";
 		}
 		else {
@@ -70,7 +73,10 @@ public class MemberController {
 			//세션에 아이디 저장하기 
 			session.setAttribute("muid", muid);
 			//status 리턴함
-			session.setAttribute("status", 2);
+			session.setAttribute("status", service.selectMemreturnStatus(muid).getStatus());
+			//x,y좌표
+			session.setAttribute("longitude", service.selectMemreturnStatus(muid).getlongitude());
+			session.setAttribute("latitude", service.selectMemreturnStatus(muid).getLatitude());
 			return "1";
 		}
 		else {
