@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +12,17 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var text= '${healthInfo.hfile}';
+	if(text!='UploadFolder\noImage.png'){
+		$('#healthInfoImage').removeAttr('hidden');
+	}
+	
+});
+	
+</script>
+
 <style type="text/css">
 p{
 margin-left: 15px;
@@ -35,14 +48,12 @@ margin-bottom: 0px;
 		</tr>
 		<tr>
 			<td colspan="4">
-			<img src="${healthInfo.hfile}" style="margin-top:0px; padding-top:0px; margin-left:400px; width: 400px; height: auto;">
-					  
-
+			<img id="healthInfoImage" hidden="" src="${healthInfo.hfile}" style="margin-top:0px; padding-top:0px; margin-left:400px; width: 400px; height: auto;">
+				<input type="hidden" value="${healthInfo.hfile}" id="healthInfoText">
 			<br>
-			 ${healthInfo.content}</td>
+			</td>
 		</tr>
 
-	
 
 	</table>
 <div class="btn-group">

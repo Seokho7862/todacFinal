@@ -22,6 +22,7 @@
 max-height: 800px;
 }
 td{
+font-size:large;
 cursor: pointer;
 
 }
