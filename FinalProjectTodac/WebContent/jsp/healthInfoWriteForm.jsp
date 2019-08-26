@@ -5,20 +5,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#cancleBtn').bind('click',function(){
+		history.back();
+	});
+	
+})
+</script>
+<style type="text/css">
+#writeTable{
+width: 90%;
+height: 500px;
+margin: auto;
+margin-top: 50px;
+}
+
+
+</style>
 </head>
 <body>
 	<!--::header part start::-->
 	<jsp:include page="header2.jsp"></jsp:include>
 	<!-- Header part end-->
-
-<h1>건강정보 글쓰기</h1>
+<h1>　　건강정보 작성하기</h1>
 <form action="healthInfoWrite.do" method="post" enctype="multipart/form-data">
-ID<input type="text" name="muid" value="testID"><br>
-NICK<input type="text" name="writer" value="testID"><br>
-제목:<input type="text" name="title"> <br>
-내용:<input type="text" name="content"><br>
-FILE<input type="file" name="infoFile"><br>
-<input type="submit" value="등록하기">
+<table class="table-bordered" id="writeTable"><tr>
+
+<td><input type="text" name="title" style="height: 100%; width: 100%;"></td>
+</tr>
+<tr><td height="400px;"><input type="text" name="content" style="height: 100%; width: 100%;"></td></tr>
+<tr><td>FILE:<input type="file" name="infoFile"></td></tr>
+<tr><td><input type="submit" value="등록하기"><input type="button" value="취소" id="cancleBtn"></td></tr>
+</table>
+<input type="text" name="muid" value="testID"><br>
+<input type="text" name="writer" value="testID"><br>
+
 </form>
 
 </body>

@@ -268,7 +268,7 @@ public class TestController {
 
 		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birthd, age, email, phone, Double.parseDouble(latitude),
 				Double.parseDouble(longitude), sample4_postcode, sample4_jibunAddress, add_base, sample4_roadAddress);
-		
+
 		System.out.println(member);
 		tservice.createMember_user(member);
 		System.out.println("회원 삽입");
@@ -304,7 +304,7 @@ public class TestController {
 
 	@RequestMapping("managerApply.do")
 	public void managerApply(apply_manager apply, MultipartFile file) {
-		
+
 		if (!file.isEmpty()) {
 			ArrayList<String> fileResult = ManagerApplyFileUploadClass.FileUpload(file);
 			String absLoc = fileResult.get(1);
@@ -362,31 +362,42 @@ public class TestController {
 		tservice.noticeDelete(nid);
 		return "redirect: noticeListForm.do";
 	}
-	
+
 	@RequestMapping("get10Disease.do")
-	public @ResponseBody ArrayList<search> getListOfSearch(HttpSession session){
-		String id= (String)session.getAttribute("muid");
+	public @ResponseBody ArrayList<search> getListOfSearch(HttpSession session) {
+		String id = (String) session.getAttribute("muid");
 		ArrayList<search> sList = new ArrayList<search>();
-		int age=0;
+		int age = 0;
 		System.out.println(id);
-		
-		if(id!=null){
-		MEMBER_USER m= ms.findUserById(id);
-		if(m!=null){
-		System.out.println(m);
-		age= m.getAge();		
-		}	}
+
+		if (id != null) {
+			MEMBER_USER m = ms.findUserById(id);
+			if (m != null) {
+				System.out.println(m);
+				age = m.getAge();
+			}
+		}
 		sList = tservice.getListOfSearch(age);
 		return sList;
 	}
+
 	@RequestMapping("getSessionId.do")
 	public @ResponseBody String getSessionId(HttpSession session) {
-		String id="";
-		id = (String)session.getAttribute("muid");		
+		String id = "";
+		id = (String) session.getAttribute("muid");
 		return id;
 	}
+
 	@RequestMapping("todacMainForm.do")
-	public void todacMain() {}
-	
+	public void todacMain() {
+	}
+
+	@RequestMapping("todacIntroForm.do")
+	public void todacIntroForm() {
+	}
+
+	@RequestMapping("noticeForDoctors.do")
+	public void noticeForDoctors() {
+	}
 
 }
