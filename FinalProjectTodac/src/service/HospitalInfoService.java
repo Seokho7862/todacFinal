@@ -47,21 +47,21 @@ public class HospitalInfoService {
 		params.put("neLat", neLat);
 		params.put("neLng", neLng);
 		
-		if(keyword.equals("ÀüÃ¼")) {
+		if(keyword.equals("ì „ì²´")) {
 			params.put("keyword", keyword);
 			return hdao.getFirstMarker(params);
 		}
-		//Áø·á°ú splitÇßÀ»¶§ 10°³ ÀÌ»ó µÇ´Â °Í¸¸
-		else if(keyword.equals("Á¾ÇÕ")) {
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ splitï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½Ç´ï¿½ ï¿½Í¸ï¿½
+		else if(keyword.equals("ì¢…í•©")) {
 			params.put("keyword", keyword);
 			return hdao.getMarkerByKeyword_GHosp(params);
 		}
-		//ÀÌ¸§À¸·Î °Ë»ö
-		else if(keyword.equals("¿ä¾ç")) {
+		//ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
+		else if(keyword.equals("í•œì˜ì›")) {
 			params.put("keyword", keyword);
 			return hdao.getMarkerByKeyword_SHosp(params);
 		}
-		//Áø·á°ú·Î °Ë»ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 		else {
 			params.put("keyword", keyword);
 			return hdao.getMarkerByKeyword_Diag(params);

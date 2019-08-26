@@ -69,6 +69,7 @@ public class AdminController {
 			
 			session.setAttribute("muid", param.get("maid"));
 			session.setAttribute("status", 7);
+			
 			return "1";
 		}
 		else {

@@ -45,7 +45,7 @@ td {
 				</td>
 			</tr>
 			<tr>
-				<td><input style="width: 100%" type="file" name="hfile" ${healthInfo.hfile}><br>
+				<td><input style="width: 100%" type="file" name="hfile" value="${healthInfo.hfile}"><br>
 				</td>
 			</tr>
 			<tr><td><input	type="submit" value="수정하기"> 
@@ -53,10 +53,10 @@ td {
 
 		</table>
 
-		<input type="text" name="iid" value="${healthInfo.iid}">  <br> <br> <input
-			type="text" value="${pageInfo.page}" name="page"> <input
-			type="text" value="${pageInfo.keyword}" name="keyword"> <input
-			type="text" value="${pageInfo.searchType}" name="searchType">
+		<input type="hidden" name="iid" value="${healthInfo.iid}">  <br> <br> <input
+			type="hidden" value="${pageInfo.page}" name="page"> <input
+			type="hidden" value="${pageInfo.keyword}" name="keyword"> <input
+			type="hidden" value="${pageInfo.searchType}" name="searchType">
 	</form>
 
 

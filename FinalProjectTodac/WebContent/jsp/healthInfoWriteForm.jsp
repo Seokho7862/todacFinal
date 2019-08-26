@@ -41,8 +41,8 @@ margin-top: 50px;
 <tr><td>FILE:<input type="file" name="infoFile"></td></tr>
 <tr><td><input type="submit" value="등록하기"><input type="button" value="취소" id="cancleBtn"></td></tr>
 </table>
-<input type="text" name="muid" value="testID"><br>
-<input type="text" name="writer" value="testID"><br>
+<input type="hidden" name="muid" value="${sessionScope.muid}"><br>
+<input type="hidden" name="writer" value="${writer}"><br>
 
 </form>
 

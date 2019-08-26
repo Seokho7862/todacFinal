@@ -6,8 +6,9 @@
 <head>
 <meta charset="UTF-8">
 	
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
  
@@ -30,11 +31,11 @@
 		overflow : scroll;
 	}
 	
-	div#navigation{
+	div#navigation_hosp{
 		height : 650px;
 		overflow : scroll;
 	}
-	div#home{
+	div#home1{
 		height : 650px;
 		overflow : scroll;
 	}
@@ -54,7 +55,7 @@
 		
 	}
 	input#findLocation{
-		width:100%;
+		width:75%;
 		position: static;
 		
 	}
@@ -76,121 +77,123 @@
 </style>
 
 </head>
-<body>
-
-	<div class="container-fluid">
-	  <div class="row">
-	    <div class="col-sm-4" style="width : 25%;">
-						
-			<ul class="nav nav-tabs">
-			    <li class="active"><a data-toggle="tab" href="#home">진료과</a></li>
-			    <li><a data-toggle="tab" href="#menu1">키워드</a></li>
-			</ul>
-			
-			<div class="tab-content">
+<body>	
+		<jsp:include page="header2.jsp"></jsp:include>
+		<div style ="margin-top: 23px;">
+			<div class="container-fluid" >
+		  <div class="row">
+		    <div class="col-sm-4" style="width : 25%;" >
+							
+				<ul class="nav nav-tabs">
+				    <li class="active"><a data-toggle="tab" href="#home1">진료과</a></li>
+				    <li><a data-toggle="tab" href="#keyworddiag">키워드</a></li>
+				</ul>
 				
-			    <div id="home" class="tab-pane fade in active">
-			    	
-			    	<div>
-			    		<div >
-			    			<h5>원하시는 진료과를 선택하세요</h5>
-			    			<div style="border: solid; font-size:10px;">
-			    				<div style="width: 100%; border: solid;" id="selector">
-			    					<i>진료과목    </i><i id="diag_keyword" style="margin-left: 20%;">전체선택</i>
-			    				</div> 
-			    			</div>
-			    		</div>
-			    		<div>
-			    			해당 지역에 <i>몇건</i> 검색되었습니다
-			    		</div>
-			    		<hr>
-			    		<div id="diag_tab1">
-			    			<table id="diagnosisTalbe">
-				      		
-					      		<tr>
-					      			<td><button value="전체">전체선택</button></td>
-					      			<td><button value="종합">종합병원</button></td>
-					      		</tr>
-					      		<tr>
-					      			<td><button value="한방">한의원</button></td>
-					      			<td><button value="요양">요양병원</button></td>
-					      		</tr>
-					      		<tr>
-					      			<td><button value="내과">내과</button></td>
-					      			<td><button value="외과">외과</button></td>
-					      		</tr>
-					      		<tr>
-					      			<td><button value="이비인후과">이비인후과</button></td>
-					      			<td><button value="치과">치과</button></td>
-					      		</tr>
-					      		<tr>
-					      			<td><button value="안과">안과</button></td>
-					      			<td><button value="소아과">소아과</button></td>
-					      		</tr>
-					      		<tr>
-					      			<td><button value="신경">신경외과</button></td>
-					      			<td><button value="방사선">방사선과</button></td>
-					      		</tr>
-					      		<tr>
-					      			<td><button value="성형">성형외과</button></td>
-					      			<td><button value="산부인">산부인과</button></td>
-					      		</tr>
-					      		<tr>
-					      			<td><button value="응급">응급의학과</button></td>
-					      			<td><button value="정신">정신건강의학과</button></td>
-					      		</tr>
-					      		<tr>
-					      			<td><button value="피부">피부과</button></td>
-					      			<td><button value="마취">마취통증학과</button></td>
-					      		</tr>
-					      		<tr>
-					      			<td><button value="핵의학">핵의학과</button></td>
-					      			<td><button value="흉부">흉부외과</button></td>
-					      		</tr>
-					      		<tr>
-					      			<td><button value="재활">재활의학과</button></td>
-					      			<td><button value="신경">신경과</button></td>
-					      		</tr>	
-					      	
-					      	</table>
-			    		</div>
-			    		<div id ="diag_tab2">
-			    			<ul id="hosptialListByDiagnosis">
-			      			</ul>
-			      			
-			    		</div>
-			    	</div>	
-			    </div>
-			    
-			    <div id="menu1" class="tab-pane fade">
-			    	<input type="search" style="left : 30%;" placeholder="여기서 검색하세요 " id="Keyword">
-			    	
-			      	<div id="navigation" >
-						
+				<div class="tab-content">
 					
-						<ul id="hospitalList">			
-						</ul>
-					</div>
-			    </div>
-			</div>	
+				    <div id="home1" class="tab-pane fade in active" >
+				    	
+				    	<div>
+				    		<div >
+				    			<h5>원하시는 진료과를 선택하세요</h5>
+				    			<div style="border: solid; font-size:10px;">
+				    				<div style="width: 100%; border: solid;" id="selector">
+				    					<i>진료과목    </i><i id="diag_keyword" style="margin-left: 20%;">전체선택</i>
+				    				</div> 
+				    			</div>
+				    		</div>
+				    		<div>
+				    			해당 지역에 <i>몇건</i> 검색되었습니다
+				    		</div>
+				    		<hr>
+				    		<div id="diag_tab1" >
+				    			<table id="diagnosisTalbe">
+					      		
+						      		<tr>
+						      			<td><button value="전체">전체선택</button></td>
+						      			<td><button value="종합">종합병원</button></td>
+						      		</tr>
+						      		<tr>
+						      			<td><button value="한방">한의원</button></td>
+						      			<td><button value="요양">요양병원</button></td>
+						      		</tr>
+						      		<tr>
+						      			<td><button value="내과">내과</button></td>
+						      			<td><button value="외과">외과</button></td>
+						      		</tr>
+						      		<tr>
+						      			<td><button value="이비인후과">이비인후과</button></td>
+						      			<td><button value="치과">치과</button></td>
+						      		</tr>
+						      		<tr>
+						      			<td><button value="안과">안과</button></td>
+						      			<td><button value="소아과">소아과</button></td>
+						      		</tr>
+						      		<tr>
+						      			<td><button value="신경">신경외과</button></td>
+						      			<td><button value="방사선">방사선과</button></td>
+						      		</tr>
+						      		<tr>
+						      			<td><button value="성형">성형외과</button></td>
+						      			<td><button value="산부인">산부인과</button></td>
+						      		</tr>
+						      		<tr>
+						      			<td><button value="응급">응급의학과</button></td>
+						      			<td><button value="정신">정신건강의학과</button></td>
+						      		</tr>
+						      		<tr>
+						      			<td><button value="피부">피부과</button></td>
+						      			<td><button value="마취">마취통증학과</button></td>
+						      		</tr>
+						      		<tr>
+						      			<td><button value="핵의학">핵의학과</button></td>
+						      			<td><button value="흉부">흉부외과</button></td>
+						      		</tr>
+						      		<tr>
+						      			<td><button value="재활">재활의학과</button></td>
+						      			<td><button value="신경">신경과</button></td>
+						      		</tr>	
+						      	
+						      	</table>
+				    		</div>
+				    		<div id ="diag_tab2" >
+				    			<ul id="hosptialListByDiagnosis">
+				      			</ul>
+				      			
+				    		</div>
+				    	</div>	
+				    </div>
+				    
+				    <div id="keyworddiag" class="tab-pane fade" >
+				    	<input type="search" style="left : 30%;" placeholder="여기서 검색하세요 " id="Keyword">
+				    	
+				      	<div id="navigation_hosp" >
+							<ul id="hospitalList">			
+							</ul>
+						</div>
+				    </div>
+				</div>	
+			</div>
+		    
+		    <!-- 맵 주소창 및 맵 화면 구현 부분 -->
+		    <div class="col-sm-8" style="width : 75%;">
+		    	<input width="74%" type="text" id="findLocation" placeholder="찾으시는 주소를 입력해주세요"/>
+		    	<input width="24%" type="button" onclick="findAddr()" value="주소검색"/>
+		    	
+		    	<div id="searchLocList" style="display : none;">
+		    		<ul id="searchLocList_ul">
+		    			
+		    		</ul>
+		    	</div>
+		    	<div id="map">map</div> 
+			</div>
+		  </div>
+		  
 		</div>
-	    
-	   
-	    <div class="col-sm-8" style="width : 75%;">
-	    	<input type="text" id="findLocation" placeholder="찾으시는 주소를 입력해주세요"/>
-	    	<input type="button" onclick="findAddr()" value="주소검색"/>
-	    	
-	    	<div id="searchLocList" style="display : none;">
-	    		<ul id="searchLocList_ul">
-	    			
-	    		</ul>
-	    	</div>
-	    	<div id="map">map</div> 
-		</div>
-	  </div>
-	  
+		
+	
 	</div>
-
+	
 		
 
 	
@@ -626,6 +629,7 @@
 			
 			
 		});
+		
 		$(document).on('mouseout','.hospitalListDutyName',function(){
 			
 			customOverlay.setMap(null);

@@ -46,7 +46,7 @@
 </script>
 
 <style type="text/css">
-td{padding: 30px;}
+.table-borderless td{padding: 30px;}
 div{cursor: pointer;}
 
 #pageDiv{
@@ -87,8 +87,8 @@ margin-bottom: -15px;
 	<jsp:include page="header2.jsp"></jsp:include>
 	<!-- Header part end-->
 
-<div id="top3Div">
 		<h1>　　　인기 게시물</h1>
+<div id="top3Div">
 	<div class="btn-group" style="margin-left: 1000px;" >
 		<input type="button" value="주간" id="weeklyBest" class="btn btn-outline-secondary">
 		<input type="button" value="월간" id="monthlyBest" class="btn btn-outline-secondary">
@@ -163,8 +163,9 @@ margin-bottom: -15px;
 				<input type="submit" value="검색" class="btn btn-secondary" style="margin-left: 3px;">
 		</form>
 	</div>
+	<c:if test="${sessionScope.status==2}">
 	<input style=" margin-left:1000px; height: 40px;" type="button" value="글쓰기" onclick="location.href='healthInfoWriteForm.do'" class="btn btn-secondary">
-	
+	</c:if>
 	
 
 	
