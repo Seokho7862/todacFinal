@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 	
- <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
- 
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
+    
 <title>Insert title here</title>
 
 <style type="text/css">
@@ -145,25 +145,29 @@
 		left : 10px; 
 		
 	}
+	
+
 </style>
 
 </head>
 <body>	
-		<jsp:include page="header2.jsp"></jsp:include>
-		<div style ="margin-top: 23px; margin-left: 10px;">
+		<jsp:include page="header3.jsp"></jsp:include>
+		
+		
+		
+		<div style ="margin-top: 23px; margin-left: 10px; font-family: 'Jua'">
 			<div class="container-fluid" >
 		  <div class="row">
 		    <div class="col-sm-4" style="width : 20%; " >
-							
+					
 				<ul class="nav nav-tabs">
 				    <li class="active"><a data-toggle="tab" href="#home1">진료과</a></li>
 				    <li><a data-toggle="tab" href="#keyworddiag">키워드</a></li>
 				</ul>
 				
 				<div class="tab-content">
-					
-				    <div id="home1" class="tab-pane fade in active" >
-				    	
+					<!--  여기서 css 씹힘  -->
+				    <div  id="home1" class="tab-pane fade in active" >
 				    	<div>
 				    		<div>
 				    			<!-- <h5 style="text-align: center;">원하시는 진료과를 선택하세요</h5> -->
@@ -303,7 +307,7 @@
 				    		$('#hospitalList hr').remove();
 							var list= "";
 							for(var i = 0; i < data.length ; i++){
-								list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href=HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'>' +  (i+1) + ". " + data[i].DUTYNAME +'</a><br><a style="font-size: 7px " class="hospitalListDutyName">' + data[i].DUTYADDR+ '</a></li>';
+								list += '<li style="list-style : upper-alpha"><a style="font-size: 15px" class="hospitalListDutyName" href=HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'>' +  (i+1) + ". " + data[i].DUTYNAME +'</a><br><a style="font-size: 7px " class="hospitalListDutyName">' + data[i].DUTYADDR+ '</a></li>';
 								list += '<hr>'
 							}
 							$('#hospitalList').append(list);
@@ -385,8 +389,8 @@
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
 					
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>';
-					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>';
+					list += '<a style="font-size: 7px; margin-left : 15px;">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 					
 				}
@@ -474,8 +478,8 @@
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
 					var latlng = new kakao.maps.LatLng(data[i].WGS84LAT, data[i].WGS84LON);
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
-					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
+					list += '<a style="font-size: 7px; margin-left : 15px;">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 					
 				}
@@ -611,8 +615,8 @@
 					//list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"></a><br>'
 					//list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
 					//list += '<hr>';
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
-					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
+					list += '<a style="font-size: 7px; margin-left : 15px;">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 				}
 				

@@ -11,38 +11,40 @@ public class HospitalInfo {
 	private String dutyTel1;
 	private String dutyTel3;
 	
-	private String dutyTime1c; //Áø·á½Ã°£ ¿ù¿äÀÏ  ³¡
-	private String dutyTime2c; //Áø·á½Ã°£ È­¿äÀÏ 
-	private String dutyTime3c; //Áø·á½Ã°£ ¼ö¿äÀÏ 
-	private String dutyTime4c; //Áø·á½Ã°£ ¸ñ¿äÀÏ 
-	private String dutyTime5c; //Áø·á½Ã°£ ±Ý¿äÀÏ 
-	private String dutyTime6c; //Áø·á½Ã°£ Åä¿äÀÏ 
-	private String dutyTime7c; //Áø·á½Ã°£ ÀÏ¿äÀÏ 
-	private String dutyTime8c; //Áø·á½Ã°£ °øÈÞÀÏ 
+	private String dutyTime1c; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½
+	private String dutyTime2c; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ È­ï¿½ï¿½ï¿½ï¿½ 
+	private String dutyTime3c; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	private String dutyTime4c; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	private String dutyTime5c; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½Ý¿ï¿½ï¿½ï¿½ 
+	private String dutyTime6c; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	private String dutyTime7c; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ 
+	private String dutyTime8c; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	
-	private String dutyTime1s; //Áø·á½Ã°£ ¿ù¿äÀÏ ½ÃÀÛ
-	private String dutyTime2s; //Áø·á½Ã°£ È­¿äÀÏ
-	private String dutyTime3s; //Áø·á½Ã°£ ¼ö¿äÀÏ
-	private String dutyTime4s; //Áø·á½Ã°£ ¸ñ¿äÀÏ
-	private String dutyTime5s; //Áø·á½Ã°£ ±Ý¿äÀÏ
-	private String dutyTime6s; //Áø·á½Ã°£ Åä¿äÀÏ
-	private String dutyTime7s; //Áø·á½Ã°£ ÀÏ¿äÀÏ
-	private String dutyTime8s; //Áø·á½Ã°£ °øÈÞÀÏ
+	private String dutyTime1s; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String dutyTime2s; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ È­ï¿½ï¿½ï¿½ï¿½
+	private String dutyTime3s; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String dutyTime4s; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String dutyTime5s; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½Ý¿ï¿½ï¿½ï¿½
+	private String dutyTime6s; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String dutyTime7s; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½
+	private String dutyTime8s; //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	private String dgidldName; //Áø·á°ú¸ñ
+	private String dgidldName; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	private double wgs84Lon; // °æµµ
-	private double wgs84Lat; // À§µµ
+	private double wgs84Lon; // ï¿½æµµ
+	private double wgs84Lat; // ï¿½ï¿½ï¿½ï¿½
+	private String hfile;
+	
+	
 	
 	public HospitalInfo() {}
-	
-	
 	public HospitalInfo(String hpid, String dutyName, String postCdn1, String postCdn2, String dutyAddr,
 			String dutyTel1, String dutyTel3, String dutyTime1c, String dutyTime2c, String dutyTime3c,
 			String dutyTime4c, String dutyTime5c, String dutyTime6c, String dutyTime7c, String dutyTime8c,
 			String dutyTime1s, String dutyTime2s, String dutyTime3s, String dutyTime4s, String dutyTime5s,
 			String dutyTime6s, String dutyTime7s, String dutyTime8s, String dgidldName, double wgs84Lon,
-			double wgs84Lat) {
+			double wgs84Lat, String hfile) {
+		
 		this.hpid = hpid;
 		this.dutyName = dutyName;
 		this.postCdn1 = postCdn1;
@@ -69,9 +71,8 @@ public class HospitalInfo {
 		this.dgidldName = dgidldName;
 		this.wgs84Lon = wgs84Lon;
 		this.wgs84Lat = wgs84Lat;
+		this.hfile = hfile;
 	}
-
-
 	public String getHpid() {
 		return hpid;
 	}
@@ -228,8 +229,6 @@ public class HospitalInfo {
 	public void setWgs84Lat(double wgs84Lat) {
 		this.wgs84Lat = wgs84Lat;
 	}
-
-
 	@Override
 	public String toString() {
 		return "HospitalInfo [hpid=" + hpid + ", dutyName=" + dutyName + ", postCdn1=" + postCdn1 + ", postCdn2="
@@ -240,8 +239,16 @@ public class HospitalInfo {
 				+ ", dutyTime2s=" + dutyTime2s + ", dutyTime3s=" + dutyTime3s + ", dutyTime4s=" + dutyTime4s
 				+ ", dutyTime5s=" + dutyTime5s + ", dutyTime6s=" + dutyTime6s + ", dutyTime7s=" + dutyTime7s
 				+ ", dutyTime8s=" + dutyTime8s + ", dgidldName=" + dgidldName + ", wgs84Lon=" + wgs84Lon + ", wgs84Lat="
-				+ wgs84Lat + "]";
+				+ wgs84Lat + ", hfile=" + hfile + "]";
 	}
+	public String getHfile() {
+		return hfile;
+	}
+	public void setHfile(String hfile) {
+		this.hfile = hfile;
+	}
+	
+	
 	
 	
 	

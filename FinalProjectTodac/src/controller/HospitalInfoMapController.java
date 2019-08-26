@@ -92,7 +92,7 @@ public class HospitalInfoMapController {
 				mav.addObject("f_img",1);
 			}
 		}
-		System.out.println(String.format("%.2f",rsvc.averageRate(hpid)));
+		System.out.println(h);
 		mav.addObject("avgRate",String.format("%.2f",rsvc.averageRate(hpid)));
 		mav.addObject("dlist", str);
 		mav.addObject("hlist",h);
