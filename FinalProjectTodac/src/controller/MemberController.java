@@ -53,6 +53,7 @@ public class MemberController {
 		if(service.loginUser(muid, pwd)==1) {
 			//세션에 아이디 저장하기 
 			session.setAttribute("muid", muid);
+				
 			return "Openmain";
 		}
 		else {
@@ -67,6 +68,7 @@ public class MemberController {
 		if(service.loginManager(muid, pwd)==1) {
 			//세션에 아이디 저장하기 
 			session.setAttribute("muid", muid);
+			session.setAttribute("manager", muid);
 			return "1";
 		}
 		else {

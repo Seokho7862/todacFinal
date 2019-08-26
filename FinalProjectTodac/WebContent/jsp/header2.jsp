@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="css/nice-select.css">
 <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <style type="text/css">
 
 
@@ -173,9 +174,8 @@
 										aria-haspopup="true" aria-expanded="false"><font
 											face="Jua" size="5px"> 서비스 소개</font> </a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<a class="dropdown-item" href="#">토닥이란?</a> <a
-												class="dropdown-item" href="#">팀 토닥 소개</a> <a
-												class="dropdown-item" href="#">rorem Ipsum?</a>
+											<a class="dropdown-item" href="todacIntroForm.do">토닥이란?</a> <a
+												class="dropdown-item" href="#">팀 토닥 소개</a> 
 										</div></li>
 									<li class="nav-item active"><a class="nav-link"
 										href="HospitalInfo_TestMain.do"><font face="Jua"

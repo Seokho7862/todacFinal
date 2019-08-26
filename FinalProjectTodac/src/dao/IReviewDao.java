@@ -16,5 +16,5 @@ public interface IReviewDao {
 	public void insertClickFavorite(Favorites f);
 	public void deleteClickFavorite(Favorites f);
 	public Favorites findLidByFavoritesModel(Favorites f);
-	
+	public Double averageRate(String hpid);
 }
