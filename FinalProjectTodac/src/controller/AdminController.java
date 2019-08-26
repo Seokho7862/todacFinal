@@ -68,6 +68,7 @@ public class AdminController {
 		if(service.adminLogin(param)==1) {
 			
 			session.setAttribute("muid", param.get("maid"));
+			session.setAttribute("status", 7);
 			return "1";
 		}
 		else {
@@ -75,6 +76,30 @@ public class AdminController {
 			return "0";
 		}
 		
+		
+	}
+	//신고리스트 불러오기
+	@RequestMapping("report_list.do")
+	public ModelAndView reportList() {
+		ModelAndView mav = new ModelAndView();
+		System.out.println(service.selectAllReport());
+		mav.addObject("reportlist", service.selectAllReport());
+		mav.setViewName("reportlist");
+		return mav;
+	}
+	
+	//신고확정하기
+	@RequestMapping("confirm_report.do")
+	public @ResponseBody int updateReport(String muid) {
+		System.out.println(service.updateReport(muid));
+		
+		if(service.updateReport(muid)==1) {
+			return 1;
+		}
+		else {
+			
+			return 0;
+		}
 		
 	}
 	

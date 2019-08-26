@@ -281,20 +281,15 @@ public class MemberController {
 	@RequestMapping("review_list.do")
 	public ModelAndView reviewList(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		
+		System.out.println(session.getAttribute("muid"));
 		if(session.getAttribute("muid")==null) {
 			mav.setViewName("redirect:loginForm.do");
 		}
 		else {
-			if(service.selectManager((String)session.getAttribute("muid"))==1) {
 				String muid =(String)session.getAttribute("muid");
 				mav.addObject("reviewlist", service.selectAllreview(muid));
 				mav.setViewName("reviewList");
-			}
-			else {
-				
-				mav.setViewName("redirect:loginForm.do");
-			}
+			
 		}
 		return mav;
 	}
