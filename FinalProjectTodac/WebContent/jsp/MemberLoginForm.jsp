@@ -91,12 +91,15 @@ $(function(){
 					</div>
 				</div>
 			</div>
-
+<a href="find_id_form.do">아이디  </a>&frasl;	<a href="find_pw_form.do">  비밀번호 찾기</a>
 <button onclick="location.href='admin_login_form.do'">관리자로그인</button>
 </div>
 
 <div class="col-md-4">
 </div>
 </div>
+
+
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

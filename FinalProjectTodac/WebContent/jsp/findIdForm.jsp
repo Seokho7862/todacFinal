@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
 <script type="text/javascript">
 $(function(){
 	$('#authPhone').on('click',function(){
@@ -20,7 +22,7 @@ $(function(){
 				if(data!=""){
 					alert("??");
 					var input = "";
-					input += "<input type='text' id='checknum'>";
+					input += "<input type='text' id='checknum'><br>";
 					input += "<input type='button' id='chk' value='id찾기'>";
 					$('#authPhone').after(input);
 					
@@ -69,13 +71,29 @@ $(function(){
 </script>
 </head>
 <body>
+<!-- header -->
+<jsp:include page="header2.jsp"></jsp:include>
+<jsp:include page="myPage.jsp"></jsp:include>
 
+<div class="container">
+<div class="row">
+<div class="col-4"></div>
+<div class="col-4">
 <form>
-이름<input type="text" id="name">
+<h1>아이디 찾기</h1>
+이름<input type="text" id="name"> <br>
 핸드폰<input type="text" id="phone">
 <div id="message"></div>
 <input type="button" id="authPhone" value="인증하기">
 </form>
+<a href="find_pw_form.do">  비밀번호 찾기</a>
+</div>
+<div class="col-4"></div>
+</div>
+</div>
 
+
+<!-- footer -->
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

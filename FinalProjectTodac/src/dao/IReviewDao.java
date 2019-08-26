@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import model.Favorites;
 import model.Report;
 import model.Review;
 
@@ -12,5 +13,8 @@ public interface IReviewDao {
 	public void reviewWrite(Review r);
 	public void ReportInsert(Report r);
 	public void updateReivewStatus(int rid);
+	public void insertClickFavorite(Favorites f);
+	public void deleteClickFavorite(Favorites f);
+	public Favorites findLidByFavoritesModel(Favorites f);
 	
 }

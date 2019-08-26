@@ -117,8 +117,15 @@
 	<!-- 즐겨찾기, 후기 작성 버튼-->
 	<hr>
 	<div>
-		${sessionid } 
-		<a href="#" data-toggle="tooltip" title="즐겨찾기를 해보세요!"><img class="clickLikeBtn" src="image/like_none.jpg" style="height: 50px; width: 50px"></a>
+		
+		<a href="#" data-toggle="tooltip" title="즐겨찾기를 해보세요!"><c:choose>
+			<c:when test="${f_img == 1}">
+				<img class="clickLikeBtn" src="image/like_done.jpg" style="height: 50px; width: 50px">
+			</c:when>
+			<c:otherwise>
+				<img class="clickLikeBtn" src="image/like_none.jpg" style="height: 50px; width: 50px">
+			</c:otherwise>
+		</c:choose></a>
 		<a data-toggle="tooltip" title="작성 페이지로 이동해요" class="writeReview">후기작성<input type="hidden" value="${hlist.hpid}"></a>
 		<a>별점</a>
 		<script>
@@ -274,6 +281,9 @@
 							   	신고 
 							</button>
 							<input type="hidden" value="${l.rid}"/>
+							<input type="hidden" value="${l.muid}"/>
+							<input type="hidden" value="${l.title}"/>
+							
 						</td>
 					</tr>
 				</c:forEach>
@@ -298,11 +308,11 @@
 		          	<table>
 		          		<tr style="height: 60px;">
 		          			<th>작성자</th>
-		          			<td>session id<td>
+		          			<td><a class="modal-transit-Data-getmuid"></a><td>
 		          		</tr>
 		          		<tr style="height: 90px; max-height : 80px; overflow: scroll;">
 		          			<th>내용</th>
-		          			<td></td>
+		          			<td><a class="modal-transit-Data-getTitle"></a></td>
 		          		</tr>
 		          		<tr style="height: 40px;">
 		          			<th>사유선택</th>
@@ -311,13 +321,16 @@
 		          		<tr style="height: 200px; ">
 		          			<td colspan="2">
 		          				<ul class="modal_ul">
-		          					<li> <input type="radio" name="radiogroup"  value="부적절한 홍보 게시물" checked="checked" /> 부적절한 홍보 게시물</li>
-		          					<li> <input type="radio" name="radiogroup" value="음란성 또는 청소년에게 부적합한 내용"/> 음란성 또는 청소년에게 부적합한 내용</li>
-		          					<li> <input type="radio" name="radiogroup" value="특정인 대상의 비방/욕설"/> 특정인 대상의 비방/욕설</li>
-		          					<li> <input type="radio" name="radiogroup" value="명예훼손/사생활 침해 및 저작권 활동"/> 명예훼손/사생활 침해 및 저작권 활동</li>
-		          					<li> <input type="radio" name="radiogroup" value="기타 사유(자유 양식)"/> 기타 사유(자유 양식)</li>
+		          					<li> <input type="radio" name="radiogroup"  value="부적절한 홍보 게시물" checked="checked" /> 부적절한 홍보 게시물<br></li>
+		          					<li> <input type="radio" name="radiogroup" value="음란성 또는 청소년에게 부적합한 내용"/> 음란성 또는 청소년에게 부적합한 내용<br></li>
+		          					<li> <input type="radio" name="radiogroup" value="특정인 대상의 비방/욕설"/> 특정인 대상의 비방/욕설<br></li>
+		          					<li> <input type="radio" name="radiogroup" value="명예훼손/사생활 침해 및 저작권 활동"/>명예훼손/사생활 침해 및 저작권 활동<br></li>
+		          					<li> <input type="radio" name="radiogroup" value="기타"/><a class="etc_TextDiv" >기타 자유양식 작성</a></li>
+		          					<li class="etc_TextInput"> 내용 입력  :  <input class="etc_TextInput" type="text" placeholder="내용을 입력해 주세요" /></li>
+		          						
 		          				</ul>
-		          				<input type="hidden" class="modal-transit-Data" value="">
+		          				<input type="hidden" class="modal-transit-Data_rid" value=""> <!-- 신고당하는 rid -->
+		          				<input type="hidden" class="modal-transit-Data_muid" value=""> <!-- 신고당하는 인간 이름 -->
 		          				
 		          			<td>
 		          			
@@ -340,15 +353,30 @@
 <!-- 페이지 함수 부분 -->
 
 <script type="text/javascript">
+	$(document).ready(function(){
+		$('.etc_TextInput').hide();
+	});
+	
 	function modalCheck(){
+		alert("?");
+		
 		var checked = $('.modal_ul').find('input[name="radiogroup"]');
+		alert(checked);
 		var rid = $('.modal-transit-Data').val();
+		alert(rid);
 		var reportreason=null;
-		for(var i=0; i<checked.length; i++){		
+		for(var i=0; i<checked.length; i++){
+			
 			if(checked[i].checked == true){
-				reportreason=checked[i].value;
-				alert(reportreason);
-				alert(rid);	
+				if(checked[i].value=="기타"){
+					var etc = $('.etc_TextInput').val()
+					alert(etc);
+					reportreason = etc;
+				}
+				else{					
+					reportreason = checked[i].value;
+				}
+					
 			}
 		}
 		
@@ -381,41 +409,69 @@
 	
 	//신고 버튼 클릭시 <신고 폼> -> 모달로 할 계획
 	$('.reportBtn').on('click',function(){
-		var rid = $(this).find('input').val();
-		alert(rid+"를 신고합니다");
-		var x = $('.modal-transit-Data').val(rid).val();
+		var rid = $(this).find('input:eq(0)').val();
+		var muid = $(this).find('input:eq(1)').val();
+		var title = $(this).find('input:eq(2)').val();
+		var t_rid = $('.modal-transit-Data_rid').val(rid).val();
+		var t_muid = $('.modal-transit-Data_muid').val(muid).val();
+		$('.modal-transit-Data-getmuid').text(t_muid);
+		$('.modal-transit-Data-getTitle').text(title);
 
 	});
 	
 	$('.writeReview').on('click',function(){
-		var hpid = $(this).find('input').val();
-		location.href = "HospitalInfo_ReviewWriteForm.do?hpid="+hpid;
-		alert(hpid+"병원의 리뷰작성 페이지로 이동합니다");
+		var muid = "${muid}";
+		if(muid==""){
+			alert("로그인을 해주세요");	
+		}
+		else{
+			var hpid = $(this).find('input').val();
+			location.href = "HospitalInfo_ReviewWriteForm.do?hpid="+hpid;
+		}
+		
 	});
-	
+	//
 	$(document).ready(function(){
 		//만약 sessionID 가 없을때
-		if(false){
+		var muid = "${muid}";
+		if(muid==""){
 			$('.reviewTable').addClass("divBlur");
 			$('.reviewTable').addClass("no_drag");
 		}
-	})
+	});
 	
+	$('.etc_TextDiv').on('click',function(){
+		 alert("뿌");
+		 $('.etc_TextInput').slideToggle();
+	});
 	
+	//좋아요 체크
 	$(document).on('click','.clickLikeBtn',function(){
-		var muid = "${sessionid}";
-		var	hpid = "${hlist.hpid}";
-		var imgsrc = $(this).attr('src');
-		
-		if(imgsrc=="image/like_none.jpg"){
-			$(this).attr('src','image/like_done.jpg');
+		var muid = "${muid}";
+		//아이디가 있을때 좋아요 추가 진행, 아이디가 없을 때는 좋아요 진행 하지 않음
+		if(muid==""){
+			alert("로그인해주세요");
+		}
+		else{
+			var	hpid = "${hlist.hpid}";
+			var imgsrc = $(this).attr('src');
 			
+			var status;
+			if(imgsrc=="image/like_none.jpg"){
+				$(this).attr('src','image/like_done.jpg');
+				status = 0;
+				
+			}else{
+				$(this).attr('src','image/like_none.jpg');
+				status = 1;
+			}
 			$.ajax({
-				url : "InsertFavorite.do",
+				url : "ClickFavorite.do",
 				type : "post",
 				data : { 
 					muid : muid,
-					hpid : hpid
+					hpid : hpid,
+					status : status
 				},
 				datatype : "json",
 				success : function(){
@@ -424,31 +480,8 @@
 				error :  function(){
 					alert("json 에러");
 				}
-	
-			});
-			
-		}else{
-			$(this).attr('src','image/like_none.jpg');
-			
-			$.ajax({
-				url : "DeleteFavorite.do",
-				type : "post",
-				data : { 
-					muid : muid,
-					hpid : hpid
-				},
-				datatype : "json",
-				success : function(){
-					alert("성공");
-				},
-				error :  function(){
-					alert("json 에러");
-				}
-	
 			});
 		}
-			
-
 	});
 	
 	

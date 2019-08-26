@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
 <script type="text/javascript">
 $(function(){
 	$('#authPhone').on('click',function(){
@@ -22,7 +25,7 @@ $(function(){
 					alert("??");
 					var input = "";
 					input += "<input type='text' id='checknum'>";
-					input += "<input type='button' id='chk' value='È®ÀÎ'>";
+					input += "<input type='button' id='chk' value='í™•ì¸'>";
 					$('#authPhone').after(input);
 					
 					$.ajax({
@@ -35,33 +38,33 @@ $(function(){
 							alert(d.key);
 							if(d.result==""){
 								$('#chk').on('click',function(){
-								alert($('#checknum').val()+" ÀÔ·Â°ª");
+								alert($('#checknum').val()+" ì…ë ¥ê°’");
 									if(d.key==$('#checknum').val()){
 										
 										alert(data);
 										var table ="";
 										table +="<input type='text' id='pwd'>";
 										table +="<input type='text' id='ckpwd'>";
-								table += "<input type='button' id='renewbtn' value='Àç¼³Á¤'>";
+								table += "<input type='button' id='renewbtn' value='ì¬ì„¤ì •'>";
 								$('#chk').after(table);
 	$('#renewbtn').on('click',function(){
 			alert($('#pwd').val());
 			alert($('#ckpwd').val());
 		if($('#pwd').val()==$('#ckpwd').val()){
-			alert("µÇ³Ä");
+			alert("ë˜ëƒ");
 			$.post('renew_pwd.do',{muid : $('#muid').val(),pwd:$('#pwd').val()},function(){
-				alert("ºñ¹Ğ¹øÈ£°¡ Àç¼³Á¤ µÇ¾ú½À´Ï´Ù.");
+				alert("ë¹„ë°€ë²ˆí˜¸ê°€ ì¬ì„¤ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			});
 				location.href='loginForm.do';
 		}
 		else
-			alert("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+			alert("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		
 		
 	});
 									}
 									else{
-										alert("½ÇÆĞ");
+										alert("ì‹¤íŒ¨");
 									}
 								});
 							}
@@ -72,11 +75,11 @@ $(function(){
 					
 				}
 				else{
-				alert("Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");	
+				alert("ì •ë³´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");	
 				}
 			},
 			error : function(){
-				alert("Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
+				alert("ì •ë³´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
 			}
 		});
 	});
@@ -90,14 +93,30 @@ $(function(){
 </script>
 </head>
 <body>
+<!-- header -->
+<jsp:include page="header2.jsp"></jsp:include>
+<jsp:include page="myPage.jsp"></jsp:include>
 
+
+<div class="container">
+<div class="row">
+<div class="col-4"></div>
+<div class="col-4" style="text-align: center">
+<h1>ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</h1>
 <form>
-ÀÌ¸§<input type="text" id="name">
-¾ÆÀÌµğ<input type="text" id="muid">
-ÇÚµåÆù<input type="text" id="phone">
-<div id="message"></div>
-<input type="button" id="authPhone" value="ÀÎÁõÇÏ±â">
-</form>
 
+ì´ë¦„<input type="text" id="name"><br>
+ì•„ì´ë””<input type="text" id="muid"><br>
+í•¸ë“œí°<input type="text" id="phone"><br>
+<div id="message"></div>
+<input type="button" id="authPhone" value="ì¸ì¦í•˜ê¸°">
+</form>
+<a href="find_id_form.do">ì•„ì´ë”” ì°¾ê¸° </a>
+</div>
+<div class="col-4"></div>
+</div>
+</div>
+<!-- footer -->
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

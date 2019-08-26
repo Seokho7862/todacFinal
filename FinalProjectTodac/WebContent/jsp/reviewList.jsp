@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>토닥</title>
 </head>
 <body>
 
@@ -47,5 +47,8 @@
 </div>
 </div>
 </div>
+
+
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
