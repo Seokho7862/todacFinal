@@ -64,7 +64,7 @@ p {
 
 		<input type="button" class="btn btn-outline-secondary" value="목록으로"
 			onclick="location.href='healthInfoList.do?page=${pageInfo.page}&keyword=${pageInfo.keyword}&searchType=${pageInfo.searchType}'">
-		<c:if test="${sessionScope.status==2}">
+		<c:if test="${sessionScope.status==2 ||sessionScope.status==7}">
 			<input type="button" class="btn btn-outline-secondary" value="삭제"
 				onclick="location.href='deleteHealthInfo.do?iid=${healthInfo.iid}'">
 			<input type="button" class="btn btn-outline-secondary" value="수정"

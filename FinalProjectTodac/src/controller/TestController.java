@@ -192,7 +192,7 @@ public class TestController {
 		} else if (session.getAttribute("status") != null) {
 			status = (int) session.getAttribute("status");
 		}
-		if (status == 2 && muid.equals(hi.getMuid())) {
+		if ((status == 2 && muid.equals(hi.getMuid())) || status == 7) {
 			tservice.deleteHealthInfo(iid2);
 			mav.setViewName("healthInfo");
 		} else {
@@ -247,7 +247,7 @@ public class TestController {
 		} else if (session.getAttribute("status") != null) {
 			status = (int) session.getAttribute("status");
 		}
-		if (status == 2 && muid.equals(hi.getMuid())) {
+		if ((status == 2 && muid.equals(hi.getMuid())) || status == 7) {
 			mav.setViewName("healthInfoUpdateForm");
 			mav.addObject("healthInfo", hi);
 			mav.addObject("pageInfo", pageInfo);
@@ -363,7 +363,19 @@ public class TestController {
 	}
 
 	@RequestMapping("noticeWriteForm.do")
-	public void noticeWriteForm() {
+	public String noticeWriteForm(HttpSession session) {
+		int status = 0;
+		if (session.getAttribute("status") == null) {
+			status = 0;
+		} else if (session.getAttribute("status") != null) {
+			status = (int) session.getAttribute("status");
+		}
+		if (status == 7) {
+			return "redirect: jsp/noticeWritForm.jsp";
+		} else {
+			return "redirect: jsp/healthInfoDenyForm.jsp";
+		}
+
 	}
 
 	@RequestMapping("noticeWirte.do")
@@ -390,11 +402,20 @@ public class TestController {
 	}
 
 	@RequestMapping("noticeModifyForm.do")
-	public ModelAndView noticeModifyForm(int nid) {
+	public ModelAndView noticeModifyForm(int nid, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("notice", tservice.getNotice(nid));
-		mav.setViewName("noticeModifyForm");
-
+		int status = 0;
+		if (session.getAttribute("status") == null) {
+			status = 0;
+		} else if (session.getAttribute("status") != null) {
+			status = (int) session.getAttribute("status");
+		}
+		if (status == 7) {
+			mav.addObject("notice", tservice.getNotice(nid));
+			mav.setViewName("noticeModifyForm");
+		} else {
+			mav.setViewName("healthInfoDenyForm");
+		}
 		return mav;
 	}
 
@@ -405,9 +426,20 @@ public class TestController {
 	}
 
 	@RequestMapping("noticeDelete.do")
-	public String noticeDelete(int nid) {
-		tservice.noticeDelete(nid);
-		return "redirect: noticeListForm.do";
+	public String noticeDelete(int nid, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		int status = 0;
+		if (session.getAttribute("status") == null) {
+			status = 0;
+		} else if (session.getAttribute("status") != null) {
+			status = (int) session.getAttribute("status");
+		}
+		if (status == 7) {
+			tservice.noticeDelete(nid);
+			return "redirect: noticeListForm.do";
+		} else {
+			return "redirect: jsp/healthInfoDenyForm.jsp";
+		}
 	}
 
 	@RequestMapping("get10Disease.do")
@@ -446,9 +478,9 @@ public class TestController {
 	@RequestMapping("noticeForDoctors.do")
 	public void noticeForDoctors() {
 	}
-	
+
 	@RequestMapping("todacTeamIntroduce.do")
 	public void todacTeamIntroduce() {
 	}
-	
+
 }

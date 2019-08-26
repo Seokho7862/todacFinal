@@ -68,6 +68,8 @@ public class AdminController {
 		if(service.adminLogin(param)==1) {
 			
 			session.setAttribute("muid", param.get("maid"));
+			session.setAttribute("status",7);
+			
 			return "1";
 		}
 		else {

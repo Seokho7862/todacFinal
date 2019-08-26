@@ -25,7 +25,6 @@
 <link rel="stylesheet" href="css/nice-select.css">
 <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <style type="text/css">
 
 

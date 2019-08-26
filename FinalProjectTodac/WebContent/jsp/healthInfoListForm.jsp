@@ -87,8 +87,8 @@ margin-bottom: -15px;
 	<jsp:include page="header2.jsp"></jsp:include>
 	<!-- Header part end-->
 
-<div id="top3Div">
 		<h1>　　　인기 게시물</h1>
+<div id="top3Div">
 	<div class="btn-group" style="margin-left: 1000px;" >
 		<input type="button" value="주간" id="weeklyBest" class="btn btn-outline-secondary">
 		<input type="button" value="월간" id="monthlyBest" class="btn btn-outline-secondary">
