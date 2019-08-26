@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>토닥&mdash;TODAC</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -59,8 +59,29 @@ $(function(){
 	
 	
 	$('.deleteBtn').on('click',function(){
-		var reid = $(this).parents('tr').find('td').find('input.reportid').val();
+		var reid = $(this).parent('td').parent('tr').find('input.reportid').val();
 		alert(reid);
+		$.ajax({
+			url : 'delete_report.do',
+			data:{
+				reportid : reid
+			},
+			success:function(data){
+				alert(data);
+				if(data==1){
+				alert("신고가 삭제되었습니다.");
+				history.go(0);
+				}
+				else{
+					alert("다시 삭제를 해주세요.");
+				}
+			},
+			error : function(){
+				alert("다시 시도해주세요.");
+			}
+			
+			
+		});
 		
 		
 	});
@@ -75,6 +96,7 @@ $(function(){
 
 </head>
 <body>
+<jsp:include page="header2.jsp"></jsp:include>
 <h1>신고받은 리스트</h1>
 <div class="container">
 <div class="row">

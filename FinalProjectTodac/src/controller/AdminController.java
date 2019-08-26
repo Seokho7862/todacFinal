@@ -104,5 +104,26 @@ public class AdminController {
 		
 	}
 	
+	//신고삭제하기
+	@RequestMapping("delete_report.do")
+	public @ResponseBody int deleteReport(int reportid) {
+		if(service.deleteReport(reportid)==1) {
+			System.out.println(reportid);
+			return 1;
+		}
+		else
+			return 0;
+	}
+	
+	//5회이상 신고받은 사용자
+	@RequestMapping("over_report_list.do")
+	public ModelAndView selectOverReport() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("overlist", service.selectOverReport());
+		mav.setViewName("confirmReport");
+		return mav;
+	}
+	
+	
 	
 }
