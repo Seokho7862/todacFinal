@@ -38,9 +38,16 @@
 #todacBanner{
 width: 100%;
 height: auto;
-position:absolute;
-z-index: 2;
-	
+margin-top:75px;
+
+position:relative;
+z-index: 2;	
+}
+.intro_img{
+position: relative;
+margin-top:75px;
+margin-bottom:75px;
+
 }
 
 </style>
@@ -52,15 +59,33 @@ z-index: 2;
 	<!-- Header part end-->
 
 	<!-- banner part start-->
-	<section class="banner_part">
 
 
+
+<section class="todacBanner">
 	
 			<div class="banner_img">
-				<img src="img/todacBanner.jpg" alt="" id="todacBanner">
+				<img src="img/todacBanner.PNG" alt="" id="todacBanner">
 			</div>
 		
-	</section>
+
+
+			<div class="intro_img">
+				<img src="img/todacIntro1.PNG" alt="" id="todacIntro1">
+			</div>
+			
+			<div class="intro_img" >
+				<img src="img/todacIntro2.PNG" alt="" id="todacIntro2">
+			</div>
+			
+			<div class="intro_img">
+				<img src="img/todacIntro3.PNG" alt="" id="todacIntro3">
+			</div>
+				
+	</section>		
+		
+	
+	
 
 
 	<!-- banner part start-->

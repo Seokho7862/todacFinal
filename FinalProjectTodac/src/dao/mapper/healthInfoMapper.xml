@@ -43,7 +43,7 @@
 		insert into
 		healthinfo values((select max(iid) from
 		healthinfo)+1,#{muid},
-		#{writer},default,#{title},#{content},<if test="hfile==null">null</if><if test="hfile!=null">#{hfile}</if>,default)
+		#{writer},default,#{title},#{content},<if test="hfile==null">default</if><if test="hfile!=null">#{hfile}</if>,default)
 	</insert>
 
 	<update id="readcountUp" parameterType="java.util.HashMap">

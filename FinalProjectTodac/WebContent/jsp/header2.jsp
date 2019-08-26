@@ -90,6 +90,23 @@
 }
 </style>
 <script type="text/javascript">
+	$('document').ready(function() {
+		$.ajax({
+			url : "getSessionId.do",
+			success : function(data) {
+				var res=data;
+				if(data!=""){
+				var text = "";
+				
+				text = text+ '<div class="card" style="margin-top:40px;">'
+				text = text+ '<div class="card-header" style="height: 30px; text-align:left; padding: 0px;">'+data+'님 환영합니다!</div>'
+				text = text+ '<div class="card-body" style="height: 70px;"><a href="update_form.do">내 정보  </a> 　　　<a href="logout.do">로그아웃 </a></div>'
+				text = text+ '</div>'
+				
+				$('#loginDiv').html("")
+				$('#loginDiv').html(text)
+				}
+			}
 	$('document')
 			.ready(
 					function() {
@@ -110,10 +127,6 @@
 													+ '<div class="card-body" style="height: 70px;"><a href="show_pwd_form.do">내 정보  </a> 　　　<a href="logout.do">로그아웃 </a></div>'
 											text = text + '</div>'
 
-											$('#loginDiv').html("")
-											$('#loginDiv').html(text)
-										}
-									}
 
 								});
 
@@ -181,6 +194,7 @@
 										href="HospitalInfo_TestMain.do"><font face="Jua"
 											size="5px">병원 검색</font></a></li>
 
+
 									<li class="nav-item active"><a class="nav-link"
 										href="diseaseSearchForm.do"><font face="Jua"
 											size="5px">질병 정보 검색</font></a></li>
@@ -189,8 +203,9 @@
 										href="healthInfoList.do"><font face="Jua"
 											size="5px">건강 정보</font></a></li>
 
-									<li class="nav-item"><a class="nav-link" href="rateinfoform.do"><font
-											face="Jua" size="5px">병원 평가 정보</font></a></li>
+									<li class="nav-item"><a class="nav-link" href="rateinfoform.do">
+									<font face="Jua" size="6px">병원 평가 정보</font></a></li>
+									
 									<li class="nav-item"><a class="nav-link"
 										href="noticeListForm.do"><font face="Jua" size="5px">공지사항</font></a>
 									</li>
@@ -211,11 +226,12 @@
 			height="30px;">
 		<div id="loginDiv">
 
-			<button type="button" class="btn btn-primary" id="loginBtn"
-				style="width: 200px; height: 70px; border-color: #ccdcff; background-color: #ccdcff; font-size: large; font-weight: bold; color: #808080; margin-top: 40px;">통합
-				로그인</button>
-
-		</div>
+	 	<button onclick="location.href='loginForm.do'" type="button" class="btn btn-primary" id="loginBtn"
+	 	
+			style="width: 200px; height: 70px; border-color: #ccdcff; background-color: #ccdcff; font-size: large; font-weight: bold; color: #808080; margin-top: 40px;">통합
+			로그인</button> 
+			
+			</div>
 		<table id="PopSearchTable" class="table-hover">
 			<tr>
 				<th id="pop">주요 검색어</th>

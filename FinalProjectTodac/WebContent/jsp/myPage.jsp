@@ -26,9 +26,9 @@
 
 
 
-<div class="jumbotron text-center text-light" style="margin-bottom:0">
+<div class="jumbotron text-center text-light" style="height: 400px;">
    <div class="container">
-    <h1 style="font-family: 'Jua'; color: white">MY PAGE</h1>
+    <h1 style="font-family: 'Jua'; color: white; margin-top: 150px">MY PAGE</h1>
     <p></p>
     <p></p>
     <p></p>

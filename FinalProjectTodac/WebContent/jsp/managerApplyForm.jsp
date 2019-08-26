@@ -91,7 +91,10 @@ function check(){
 <script type="text/javascript">
 
 </script>
+
 <style type="text/css">
+
+
 #hospitalListTable{
 padding: 0px;
 }
@@ -99,6 +102,7 @@ padding: 0px;
 width: 20%
 }
 .table-bordered{
+font-size:large;
 width: 80%;
 max-width:80%;
 margin-left: 10%;
@@ -117,7 +121,9 @@ max-height: 600px;
 
 </head>
 <body>
-	<h1>병원 관계자 계정 신청</h1>
+	<!--::header part start::-->
+	<jsp:include page="header2.jsp"></jsp:include>
+	<!-- Header part end-->
 
 	<form action="managerApply.do" enctype="multipart/form-data" method="post" onsubmit="return check();">
 		<table class="table-bordered">

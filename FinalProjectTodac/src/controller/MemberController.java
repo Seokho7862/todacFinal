@@ -51,9 +51,12 @@ public class MemberController {
 	@RequestMapping("loginUser.do")
 	public String loginUser(String muid, String pwd, HttpSession session) {
 		if(service.loginUser(muid, pwd)==1) {
-			//세션에 아이디 저장하기 
+			//세션에 아이디 저장하기
 			session.setAttribute("muid", muid);
-				
+
+			//status 리턴함
+			session.setAttribute("status", service.selectMemreturnStatus(muid).getStatus());
+
 			return "Openmain";
 		}
 		else {
@@ -68,7 +71,10 @@ public class MemberController {
 		if(service.loginManager(muid, pwd)==1) {
 			//세션에 아이디 저장하기 
 			session.setAttribute("muid", muid);
-			session.setAttribute("manager", muid);
+
+			//status 리턴함
+			session.setAttribute("status", service.selectMemreturnStatus(muid).getStatus());
+
 			return "1";
 		}
 		else {
@@ -84,7 +90,7 @@ public class MemberController {
 		return "redirect:loginForm.do";
 	}
 	
-	
+	//아이디 찾기폼
 	@RequestMapping("find_id_form.do")
 	public String FindIdForm() {
 		
@@ -104,7 +110,7 @@ public class MemberController {
 			return res=service.getId(param);
 		}
 	}
-	
+	//비밀번호찾기폼
 	@RequestMapping("find_pw_form.do")
 	public String FindPwForm() {
 		
@@ -342,6 +348,13 @@ public class MemberController {
 		return "redirect:loginForm.do";
 	 } 
 		
+	}
+	
+	//서비스 소개
+	
+	@RequestMapping("service_info.do")
+	public String serviceInfo() {
+		return "serviceInfo";
 	}
 	
 	
