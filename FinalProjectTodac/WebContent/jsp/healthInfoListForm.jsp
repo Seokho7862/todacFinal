@@ -46,7 +46,7 @@
 </script>
 
 <style type="text/css">
-td{padding: 30px;}
+.table-borderless td{padding: 30px;}
 div{cursor: pointer;}
 
 #pageDiv{
@@ -163,8 +163,9 @@ margin-bottom: -15px;
 				<input type="submit" value="검색" class="btn btn-secondary" style="margin-left: 3px;">
 		</form>
 	</div>
+	<c:if test="${sessionScope.status==2}">
 	<input style=" margin-left:1000px; height: 40px;" type="button" value="글쓰기" onclick="location.href='healthInfoWriteForm.do'" class="btn btn-secondary">
-	
+	</c:if>
 	
 
 	

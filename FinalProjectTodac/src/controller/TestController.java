@@ -35,6 +35,8 @@ import java.util.StringTokenizer;
 import javax.swing.plaf.multi.MultiFileChooserUI;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;;
 
@@ -116,7 +118,24 @@ public class TestController {
 	}
 
 	@RequestMapping("healthInfoWriteForm.do")
-	public void healthInfoWriteForm() {
+	public ModelAndView healthInfoWriteForm(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		int status = 0;
+		String muid = null;
+		if (session.getAttribute("status") == null) {
+			status = 0;
+		} else if (session.getAttribute("status") != null) {
+			muid = (String) session.getAttribute("muid");
+			status = (int) session.getAttribute("status");
+		}
+		if (status == 2) {
+			mav.addObject("writer", ms.selectOwnHos(muid).get("DUTYNAME"));
+			mav.setViewName("healthInfoWriteForm");
+		} else {
+			mav.setViewName("healthInfoDenyForm");
+		}
+
+		return mav;
 	}
 
 	public String getCurrentDayTime() {
@@ -159,12 +178,27 @@ public class TestController {
 	}
 
 	@RequestMapping("deleteHealthInfo.do")
-	public String deleteHealthInfo(int iid) {
+	public ModelAndView deleteHealthInfo(int iid, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		int status = 0;
+		String muid = null;
+		muid = (String) session.getAttribute("muid");
 		HashMap<String, Object> iid2 = new HashMap<String, Object>();
 		iid2.put("iid", iid);
-		tservice.deleteHealthInfo(iid2);
+		HealthInfo hi = tservice.selecthealthInfo(iid2);
 
-		return "redirect: healthInfoList.do";
+		if (session.getAttribute("status") == null) {
+			status = 0;
+		} else if (session.getAttribute("status") != null) {
+			status = (int) session.getAttribute("status");
+		}
+		if (status == 2 && muid.equals(hi.getMuid())) {
+			tservice.deleteHealthInfo(iid2);
+			mav.setViewName("healthInfo");
+		} else {
+			mav.setViewName("healthInfoDenyForm");
+		}
+		return mav;
 	}
 
 	@RequestMapping("updateHealthInfo.do")
@@ -192,9 +226,13 @@ public class TestController {
 	@RequestMapping("updateHealthInfoForm.do")
 	public ModelAndView updateHealthInfoForm(int iid, @RequestParam(defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int searchType,
-			@RequestParam(required = false) String keyword) {
+			@RequestParam(required = false) String keyword, HttpSession session) {
 
 		ModelAndView mav = new ModelAndView();
+		int status = 0;
+		String muid = null;
+		muid = (String) session.getAttribute("muid");
+
 		HashMap<String, Object> pageInfo = new HashMap<String, Object>();
 		pageInfo.put("page", page);
 		pageInfo.put("searchType", searchType);
@@ -204,9 +242,18 @@ public class TestController {
 		iid2.put("iid", iid);
 		HealthInfo hi = tservice.selecthealthInfo(iid2);
 
-		mav.addObject("healthInfo", hi);
-		mav.addObject("pageInfo", pageInfo);
-		mav.setViewName("healthInfoUpdateForm");
+		if (session.getAttribute("status") == null) {
+			status = 0;
+		} else if (session.getAttribute("status") != null) {
+			status = (int) session.getAttribute("status");
+		}
+		if (status == 2 && muid.equals(hi.getMuid())) {
+			mav.setViewName("healthInfoUpdateForm");
+			mav.addObject("healthInfo", hi);
+			mav.addObject("pageInfo", pageInfo);
+		} else {
+			mav.setViewName("healthInfoDenyForm");
+		}
 
 		return mav;
 	}
@@ -399,5 +446,9 @@ public class TestController {
 	@RequestMapping("noticeForDoctors.do")
 	public void noticeForDoctors() {
 	}
-
+	
+	@RequestMapping("todacTeamIntroduce.do")
+	public void todacTeamIntroduce() {
+	}
+	
 }

@@ -5,19 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	alert("해당 카테고리에 대한 권한이 존재하지 않습니다.");
-	history.go(-1);
-});
-
-
+window.location = "healthInfoList.do";
 </script>
+</head>
 <body>
-
 
 </body>
 </html>

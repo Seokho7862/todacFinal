@@ -54,7 +54,7 @@ public class MemberController {
 			//세션에 아이디 저장하기
 			session.setAttribute("muid", muid);
 			//status 리턴함
-			session.setAttribute("status", service.selectMemreturnStatus(muid).getStatus());
+			session.setAttribute("status", 1);
 			return "Openmain";
 		}
 		else {
@@ -70,7 +70,7 @@ public class MemberController {
 			//세션에 아이디 저장하기 
 			session.setAttribute("muid", muid);
 			//status 리턴함
-			session.setAttribute("status", service.selectMemreturnStatus(muid).getStatus());
+			session.setAttribute("status", 2);
 			return "1";
 		}
 		else {
