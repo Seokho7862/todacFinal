@@ -6,17 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
 <style type="text/css">
 #my-spinner {
@@ -299,17 +293,24 @@ $(function(){
 
 <jsp:include page="header2.jsp"></jsp:include>
 <jsp:include page="hosrateBanner.jsp"></jsp:include>
-<h1>병원평가정보</h1>
+<h1 style="text-align: center">병원평가정보</h1>
 <hr>
-    <div class="container">
+ <div class="container" style="text-align: center">
 <div class="row">
-<div class="col-md-4"></div>
+<div class="col-2">
 </div>
+<div class="col-8">
+ <img alt="" src="img/ratever2.png" style="height: 150px">
+</div>
+<div class="col-2">
+</div>
+</div>
+<hr>
 
 <div class="row">
-	  <div class="col-md-4">
+	  <div class="col-3">
   	</div>
-    	<div class="col-md-4" style="background-color:lavender;">
+    	<div class="col-6">
     
 					<label>
 						<input type="checkbox" name="check" value="0" checked> <span class="label-text">전체</span>
@@ -327,12 +328,15 @@ $(function(){
 						<input type="checkbox" name="check" value="4"> <span class="label-text">4등급</span>
 					</label>
 	    </div>
-  		<div class="col-md-4"></div>
-    	<div class="col-md-4"></div>
-    	<div class="col-md-4" style="background-color:lavenderblush;"></div>
+  		<div class="col-3"></div>
+ 
 </div>
+
+
   <div class="row">
-		<div class="col-md-2">
+  	<div class="col-3">
+  	</div>
+		<div class="col-3">
       <select class="form-control" id="sel1">
         <option value="" selected="selected">시/도</option>
         <option value="110000">서울</option>
@@ -354,15 +358,18 @@ $(function(){
         <option value="410000">세종</option>
       </select>
  	 </div>
-	<div class="col-md-2">
+	<div class="col-3">
       <select class="form-control" id="sel2">
         <option value="" selected="selected">시/군/구</option>
  
       </select>
-	<input id="hname" type="text">
-  <button id="search" class="btn btn-default">검색</button>
+	 병원이름 <input id="hname" type="text">
+<button id="search" class="btn btn-default">검색</button>
+	</div>
+	<div class="col-3">
 	</div>
   </div>
+  
   <hr>
   <div class="container">
   <button id="injectBtn" class="btn btn-default" value="1">주사제처방률</button>
@@ -371,12 +378,14 @@ $(function(){
   <button id="costBtn" class="btn btn-default" value="4">처방약품비</button>
   </div>
   <hr>
-  <div id="con_injection">
+  <div id="con_injection" style="text-align: left">
   
   <dl>
   <p>
   
   <dt>
+   <img alt="" src="img/ratepurpose.png" style="height: 100px">
+   
 <b>주사제 처방률 </b> :  항목을 평가하는 이유는 무엇인가요?
   </dt>
 <dd>
@@ -388,6 +397,7 @@ $(function(){
 
   <p>
   <dt>
+  <img alt="" src="img/contents.png" style="height: 100px">
 <b> 평가내용 </b> :  어떤 내용을 평가했나요?
   </dt>
 <dd>
@@ -396,8 +406,9 @@ $(function(){
   </p>
   <p>
 <dt>
+   <img alt="" src="img/result.png" style="height: 100px">
 
- 평가결과 :  평가결과는 어떻게 공개하나요?
+<b> 평가결과</b> :  평가결과는 어떻게 공개하나요?
 </dt>
 <dd>
  		평가결과는 주사제 처방률을 5개 등급으로 나누어 공개합니다.
@@ -409,12 +420,13 @@ $(function(){
   
   
   </div>
-  <div id="con_anti" class="row">
+  <div id="con_anti" class="row" style="text-align: left">
   
   <dl>
   <p>
   <dt>
-급성상기도감염 :  항생제 처방률 항목을 평가하는 이유는 무엇인가요?
+  <img alt="" src="img/ratepurpose.png" style="height: 100px">
+<b>급성상기도감염</b> :  항생제 처방률 항목을 평가하는 이유는 무엇인가요?
   </dt>
 <dd>
 감기는 바이러스가 원인인 경우가 많아 항생제를 복용해도 치료가 빨라지거나 증상이 급격히 좋아지지 않습니다. 따라서 감기에는 항생제가 불필요하므로 올바른 항생제 사용을 유도하기 위해 병원별 항생제 처방률을 평가하고 결과를 공개하고 있습니다.
@@ -423,7 +435,8 @@ $(function(){
 
   <p>
   <dt>
- 평가대상 : 어떤 대상을 평가했나요?
+  <img alt="" src="img/ratesub.png" style="height: 100px">
+ <b>평가대상</b> : 어떤 대상을 평가했나요?
   </dt>
 <dd>
 평가대상기간(‘18년 1월~12월)에 급성 상기도감염 상병을 주상병으로 청구한 환자를 대상으로 평가하였습니다.(건강보험, 의료급여)
@@ -431,7 +444,8 @@ $(function(){
   </p>
   <p>
 <dt>
- 평가내용 : 어떤 내용을 평가했나요?
+  <img alt="" src="img/contents.png" style="height: 100px">
+ <b>평가내용</b> : 어떤 내용을 평가했나요?
  </dt>
  <dd>
 외래에서 처방하거나 투여된 청구자료를 대상으로 주사형 항생제 및 원외처방 항생제 처방률을 평가하였습니다.<br>
@@ -441,7 +455,8 @@ $(function(){
 </p>
 <p>
 <dt>
- 평가결과 : 평가결과는 어떻게 공개하나요?
+  <img alt="" src="img/result.png" style="height: 100px">
+<b>평가결과</b> : 평가결과는 어떻게 공개하나요?
 </dt>
 <dd>
 평가결과는 항생제 처방률을 5개 등급으로 나누어 공개합니다.
@@ -453,11 +468,12 @@ $(function(){
   </dl>
   </div>
   
-  <div id="con_op" class="row">
+  <div id="con_op" class="row" style="text-align: left">
   <dl>
   <p>
   <dt>
-수술의 예방적 항생제 : 사용을 평가하는 이유는 무엇인가요?
+    <img alt="" src="img/ratepurpose.png" style="height: 100px">
+<b>수술의 예방적 항생제</b> : 사용을 평가하는 이유는 무엇인가요?
   </dt>
   <dd>
 수술의 예방적 항생제는 수술부위 감염을 예방하는 방법 중의 하나로 기준에 부합하는 항생제를 선택하여 <br>
@@ -467,7 +483,8 @@ $(function(){
   </p>
   <p>
 <dt>
- 평가대상 : 어떤 대상을 평가했나요?
+    <img alt="" src="img/ratesub.png" style="height: 100px">
+ <b>평가대상</b> : 어떤 대상을 평가했나요?
 </dt>
 <dd>
 평가대상 기간(3개월) 동안 평가대상 수술을 수술별로 10건 이상 청구한 병원급 이상 의료기관을 대상으로 
@@ -476,7 +493,8 @@ $(function(){
   </p>
   <p>
 <dt>
- 평가내용 : 어떤 내용을 평가했나요?
+    <img alt="" src="img/contents.png" style="height: 100px">
+ <b>평가내용</b> : 어떤 내용을 평가했나요?
 </dt>
 <dd>
 수술부위 감염을 예방하기 위한 항생제를 피부절개 전 1시간 이내에 투여하였는지, <br>
@@ -485,7 +503,8 @@ $(function(){
   </p>
 <p>
 <dt>
- 평가결과 : 평가결과는 어떻게 공개하나요?
+    <img alt="" src="img/result.png" style="height: 100px">
+ <b>평가결과</b> : 평가결과는 어떻게 공개하나요?
 </dt>
 <dd>
 요양기관별 종합결과에 따라 1~5등급 또는 등급 제외로 공개합니다.
@@ -495,10 +514,11 @@ $(function(){
   </dl>
  
   </div>
-  <div id="con_medi" class="row">
+  <div id="con_medi" class="row" style="text-align: left">
   <dl>
   <dt>
-  처방약품비 : 처방약품비를 평가하는 이유는 무엇인가요?
+    <img alt="" src="img/ratepurpose.png" style="height: 100px">
+  <b>처방약품비</b> : 처방약품비를 평가하는 이유는 무엇인가요?
   </dt>
   <dd>
 약품비는 인구 고령화로 만성질환자가 지속적으로 증가하고, 약품목수, 고가약 사용 등 복합적인 요인에 의해 매년 크게 증가하고 있습니다.<br>
@@ -508,7 +528,8 @@ $(function(){
  2015년에 평가를 종료하게 되었습니다.
   </dd>
 <dt>
- 평가대상 : 올바른 약 처방을 받기 위해 꼭 기억하세요!
+    <img alt="" src="img/ratesub.png" style="height: 100px">
+ <b>평가대상</b> : 올바른 약 처방을 받기 위해 꼭 기억하세요!
 </dt>
 <dd>
 약은 처방 받은 기간 및 횟수를 준수하여 규칙적으로 복용합니다. <br>
@@ -516,7 +537,8 @@ $(function(){
 유효기간이 지나 복용하지 않는 약 등 폐기할 약은 약국에서 수거하므로 가까운 약국으로 가져가시면 됩니다.<br>
 </dd>
 <dt>
- 평가내용 : 평가결과는 어떻게 공개하나요?
+    <img alt="" src="img/contents.png" style="height: 100px">
+<b>평가내용</b> : 평가결과는 어떻게 공개하나요?
 </dt>
 <dd>
 평가결과는 외래처방약품비 고가도지표(OPCI, Outpatient Prescribing Costliness Index)를 5개 등급으로 나누어 공개합니다.<br>
@@ -524,10 +546,11 @@ $(function(){
 </dd>
 <p>
 <dt>
- 평가결과 : 항목별 평가등급
+    <img alt="" src="img/result.png" style="height: 100px">
+ <b>평가결과</b> : 항목별 평가등급
 </dt>
 <dd>
-평가등급	내용<br>
+평가등급 내용<br>
 1등급	백분위 순위 20이하<br>
 2등급	백분위 순위 20초과～40이하<br>
 3등급	백분위 순위 40초과～60이하<br>
@@ -580,6 +603,6 @@ $(function(){
 		<img src='//cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif'>
 	</span></div>
 </div>
-
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import dao.IMemberDao;
 import model.Favorites;
 import model.MEMBER_USER;
+import model.member_manager;
 import model.reviewTest;
 
 @Service
@@ -178,4 +179,11 @@ public class MemberService {
 		return dao.updateHosInfo(param);
 	}
 
+	
+	//status로 사용자 구분하기
+	public MEMBER_USER selectMemreturnStatus(String muid) {
+		return dao.selectUserById(muid);
+		
+	}
+	
 }
