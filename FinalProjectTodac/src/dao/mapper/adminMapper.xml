@@ -34,7 +34,12 @@ r.STATUS STATUS from report re, review r where re.rid=r.rid
   update member_user set report_count=report_count+1 where muid=#{muid}
   </update>
   
-  <delete id="deleteReport">
+  <!-- 5회이상 신고받은 사람 -->
+  <select id="selectOverReport" resultType="MEMBER_USER" >
+  select * from member_user m where report_count >=5
+  </select>
+  
+  <delete id="deleteReport" parameterType="int">
   delete from report where reportid=#{reportid}
   </delete>
   
