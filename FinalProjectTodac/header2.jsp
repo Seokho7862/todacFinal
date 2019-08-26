@@ -25,7 +25,6 @@
 <link rel="stylesheet" href="css/nice-select.css">
 <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/style.css">
-
 <style type="text/css">
 
 
@@ -154,7 +153,7 @@
 				<div class="row align-items-center">
 					<div class="col-lg-12">
 						<nav class="navbar navbar-expand-lg navbar-light">
-							<a class="navbar-brand" href="service_info.do"> <img
+							<a class="navbar-brand" href="todacMainForm.do"> <img
 								src="img/todac_ori.png" alt="logo" width="150px;" height="auto;">
 							</a>
 							<button class="navbar-toggler" type="button"
@@ -169,13 +168,13 @@
 								id="navbarSupportedContent">
 								<ul class="navbar-nav align-items-center">
 									<li class="nav-item dropdown"><a
-										class="nav-link dropdown-toggle" href="todacIntroForm.do"
+										class="nav-link dropdown-toggle" href="#"
 										id="navbarDropdown" role="button" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false"><font
 											face="Jua" size="5px"> 서비스 소개</font> </a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="dropdown-item" href="todacIntroForm.do">토닥이란?</a> <a
-												class="dropdown-item" href="todacTeamIntroduce.do">팀 토닥 소개</a> 
+												class="dropdown-item" href="#">팀 토닥 소개</a> 
 										</div></li>
 									<li class="nav-item active"><a class="nav-link"
 										href="HospitalInfo_TestMain.do"><font face="Jua"

@@ -62,5 +62,14 @@ public class AdminService {
 		else return 0;
 	}
 	
+	//모든 신고리스트 불러오기
+	public List<HashMap<String, Object>> selectAllReport() {
+		return addao.selectAllReport();
+	}
+	
+	//신고확정하기
+	public int updateReport(String muid) {
+		return addao.updateReport(muid);
+	}
 	
 }
