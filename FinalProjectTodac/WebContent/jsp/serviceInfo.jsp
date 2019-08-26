@@ -67,7 +67,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_our_depertment">
-                                            <span class="our_depertment_icon"><img src="img/icon/feature_2.svg"
+                                            <span class="our_depertment_icon"><img src="img/icon/PinClipart.com_party-popper-clipart_3755030.png"
                                                     alt=""></span>
                                             <h4>병원 검색</h4>
                                             <p> 진료과별 병원 검색<br>
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_our_depertment">
-                                            <span class="our_depertment_icon"><img src="img/icon/feature_2.svg"
+                                            <span class="our_depertment_icon"><img src="img/icon/PinClipart.com_party-popper-clipart_3755030.png"
                                                     alt=""></span>
                                             <h4>병원 정보</h4>
                                             <p>병원의 위치<br>
@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_our_depertment">
-                                            <span class="our_depertment_icon"><img src="img/icon/feature_2.svg"
+                                            <span class="our_depertment_icon"><img src="img/icon/PinClipart.com_party-popper-clipart_3755030.png"
                                                     alt=""></span>
                                             <h4>병원 후기</h4>
                                             <p>알찬 후기를 통해서 사용자들에게<br>
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_our_depertment">
-                                            <span class="our_depertment_icon"><img src="img/icon/feature_2.svg"
+                                            <span class="our_depertment_icon"><img src="img/icon/PinClipart.com_party-popper-clipart_3755030.png"
                                                     alt=""></span>
                                             <h4>질병검색</h4>
                                             <p>질병에 관해 궁금한게 있으신가요? <br>
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_our_depertment">
-                                            <span class="our_depertment_icon"><img src="img/icon/feature_2.svg"
+                                            <span class="our_depertment_icon"><img src="img/icon/PinClipart.com_party-popper-clipart_3755030.png"
                                                     alt=""></span>
                                             <h4>건강정보</h4>
                                             <p>전문가들이 제공하는  알찬 건강정보들을 보실 수 있습니다.</p>
@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_our_depertment">
-                                            <span class="our_depertment_icon"><img src="img/icon/feature_2.svg"
+                                            <span class="our_depertment_icon"><img src="img/icon/PinClipart.com_party-popper-clipart_3755030.png"
                                                     alt=""></span>
                                             <h4>병원 관계자</h4>
                                             <p>병원관계자 등록신청을 통해서 <br>

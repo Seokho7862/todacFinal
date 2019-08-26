@@ -153,7 +153,7 @@
 				<div class="row align-items-center">
 					<div class="col-lg-12">
 						<nav class="navbar navbar-expand-lg navbar-light">
-							<a class="navbar-brand" href="todacMainForm.do"> <img
+							<a class="navbar-brand" href="service_info.do"> <img
 								src="img/todac_ori.png" alt="logo" width="150px;" height="auto;">
 							</a>
 							<button class="navbar-toggler" type="button"
