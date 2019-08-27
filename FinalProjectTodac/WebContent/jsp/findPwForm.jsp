@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>토닥&mdash;Todac</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -44,8 +44,8 @@ $(function(){
 										
 										alert(data);
 										var table ="";
-										table +="<input type='text' id='pwd'>";
-										table +="<input type='text' id='ckpwd'>";
+										table +="<input type='text' id='pwd' placeholder='비밀번호 재설정'><br>";
+										table +="<input type='text' id='ckpwd' placeholder='비밀번호 재설정 확인'><br>";
 								table += "<input type='button' id='renewbtn' value='재설정'>";
 								$('#chk').after(table);
 	$('#renewbtn').on('click',function(){
@@ -114,11 +114,10 @@ $(function(){
 <h1>비밀번호 찾기</h1>
 <form>
 
-이름<input type="text" id="name"><br>
-아이디<input type="text" id="muid"><br>
-핸드폰<input type="text" id="phone" placeholder="-없이 숫자만 입력해주세요"><br>
-<div id="message"></div>
-<input type="button" id="authPhone" value="인증하기">
+이름&nbsp;	<input type="text" id="name"><br>
+아이디&nbsp;	<input type="text" id="muid"><br>
+핸드폰&nbsp;	<input type="text" id="phone" placeholder="-없이 숫자만 입력해주세요"><br>
+<input type="button" id="authPhone" value="인증하기"><br>
 </form>
 <hr>
 <a href="find_id_form.do">아이디 찾기 </a>&ensp;	&frasl;&ensp;&ensp;	<a href="loginForm.do"> 로그인 </a>

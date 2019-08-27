@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>토닥&mdash;Todac</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="font-family: 'Jua'">
