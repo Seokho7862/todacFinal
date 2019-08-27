@@ -76,12 +76,17 @@ $(function(){
 <body>
 <!-- header -->
 <jsp:include page="header2.jsp"></jsp:include>
-<jsp:include page="myPage.jsp"></jsp:include>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Todac&mdash; ID & PASSWORD</h1>
+  <p>오늘의 토닥</p>
+  <p><a href="service_info.do" class="btn btn-primary btn-lg" role="button" style="font-family: 'Jua'; color: white">MAIN&raquo;</a></p>
+   
+</div>
 
 <div class="container">
 <div class="row">
 <div class="col-4"></div>
-<div class="col-4">
+<div class="col-4" style="text-align: center">
 <form>
 <h1>아이디 찾기</h1>
 이름<input type="text" id="name"> <br>
@@ -89,7 +94,8 @@ $(function(){
 <div id="message"></div>
 <input type="button" id="authPhone" value="인증하기">
 </form>
-<a href="find_pw_form.do">  비밀번호 찾기</a>
+<hr>
+<a href="find_pw_form.do">  비밀번호 찾기</a>&ensp;	&frasl;&ensp;&ensp;	<a href="loginForm.do"> 로그인 </a>
 </div>
 <div class="col-4"></div>
 </div>

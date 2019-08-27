@@ -57,10 +57,18 @@ $(function(){
 </head>
 <body>
 <jsp:include page="header2.jsp"></jsp:include>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Todac&mdash; LOGIN</h1>
+  <p>오늘의 토닥</p> 
+  <p><a href="service_info.do" class="btn btn-primary btn-lg" role="button" style="font-family: 'Jua'; color: white">MAIN&raquo;</a></p>
+  
+</div>
+<div class="container">
 <div class="row">
 <div class="col-md-4">
 </div>
-<div class="col-md-4" style="margin-top: 150px">
+<div class="col-md-4" style="margin-top: 0">
 <div class="tabbable" id="tabs-343454">
 				<ul class="nav nav-tabs">
 					<li class="nav-item">
@@ -91,6 +99,7 @@ $(function(){
 					</div>
 				</div>
 			</div>
+			<hr>
 <a href="find_id_form.do">아이디  </a>&ensp;&frasl;&ensp;	<a href="find_pw_form.do">  비밀번호 찾기</a>
 <br>
 <button onclick="location.href='admin_login_form.do'">관리자로그인</button>&ensp;	&ensp;	
@@ -98,6 +107,7 @@ $(function(){
 </div>
 
 <div class="col-md-4">
+</div>
 </div>
 </div>
 

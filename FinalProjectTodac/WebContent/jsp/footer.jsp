@@ -18,6 +18,22 @@ function twitOP(){
 function skyOP(){
 	window.open('https://skype.daesung.com/main.asp');
 }
+function hos1(){
+	window.open('http://www.snuh.org/intro.do');
+}
+function hos2(){
+	window.open('http://sev.iseverance.com/');
+}
+function hos3(){
+	window.open('https://www.cmcseoul.or.kr/');
+}
+function hos4(){
+	window.open('http://www.amc.seoul.kr/');
+}
+function hos5(){
+	window.open('http://www.samsunghospital.com/');
+}
+
 
 </script>
 </head>
@@ -30,7 +46,7 @@ function skyOP(){
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-xl-2 col-md-4 col-sm-6 single-footer-widget">
-                        <a href="#" class="footer_logo"> <img src="img/todac_ori.png" alt="#"> </a>
+                        <a href="service_info.do" class="footer_logo"> <img src="img/todac_ori.png" alt="#"> </a>
                         <p>토닥과 함께 아프지말자</p>
                         <div class="social_logo">
                             <a onclick="facebookOP()"><i class="ti-facebook"></i></a>
@@ -40,57 +56,36 @@ function skyOP(){
                         </div>
                     </div>
                     <div class="col-xl-2 col-sm-6 col-md-4 single-footer-widget">
-                        <h4>Quick Links</h4>
+                        <h4>QUICK LINKS</h4>
                         <ul>
-                            <li><a href="service_info.do">Todac Main</a></li>
-                            <li><a href="todacIntroForm.do">Service Intro</a></li>
-                            <li><a href="HospitalInfo_TestMain.do">Search</a></li>
-                            <li><a href="rateinfoform.do">Hospital rate</a></li>
-                            <li><a href="diseaseSearchForm.do">Disease</a></li>
-                            <li><a href="healthInfoList.do">Heath Info</a></li>
+                            <li><a href="service_info.do">TODAC MAIN</a></li>
+                            <li><a href="todacIntroForm.do">SERVICE INTRO</a></li>
+                            <li><a href="HospitalInfo_TestMain.do">SEARCH</a></li>
+                            <li><a href="rateinfoform.do">HOSPITAL RATE</a></li>
+                            <li><a href="diseaseSearchForm.do">DISEASE</a></li>
+                            <li><a href="healthInfoList.do">HEALTH INFO</a></li>
                         </ul>
                     </div>
                     <div class="col-xl-2 col-sm-6 col-md-4 single-footer-widget">
-                        <h4>Explore</h4>
+                        <h4>MAIN HOSPITAL</h4>
                         <ul>
-                            <li><a href="#">In the community</a></li>
-                            <li><a href="#">IU health foundation</a></li>
-                            <li><a href="#">Family support </a></li>
-                            <li><a href="#">Business solution</a></li>
-                            <li><a href="#">Community clinic</a></li>
+                            <li><a onclick="hos1()">SEOUL NATIONAL UNIVERSITY HOSPITAL</a></li>
+                            <li><a onclick="hos2()">SEVERANCE HOSPITAL</a></li>
+                            <li><a onclick="hos3()">SEOUL ST. MARY’S HOSPITAL</a></li>
+                            <li><a onclick="hos4()">ASAN MEDICAL CENTER</a></li>
+                            <li><a onclick="hos5()">SAMSUNG MEDICAL CENTER</a></li>
                         </ul>
                     </div>
                     <div class="col-xl-2 col-sm-6 col-md-6 single-footer-widget">
                         <h4>TODAC_TEAM</h4>
                         <ul>
-                            <li><a href="#">Nam seok ho</a></li>
-                            <li><a href="#">Yang jun lyul</a></li>
-                            <li><a href="#">Lee so jin</a></li>
-                            <li><a href="#">Lee se young</a></li>
+                            <li><a href="todacTeamIntroduce.do">NAM SEOK HO</a></li>
+                            <li><a href="todacTeamIntroduce.do">YANG JUN LYUL</a></li>
+                            <li><a href="todacTeamIntroduce.do">LEE SO JIN</a></li>
+                            <li><a href="todacTeamIntroduce.do">LEE SE YOUNG</a></li>
                         </ul>
                     </div>
-                    <!-- <div class="col-xl-3 col-sm-6 col-md-6 single-footer-widget">
-                        <h4>Newsletter</h4>
-                        <p>Seed good winged wherein which night multiply
-                            midst does not fruitful</p>
-                        <div class="form-wrap" id="mc_embed_signup">
-                            <form target="_blank"
-                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                method="get" class="form-inline">
-                                <input class="form-control" name="EMAIL" placeholder="Your Email Address"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '"
-                                    required="" type="email">
-                                <button class="click-btn btn btn-default text-uppercase"> <i class="ti-angle-right"></i>
-                                </button>
-                                <div style="position: absolute; left: -5000px;">
-                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
-                                        type="text">
-                                </div>
-
-                                <div class="info"></div>
-                            </form>
-                        </div>
-                    </div> -->
+                   
                 </div>
             </div>
         </div>
