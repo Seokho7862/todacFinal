@@ -229,8 +229,8 @@ width: 50%;}
 <span id="guide" style="color:#999;display:none"></span><br>
 </td></tr>
 
-<tr><td ><br><input type="text" name="latitude" id="latitude" class="form-control"></td></tr>
-<tr><td ><br><input type="text" name="longitude" id="longitude" class="form-control"><br><input name="birth" type="text" id="birth" class="form-control"></td></tr>
+<tr><td ><br><input type="hidden" name="latitude" id="latitude" class="form-control"></td></tr>
+<tr><td ><br><input type="hidden" name="longitude" id="longitude" class="form-control"><br><input name="birth" type="hidden" id="birth" class="form-control"></td></tr>
 
 <tr><td><input type="submit" value="회원가입 완료" id="submitBtn"></td></tr>
 </table>
