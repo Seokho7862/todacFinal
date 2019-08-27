@@ -24,8 +24,16 @@
   			margin-right: 7%;
   			margin-bottom : 5%;
   			margin-top: 5%;
+  			text-align: center;
   		}
-  		div,a,h2{
+  		.innerDiv{
+  			text-align: center;
+  			margin: auto;
+  			margin-top: auto;
+  			margin-bottom: auto;
+  			padding :inherit;
+  		}
+  		a,h2{
   			text-align: center;
   			margin: auto;
   			margin-top: auto;
@@ -112,9 +120,9 @@
 <!-- 헤더부분 -->
 <jsp:include page="header3.jsp"></jsp:include>
 <!-- 헤더 -->
-<div style="font-family : 'Jua';" class="mainFrame">
+<div style="font-family : 'Jua'; border: solid;" class="mainFrame">
 	<!-- 병원 이미지 맵으로 구현 -->
-	<div id="map" style="height: 300px;width: 500px; border: thin;"></div>
+	<div id="map" style="height: 300px;width: 500px; border: 1px thin; margin: auto;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7100ed85365a3b66382c0f7cab33b611"></script>
 	<script type="text/javascript">
 		var x = ${hlist.wgs84Lat};
@@ -133,17 +141,17 @@
 		marker.setMap(map);
 			
 	</script>
-	<div >
+	<div class="innerDiv">
 		
 
 		<h2>${hlist.dutyName}</h2>
 		<c:if test="${hlist.hfile != null}">
 			<div id="img"> <img src="${hlist.hfile}" style="width: 50%; height: 200px; position: static;"> </div>
 		</c:if>
-	</div>
+	</div >
 	<!-- 즐겨찾기, 후기 작성 버튼-->
 	<hr>
-	<div>
+	<div class="innerDiv">
 		
 		<a href="#" data-toggle="tooltip" title="즐겨찾기를 해보세요!"><c:choose>
 			<c:when test="${f_img == 1}">
@@ -154,7 +162,12 @@
 			</c:otherwise>
 		</c:choose></a>
 		<a data-toggle="tooltip" title="작성 페이지로 이동해요" class="writeReview"><img src="image/reviewWrite.png" style="height: 50px; width: 50px"><input type="hidden" value="${hlist.hpid}"></a>
-		<a style="font-size: 24px;">평점 : ${avgRate}</a>
+		<a style="font-size: 24px;">평점 : 
+		<c:choose>
+			<c:when test="${avgRate != 'nu'}">${avgRate}</c:when>
+			<c:otherwise>없음</c:otherwise>
+		</c:choose>
+		</a>
 		<script>
 		$(document).ready(function(){
 		  $('[data-toggle="tooltip"]').tooltip();   
@@ -163,7 +176,7 @@
 	</div>
 	<hr>
 	<!-- 진료시간 -->
-	<div>
+	<div class="innerDiv"> 
 		<a style="font-size: 24px;"> 병원 정보 ${hlist.hfile} </a>
 		<table class="table table-hover">
 		
@@ -237,8 +250,9 @@
 	
 	<hr>
 	
+	
 	<!-- 진료과 /전화번호/추가정보 -->
-	<div>
+	<div class="innerDiv">
 		<div>
 			<table class="table table-hover">
 				<c:choose>
@@ -283,8 +297,8 @@
 	<hr>
 	<a>병원후기</a>
 	<!-- 병원 후기 -->
-	<div>
-		<div class="reviewTable" >
+	<div class="innerDiv">
+		<div class="reviewTable innerDiv" >
 			<table class="table table-hover">
 				<tr class="reviewTalbe_header">
 					<th>아이디</th>
@@ -339,21 +353,27 @@
 						</c:if>
 					</tr>
 				</c:forEach>
-				
 			</table>
 		</div>
 	</div>
+
 </div>
+<div>
+<jsp:include page="footer.jsp"></jsp:include>
+</div>
+ㅂㅇㅂㅇ
+
+
 
 <div class="modal" id="myModal">
-		    <div class="modal-dialog">
-		      <div class="modal-content">
+	 <div class="modal-dialog">
+		  <div class="modal-content">
 		      
-		        <!-- Modal Header -->
-		        <div class="modal-header">
+		   <!-- Modal Header -->
+		 	  <div class="modal-header">
 		          <h4 class="modal-title">신고</h4>
 		         	<!--  <button type="button" class="close" data-dismiss="modal">&times;</button>  -->
-		        </div>
+		       </div>
 		        
 		        <!-- Modal body -->
 		        <div class="modal-body">
@@ -377,7 +397,7 @@
 		          					<li> <input type="radio" name="radiogroup" value="음란성 또는 청소년에게 부적합한 내용"/> 음란성 또는 청소년에게 부적합한 내용<br></li>
 		          					<li> <input type="radio" name="radiogroup" value="특정인 대상의 비방/욕설"/> 특정인 대상의 비방/욕설<br></li>
 		          					<li> <input type="radio" name="radiogroup" value="명예훼손/사생활 침해 및 저작권 활동"/>명예훼손/사생활 침해 및 저작권 활동<br></li>
-		          					<li> <input type="radio" name="radiogroup" value="기타"/><a >기타 자유양식 작성 </a> | <a style="color: blue;"class="etc_TextDiv">사유작성</a></li>
+		          					<li> <input type="radio" name="radiogroup" value="기타"/><a>기타 자유양식 작성 </a> | <a style="color: blue;"class="etc_TextDiv">사유작성</a></li>
 		          					<li class="etc_TextInput"> 내용 입력  :  <input class="etc_TextInput" type="text" placeholder="내용을 입력해 주세요"/></li>
 		          						
 		          				</ul>
@@ -394,64 +414,53 @@
 		        </div>
 		        
 		        <!-- Modal footer -->
-		        <div class="modal-footer">
+		       <div class="modal-footer">
 		          <button type="button" onclick="modalCheck()" class="btn btn-danger" data-dismiss="modal">확인</button>
 		          <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
-		        </div>
-		        
-		      </div>
-		    </div>
-		  </div>
+		      </div>  
+		 </div>
+	</div>
+</div>
 <!-- 페이지 함수 부분 -->
 
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.etc_TextInput').hide();
 	});
-	
-	
-	
+		
 	function modalCheck(){
-		
-		
+		var status=${status};
 		var checked = $('.modal_ul').find('input[name="radiogroup"]:checked').val();// find('input[name="radiogroup"]:selected');
-		
 		var rid = $('.modal-transit-Data_rid').val();
-		
 		var reportreason=null;
-		
 		if(checked == "기타"){
 			reportreason = $('.etc_TextInput').find('.etc_TextInput').val(); // $('.etc_TextInput').text();
 			alert("기타일때");
-			
 		}
 		else{
 			reportreason = checked;
-			
 		}
-		alert(rid);
-		alert(reportreason);
-		
-	
-		$.ajax({
-			url : "ReportInsert.do",
-			type : "post",
-			data : { 
-				rid : rid,
-				reportreason : reportreason 
-			},
-			datatype : "json",
-			success : function(){
-				alert("성공적으로 신고하였습니다");
-			},
-			error :  function(){
-				alert("에러가 발생했습니다.");
-			}
+		if(2==status){
+			$.ajax({
+				url : "ReportInsert.do",
+				type : "post",
+				data : { 
+					rid : rid,
+					reportreason : reportreason 
+				},
+				datatype : "json",
+				success : function(){
+					alert("성공적으로 신고하였습니다");
+				},
+				error :  function(){
+					alert("에러가 발생했습니다.");
+				}
 			
-			
-		});
-		
-	
+			});
+		}
+		else{
+			alert("해당병원의 관계자만 신고할 수 있습니다");
+		}
 	}
 		
 	//제목 버튼 클릭시 <병원 후기 게시글 이동>
@@ -541,5 +550,6 @@
 
 
 <!-- 풋터부분 -->
+
 </body>
 </html>

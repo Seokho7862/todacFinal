@@ -100,5 +100,17 @@ public class ReviewController {
 		rsvc.ClickFavorite(f,status);
 	}
 	
+	@RequestMapping("Reviewdelete.do")
+	public @ResponseBody void Reviewdelete(String rid ) {
+		
+		
+		System.out.println(rid);
+		
+		//삭제
+		rsvc.Reviewdelete(rid);
+		
+		
+	}
+	
 	
 }

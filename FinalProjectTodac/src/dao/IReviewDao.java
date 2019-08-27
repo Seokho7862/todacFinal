@@ -17,4 +17,5 @@ public interface IReviewDao {
 	public void deleteClickFavorite(Favorites f);
 	public Favorites findLidByFavoritesModel(Favorites f);
 	public Double averageRate(String hpid);
+	public void Reviewdelete(int rid);
 }

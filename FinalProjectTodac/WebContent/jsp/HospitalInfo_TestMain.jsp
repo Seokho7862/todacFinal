@@ -738,6 +738,7 @@
 	</script>
 	
 	<!-- 풋터 부분-->
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>
