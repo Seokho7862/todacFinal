@@ -39,9 +39,19 @@ r.STATUS STATUS from report re, review r where re.rid=r.rid
   select * from member_user m where report_count >=5
   </select>
   
+  <!-- 신고 삭제하기 -->
   <delete id="deleteReport" parameterType="int">
   delete from report where reportid=#{reportid}
   </delete>
   
+  <!-- 사용자 탈퇴 시키기 -->
+  <delete id="deleteUser" parameterType="String">
+  delete from member_user where muid=#{muid}
+  </delete>
+  
+  <!-- 관계자 승인후 리스트에서 삭제하기 -->
+  <delete id="denyApply" parameterType="int">
+  delete from apply_manager where aid=#{aid}
+  </delete>
   
   </mapper>

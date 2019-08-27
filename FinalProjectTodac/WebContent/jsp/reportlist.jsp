@@ -16,12 +16,14 @@
 $(function(){
 	var reportedid="";
 	var deltr="";
+	var reid="";
 	$('.reportAcc').on('click',function(){
 		reportedid = $(this).parents('tr').find('input.reportedid').val();
 		alert(reportedid);
 		var reviewcon = $(this).parents('tr').find('input.reCon').val();
 		var redate = $(this).parents('tr').find('input.reDate').val();
 		var remuid = $(this).parents('tr').find('input.reDate').val();
+		reid = $(this).parents('tr').find('input.reportid').val();
 		deltr = $(this).parent('td').parent('tr');
 		alert(reviewcon);
 		$('.reviewCon').text(reviewcon);
@@ -31,7 +33,7 @@ $(function(){
 		
 		
 	});
-	$('.confirm').on('click',function(){
+	$('#confirm').on('click',function(){
 		alert(reportedid);
 		$.ajax({
 			url : 'confirm_report.do',
@@ -58,8 +60,7 @@ $(function(){
 	});
 	
 	
-	$('.deleteBtn').on('click',function(){
-		var reid = $(this).parent('td').parent('tr').find('input.reportid').val();
+	$('#deleteU').on('click',function(){
 		alert(reid);
 		$.ajax({
 			url : 'delete_report.do',
@@ -73,7 +74,7 @@ $(function(){
 				history.go(0);
 				}
 				else{
-					alert("다시 삭제를 해주세요.");
+					alert("다시 되돌리기를 해주세요.");
 				}
 			},
 			error : function(){
@@ -97,19 +98,49 @@ $(function(){
 </head>
 <body>
 <jsp:include page="header2.jsp"></jsp:include>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Todac&mdash;	관리자</h1>
+  <p>오늘의 토닥</p> 
+</div>
+<jsp:include page="forAdmin_nav.jsp"></jsp:include>
+
+
+<div class="container" style="margin-top:30px;margin-left: 20px">
+  <div class="row">
+    <div class="col-2">
+      <h2>관리자 모드</h2>
+      <h5>${muid}님</h5>
+      <div class="fakeimg">Fake Image</div>
+      <p></p>
+      <hr>
+      <h3 style="margin-top: 30px"><a href="admin_main.do">관리 목록</a></h3>
+      <p></p>
+      <ul id="navAd" class="nav nav-pills flex-column">
+      
+        <li class="nav-item">
+          <a class="nav-link active" href="report_list.do">신고 목록 리스트</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="over_report_list.do">탈퇴예정 목록</a>
+        </li>
+      </ul>
+      <hr class="d-sm-none">
+    </div>
+    
+<div class="col-10">
 <h1>신고받은 리스트</h1>
 <div class="container">
 <div class="row">
-<table>
+<table class="table table-hover">
 <thead>
 <tr>
 <th>NO</th>
 <th>신고자</th>
+<th>신고받은 사용자</th>
 <th>신고일자</th>
 <th>신고사유</th>
 <th>게시물ID</th>
 <th>신고</th>
-<th>삭제</th>
 </tr>
 </thead>
 <tbody id="reportl">
@@ -122,26 +153,17 @@ $(function(){
 <input class="reDate" type="hidden" value="${p.RDATE}">
 <td>${ status.index+1}</td>
 <td id="${status.index}" class="userId">${p.MUID}</td>
+<td>${p.MUID_1}</td>
 <td>${p.REPORTDATE}</td>
 <td>${p.REPORTREASON}</td>
 <td>${p.RID}</td>
 <td><button data-toggle="modal" data-target="#myModal" data-backdrop="static" class="reportAcc">신고</button> </td>
-<td><button class="deleteBtn">삭제</button> </td>
 </tr>
-<%-- <tr>
-<td id="${status.index}" colspan="4">
-<div class="detailCon">
-<img width="100px" height="200px" src="download.do?aid=${a.aid}">
- <br>
-${a.name} <br>
-${a.bisunessNumber}
-<button class="busBtn">check</button>
-</div>
-</td>
-</tr> --%>
 </c:forEach>
 </tbody>
 </table>
+    </div>
+    </div>
 
   <div class="modal fade" id="myModal" >
     <div class="modal-dialog modal-dialog-centered" >
@@ -175,7 +197,8 @@ ${a.bisunessNumber}
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="confirm btn btn-secondary" data-dismiss="modal">신고하기</button>
+          <button id="confirm" type="button" class="btn btn-secondary" data-dismiss="modal">신고하기</button>
+          <button id="deleteU" type="button" class="btn btn-secondary" data-dismiss="modal">되돌리기</button>
         </div>
         
       </div>
@@ -185,6 +208,6 @@ ${a.bisunessNumber}
 
 </div>
 </div>
-
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

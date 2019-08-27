@@ -33,11 +33,9 @@ public static void main(String[] args) {
 	ISearchDao sDao = context.getBean(ISearchDao.class);
 	INoticeDao nDao = context.getBean(INoticeDao.class);
 	HashMap<String, Object> pageinfo = new HashMap<String, Object>();
-	
-//	mDao.searchMemberByID(param)
-	HashMap<String, Object> param = new HashMap<String, Object>();
-	param.put("age", 0);
-	System.out.println(sDao.getListOfSearch(param).size());
+for(int i=0;i<150;i++) {
+	hDao.writeHealthInfo(new HealthInfo("rorem ipsum", "rorem ipsum", "rorem ipsum", "rorem ipsum"));
+}
 	
 }
 	

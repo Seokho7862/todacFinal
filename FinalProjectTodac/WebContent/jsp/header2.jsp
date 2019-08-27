@@ -25,8 +25,6 @@
 <link rel="stylesheet" href="css/nice-select.css">
 <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/style.css">
-<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
 <style type="text/css">
 
 
@@ -91,32 +89,34 @@
 }
 </style>
 <script type="text/javascript">
-	$('document')
-			.ready(
-					function() {
-						$
-								.ajax({
-									url : "getSessionId.do",
-									success : function(data) {
-										var res = data;
-										if (data != "") {
-											var text = "";
-
-											text = text
-													+ '<div class="card" style="margin-top:40px;">'
-											text = text
-													+ '<div class="card-header" style="height: 30px; text-align:left; padding: 0px;">'
-													+ data + '님 환영합니다!</div>'
-											text = text
-													+ '<div class="card-body" style="height: 70px;"><a href="show_pwd_form.do">내 정보  </a> 　　　<a href="logout.do">로그아웃 </a></div>'
-											text = text + '</div>'
-
-											$('#loginDiv').html("")
-											$('#loginDiv').html(text)
-										}
-									}
-
-								});
+	$('document').ready(
+		function() {
+			var sessionStatus=0;
+			$.ajax({
+				url: "getSessionStatus.do",
+				success: function(status){
+					sessionStatus=status;
+				}
+			})
+			$.ajax({
+				url : "getSessionId.do",
+				success : function(data) {
+					var res = data;
+						if (data != "") {
+						var text = "";
+							text = text	+ '<div class="card" style="margin-top:40px;">'
+							text = text	+ '<div class="card-header" style="height: 30px; text-align:left; padding: 0px;">'+ data + '님 환영합니다!</div>'
+							if (sessionStatus==7) {
+								text = text+ '<div class="card-body" style="height: 70px;"><a href="admin_main.do">내 정보  </a> 　<a href="logout.do">로그아웃 </a></div>'
+							} else {
+								text = text+ '<div class="card-body" style="height: 70px;"><a href="show_pwd_form.do">내 정보  </a> 　<a href="logout.do">로그아웃 </a></div>'
+							}
+							text = text + '</div>'											
+							$('#loginDiv').html("")
+							$('#loginDiv').html(text)
+							}
+						}
+					});
 
 						$.ajax({
 							url : "get10Disease.do",
