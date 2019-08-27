@@ -114,10 +114,32 @@
 <!-- 헤더 -->
 <div style="font-family : 'Jua';" class="mainFrame">
 	<!-- 병원 이미지 맵으로 구현 -->
+	<div id="map" style="height: 300px;width: 500px; border: thin;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7100ed85365a3b66382c0f7cab33b611"></script>
+	<script type="text/javascript">
+		var x = ${hlist.wgs84Lat};
+		var y = ${hlist.wgs84Lon};
+			
+		var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
+        	center : new kakao.maps.LatLng(x, y), // 지도의 중심좌표      
+        	level : 3 // 지도의 확대 레벨
+    	});
+		var position =  new kakao.maps.LatLng(x, y);
+		var marker = new kakao.maps.Marker({
+			  position: position,
+			  clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+		});
+		
+		marker.setMap(map);
+			
+	</script>
 	<div >
-		<div id="img"> <img src="${hlist.hfile}"/> ${hlist.hfile} </div>
+		
+
 		<h2>${hlist.dutyName}</h2>
-		session 아이디 체크 muid : ${muid} status : ${status};
+		<c:if test="${hlist.hfile != null}">
+			<div id="img"> <img src="${hlist.hfile}" style="width: 50%; height: 200px; position: static;"> </div>
+		</c:if>
 	</div>
 	<!-- 즐겨찾기, 후기 작성 버튼-->
 	<hr>
@@ -516,6 +538,7 @@
 	
 	
 </script>
+
 
 <!-- 풋터부분 -->
 </body>

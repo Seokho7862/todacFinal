@@ -49,13 +49,15 @@ public class ReivewService {
 			e.printStackTrace();
 		}
 		r.setRfile(path+fileName);
-		System.out.println(r);
+		System.out.println("서비스 단 : "+r);
 		rdao.reviewWrite(r);
 	}
-	public void ReportInsert(String rid, String reportreason) {
+	
+	public void ReportInsert(String sessionId ,String rid, String reportreason) {
 		Report r = new Report();
 		r.setRid(Integer.valueOf(rid));
 		r.setReportreason(reportreason);
+		r.setMuid(sessionId);
 		
 		rdao.ReportInsert(r);
 		rdao.updateReivewStatus(Integer.valueOf(rid));

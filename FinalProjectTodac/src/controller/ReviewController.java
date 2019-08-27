@@ -1,5 +1,8 @@
 package controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,11 +44,13 @@ public class ReviewController {
 	}
 	@RequestMapping("reviewWrite.do")
 	public ModelAndView writeReview(@RequestParam("rfile") MultipartFile file,
-								String hpid,String title,String content,int grade) {
+								String hpid,String title,String content,int grade,HttpSession session) {
 		
 		Review r = new Review();
+		String muid = String.valueOf(session.getAttribute("muid"));
 		r.setHpid(hpid);r.setTitle(title);
 		r.setContent(content);r.setGrade(grade);
+		r.setMuid(muid);
 		
 		rsvc.reviewWrite(r, file);
 		
@@ -59,6 +64,17 @@ public class ReviewController {
 			str =  null;
 		}
 		
+		if(muid != null) {
+			Favorites f = rsvc.findLidByFavoritesModel(hpid,muid);
+			if(f==null) { //라이크가 없을때 1
+				mav.addObject("f_img",0);
+			}
+			else { //라이크가 잇을대 1
+				mav.addObject("f_img",1);
+			}
+		}
+		System.out.println(h);
+		mav.addObject("avgRate",String.format("%.2f",rsvc.averageRate(hpid)));
 		mav.addObject("dlist", str);
 		mav.addObject("hlist",h);
 		mav.addObject("rlist",rsvc.selectOneHospitalInfo(h.getHpid()));
@@ -68,8 +84,11 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("ReportInsert.do")
-	public @ResponseBody void ReportInsert(String rid, String reportreason){
-		rsvc.ReportInsert(rid,reportreason);
+	public @ResponseBody void ReportInsert(String rid, String reportreason,HttpSession session){
+		String sessionId = String.valueOf(session.getAttribute("muid"));
+		System.out.println(sessionId);
+		
+		rsvc.ReportInsert(sessionId,rid,reportreason);
 	}
 	
 	@RequestMapping("ClickFavorite.do")
