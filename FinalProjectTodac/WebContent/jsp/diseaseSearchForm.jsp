@@ -20,6 +20,7 @@
 
 
 	$('document').ready(function() {
+		
 		function getParam(sname) {
 		    var params = location.search.substr(location.search.indexOf("?") + 1);
 		    var sval = "";
@@ -35,6 +36,7 @@
 		
 		
 		$(bttn).bind('click', function diseaseSearch() {
+			if($('#keyword')!=""){
 			var text = $('#keyword').val();
 			 $.ajax({
 				url : 'diseaseSearch.do',
@@ -72,9 +74,13 @@
 					 
 				}
 			});
-			
+		}
 		})
-		 $(bttn).trigger('click');
+		
+		if($('#keyword').val()!=""){
+		 $(bttn).trigger('click');}
+		
+	
 	})
 	
 </script>
