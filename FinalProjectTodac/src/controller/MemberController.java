@@ -347,7 +347,7 @@ public class MemberController {
 		
 	}
 	
-	//서비스 소개
+	//메인
 	
 	@RequestMapping("service_info.do")
 	public String serviceInfo() {

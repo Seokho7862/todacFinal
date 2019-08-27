@@ -25,7 +25,7 @@ $(function(){
 				if(data=="1"){
 					alert($('#maid').val()+" 님 환영합니다.");
 					
-					location.href='openMain.do';
+					location.href='admin_main.do';
 					
 					
 				}
@@ -57,5 +57,7 @@ $(function(){
 </div>
 <div class="col-md-4"></div>
 </div>
+
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -83,4 +83,14 @@ public class AdminService {
 		return addao.selectOverReport();
 	}
 	
+	//5회이상 신고받은 사용자 탈퇴시키기
+	public int deleteUser(String muid) {
+		return addao.deleteUser(muid);
+	}
+	
+	//관계자 승인 혹은 거절 후 리스트 삭제하기
+	public int denyApply(int aid) {
+		return addao.denyApply(aid);
+	}
+	
 }

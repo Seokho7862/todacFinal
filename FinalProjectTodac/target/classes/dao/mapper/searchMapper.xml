@@ -6,7 +6,7 @@
 
 
 <insert id="Search" parameterType="search">
-
+s
 	<if test="keyword!=null">
 	insert into search values(#{keyword},
 	<if test="age!=null">${age}</if>
