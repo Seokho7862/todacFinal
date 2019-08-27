@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 
@@ -24,7 +25,7 @@ $(function(){
 				if(data!=""){
 					alert("??");
 					var input = "";
-					input += "<input type='text' id='checknum'>";
+					input += "<input type='text' id='checknum'><br>";
 					input += "<input type='button' id='chk' value='확인'>";
 					$('#authPhone').after(input);
 					
@@ -36,7 +37,7 @@ $(function(){
 						type : "post",
 						success :  function(d){
 							alert(d.key);
-							if(d.result==""){
+							if(d.result==true){
 								$('#chk').on('click',function(){
 								alert($('#checknum').val()+" 입력값");
 									if(d.key==$('#checknum').val()){
@@ -67,6 +68,9 @@ $(function(){
 										alert("실패");
 									}
 								});
+							}
+							else{
+								alert("다시시도해주세요");
 							}
 						}
 					});
@@ -107,7 +111,7 @@ $(function(){
 
 이름<input type="text" id="name"><br>
 아이디<input type="text" id="muid"><br>
-핸드폰<input type="text" id="phone"><br>
+핸드폰<input type="text" id="phone" placeholder="-없이 숫자만 입력해주세요"><br>
 <div id="message"></div>
 <input type="button" id="authPhone" value="인증하기">
 </form>

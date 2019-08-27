@@ -33,9 +33,9 @@ $(function(){
 			success : function(data){
 				alert(data);
 				if(data=="1"){
-					alert("${muid} 님 환영합니다.");
+					alert($('#muid').val()+" 님 환영합니다.");
 					
-					location.href='openMain.do';
+					location.href='service_info.do';
 					
 					
 				}
@@ -91,8 +91,10 @@ $(function(){
 					</div>
 				</div>
 			</div>
-<a href="find_id_form.do">아이디  </a>&frasl;	<a href="find_pw_form.do">  비밀번호 찾기</a>
-<button onclick="location.href='admin_login_form.do'">관리자로그인</button>
+<a href="find_id_form.do">아이디  </a>&ensp;&frasl;&ensp;	<a href="find_pw_form.do">  비밀번호 찾기</a>
+<br>
+<button onclick="location.href='admin_login_form.do'">관리자로그인</button>&ensp;	&ensp;	
+<button onclick="location.href='signUpForm.do'">회원가입</button>
 </div>
 
 <div class="col-md-4">

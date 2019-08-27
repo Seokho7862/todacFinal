@@ -34,7 +34,7 @@ $(function(){
 						type : "post",
 						success :  function(d){
 							alert(d.key);
-							if(d.result==""){
+							if(d.result==true){
 								$('#chk').on('click',function(){
 								alert($('#checknum').val()+" 입력값");
 									if(d.key==$('#checknum').val()){
@@ -46,6 +46,9 @@ $(function(){
 										alert("실패");
 									}
 								});
+							}
+							else{
+								alert("다시 시도해주세요");
 							}
 						}
 					});
@@ -82,7 +85,7 @@ $(function(){
 <form>
 <h1>아이디 찾기</h1>
 이름<input type="text" id="name"> <br>
-핸드폰<input type="text" id="phone">
+핸드폰<input type="text" id="phone" placeholder="-없이 숫자만 입력해주세요">
 <div id="message"></div>
 <input type="button" id="authPhone" value="인증하기">
 </form>

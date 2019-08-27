@@ -30,10 +30,20 @@
   select * from review r, hospitalinfo h where r.hpid=h.hpid and muid=#{muid}
   </select>
   
+  <!-- 리뷰 삭제하기 -->
+  <delete id="deleteReview" parameterType="int">
+  delete from review where rid=#{rid}
+  </delete>
+  
   <!-- 즐겨찾기 목록불러오기 -->
   <select id="selectAllLike" resultType="favorites">
   select * from favorites natural join hospitalinfo where muid=#{muid}
   </select>
+  
+  <!-- 즐겨찾기 삭제 -->
+  <delete id="deleteFavorites" parameterType="int">
+  delete from favorites where lid=#{lid}
+  </delete>
   
   <!-- 병원관계자라면 자신 병원 불러오기 -->
   <select id="selectOwnHos" parameterType="String" resultType="java.util.HashMap">

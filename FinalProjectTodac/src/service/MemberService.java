@@ -186,4 +186,15 @@ public class MemberService {
 		
 	}
 	
+	//즐겨찾기 삭제하기
+	public int deleteFavorites(int lid) {
+		return dao.deleteFavorites(lid);
+	}
+	
+	//리뷰 삭제하기
+	public int deleteReview(int rid) {
+		return dao.deleteReview(rid);
+	}
+	
+	
 }
