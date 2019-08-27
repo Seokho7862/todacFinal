@@ -51,9 +51,9 @@ div{cursor: pointer;}
 
 #pageDiv{
 position: relative;
-width: 600px;
+width: 800px;
 margin-top:20px;
-margin-left: 360px;
+margin-left: 300px;
 
 }
 #searchDiv{
@@ -145,11 +145,20 @@ margin-bottom: -15px;
 
 
 <div id="pageDiv">
+	<c:if test="${pageinfo.page!=1 }">
+	<input type="button" value="<"
+			onclick="location.href='healthInfoList.do?page=${pageinfo.page-1}&keyword=${pageinfo.keyword}&searchType=${pageinfo.searchType}'"class="btn btn-outline-secondary" style="margin: 5px;">
+	</c:if>
 	<c:forEach var="nums" begin="${pageinfo.startPage }"
 		end="${pageinfo.endPage }">
 		<input type="button" value="${nums}"
 			onclick="location.href='healthInfoList.do?page=${nums}&keyword=${pageinfo.keyword}&searchType=${pageinfo.searchType}'"class="btn btn-outline-secondary" style="margin: 5px;">
 	</c:forEach>
+	<c:if test="${pageinfo.lastPage!=pageinfo.endPage }">
+	<input type="button" value=">"
+			onclick="location.href='healthInfoList.do?page=${pageinfo.page+1}&keyword=${pageinfo.keyword}&searchType=${pageinfo.searchType}'"class="btn btn-outline-secondary" style="margin: 5px;">
+	</c:if>
+
 </div>
 	<div id="searchDiv" style="width: 440px; height: auto; ">
 	
@@ -170,6 +179,8 @@ margin-bottom: -15px;
 
 	
 
-
+	<!--::header part start::-->
+	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Header part end-->
 </body>
 </html>

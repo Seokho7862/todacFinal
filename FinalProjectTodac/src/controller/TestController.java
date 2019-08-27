@@ -292,7 +292,7 @@ public class TestController {
 	}
 
 	@RequestMapping("signUp.do")
-	public void signUp(String muid, String pwd, String name, String birth, String email, String phone, String latitude,
+	public String signUp(String muid, String pwd, String name, String birth, String email, String phone, String latitude,
 			String longitude, String sample4_postcode, String sample4_detailAddress,
 			@RequestParam(defaultValue = "") String sample4_jibunAddress, String sample4_roadAddress) {
 
@@ -322,6 +322,8 @@ public class TestController {
 		System.out.println(member);
 		tservice.createMember_user(member);
 		System.out.println("회원 삽입");
+		
+		return "service_info.do";
 	}
 
 	@RequestMapping("idCheck.do")

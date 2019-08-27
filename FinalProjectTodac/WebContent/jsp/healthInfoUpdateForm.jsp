@@ -61,4 +61,7 @@ td {
 
 
 </body>
+	<!--::header part start::-->
+	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Header part end-->
 </html>

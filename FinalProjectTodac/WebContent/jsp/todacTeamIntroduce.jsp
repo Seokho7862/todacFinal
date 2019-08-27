@@ -41,5 +41,8 @@ font-size: large;
 </table>
 </div>
 
+	<!--::header part start::-->
+	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Header part end-->
 </body>
 </html>

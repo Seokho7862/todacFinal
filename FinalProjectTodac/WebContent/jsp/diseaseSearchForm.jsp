@@ -150,6 +150,8 @@ width: 100%;
 	</div>
 	<c:set var="keyword" value='#{request.getParameter("keyword")}'></c:set>
 
-
+	<!--::header part start::-->
+	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Header part end-->
 </body>
 </html>

@@ -64,7 +64,7 @@ function skyOP(){
                         <h4>TODAC_TEAM</h4>
                         <ul>
                             <li><a href="#">Nam seok ho</a></li>
-                            <li><a href="#">Yang jun yul</a></li>
+                            <li><a href="#">Yang jun lyul</a></li>
                             <li><a href="#">Lee so jin</a></li>
                             <li><a href="#">Lee se young</a></li>
                         </ul>
