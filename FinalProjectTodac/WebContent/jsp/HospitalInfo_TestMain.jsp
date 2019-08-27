@@ -24,6 +24,7 @@
     .overlay_info:after {content:'';position: absolute; margin-left: -11px; left: 50%; bottom: -12px; width: 19px; height: 12px; background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;}
 	
 	body{
+		
 		font-family: 'Jua' sans-serif;
 	}
 	#hospitalListDutyName{
@@ -37,6 +38,7 @@
 		height : 700px;
 		float : left;
 		overflow : scroll;
+		
 	}
 	
 	div#navigation_hosp{
@@ -125,6 +127,7 @@
 	  top:inherit;
 	  left:0;
 	  bottom:0;
+	  
 	}
 	button:hover:before,button:hover:after{
 	  width:100%;
@@ -145,6 +148,9 @@
 		left : 10px; 
 		
 	}
+	.listHover:hover{
+		background-color: lightgrey;
+	}
 	
 
 </style>
@@ -155,7 +161,7 @@
 		
 		
 		
-		<div style ="margin-top: 23px; margin-left: 10px; font-family: 'Jua'">
+		<div style ="margin-top: 23px; margin-left: 10px; font-family: 'Jua'; border-color : purple; border: groove;">
 			<div class="container-fluid" >
 		  <div class="row">
 		    <div class="col-sm-4" style="width : 20%; " >
@@ -174,14 +180,14 @@
 				    			<br>
 				    			<div >
 				    				<div style="width: 100%;  text-align: center;" id="selector">
-				    					<i>진료과목   :</i><input type="text" value="전체선택" id="diag_keyword" style="margin-left: 20%;">
+				    					<i>진료과목   :</i><input type="text" value="전체선택" id="diag_keyword" style="margin-left: 5%;">
 				    				</div> 
 				    			</div>
 				    		</div>
 				    		    		
 				    		
-				    		<div style=" text-align: center;">
-				    			<a >검색 결과 <label class="countText">0</label>건</a>
+				    		<div style=" text-align: center; font-size: 17px;">
+				    			<a>검색 결과 <label class="countText" style="color: purple;">0</label> 건</a>
 				    		</div>
 				    		
 				    		<div id="diag_tab1" >
@@ -238,7 +244,7 @@
 						      	
 						      	</table>
 				    		</div>
-				    		<div id ="diag_tab2" >
+				    		<div id ="diag_tab2" style="border: 1px solid; border-color: grey; padding-left: 5%;">
 				    			<ul id="hosptialListByDiagnosis" class="hosptialListByDiagnosis1">
 				      			</ul>
 				      			
@@ -247,9 +253,9 @@
 				    </div>
 				    
 				    <div id="keyworddiag" class="tab-pane fade" >
-				    	<input type="search" style="align-self :center; width: 60%; background-color: #d9d9d9;" placeholder="여기서 검색하세요 " id="Keyword">
-				    	<hr>
-				      	<div id="navigation_hosp" >
+				    	<input type="search" style="margin-left : 20%; align-self :center; width: 60%; background-color: #d9d9d9;" placeholder="여기서 검색하세요 " id="Keyword">
+				    	
+				      	<div id="navigation_hosp" style="border: 1px solid; border-color: grey; padding-left: 5%;">
 							<ul id="hospitalList">			
 							</ul>
 						</div>
@@ -307,7 +313,7 @@
 				    		$('#hospitalList hr').remove();
 							var list= "";
 							for(var i = 0; i < data.length ; i++){
-								list += '<li style="list-style : upper-alpha"><a style="font-size: 15px" class="hospitalListDutyName" href=HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'>' +  (i+1) + ". " + data[i].DUTYNAME +'</a><br><a style="font-size: 7px " class="hospitalListDutyName">' + data[i].DUTYADDR+ '</a></li>';
+								list += '<li class="listHover" style=" margin-left : 5%"><a style="margin-left : 2%; font-size: 15px" class="hospitalListDutyName" href=HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'>' +  (i+1) + ". " + data[i].DUTYNAME +'</a><br><a style="font-size: 7px " class="hospitalListDutyName">' + data[i].DUTYADDR+ '</a></li>';
 								list += '<hr>'
 							}
 							$('#hospitalList').append(list);
@@ -389,7 +395,7 @@
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
 					
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>';
+					list += '<li class="listHover" style="list-style : decimal; margin-left : 3%"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>';
 					list += '<a style="font-size: 7px; margin-left : 15px;">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 					
@@ -409,9 +415,10 @@
 
 	                           //띄울 인포윈도우 정의
 	                var iwContent = '<div style="padding:5px;">'
-	                           +'<a href=HospitalInfo_InfoForm.do?hpid='+position.HPID+'>'+position.HPID+'</a><br/>'
-	                           +position.DUTYNAME+
-	                           '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		                        +'<a href=HospitalInfo_InfoForm.do?hpid='+position.HPID+' style="font-size: 15px; text-align : center;" >'+position.DUTYNAME+'</a><br/>'
+		                        //+position.DUTYNAME+
+		                        + '<a style="font-size: 9px; float : inherit;">'+position.DUTYADDR+'</a>' 
+		                        '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 	                            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
 	                            // 인포윈도우를 생성합니다
@@ -420,8 +427,22 @@
 	                      removable : iwRemoveable
 	                });
 	            	// 마커에 클릭이벤트를 등록합니다
+	                // 마커에 클릭이벤트를 등록합니다
+	                kakao.maps.event.addListener(marker, 'mouseover', function() {
+	                	infowindow.open(map, marker); 
+	                	var markeremp = new kakao.maps.MarkerImage(
+	                		    'image/markerEmp3.png',
+	                		    new kakao.maps.Size(50, 50));
+	                		marker.setImage(markeremp);
+	                });
+	                
+	                kakao.maps.event.addListener(marker, 'mouseout', function() {
+	                	infowindow.close(map, marker);      
+	                	//marker.setImage(null);
+	                	marker.setImage(markerImage);
+	                });
 	                kakao.maps.event.addListener(marker, 'click', function() {
-	                	infowindow.open(map, marker);      
+	                	location.href="HospitalInfo_InfoForm.do?hpid="+position.HPID;      
 	                });
 	                
 	                //생성된 마커를 반환합니다.
@@ -478,7 +499,7 @@
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
 					var latlng = new kakao.maps.LatLng(data[i].WGS84LAT, data[i].WGS84LON);
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
+					list += '<li class="listHover"  style="list-style : decimal;margin-left : 3%"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
 					list += '<a style="font-size: 7px; margin-left : 15px;">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 					
@@ -494,13 +515,15 @@
 	                var marker = new kakao.maps.Marker({
 	                    position : new kakao.maps.LatLng(position.WGS84LAT, position.WGS84LON),
 	                    clickable : true
+	                    
 	                });
 	                marker.setImage(markerImage);
 
 	                           //띄울 인포윈도우 정의
 	                var iwContent = '<div style="padding:5px;">'
-	                           +'<a href=HospitalInfo_InfoForm.do?hpid='+position.HPID+'>'+position.HPID+'</a><br/>'
-	                           +position.DUTYNAME+
+	                           +'<a href=HospitalInfo_InfoForm.do?hpid='+position.HPID+' style="font-size: 15px; text-align : center;" >'+position.DUTYNAME+'</a><br/>'
+	                           //+position.DUTYNAME+
+	                           + '<a style="font-size: 9px; float : inherit;">'+position.DUTYADDR+'</a>' 
 	                           '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 	                            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
@@ -510,10 +533,22 @@
 	                      removable : iwRemoveable
 	                });
 	            	// 마커에 클릭이벤트를 등록합니다
-	                kakao.maps.event.addListener(marker, 'click', function() {
-	                	infowindow.open(map, marker);      
+	                kakao.maps.event.addListener(marker, 'mouseover', function() {
+	                	infowindow.open(map, marker); 
+	                	var markeremp = new kakao.maps.MarkerImage(
+	                		    'image/markerEmp3.png',
+	                		    new kakao.maps.Size(50, 50));
+	                		marker.setImage(markeremp);
 	                });
 	                
+	                kakao.maps.event.addListener(marker, 'mouseout', function() {
+	                	infowindow.close(map, marker);      
+	                	//marker.setImage(null);
+	                	marker.setImage(markerImage);
+	                });
+	                kakao.maps.event.addListener(marker, 'click', function() {
+	                	location.href="HospitalInfo_InfoForm.do?hpid="+position.HPID;      
+	                });
 	                //생성된 마커를 반환합니다.
 	                return marker;
 	    		});
@@ -542,13 +577,12 @@
 		//마커 이미지 선언부
 		//var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png'; // 마커이미지의 주소입니다   
 		var imageSrc = 'image/markerHospital.png'; // 마커이미지의 주소입니다   
+		
 		var ICON_S = new daum.maps.MarkerImage(imageSrc, new daum.maps.Size(30, 33));
 		var ICON_M = new daum.maps.MarkerImage(imageSrc, new daum.maps.Size(30, 33));
 		var ICON_L = new daum.maps.MarkerImage(imageSrc, new daum.maps.Size(30, 33));
 		
-		
 
-		
 		var x= "${longitude}";
 		var y= "${latitude}";
 	    
@@ -612,10 +646,8 @@
 				
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
-					//list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"></a><br>'
-					//list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
-					//list += '<hr>';
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
+					
+					list += '<li class="listHover" style="list-style : decimal; margin-left : 3%"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
 					list += '<a style="font-size: 7px; margin-left : 15px;">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 				}
@@ -639,22 +671,36 @@
 	                
 	                           //띄울 인포윈도우 정의
 	                var iwContent = '<div style="padding:5px;">'
-	                           +'<a href=HospitalInfo_InfoForm.do?hpid='+position.HPID+'>'+position.HPID+'</a><br/>'
-	                           +position.DUTYNAME+
-	                           '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		                        +'<a href="HospitalInfo_InfoForm.do?hpid='+position.HPID+'" style="font-size: 15px; text-align : center;" >'+position.DUTYNAME+'</a><br/>'
+		                        //+position.DUTYNAME+
+		                        + '<a style="font-size: 9px; float : inherit;">'+position.DUTYADDR+'</a>' 
+		                        '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 	                            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
+								
 	                            // 인포윈도우를 생성합니다
 	                var infowindow = new kakao.maps.InfoWindow({
 	                      content : iwContent,
 	                      removable : iwRemoveable
 	                });
 	            	// 마커에 클릭이벤트를 등록합니다
-	                kakao.maps.event.addListener(marker, 'click', function() {
-	               		 // 마커 위에 인포윈도우를 표시합니다         
-	                	infowindow.open(map, marker);      
+	                kakao.maps.event.addListener(marker, 'mouseover', function() {
+	                	infowindow.open(map, marker); 
+	                	//marker.setImage(null);
+	                	
+	                	
+	                	var markeremp = new kakao.maps.MarkerImage(
+	                		    'image/markerEmp3.png',
+	                		    new kakao.maps.Size(50, 50));
+	                	marker.setImage(markeremp);
 	                });
 	                
+	                kakao.maps.event.addListener(marker, 'mouseout', function() {
+	                	infowindow.close(map, marker);      
+	                	marker.setImage(markerImage);
+	                });
+	                kakao.maps.event.addListener(marker, 'click', function() {
+	                	location.href="HospitalInfo_InfoForm.do?hpid="+position.HPID;      
+	                });
 	                
 	                           
 	                //생성된 마커를 반환합니다.
@@ -687,7 +733,7 @@
 			}
 		});
 		
-		
+		//키워드 버튼 스위칭
 		$('button').click(function(){
 			var value= $(this).val();
 			var text= $(this).text();
@@ -699,7 +745,7 @@
 		
 		
 	</script>
-	<!-- list에 DutyName을 클릭했을 때 -->
+	<!-- list에 DutyName을 마우스오버했을 때 -->
 	<script>
 		
 		$(document).on('mouseover','.hospitalListDutyName',function(){
@@ -732,10 +778,11 @@
 		});
 		
 		$(document).on('mouseout','.hospitalListDutyName',function(){
-			
 			customOverlay.setMap(null);
 		});
 	</script>
+	
+
 	
 	<!-- 풋터 부분-->
 	<jsp:include page="footer.jsp"></jsp:include>

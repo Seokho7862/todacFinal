@@ -2,7 +2,10 @@ package service;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,21 +38,32 @@ public class ReivewService {
 		System.out.println("flag:"+flag +"/"+ rid);
 		return rdao.selectAroundReview(rid);
 	}
+	public static String getCurrentDayTime(){
+	    long time = System.currentTimeMillis();
+	    SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss", Locale.KOREA);
+	    return dayTime.format(new Date(time));
+	}	
 	
 	public void reviewWrite(Review r, MultipartFile file) {
-		if(file !=null) {
-			String path = "C:/temp/todocFile/";
-			File dir = new File(path);
+		if(file.getSize()>0) {
+			String savepath = "C:\\Users\\student\\git\\todacFinal\\FinalProjectTodac\\WebContent\\ReviewImg";
+			String loadpath = "ReviewImg";
+			File dir = new File(savepath);
 			if(!dir.exists()) dir.mkdir();
+			
 			String fileName = file.getOriginalFilename();
-			File attachFile = new File(path+fileName);
+			String onlyFileName = fileName.substring(0, fileName.indexOf("."));
+			String extension = fileName.substring(fileName.indexOf("."));
+			String newFileName = onlyFileName+"_"+ getCurrentDayTime()+extension;
+			
+			File attachFile = new File(savepath+"\\"+newFileName);
 			try {
 				file.transferTo(attachFile);
-			} catch (IllegalStateException | IOException e) {
+			}catch (IllegalStateException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			r.setRfile(path+fileName);
+			r.setRfile(loadpath+"\\"+newFileName);
 		}
 		System.out.println("서비스 단 : "+r);
 		rdao.reviewWrite(r);

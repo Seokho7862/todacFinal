@@ -145,6 +145,7 @@
 		
 
 		<h2>${hlist.dutyName}</h2>
+		<h4 style="color: teal;">[${hlist.dutyAddr }]</h4>
 		<c:if test="${hlist.hfile != null}">
 			<div id="img"> <img src="${hlist.hfile}" style="width: 50%; height: 200px; position: static;"> </div>
 		</c:if>
@@ -181,10 +182,10 @@
 		<table class="table table-hover">
 		
 			<tr>
-				<th>월요일</th>
-				<th>화요일</th>
-				<th>수요일</th>
-				<th>목요일</th>				
+				<th style="text-align: center;">월요일</th>
+				<th style="text-align: center;">화요일</th>
+				<th style="text-align: center;">수요일</th>
+				<th style="text-align: center;">목요일</th>				
 			</tr>
 			
 			<tr>
@@ -214,10 +215,10 @@
 				</td>
 			</tr>
 			<tr>
-				<th>금요일</th>
-				<th>토요일</th>
-				<th>일요일</th>
-				<th>공휴일</th>				
+				<th style="text-align: center;">금요일</th>
+				<th style="text-align: center;">토요일</th>
+				<th style="text-align: center;">일요일</th>
+				<th style="text-align: center;">공휴일</th>				
 			</tr>
 			<tr>
 					<td>
@@ -259,7 +260,7 @@
 						<c:when test="${dlist != null}">				
 							<tr class="infoTr">
 								<th>진료과</th>
-								<td >
+								<td style="text-align: center;">
 									<c:forEach var="i" items="${ dlist }" >
 										<li style="text-align: center;">${i}, </li>
 									</c:forEach>
@@ -269,7 +270,7 @@
 						 <c:otherwise>
 						 	<tr class="infoTr">
 								<th>진료과</th>
-								<td> - </td>
+								<td style="text-align: center;"> - </td>
 							</tr>
 						 </c:otherwise>
 					</c:choose>
@@ -301,10 +302,10 @@
 		<div class="reviewTable innerDiv" >
 			<table class="table table-hover">
 				<tr class="reviewTalbe_header">
-					<th>아이디</th>
-					<th>제목</th>
-					<th>조회수</th>
-					<th>별점</th>
+					<th style="text-align: center;">아이디</th>
+					<th style="text-align: center;">제목</th>
+					<th style="text-align: center;">조회수</th>
+					<th style="text-align: center;">별점</th>
 					<c:if test="${adminchk != null}">
 						<th>신고</th>					
 					</c:if>
@@ -318,7 +319,7 @@
 							<input type="hidden" value="${l.rid}"/>
 						</td>
 						<td>${l.readcount}</td>
-						<td style="text-align: left;">
+						<td style="text-align: center;">
 							<c:choose>
 								<c:when test="${l.grade == 1}">
 									<span style="color : black; size: 17px;">★☆☆☆☆</span>

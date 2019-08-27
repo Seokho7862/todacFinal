@@ -61,7 +61,7 @@
 			float: center
 		}
 		th{
-			
+			color : blue;
 			float: center;
 			font-size: 22px;
 		}
@@ -87,11 +87,11 @@
 	<div>
 		<table border="1">
 			<tr>
-				<th style="text-align: center;"> 작성자  </th>
+				<th style="text-align: center; color : blue;"> 작성자  </th>
 				<td>${review.muid}</td>
-				<th style="text-align: center;">작성일자 </th>
+				<th style="text-align: center; color : blue;">작성일자 </th>
 				<td>${review.rdate}</td>
-				<th style="text-align: center;">
+				<th style="text-align: center; color : blue;">
 					<button class="btn btn-primary reportIcon" data-toggle="modal" data-target="#myModal">
 						<img src="image/reporticon.png" style="height : 20px; width: 20px;" class="reportIcon">신고
 					</button>
@@ -112,12 +112,11 @@
 				<td colspan="5" > <textarea disabled="disabled" draggable="false">${review.content} </textarea> </td>
 			</tr>
 			
-			<%-- <c:if test="${review.rfile != null }">
-				<tr>
-					
-					<td colspan="5"><img src="${review.rfile}" style="width: 400px; height: 300px;"> ${review.rfile} </td>
+			<c:if test="${review.rfile != null }">
+				<tr>		
+					<td colspan="5"><img src="${review.rfile}" style="width: 400px; height: 300px;"></td>
 				</tr>
-			</c:if> --%>
+			</c:if> 
 			
 			<tr>
 				<td colspan="5"> <a>평점 :</a> 
@@ -151,7 +150,7 @@
 				</td>
 				<td rowspan= "2" style="width : 60%;" >
 					<input type="button" value="삭제" onclick="return deleteReview()"/>
-					<input type="button" value="뒤로"/>
+					<input type="button" value="뒤로" onclick="infoForm()"/>
 				</td>			
 			</tr>			
 	
@@ -332,6 +331,10 @@
 			return false;
 		}
 		
+	}
+	function infoForm(){
+		var hpid = "${review.hpid}";
+		location.href="HospitalInfo_InfoForm.do?hpid="+hpid;
 	}
 </script>
 </body>

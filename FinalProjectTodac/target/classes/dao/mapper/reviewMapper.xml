@@ -25,7 +25,7 @@
  	</select>
  	
  	<select id="selectAroundReview" parameterType="String" resultType="review">
- 		select * from review where rid =#{rid}
+ 		select * from review where rid =#{rid} and status = 1
  	</select>
  	
  	<insert id="reviewWrite" parameterType="Review">

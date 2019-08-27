@@ -96,7 +96,6 @@ public class ReviewController {
 		Favorites f = new Favorites();
 		//status 좋아요하지 않았을때 0넘어오면 아니면 1넘어오면
 		f.setMuid(muid); f.setHpid(hpid);
-		System.out.println("컨트롤러 단"+f);
 		rsvc.ClickFavorite(f,status);
 	}
 	

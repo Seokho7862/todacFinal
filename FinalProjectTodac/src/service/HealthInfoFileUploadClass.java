@@ -22,6 +22,7 @@ public class HealthInfoFileUploadClass {
 		ArrayList<String> result = new ArrayList<String>();
 		String savePath = "C:\\Users\\student\\git\\todacFinal\\FinalProjectTodac\\WebContent\\UploadFolder";
 		System.out.println(file.getSize());
+		
 		if(file.getSize()!=0) {
 		String originalFilename = file.getOriginalFilename();
 		String onlyFileName = originalFilename.substring(0, originalFilename.indexOf("."));
