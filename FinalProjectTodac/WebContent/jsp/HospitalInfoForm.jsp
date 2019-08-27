@@ -177,7 +177,7 @@
 	<hr>
 	<!-- 진료시간 -->
 	<div class="innerDiv"> 
-		<a style="font-size: 24px;"> 병원 정보 ${hlist.hfile} </a>
+		<a style="font-size: 24px;"> 병원 정보   </a>
 		<table class="table table-hover">
 		
 			<tr>
@@ -429,7 +429,7 @@
 	});
 		
 	function modalCheck(){
-		var status=${status};
+		var status="${status}";
 		var checked = $('.modal_ul').find('input[name="radiogroup"]:checked').val();// find('input[name="radiogroup"]:selected');
 		var rid = $('.modal-transit-Data_rid').val();
 		var reportreason=null;
