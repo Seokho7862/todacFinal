@@ -68,7 +68,7 @@ public class AdminController {
 		if(service.adminLogin(param)==1) {
 			
 			session.setAttribute("muid", param.get("maid"));
-			session.setAttribute("status",7);
+			session.setAttribute("status", 7);
 			
 			return "1";
 		}
@@ -79,6 +79,51 @@ public class AdminController {
 		
 		
 	}
+	//신고리스트 불러오기
+	@RequestMapping("report_list.do")
+	public ModelAndView reportList() {
+		ModelAndView mav = new ModelAndView();
+		System.out.println(service.selectAllReport());
+		mav.addObject("reportlist", service.selectAllReport());
+		mav.setViewName("reportlist");
+		return mav;
+	}
+	
+	//신고확정하기
+	@RequestMapping("confirm_report.do")
+	public @ResponseBody int updateReport(String muid) {
+		System.out.println(service.updateReport(muid));
+		
+		if(service.updateReport(muid)==1) {
+			return 1;
+		}
+		else {
+			
+			return 0;
+		}
+		
+	}
+	
+	//신고삭제하기
+	@RequestMapping("delete_report.do")
+	public @ResponseBody int deleteReport(int reportid) {
+		if(service.deleteReport(reportid)==1) {
+			System.out.println(reportid);
+			return 1;
+		}
+		else
+			return 0;
+	}
+	
+	//5회이상 신고받은 사용자
+	@RequestMapping("over_report_list.do")
+	public ModelAndView selectOverReport() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("overlist", service.selectOverReport());
+		mav.setViewName("confirmReport");
+		return mav;
+	}
+	
 	
 	
 }

@@ -9,4 +9,39 @@
   
   </select>
   
+  
+  <!-- 신고리스트 불러오기 -->
+  <select id="selectAllReport" resultType="java.util.HashMap">
+  select re.REPORTID REPORTID,
+re.RID RID,
+re.REPORTREASON REPORTREASON,
+re.REPORTDATE REPORTDATE,
+re.MUID MUID,
+r.RID RID_0,
+r.TITLE TITLE,
+r.CONTENT CONTENT,
+r.RDATE RDATE,
+r.RFILE RFILE,
+r.READCOUNT READCOUNT,
+r.GRADE GRADE,
+r.HPID HPID,
+r.MUID MUID_1,
+r.STATUS STATUS from report re, review r where re.rid=r.rid
+  </select>
+  
+  <!-- 신고확정짓기 -->
+  <update id="updateReport" parameterType="String">
+  update member_user set report_count=report_count+1 where muid=#{muid}
+  </update>
+  
+  <!-- 5회이상 신고받은 사람 -->
+  <select id="selectOverReport" resultType="MEMBER_USER" >
+  select * from member_user m where report_count >=5
+  </select>
+  
+  <delete id="deleteReport" parameterType="int">
+  delete from report where reportid=#{reportid}
+  </delete>
+  
+  
   </mapper>

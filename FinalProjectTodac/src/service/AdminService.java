@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import dao.IAdminDao;
 import dao.IApplyManagerDao;
+import model.MEMBER_USER;
 import model.apply_manager;
 
 @Service
@@ -62,5 +63,24 @@ public class AdminService {
 		else return 0;
 	}
 	
+	//모든 신고리스트 불러오기
+	public List<HashMap<String, Object>> selectAllReport() {
+		return addao.selectAllReport();
+	}
+	
+	//신고확정하기
+	public int updateReport(String muid) {
+		return addao.updateReport(muid);
+	}
+	
+	//신고삭제
+	public int deleteReport(int reportid) {
+		return addao.deleteReport(reportid);
+	}
+	
+	//5회이상 신고받은 사용자
+	public List<MEMBER_USER> selectOverReport(){
+		return addao.selectOverReport();
+	}
 	
 }

@@ -15,9 +15,9 @@
 
 </head>
 <body>
-<div class="jumbotron text-center text-light" style="margin-bottom:100px">
+<div class="jumbotron text-center text-light" style="height: 400px;	background-image: url(img/bannerex2.jpg); ">
    <div class="container">
-    <h1 style="font-family: 'Jua'; color: white">Todac</h1>
+    <h1 style="font-family: 'Jua';margin-top: 150px">토닥 &mdash;	TODAC</h1>
     <p></p>
     <p></p>
     <p></p>

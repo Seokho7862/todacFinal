@@ -15,20 +15,21 @@
   			margin-bottom : 5%;
   			margin-top: 5%;
   		}
+  		
 	</style>
 
 </head>
 <body>
-	<textarea name="textarea" class="jqte-test">TEXTAREA</textarea>
+	<jsp:include page="header2.jsp"></jsp:include>
 	<div class="mainFrame">
 		<div>
-			이미지(병원 후기 작성)<br>
+			이미지(병원 후기 작성)
 			
 		</div>
 		<div>
 			<form action="reviewWrite.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" value="${h.hpid}" name="hpid">
-				<table border="1">
+				<table>
 					<tr>
 						<td>병원명</td>
 						<td colspan="4">${h.dutyName}</td>
@@ -42,8 +43,8 @@
 								<option value="1">★</option>
 								<option value="2">★★</option>
 								<option value="3">★★★</option>
-								<option value="4">★★★★★</option>
-								<option value="5">★★★★★★</option>
+								<option value="4">★★★★</option>
+								<option value="5">★★★★★</option>
 							</select>
 						</td>
 					</tr>

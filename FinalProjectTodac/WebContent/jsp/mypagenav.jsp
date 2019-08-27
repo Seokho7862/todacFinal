@@ -29,6 +29,12 @@ $('.panel-heading').click(function(){
 	$(this).parents('div.panel').find('ul.list-group').slideToggle();
 
 });
+
+
+
+
+
+
 });
 </script>
 </head>
@@ -44,7 +50,7 @@ $('.panel-heading').click(function(){
     <ul class="list-group">
       <li class="list-group-item"><a href="show_pwd_form.do?from=member">내 정보 수정</a></li>
       <li class="list-group-item"><a href="renew_form.do">비밀번호 재설정</a></li>
-      <li class="list-group-item"><a href="show_pwd_form.do?from=hos">내 병원정보 수정</a></li>
+      <li id="hosInfo" class="list-group-item"><a href="show_pwd_form.do?from=hos">내 병원정보 수정</a></li>
     </ul>
 </div>
   <!-- 패널 타이틀2 -->
@@ -60,6 +66,18 @@ $('.panel-heading').click(function(){
 </div>      
     
     </div>
- 
+ <script type="text/javascript">
+var status = "${status}";
+
+  
+	  
+if(status=="1"){
+	document.getElementById("hosInfo").style.display="none";
+}	
+else{
+	document.getElementById("hosInfo").style.display="inline";
+
+	}
+  </script>
 </body>
 </html>

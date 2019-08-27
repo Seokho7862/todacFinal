@@ -116,7 +116,7 @@ $(function(){
 <td>${a.dutyName}</td>
 <td>${a.bisunessNumber}</td>
 <td><button class="acceptHos">승인</button> </td>
-<td><button class=".denyHos">거부</button> </td>
+<td><button class="denyHos">거부</button> </td>
 </tr>
 <tr>
 <td id="${status.index}" colspan="4">
