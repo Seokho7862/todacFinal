@@ -29,7 +29,7 @@ public class HospitalRateController {
 	public @ResponseBody HashMap<String, Object> getYkiho(@RequestParam(defaultValue="1")String page ,@RequestParam(required=false) String code1, 
 				@RequestParam(required=false)String code2,
 				@RequestParam(required=false)String hname,
-				@RequestParam(required=false)String[] check,
+				@RequestParam(defaultValue="0")String[] check,
 				@RequestParam(required=false)String subject) {
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -48,54 +48,190 @@ public class HospitalRateController {
 				newlist.add(rlist.get(i));
 			}
 		}
-		//페이지
-//		HashMap<String, Object> pageinfo = new HashMap<String, Object>();
-//		int offset = (page-1)*10+1;
-//		int num =newlist.size();
 		
-//		List<Rate> nlist = new ArrayList<Rate>();
-//		for(int j=offset;j<=(offset+10)-1;j++) {
-//			nlist.add(newlist.get(j));
-//		}
-//		pageinfo.put("current",page);
-//		pageinfo.put("newlist",newlist);
-//		pageinfo.put("key", subject);
-//		pageinfo.put("start", page-((page-1)%10));
-//		pageinfo.put("end", page-((page-1)%10)+(10-1));
-//		pageinfo.put("total", num);
-//		pageinfo.put("last", (num-1)/10+1);
-//		
-//		List<Rate> end = new ArrayList<Rate>();
-//		for(int i =0;i<newlist.size();i++) {
-//			if(newlist.get(i).getInjection_rate().equals("1")) {
-//				end.add(newlist.get(i));
-//			}
-//		}
 		
-//		System.out.println(subject);
-//		switch (subject) {
-//		case "1":
-//			subject="1";
-//			break;
-//		case "2":
-//			subject="2";
-//			break;
-//		case "3":
-//			subject="3";
-//			break;
-//		case "4":
-//			subject="4";
-//			break;
-//
-//		default:
-//			break;
-//		}
+		List<Rate> end = new ArrayList<Rate>();
+		for(int i =0;i<check.length;i++) {
+			if(!check[i].equals("0")) {
+				System.out.println(check[i]);
+			switch (check[i]) {
+			case "1":
+				System.out.println("1입니다.");
+				switch (subject) {
+				case "1":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getInjection_rate().equals("1")) {
+							end.add(newlist.get(j));
+						}
+					}
+					
+					break;
+				case "2":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getAnti_rate().equals("1")) {
+							end.add(newlist.get(j));
+						}
+					}
+					break;
+				case "3":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getMedi_cost_rate().equals("1")) {
+							end.add(newlist.get(j));
+						}
+					}
+					
+					
+					break;
+				case "4":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getOp_anti_rate().equals("1")) {
+							end.add(newlist.get(j));
+						}
+					}
+					
+					break;
+
+				default:
+					break;
+				}
+			
+				break;
+			case "2":
+				System.out.println("2입니다.");
+				switch (subject) {
+				case "1":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getInjection_rate().equals("2")) {
+							end.add(newlist.get(j));
+							System.out.println("2-1입니다.");
+						}
+					}
+					
+					break;
+				case "2":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getAnti_rate().equals("2")) {
+							end.add(newlist.get(j));
+							System.out.println("2-2입니다.");
+						}
+					}
+					
+					break;
+				case "3":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getMedi_cost_rate().equals("2")) {
+							end.add(newlist.get(j));
+						}
+					}
+					
+					break;
+				case "4":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getOp_anti_rate().equals("2")) {
+							end.add(newlist.get(j));
+						}
+					}
+					
+					break;
+
+				default:
+					break;
+				}
+				break;
+			case "3":
+				switch (subject) {
+				case "1":
+					System.out.println("3-1");
+					for(int j =0; j<newlist.size();j++) {
+					if(newlist.get(j).getInjection_rate().equals("3")) {
+						end.add(newlist.get(j));
+					}
+					}
+					break;
+				case "2":
+					System.out.println("3-2");
+					for(int j =0; j<newlist.size();j++) {
+					if(newlist.get(j).getAnti_rate().equals("3")) {
+						end.add(newlist.get(j));
+					}
+					}
+					break;
+				case "3":
+					for(int j =0; j<newlist.size();j++) {
+					if(newlist.get(j).getMedi_cost_rate().equals("3")) {
+						end.add(newlist.get(j));
+					}
+					}
+				case "4":
+					for(int j =0; j<newlist.size();j++) {
+					if(newlist.get(j).getOp_anti_rate().equals("3")) {
+						end.add(newlist.get(j));
+					}
+					}
+					
+					break;
+
+				default:
+					break;
+				}
+				break;
+			case "4":
+				switch (subject) {
+				case "1":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getInjection_rate().equals("4")) {
+							end.add(newlist.get(j));
+						}
+					}
+					
+					break;
+				case "2":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getAnti_rate().equals("4")) {
+							end.add(newlist.get(j));
+						}
+					}
+					
+					break;
+				case "3":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getMedi_cost_rate().equals("4")) {
+							end.add(newlist.get(j));
+						}
+					}
+					
+					break;
+				case "4":
+					for(int j =0; j<newlist.size();j++) {
+						if(newlist.get(j).getOp_anti_rate().equals("4")) {
+							end.add(newlist.get(j));
+						}
+					}
+					
+					break;
+
+				default:
+					break;
+				}
+				
+				break;
+
+			default:
+				break;
+			}
+			System.out.println(end);
+				param.put("newlist", end);
+			
+			}
+			else
+				param.put("newlist", newlist);
+		}
+		
 		param.put("key", subject);
-		param.put("newlist", newlist);
-		System.out.println(page);
 		return param;
 		
 	}
+	//주소 얻어오기
 	@RequestMapping("getaddress.do")
 	public @ResponseBody HashSet<List<String>> test(@RequestParam(required=false) String code1) {
 		HashSet<List<String>>set = new YkihoGet1().getadrress(code1);

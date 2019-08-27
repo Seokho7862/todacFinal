@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 
@@ -24,7 +25,7 @@ $(function(){
 				if(data!=""){
 					alert("??");
 					var input = "";
-					input += "<input type='text' id='checknum'>";
+					input += "<input type='text' id='checknum'><br>";
 					input += "<input type='button' id='chk' value='확인'>";
 					$('#authPhone').after(input);
 					
@@ -36,7 +37,7 @@ $(function(){
 						type : "post",
 						success :  function(d){
 							alert(d.key);
-							if(d.result==""){
+							if(d.result==true){
 								$('#chk').on('click',function(){
 								alert($('#checknum').val()+" 입력값");
 									if(d.key==$('#checknum').val()){
@@ -68,6 +69,9 @@ $(function(){
 									}
 								});
 							}
+							else{
+								alert("다시시도해주세요");
+							}
 						}
 					});
 					
@@ -95,7 +99,12 @@ $(function(){
 <body>
 <!-- header -->
 <jsp:include page="header2.jsp"></jsp:include>
-<jsp:include page="myPage.jsp"></jsp:include>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Todac&mdash; ID & PASSWORD</h1>
+  <p>오늘의 토닥</p> 
+  <p><a href="service_info.do" class="btn btn-primary btn-lg" role="button" style="font-family: 'Jua'; color: white">MAIN&raquo;</a></p>
+  
+</div>
 
 
 <div class="container">
@@ -107,11 +116,12 @@ $(function(){
 
 이름<input type="text" id="name"><br>
 아이디<input type="text" id="muid"><br>
-핸드폰<input type="text" id="phone"><br>
+핸드폰<input type="text" id="phone" placeholder="-없이 숫자만 입력해주세요"><br>
 <div id="message"></div>
 <input type="button" id="authPhone" value="인증하기">
 </form>
-<a href="find_id_form.do">아이디 찾기 </a>
+<hr>
+<a href="find_id_form.do">아이디 찾기 </a>&ensp;	&frasl;&ensp;&ensp;	<a href="loginForm.do"> 로그인 </a>
 </div>
 <div class="col-4"></div>
 </div>

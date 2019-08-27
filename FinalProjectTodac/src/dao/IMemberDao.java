@@ -22,8 +22,14 @@ public interface IMemberDao {
 	//마이페이지 리뷰 목록불러오기 나중에 리뷰쪽으로 옮기기
 	public List<reviewTest> selectAllReview(String muid);
 	
+	//리뷰삭제하기
+	public int deleteReview(int rid);
+	
 	//즐겨찾기 불러오기
 	public List<Favorites> selectAllLike(String muid);
+	
+	//즐겨찾기 삭제하기
+	public int deleteFavorites(int lid);
 	
 	//자신의 병원불러오기
 	public HashMap<String, Object> selectOwnHos(String muid);

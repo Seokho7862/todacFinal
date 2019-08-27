@@ -26,7 +26,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.HospitalInfo;
 import model.MEMBER_USER;
-import net.nurigo.java_sdk.Coolsms;
 import net.nurigo.java_sdk.api.Message;
 import service.HealthInfoFileUploadClass;
 import service.MemberService;
@@ -58,7 +57,7 @@ public class MemberController {
 			//x,y좌표
 			session.setAttribute("longitude", service.selectMemreturnStatus(muid).getlongitude());
 			session.setAttribute("latitude", service.selectMemreturnStatus(muid).getLatitude());
-			return "Openmain";
+			return "redirect:service_info.do";
 		}
 		else {
 			return "redirect:loginForm.do";
@@ -137,55 +136,62 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping("authSms.do")
-	public @ResponseBody Map<String, String> test(Model model, String phone) {
-		Map<String, String> map = new HashMap<String, String>();
-		int key = (int) (Math.random()*100000);
-		System.out.println(key);
-		map.put("result", "");
-		map.put("key", String.valueOf(key));
-		
-		return map;
-	}
-
 //	@RequestMapping("authSms.do")
-//	public @ResponseBody Map<String, Boolean> authSms(String phone) throws Exception { // 휴대폰 문자보내기
-//
-//			String api_key = "NCS0YGZGMGKMZMPV";
-//			String api_secret = "VS3IUAYX1DCGGXOTNE77ROOQXYAB1YYW";
-////			Coolsms coolsms = new Coolsms(api_key, api_secret); // 메시지보내기 객체 생성
-//			Message coolsms = new Message(api_key, api_secret);
-//			int key = (int)(Math.random()*100000); // 인증키 생성
-////			userService.insertAuthCode(userPhoneNumber, key); // 휴대폰 인증 관련 서비스
-//			/*
-//			 * Parameters 관련정보 : http://www.coolsms.co.kr/SDK_Java_API_Reference_ko#toc-0
-//			 */
-//			HashMap<String, String> set = new HashMap<String, String>();
-//			set.put("to", phone); // 수신번호
-//			set.put("from", "01020090519"); // 발신번호
-//			set.put("text", "안녕하세요 토닥입니다. 인증번호는 [" + key + "] 입니다."); // 문자내용
-//			set.put("type", "sms"); // 문자 타입
-//
-//			JSONObject result = coolsms.send(set); // 보내기&전송결과받기
-//			if ((boolean) result.get("status") == true) {
-//				// 메시지 보내기 성공 및 전송결과 출력
-//				System.out.println("성공");
-//				System.out.println(result.get("group_id")); // 그룹아이디
-//				System.out.println(result.get("result_code")); // 결과코드
-//				System.out.println(result.get("result_message")); // 결과 메시지
-//				System.out.println(result.get("success_count")); // 메시지아이디
-//				System.out.println(result.get("error_count")); // 여러개 보낼시 오류난 메시지 수
-//				return Collections.singletonMap("result", true);
-//			} else {
-//				// 메시지 보내기 실패
-//				System.out.println("실패");
-//				System.out.println(result.get("code")); // REST API 에러코드
-//				System.out.println(result.get("message")); // 에러메시지
-//				return Collections.singletonMap("result", false);
-//			}
+//	public @ResponseBody Map<String, String> test(Model model, String phone) {
+//		Map<String, String> map = new HashMap<String, String>();
+//		int key = (int) (Math.random()*100000);
+//		System.out.println(key);
+//		map.put("result", "");
+//		map.put("key", String.valueOf(key));
 //		
-//		
+//		return map;
 //	}
+
+	@RequestMapping("authSms.do")
+	public @ResponseBody Map<String, Object> authSms(String phone) throws Exception { // 휴대폰 문자보내기
+
+			String api_key = "NCS0YGZGMGKMZMPV";
+			String api_secret = "VS3IUAYX1DCGGXOTNE77ROOQXYAB1YYW";
+			 Coolsms coolsms= new Coolsms(api_key, api_secret); // 메시지보내기 객체 생성
+			
+//			Message coolsms = new Message(api_key, api_secret);
+			int key = (int)(Math.random()*100000); // 인증키 생성
+//			userService.insertAuthCode(userPhoneNumber, key); // 휴대폰 인증 관련 서비스
+			/*
+			 * Parameters 관련정보 : http://www.coolsms.co.kr/SDK_Java_API_Reference_ko#toc-0
+			 */
+			HashMap<String, String> set = new HashMap<String, String>();
+			set.put("to", phone); // 수신번호
+			set.put("from", "01020090519"); // 발신번호
+			set.put("text", "안녕하세요 토닥입니다. 인증번호는 [" + key + "] 입니다."); // 문자내용
+			set.put("type", "sms"); // 문자 타입
+
+			JSONObject result = coolsms.send(set); // 보내기&전송결과받기
+			System.out.println(result);
+			HashMap<String, Object> param = new HashMap<String, Object>();
+			
+			if ((boolean) result.get("status") == true) {
+				// 메시지 보내기 성공 및 전송결과 출력
+				System.out.println("성공");
+				System.out.println(result.get("group_id")); // 그룹아이디
+				System.out.println(result.get("result_code")); // 결과코드
+				System.out.println(result.get("result_message")); // 결과 메시지
+				System.out.println(result.get("success_count")); // 메시지아이디
+				System.out.println(result.get("error_count")); // 여러개 보낼시 오류난 메시지 수
+				param.put("key", key);
+				param.put("result", true);
+				return param;
+			} else {
+				// 메시지 보내기 실패
+				System.out.println("실패");
+				System.out.println(result.get("code")); // REST API 에러코드
+				System.out.println(result.get("message")); // 에러메시지
+				param.put("result", false);
+				return param;
+			}
+		
+		
+	}
 	
 	@RequestMapping("show_mypage.do")
 	public String showMypage() {
@@ -354,5 +360,31 @@ public class MemberController {
 		return "serviceInfo";
 	}
 	
+	//즐겨찾기 삭제
+	@RequestMapping("delete_like.do")
+	public @ResponseBody String delteLike(String llid) {
+		System.out.println(llid);
+		int lid = Integer.parseInt(llid);
+		int res = service.deleteFavorites(lid);
+		if(res==1) {
+			return "1";
+		}
+		else 
+			return "2";
+	}
+	
+	
+	//리뷰 삭제
+	@RequestMapping("delete_review.do")
+	public @ResponseBody String deleteReview(String rrid) {
+		int rid = Integer.parseInt(rrid);
+		int res = service.deleteReview(rid);
+		System.out.println(rrid);
+		if(res==1) {
+			return "1";
+		}
+		else
+			return "2";
+	}
 	
 }

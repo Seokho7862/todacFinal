@@ -115,24 +115,25 @@ $(function(){
 		var sub ="";
 			
 	$('#injectBtn').click(function(){
-	sub = $('#injectBtn').val();
+	sub = $(this).val();
 	openInj();
 		}); 
 	$('#antiBtn').click(function(){
-	sub = $('#antiBtn').val();
+	sub = $(this).val();
 	openAn();
 		});
 	$('#opBtn').click(function(){
-	sub = $('#opBtn').val();
+	sub = $(this).val();
 	openOp();
 		});
 	$('#costBtn').click(function(){
-	sub = $('#costBtn').val();
+	sub = $(this).val();
 	openMe();
 		});
 	
 	//검색
 			var num =0;
+			var number=0;
 	$('#search').on('click',function(){
 		num=1;
 	var list = [];
@@ -160,7 +161,7 @@ $(function(){
 			type:"post",
 			success : function(data){
 				
-			 	$('#ratebody tr:gt(0)').remove();
+			 	$('#ratebody').empty();
 			 	
 			 	alert("성공");
 			 	var key = data.key;
@@ -168,8 +169,9 @@ $(function(){
 			 	var input ="";
 				for(var i in newlist){
 					//alert(data[i].yadmNm);
+					number = Number(i)+1;
 				  	input += "<tr>";
-				  	input += "<td>" + i + "</td>";
+				  	input += "<td>" + number + "</td>";
 				  	input += "<td>" + newlist[i].yadmNm + "</td>";
 				  	if(key=="1"){
 				  	input += "<td>주사제 처방률</td>";
@@ -241,8 +243,9 @@ $(function(){
 				 	var input ="";
 					for(var i in newlist){
 						//alert(data[i].yadmNm);
+						number = number+1;
 					  	input += "<tr>";
-					  	input += "<td>" + i + "</td>";
+					  	input += "<td>" + number + "</td>";
 					  	input += "<td>" + newlist[i].yadmNm + "</td>";
 					  	if(key=="1"){
 					  	input += "<td>주사제 처방률</td>";
@@ -300,7 +303,7 @@ $(function(){
 <div class="col-2">
 </div>
 <div class="col-8">
- <img alt="" src="img/ratever2.png" style="height: 150px">
+ <img alt="" src="img/ratever1.png" style="height: 150px">
 </div>
 <div class="col-2">
 </div>
@@ -364,7 +367,7 @@ $(function(){
  
       </select>
 	 병원이름 <input id="hname" type="text">
-<button id="search" class="btn btn-default">검색</button>
+<button id="search" class="btn btn-light">검색</button>
 	</div>
 	<div class="col-3">
 	</div>
@@ -372,10 +375,10 @@ $(function(){
   
   <hr>
   <div class="container">
-  <button id="injectBtn" class="btn btn-default" value="1">주사제처방률</button>
-  <button id="antiBtn" class="btn btn-default" value="2">항생제처방률</button>
-  <button id="opBtn" class="btn btn-default" value="3">수술의 예방적 항생제</button>
-  <button id="costBtn" class="btn btn-default" value="4">처방약품비</button>
+  <button id="injectBtn" class="btn btn-light" value="1">주사제처방률</button>
+  <button id="antiBtn" class="btn btn-light" value="2">항생제처방률</button>
+  <button id="opBtn" class="btn btn-light" value="3">수술의 예방적 항생제</button>
+  <button id="costBtn" class="btn btn-light" value="4">처방약품비</button>
   </div>
   <hr>
   <div id="con_injection" style="text-align: left">

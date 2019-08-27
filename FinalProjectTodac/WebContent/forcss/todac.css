@@ -1,7 +1,8 @@
 /* @charset "UTF-8"; */
 .jumbotron{
+	background-image : url(../img/bannerex2.jpg);
 	background-size: 100%;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 body{

@@ -19,8 +19,8 @@
 
 <div class="jumbotron text-center text-light" style="height: 400px;	background-image: url(img/bannerex2.jpg); ">
    <div class="container">
-    <h1 style="font-family: 'Jua'; margin-top: 150px">Hospital Grade</h1>
-    <p><a class="btn btn-primary btn-lg" role="button" style="font-family: 'Jua'; color: white">HOME&raquo;</a></p>
+    <h1 style="font-family: 'Jua'; margin-top: 150px">HOSPITAL GRADE</h1>
+    <p><a href="service_info.do" class="btn btn-primary btn-lg" role="button" style="font-family: 'Jua'; color: white">MAIN&raquo;</a></p>
   </div>
 </div>
 

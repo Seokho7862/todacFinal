@@ -38,6 +38,8 @@
 </form>
 
 
-
+	<!--::header part start::-->
+	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Header part end-->
 </body>
 </html>

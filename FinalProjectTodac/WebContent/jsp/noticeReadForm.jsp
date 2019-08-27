@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +22,13 @@ font-size: large;
 <tr><td colspan="3" style="height: 600px;">${notice.content }</td></tr>
 
 </table>
-　　
+<c:if test="${sessionScope.status==7}">
 <input class="btn btn-outline-secondary" type="button" value="수정하기" onclick="location.href='noticeModifyForm.do?nid=${notice.nid}'">
 <input class="btn btn-outline-secondary" type="button" value="삭제하기" onclick="location.href='noticeDelete.do?nid=${notice.nid}'">
+</c:if>
 <input class="btn btn-outline-secondary" type="button" value="목록" onclick="location.href='noticeListForm.do?'">
-
+	<!--::header part start::-->
+	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Header part end-->
 </body>
 </html>
