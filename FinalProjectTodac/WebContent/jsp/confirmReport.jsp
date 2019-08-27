@@ -12,13 +12,38 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	var user;
 	$('.deleteUser').on('click',function(){
-		var user = $(this).parent('td').siblings('td.userId').text();
+		user = $(this).parent('td').siblings('td.userId').text();
 		alert(user);
 		$('.confirmDel').text(user+"님을 탈퇴하시겠습니까?");
 		
 	});
-	
+	$('#conDelete').on('click',function(){
+		alert(user);
+		$.ajax({
+			url : 'delete_user.do',
+			data:{
+				muid : user
+			},
+			success:function(data){
+				alert(data);
+				if(data==1){
+				alert("탈퇴가 완료되었습니다.");
+				history.go(0);
+				}
+				else{
+					alert("다시 탈퇴를 진행해주세요.");
+				}
+			},
+			error : function(){
+				alert("다시 시도해주세요.");
+			}
+			
+			
+		});
+		
+	});
 	
 });
 
@@ -29,10 +54,40 @@ $(function(){
 </head>
 <body>
 <jsp:include page="header2.jsp"></jsp:include>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Todac&mdash;	관리자</h1>
+  <p>오늘의 토닥</p> 
+</div>
+<jsp:include page="forAdmin_nav.jsp"></jsp:include>
+
+
+<div class="container" style="margin-top:30px;margin-left: 20px">
+  <div class="row">
+    <div class="col-2">
+      <h2>관리자 모드</h2>
+      <h5>${muid}님</h5>
+      <div class="fakeimg">Fake Image</div>
+      <p></p>
+      <hr>
+      <h3 style="margin-top: 30px"><a href="admin_main.do">관리 목록</a></h3>
+      <p></p>
+      <ul id="navAd" class="nav nav-pills flex-column">
+      
+        <li class="nav-item">
+          <a class="nav-link" href="report_list.do">신고 목록 리스트</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="over_report_list.do">탈퇴예정 목록</a>
+        </li>
+      </ul>
+      <hr class="d-sm-none">
+    </div>
+    
+   <div class="col-10">
 <h1>탈퇴예정 리스트</h1>
 <div class="container">
 <div class="row">
-<table>
+<table class="table table-hover">
 <thead>
 <tr>
 <th>NO.</th>
@@ -61,6 +116,8 @@ $(function(){
 </c:forEach>
 </tbody>
 </table>
+</div> 
+</div>
 
   <div class="modal fade" id="myModal" >
     <div class="modal-dialog modal-dialog-centered" >
@@ -79,7 +136,7 @@ $(function(){
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="confirm btn btn-secondary" data-dismiss="modal">탈퇴</button>
+          <button id="conDelete" type="button" class="confirm btn btn-secondary" data-dismiss="modal">탈퇴</button>
         </div>
         
       </div>

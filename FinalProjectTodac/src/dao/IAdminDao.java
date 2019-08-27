@@ -21,4 +21,10 @@ public interface IAdminDao {
 	
 	//5회 이상 신고된 사용자
 	public List<MEMBER_USER> selectOverReport();
+	
+	//사용자 탈퇴시키기
+	public int deleteUser(String muid);
+	
+	//승인 혹은 거절 후 리스트에서 삭제하기
+	public int denyApply(int aid);
 }

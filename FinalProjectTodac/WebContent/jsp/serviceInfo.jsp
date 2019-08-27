@@ -21,7 +21,7 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-md-6 col-lg-6">
                     <div class="about_us_img" style="margin-left: 30px">
-                        <img src="img/line.png" alt="todac">
+                        <img src="img/todac_b.png" style="width: 8500px" alt="todac">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-5">
@@ -55,7 +55,7 @@
 
 
 
- <!-- our depertment part start-->
+ <!-- our service part start-->
     <section class="our_depertment section_padding">
         <div class="container">
             <div class="row justify-content-center text-center">
@@ -127,9 +127,9 @@
             </div>
         </div>
     </section>
-    <!-- our depertment part end-->
+    <!-- our service part end-->
 
-    <!--::doctor_part start::-->
+    <!--::programmer_part start::-->
     <section class="doctor_part section_padding">
         <div class="container">
             <div class="row justify-content-center">
@@ -228,8 +228,10 @@
             </div>
         </div>
     </section>
-    <!--::doctor_part end::-->
+    <!--::programmer_part end::-->
 
+
+<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>

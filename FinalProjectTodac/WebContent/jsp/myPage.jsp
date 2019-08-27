@@ -25,9 +25,9 @@
 
 
 
-<div class="jumbotron text-center text-light" style="height: 400px;background-image: url(img/bannerex2.jpg);">
+<div class="jumbotron text-center text-light" style="height: 250px;background-image: url(img/bannerex2.jpg);">
    <div class="container">
-    <h1 style="font-family: 'Jua'; margin-top: 150px">MY PAGE</h1>
+    <h1 style="font-family: 'Jua'; margin-top: 50px">MY PAGE</h1>
     <p></p>
     <p></p>
     <p></p>

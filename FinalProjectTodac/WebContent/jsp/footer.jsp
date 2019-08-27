@@ -5,6 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function facebookOP(){
+	window.open('https://www.facebook.com');
+}
+function instaOP(){
+	window.open('https://www.instagram.com');
+}
+function twitOP(){
+	window.open('https://twitter.com');
+}
+function skyOP(){
+	window.open('https://skype.daesung.com/main.asp');
+}
+
+</script>
 </head>
 <body>
 
@@ -18,20 +33,21 @@
                         <a href="#" class="footer_logo"> <img src="img/todac_ori.png" alt="#"> </a>
                         <p>토닥과 함께 아프지말자</p>
                         <div class="social_logo">
-                            <a href="#"><i class="ti-facebook"></i></a>
-                            <a href="#"> <i class="ti-twitter"></i> </a>
-                            <a href="#"><i class="ti-instagram"></i></a>
-                            <a href="#"><i class="ti-skype"></i></a>
+                            <a onclick="facebookOP()"><i class="ti-facebook"></i></a>
+                            <a onclick="twitOP()"> <i class="ti-twitter"></i> </a>
+                            <a onclick="instaOP()"><i class="ti-instagram"></i></a>
+                            <a onclick="skyOP()"><i class="ti-skype"></i></a>
                         </div>
                     </div>
                     <div class="col-xl-2 col-sm-6 col-md-4 single-footer-widget">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Department</a></li>
-                            <li><a href="#"> Online payment</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Department</a></li>
+                            <li><a href="service_info.do">Todac Main</a></li>
+                            <li><a href="todacIntroForm.do">Service Intro</a></li>
+                            <li><a href="HospitalInfo_TestMain.do">Search</a></li>
+                            <li><a href="rateinfoform.do">Hospital rate</a></li>
+                            <li><a href="diseaseSearchForm.do">Disease</a></li>
+                            <li><a href="healthInfoList.do">Heath Info</a></li>
                         </ul>
                     </div>
                     <div class="col-xl-2 col-sm-6 col-md-4 single-footer-widget">
@@ -45,16 +61,15 @@
                         </ul>
                     </div>
                     <div class="col-xl-2 col-sm-6 col-md-6 single-footer-widget">
-                        <h4>Resources</h4>
+                        <h4>TODAC_TEAM</h4>
                         <ul>
-                            <li><a href="#">Lights were season</a></li>
-                            <li><a href="#"> Their is let wherein</a></li>
-                            <li><a href="#">which given over</a></li>
-                            <li><a href="#">Without given She</a></li>
-                            <li><a href="#">Isn two signs think</a></li>
+                            <li><a href="#">Nam seok ho</a></li>
+                            <li><a href="#">Yang jun yul</a></li>
+                            <li><a href="#">Lee so jin</a></li>
+                            <li><a href="#">Lee se young</a></li>
                         </ul>
                     </div>
-                    <div class="col-xl-3 col-sm-6 col-md-6 single-footer-widget">
+                    <!-- <div class="col-xl-3 col-sm-6 col-md-6 single-footer-widget">
                         <h4>Newsletter</h4>
                         <p>Seed good winged wherein which night multiply
                             midst does not fruitful</p>
@@ -75,7 +90,7 @@
                                 <div class="info"></div>
                             </form>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -84,14 +99,14 @@
             <div class="container">
                 <div class="row align-items-center">
                     <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Todac_Team</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </p>
                     <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
-                        <a href="#"><i class="ti-facebook"></i></a>
-                        <a href="#"> <i class="ti-twitter"></i> </a>
-                        <a href="#"><i class="ti-instagram"></i></a>
-                        <a href="#"><i class="ti-skype"></i></a>
+                        <a onclick="facebookOP()"><i class="ti-facebook"></i></a>
+                        <a onclick="twitkOP()"> <i class="ti-twitter"></i> </a>
+                        <a onclick="instaOP()"><i class="ti-instagram"></i></a>
+                        <a onclick="skyOP()"><i class="ti-skype"></i></a>
                     </div>
                 </div>
             </div>
