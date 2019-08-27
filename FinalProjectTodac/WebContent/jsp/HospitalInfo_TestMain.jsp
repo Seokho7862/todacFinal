@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 	
- <meta name="viewport" content="width=device-width, initial-scale=1"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1">
   
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
- 
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
+    
 <title>Insert title here</title>
 
 <style type="text/css">
@@ -22,6 +22,14 @@
     .overlay_info .desc {padding:10px;position: relative; min-width: 180px; height: 40px}
     .overlay_info .address {font-size: 10px; color: #333; position: absolute; margin : auto; white-space: normal}
     .overlay_info:after {content:'';position: absolute; margin-left: -11px; left: 50%; bottom: -12px; width: 19px; height: 12px; background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;}
+	
+	body{
+		font-family: 'Jua' sans-serif;
+	}
+	#hospitalListDutyName{
+		margin-left: 40px;
+		list-style: decimal;
+	}
 	
 	div#container-fluid{
 		border : solid;
@@ -52,7 +60,6 @@
 		width : 100%;
 		height : 40px;
 		font-size: 10px;
-		
 	}
 	input#findLocation{
 		width:75%;
@@ -70,94 +77,169 @@
 		
 		
 	}
-	table#diagnosisTalbe{
+	table#diagnosisTable{
+		font-family : 'Jua' sans-serif;
 		margin : auto;
+		border: 1px thin;
+		width: 100%;
+	}
+	talbe#diagnosisTable>button{
+		width : 50%;
+		height: 50px;
+		align-items: initial; 
+	}
+	#diag_tab1{
+		border: 1px solid;
+		
+	}
+	button{
+	  background:#efeff5;
+	  color:#fff;
+	  
+	  position:relative;
+	  height:45px;
+	  font-size:1.6em;
+	  padding:0 2em;
+	  cursor:pointer;
+	  transition:800ms ease all;
+	  outline:none;
+	  
+	}
+	button:hover{
+	  background:#fff;
+	  color:#1AAB8A;
+	  
+	}
+	button:before,button:after{
+	  content:'';
+	  position:absolute;
+	  top:0;
+	  right:0;
+	  height:2px;
+	  width:0;
+	  background: #1AAB8A;
+	  transition:400ms ease all;
+	}
+	button:after{
+	  right:inherit;
+	  top:inherit;
+	  left:0;
+	  bottom:0;
+	}
+	button:hover:before,button:hover:after{
+	  width:100%;
+	  transition:800ms ease all;
+	}
+	button {
+	  
+	  font-family: 'Jua', sans-serif;
+	  padding: 0;
+	  margin: 0;
+	  font-size: 14px;
+	} 
+	img.imgiconDiag{
+		width: 30px;
+		height: 30px;
+		margin-right: 20px;
+		position: relative;
+		left : 10px; 
+		
 	}
 	
+
 </style>
 
 </head>
 <body>	
-		<jsp:include page="header2.jsp"></jsp:include>
-		<div style ="margin-top: 23px;">
+		<jsp:include page="header3.jsp"></jsp:include>
+		
+		
+		
+		<div style ="margin-top: 23px; margin-left: 10px; font-family: 'Jua'">
 			<div class="container-fluid" >
 		  <div class="row">
-		    <div class="col-sm-4" style="width : 25%;" >
-							
+		    <div class="col-sm-4" style="width : 20%; " >
+					
 				<ul class="nav nav-tabs">
 				    <li class="active"><a data-toggle="tab" href="#home1">진료과</a></li>
 				    <li><a data-toggle="tab" href="#keyworddiag">키워드</a></li>
 				</ul>
 				
 				<div class="tab-content">
-					
-				    <div id="home1" class="tab-pane fade in active" >
-				    	
+					<!--  여기서 css 씹힘  -->
+				    <div  id="home1" class="tab-pane fade in active" >
 				    	<div>
-				    		<div >
-				    			<h5>원하시는 진료과를 선택하세요</h5>
-				    			<div style="border: solid; font-size:10px;">
-				    				<div style="width: 100%; border: solid;" id="selector">
-				    					<i>진료과목    </i><i id="diag_keyword" style="margin-left: 20%;">전체선택</i>
+				    		<div>
+				    			<!-- <h5 style="text-align: center;">원하시는 진료과를 선택하세요</h5> -->
+				    			<br>
+				    			<div >
+				    				<div style="width: 100%;  text-align: center;" id="selector">
+				    					<i>진료과목   :</i><input type="text" value="전체선택" id="diag_keyword" style="margin-left: 20%;">
 				    				</div> 
 				    			</div>
 				    		</div>
-				    		<div>
-				    			해당 지역에 <i>몇건</i> 검색되었습니다
+				    		    		
+				    		
+				    		<div style=" text-align: center;">
+				    			<a >검색 결과 <label class="countText">0</label>건</a>
 				    		</div>
-				    		<hr>
+				    		
 				    		<div id="diag_tab1" >
-				    			<table id="diagnosisTalbe">
-					      		
+				    			<table id="diagnosisTable" >
+					      			<tr>
+					      				<td colspan="2">
+						      				<h5 style="text-align: center;">원하시는 진료과를 선택하세요</h5>
+				    		 			</td>
+					      			</tr>
 						      		<tr>
-						      			<td><button value="전체">전체선택</button></td>
-						      			<td><button value="종합">종합병원</button></td>
+						      			<td><button value="전체"><img class="imgiconDiag" src="image/like_done.jpg">전체선택</button></td>
+						      			<td><button value="종합"><img class="imgiconDiag"  src="image/diag2.png">종합병원</button></td>
 						      		</tr>
 						      		<tr>
-						      			<td><button value="한방">한의원</button></td>
-						      			<td><button value="요양">요양병원</button></td>
+						      			<td><button value="한방"><img class="imgiconDiag"  src="image/diag3.JPG">한의원</button></td>
+						      			<td><button value="요양"><img class="imgiconDiag"  src="image/diag4.JPG">요양병원</button></td>
 						      		</tr>
 						      		<tr>
-						      			<td><button value="내과">내과</button></td>
-						      			<td><button value="외과">외과</button></td>
+						      			<td><button value="내과"><img class="imgiconDiag"  src="image/diag5.JPG">내과</button></td>
+						      			<td><button value="외과"><img class="imgiconDiag" src="image/diag6.JPG">외과</button></td>
 						      		</tr>
 						      		<tr>
-						      			<td><button value="이비인후과">이비인후과</button></td>
-						      			<td><button value="치과">치과</button></td>
+						      			<td><button value="이비인후과"><img class="imgiconDiag" src="image/diag7.JPG">이비인후과</button></td>
+						      			<td><button value="치과"><img class="imgiconDiag" src="image/diag8.JPG">치과</button></td>
 						      		</tr>
 						      		<tr>
-						      			<td><button value="안과">안과</button></td>
-						      			<td><button value="소아과">소아과</button></td>
+						      			<td><button value="안과"><img class="imgiconDiag" src="image/diag9.JPG">안과</button></td>
+						      			<td><button value="소아과"><img class="imgiconDiag" src="image/diag10.JPG">소아과</button></td>
 						      		</tr>
 						      		<tr>
-						      			<td><button value="신경">신경외과</button></td>
-						      			<td><button value="방사선">방사선과</button></td>
+						      			<td><button value="신경"><img class="imgiconDiag" src="image/diag11.JPG">신경외과</button></td>
+						      			<td><button value="방사선"><img class="imgiconDiag" src="image/diag12.JPG">방사선과</button></td>
 						      		</tr>
 						      		<tr>
-						      			<td><button value="성형">성형외과</button></td>
-						      			<td><button value="산부인">산부인과</button></td>
+						      			<td><button value="성형"><img class="imgiconDiag" src="image/diag13.JPG">성형외과</button></td>
+						      			<td><button value="산부인"><img class="imgiconDiag" src="image/diag14.JPG">산부인과</button></td>
 						      		</tr>
 						      		<tr>
-						      			<td><button value="응급">응급의학과</button></td>
-						      			<td><button value="정신">정신건강의학과</button></td>
+						      			<td><button value="응급"><img class="imgiconDiag" src="image/diag15.JPG">응급의학과</button></td>
+						      			<td><button value="정신"><img class="imgiconDiag" src="image/diag16.JPG">정신건강의학과</button></td>
 						      		</tr>
 						      		<tr>
-						      			<td><button value="피부">피부과</button></td>
-						      			<td><button value="마취">마취통증학과</button></td>
+						      			<td><button value="피부"><img class="imgiconDiag" src="image/diag17.JPG">피부과</button></td>
+						      			<td><button value="마취"><img class="imgiconDiag" src="image/diag18.JPG">마취통증학과</button></td>
 						      		</tr>
 						      		<tr>
-						      			<td><button value="핵의학">핵의학과</button></td>
-						      			<td><button value="흉부">흉부외과</button></td>
+						      			<td><button value="핵의학"><img class="imgiconDiag" src="image/diag19.JPG">핵의학과</button></td>
+						      			<td><button value="흉부"><img class="imgiconDiag" src="image/diag20.JPG">흉부외과</button></td>
 						      		</tr>
 						      		<tr>
-						      			<td><button value="재활">재활의학과</button></td>
-						      			<td><button value="신경">신경과</button></td>
+						      			<td><button value="재활"><img class="imgiconDiag" src="image/diag21.JPG">재활의학과</button></td>
+						      			<td><button value="신경"><img class="imgiconDiag" src="image/diag22.JPG">신경과</button></td>
 						      		</tr>	
 						      	
 						      	</table>
 				    		</div>
 				    		<div id ="diag_tab2" >
-				    			<ul id="hosptialListByDiagnosis">
+				    			<ul id="hosptialListByDiagnosis" class="hosptialListByDiagnosis1">
 				      			</ul>
 				      			
 				    		</div>
@@ -165,8 +247,8 @@
 				    </div>
 				    
 				    <div id="keyworddiag" class="tab-pane fade" >
-				    	<input type="search" style="left : 30%;" placeholder="여기서 검색하세요 " id="Keyword">
-				    	
+				    	<input type="search" style="align-self :center; width: 60%; background-color: #d9d9d9;" placeholder="여기서 검색하세요 " id="Keyword">
+				    	<hr>
 				      	<div id="navigation_hosp" >
 							<ul id="hospitalList">			
 							</ul>
@@ -176,7 +258,7 @@
 			</div>
 		    
 		    <!-- 맵 주소창 및 맵 화면 구현 부분 -->
-		    <div class="col-sm-8" style="width : 75%;">
+		    <div class="col-sm-8" style="width : 70%;">
 		    	<input width="74%" type="text" id="findLocation" placeholder="찾으시는 주소를 입력해주세요"/>
 		    	<input width="24%" type="button" onclick="findAddr()" value="주소검색"/>
 		    	
@@ -225,7 +307,7 @@
 				    		$('#hospitalList hr').remove();
 							var list= "";
 							for(var i = 0; i < data.length ; i++){
-								list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href=HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'>' +  data[i].HPID + data[i].DUTYNAME +'</a><br><a style="font-size: 7px">' + data[i].DUTYADDR+ '</a></li>';
+								list += '<li style="list-style : upper-alpha"><a style="font-size: 15px" class="hospitalListDutyName" href=HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'>' +  (i+1) + ". " + data[i].DUTYNAME +'</a><br><a style="font-size: 7px " class="hospitalListDutyName">' + data[i].DUTYADDR+ '</a></li>';
 								list += '<hr>'
 							}
 							$('#hospitalList').append(list);
@@ -307,8 +389,8 @@
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
 					
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>';
-					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>';
+					list += '<a style="font-size: 7px; margin-left : 15px;">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 					
 				}
@@ -317,7 +399,7 @@
 	    		var markers = $(data).map(function(i, position) {
 	                //마커를 하나 새로 만드는데, 위치값을 지정하고 클릭이 가능하게 설정함.
 	                
-	                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+	                //var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 	                
 	                var marker = new kakao.maps.Marker({
 	                    position : new kakao.maps.LatLng(position.WGS84LAT, position.WGS84LON),
@@ -386,25 +468,28 @@
 	    	success : function(data){
 	    		clusterer.clear();
 	    		
-	    		$('#diag_tab1').hide();
+	    		var Listlen = data.length;
 	    		
+	    		$('.countText').text(Listlen);
+	    		
+	    		$('#diag_tab1').hide();
 	    		$('#hosptialListByDiagnosis li').remove();
 	    		$('#hosptialListByDiagnosis hr').remove();
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
 					var latlng = new kakao.maps.LatLng(data[i].WGS84LAT, data[i].WGS84LON);
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
-					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
+					list += '<a style="font-size: 7px; margin-left : 15px;">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 					
 				}
-				
+
 				$('#hosptialListByDiagnosis').append(list);
 	    		
 	    		var markers = $(data).map(function(i, position) {
 	                //마커를 하나 새로 만드는데, 위치값을 지정하고 클릭이 가능하게 설정함.
 	                
-	                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+	                //var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 	                
 	                var marker = new kakao.maps.Marker({
 	                    position : new kakao.maps.LatLng(position.WGS84LAT, position.WGS84LON),
@@ -455,15 +540,30 @@
 	<!-- 맵 부분 -->
 	<script type="text/javascript">
 		//마커 이미지 선언부
-		var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png'; // 마커이미지의 주소입니다   
-		var ICON_S = new daum.maps.MarkerImage(imageSrc, new daum.maps.Size(50, 50));
-		var ICON_M = new daum.maps.MarkerImage(imageSrc, new daum.maps.Size(40, 40));
-		var ICON_L = new daum.maps.MarkerImage(imageSrc, new daum.maps.Size(30, 30));
+		//var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png'; // 마커이미지의 주소입니다   
+		var imageSrc = 'image/markerHospital.png'; // 마커이미지의 주소입니다   
+		var ICON_S = new daum.maps.MarkerImage(imageSrc, new daum.maps.Size(30, 33));
+		var ICON_M = new daum.maps.MarkerImage(imageSrc, new daum.maps.Size(30, 33));
+		var ICON_L = new daum.maps.MarkerImage(imageSrc, new daum.maps.Size(30, 33));
 		
-		var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
-	        center : new kakao.maps.LatLng(37.5012581268, 127.0397092587), // 지도의 중심좌표
-	        level : 3 // 지도의 확대 레벨
-	    });
+		
+
+		
+		var x= "${longitude}";
+		var y= "${latitude}";
+	    
+		if(x == "" && y==""){
+	   
+			var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
+		        	center : new kakao.maps.LatLng(37.5012581268, 127.0397092587), // 지도의 중심좌표      
+		        level : 3 // 지도의 확대 레벨
+		    });
+		}else{
+			var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
+				center : new kakao.maps.LatLng(x, y), // 지도의 중심좌표	       
+		        level : 3 // 지도의 확대 레벨
+		    });	
+		}
 		var geocoder = new daum.maps.services.Geocoder();
 		var pointedMarker;
 		var customOverlay;
@@ -515,8 +615,8 @@
 					//list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName">' + data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"></a><br>'
 					//list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
 					//list += '<hr>';
-					list += '<li style="list-style : upper-alpha"><a style="font-size: 13px" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
-					list += '<a style="font-size: 7px">' + data[i].DUTYADDR+ '</a> </li>';
+					list += '<li style="list-style : upper-alpha"><a style="font-size: 15px; margin-left : 15px;" class="hospitalListDutyName" href="HospitalInfo_InfoForm.do?hpid='+data[i].HPID+'">' +   data[i].DUTYNAME +' <input type="hidden" value="'+data[i].WGS84LAT+'" name="lat"><input type="hidden" value="'+data[i].WGS84LON+'" name="lon"><input type="hidden" value="'+data[i].DUTYNAME+'"></a><input type="hidden" value="'+data[i].HPID+'"><input type="hidden" value="'+data[i].DUTYADDR+'"></a><br>'
+					list += '<a style="font-size: 7px; margin-left : 15px;">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 				}
 				
@@ -529,7 +629,7 @@
 	               
 	                imageSize = new kakao.maps.Size(10, 21); // 마커이미지의 크기입니다
 					      
-					var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+					//var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
     
 	                var marker = new kakao.maps.Marker({
 	                    position : new kakao.maps.LatLng(position.WGS84LAT, position.WGS84LON),
@@ -590,15 +690,16 @@
 		
 		$('button').click(function(){
 			var value= $(this).val();
+			var text= $(this).text();
 			keywordVal= $(this).val();
-			$('#diag_keyword').innelHTML=value;
+			$('#diag_keyword').val(text);
 			$('#diag_tab2').show();
 			markerByCategoryName(keywordVal);
 		});
 		
 		
 	</script>
-	
+	<!-- list에 DutyName을 클릭했을 때 -->
 	<script>
 		
 		$(document).on('mouseover','.hospitalListDutyName',function(){
@@ -613,7 +714,7 @@
 			});
 			
 			var content = '<div class="overlay_info">';
-			content += '    <a href="HospitalInfo_InfoForm.do?hpid='+ hpid +'" target="_blank"><img src="image/hospicon.png" style="width:30px;"><strong>'+name+'</strong></a>';
+			content += '<a href="HospitalInfo_InfoForm.do?hpid='+ hpid +'" target="_blank"><img src="image/hospicon.png" style="width:30px;"><strong>'+name+'</strong></a>';
 			content += '    <div class="desc">';
 			content += '        <span class="address">'+ addr +'</span>';
 			content += '    </div>';

@@ -6,9 +6,12 @@
 
 
 <insert id="Search" parameterType="search">
+<if test="keyword==null"></if>
+<if test="keyword!=null">
 	insert into search values(#{keyword},
 	<if test="age!=null">${age}</if>
 	<if test="age==null">null</if>,default)
+	</if>
 </insert>
 <select id="getListOfSearch" parameterType="java.util.HashMap" resultType="search">
  select keyword from (select count(*),keyword from search <if test="age!=0"> where age=${age} </if> GROUP by keyword order by 1 desc)

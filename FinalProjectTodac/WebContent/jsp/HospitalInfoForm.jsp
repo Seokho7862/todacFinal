@@ -7,12 +7,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  	
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  	 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  -->
   	<style type="text/css">
+  		th{
+  			text-align: center;
+  		}
   		.mainFrame{
   			padding-left: 5%;
   			padding-right: 5%;
@@ -107,14 +110,36 @@
 <body>
 
 <!-- 헤더부분 -->
-<jsp:include page="header2.jsp"></jsp:include>
+<jsp:include page="header3.jsp"></jsp:include>
 <!-- 헤더 -->
-<div class="mainFrame">
+<div style="font-family : 'Jua';" class="mainFrame">
 	<!-- 병원 이미지 맵으로 구현 -->
+	<div id="map" style="height: 300px;width: 500px; border: thin;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7100ed85365a3b66382c0f7cab33b611"></script>
+	<script type="text/javascript">
+		var x = ${hlist.wgs84Lat};
+		var y = ${hlist.wgs84Lon};
+			
+		var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
+        	center : new kakao.maps.LatLng(x, y), // 지도의 중심좌표      
+        	level : 3 // 지도의 확대 레벨
+    	});
+		var position =  new kakao.maps.LatLng(x, y);
+		var marker = new kakao.maps.Marker({
+			  position: position,
+			  clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+		});
+		
+		marker.setMap(map);
+			
+	</script>
 	<div >
-		<div id="map"></div>
+		
+
 		<h2>${hlist.dutyName}</h2>
-		session 아이디 체크 muid : ${muid} manager : ${manager};
+		<c:if test="${hlist.hfile != null}">
+			<div id="img"> <img src="${hlist.hfile}" style="width: 50%; height: 200px; position: static;"> </div>
+		</c:if>
 	</div>
 	<!-- 즐겨찾기, 후기 작성 버튼-->
 	<hr>
@@ -128,8 +153,8 @@
 				<img class="clickLikeBtn" src="image/like_none.jpg" style="height: 50px; width: 50px">
 			</c:otherwise>
 		</c:choose></a>
-		<a data-toggle="tooltip" title="작성 페이지로 이동해요" class="writeReview">후기작성<input type="hidden" value="${hlist.hpid}"></a>
-		<a>평점 : ${avgRate}</a>
+		<a data-toggle="tooltip" title="작성 페이지로 이동해요" class="writeReview"><img src="image/reviewWrite.png" style="height: 50px; width: 50px"><input type="hidden" value="${hlist.hpid}"></a>
+		<a style="font-size: 24px;">평점 : ${avgRate}</a>
 		<script>
 		$(document).ready(function(){
 		  $('[data-toggle="tooltip"]').tooltip();   
@@ -139,7 +164,7 @@
 	<hr>
 	<!-- 진료시간 -->
 	<div>
-		<a> 병원 정보 </a>
+		<a style="font-size: 24px;"> 병원 정보 ${hlist.hfile} </a>
 		<table class="table table-hover">
 		
 			<tr>
@@ -220,9 +245,9 @@
 						<c:when test="${dlist != null}">				
 							<tr class="infoTr">
 								<th>진료과</th>
-								<td>
+								<td >
 									<c:forEach var="i" items="${ dlist }" >
-										<li>${i}, </li>
+										<li style="text-align: center;">${i}, </li>
 									</c:forEach>
 								</td>
 							</tr>
@@ -279,8 +304,29 @@
 							<input type="hidden" value="${l.rid}"/>
 						</td>
 						<td>${l.readcount}</td>
-						<td>${l.grade}</td>
-						<c:if test="${manager != null}">
+						<td style="text-align: left;">
+							<c:choose>
+								<c:when test="${l.grade == 1}">
+									<span style="color : black; size: 17px;">★☆☆☆☆</span>
+								</c:when>
+								<c:when test="${l.grade == 2}">
+									<span style="color : black; size: 17px;">★★☆☆☆</span>
+								</c:when>
+								<c:when test="${l.grade == 3}">
+									<span style="color : black; size: 17px;">★★★☆☆</span>
+								</c:when>
+								<c:when test="${l.grade == 4}">
+									<span style="color : black; size: 17px;">★★★★☆</span>
+								</c:when>
+								<c:otherwise>
+									<span style="color : black; size: 17px;">★★★★★</span>
+								</c:otherwise>	
+							</c:choose>
+						
+						
+						
+						</td>
+						<c:if test="${status == 2}">
 							<td class="reportBtn"> 
 								<button style="size : inherit;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 								   	신고 
@@ -482,7 +528,6 @@
 				},
 				datatype : "json",
 				success : function(){
-					alert("성공");
 				},
 				error :  function(){
 					alert("json 에러");
@@ -493,6 +538,7 @@
 	
 	
 </script>
+
 
 <!-- 풋터부분 -->
 </body>

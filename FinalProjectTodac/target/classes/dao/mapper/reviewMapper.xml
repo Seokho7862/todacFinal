@@ -29,10 +29,10 @@
  	</select>
  	
  	<insert id="reviewWrite" parameterType="Review">
- 		insert into review values((select max(rid) from review)+1 , #{title} , #{content} , sysdate , #{rfile} , default , ${grade} , #{hpid} , 'say7862' )
+ 		insert into review values((select max(rid) from review)+1 , #{title} , #{content} , sysdate , #{rfile} , default , ${grade} , #{hpid} , #{muid}, 1)
  	</insert>
  	<insert id="ReportInsert" parameterType="Report">
- 		insert into report values((select max(reportid) from report)+1 , #{rid}, #{reportreason}, sysdate, 'hong') 
+ 		insert into report values((select max(reportid) from report)+1 , #{rid}, #{reportreason}, sysdate, #{muid}) 
  	</insert>
 
 	<update id="updateReivewStatus" parameterType="int">
