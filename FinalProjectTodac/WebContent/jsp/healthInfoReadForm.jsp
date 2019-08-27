@@ -55,7 +55,7 @@ p {
 				src="${healthInfo.hfile}"
 				style="margin-top: 0px; padding-top: 0px; margin-left: 400px; width: 400px; height: auto;">
 				<input type="hidden" value="${healthInfo.hfile}" id="healthInfoText">
-				<br></td>
+				<br>${healthInfo.content }</td>
 		</tr>
 
 
@@ -72,4 +72,7 @@ p {
 		</c:if>
 	</div>
 </body>
+	<!--::header part start::-->
+	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Header part end-->
 </html>

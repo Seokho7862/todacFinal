@@ -20,6 +20,7 @@
 
 
 	$('document').ready(function() {
+		
 		function getParam(sname) {
 		    var params = location.search.substr(location.search.indexOf("?") + 1);
 		    var sval = "";
@@ -35,6 +36,7 @@
 		
 		
 		$(bttn).bind('click', function diseaseSearch() {
+			if($('#keyword')!=""){
 			var text = $('#keyword').val();
 			 $.ajax({
 				url : 'diseaseSearch.do',
@@ -72,9 +74,13 @@
 					 
 				}
 			});
-			
+		}
 		})
-		 $(bttn).trigger('click');
+		
+		if($('#keyword').val()!=""){
+		 $(bttn).trigger('click');}
+		
+	
 	})
 	
 </script>
@@ -144,6 +150,8 @@ width: 100%;
 	</div>
 	<c:set var="keyword" value='#{request.getParameter("keyword")}'></c:set>
 
-
+	<!--::header part start::-->
+	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Header part end-->
 </body>
 </html>

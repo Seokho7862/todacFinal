@@ -37,18 +37,20 @@ public class ReivewService {
 	}
 	
 	public void reviewWrite(Review r, MultipartFile file) {
-		String path = "C:/temp/todocFile/";
-		File dir = new File(path);
-		if(!dir.exists()) dir.mkdir();
-		String fileName = file.getOriginalFilename();
-		File attachFile = new File(path+fileName);
-		try {
-			file.transferTo(attachFile);
-		} catch (IllegalStateException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(file !=null) {
+			String path = "C:/temp/todocFile/";
+			File dir = new File(path);
+			if(!dir.exists()) dir.mkdir();
+			String fileName = file.getOriginalFilename();
+			File attachFile = new File(path+fileName);
+			try {
+				file.transferTo(attachFile);
+			} catch (IllegalStateException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			r.setRfile(path+fileName);
 		}
-		r.setRfile(path+fileName);
 		System.out.println("서비스 단 : "+r);
 		rdao.reviewWrite(r);
 	}
@@ -82,5 +84,9 @@ public class ReivewService {
 	
 	public Double averageRate(String hpid) {
 		return rdao.averageRate(hpid);
+	}
+	
+	public void Reviewdelete(String rid) {
+		rdao.Reviewdelete(Integer.valueOf(rid));
 	}
 }

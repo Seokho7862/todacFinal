@@ -42,3 +42,4 @@ local.properties
 .recommenders/
 .MANIFEST.MF
 .pom.properties
+*.properties

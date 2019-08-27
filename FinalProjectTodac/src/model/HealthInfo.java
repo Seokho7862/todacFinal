@@ -28,6 +28,33 @@ public class HealthInfo {
 
 
 
+	public HealthInfo(String muid, String writer, String title, String content) {
+		this.muid = muid;
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+	}
+
+
+	public HealthInfo(int iid, String muid, String writer, String title, String content) {
+		this.iid = iid;
+		this.muid = muid;
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+	}
+
+
+	public HealthInfo(int iid, String muid, String writer, String title, String content, String hfile) {
+		this.iid = iid;
+		this.muid = muid;
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+		this.hfile = hfile;
+	}
+
+
 	public HealthInfo(int iid, String title, String content, String hfile) {
 		this.iid = iid;
 		this.title = title;

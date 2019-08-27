@@ -265,7 +265,9 @@ public class TestController {
 
 	@RequestMapping("diseaseSearch.do")
 	public @ResponseBody HashMap<String, Object> diseaseSearch(String keyword, HttpSession session) {
-		System.out.println(keyword);
+		System.out.println("확인 작업:"+keyword);
+		
+		
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		HashMap<String, String> dis = new HashMap<String, String>();
 		dis.put("disease", keyword);
@@ -279,8 +281,9 @@ public class TestController {
 			param.put("muid", id);
 			s.setAge(ms.findUserById(id).getAge());
 		}
+		if(!keyword.isEmpty()) {
 		tservice.Search(s);
-
+		}
 		return result;
 	}
 
@@ -289,7 +292,7 @@ public class TestController {
 	}
 
 	@RequestMapping("signUp.do")
-	public void signUp(String muid, String pwd, String name, String birth, String email, String phone, String latitude,
+	public String signUp(String muid, String pwd, String name, String birth, String email, String phone, String latitude,
 			String longitude, String sample4_postcode, String sample4_detailAddress,
 			@RequestParam(defaultValue = "") String sample4_jibunAddress, String sample4_roadAddress) {
 
@@ -319,6 +322,8 @@ public class TestController {
 		System.out.println(member);
 		tservice.createMember_user(member);
 		System.out.println("회원 삽입");
+		
+		return "service_info.do";
 	}
 
 	@RequestMapping("idCheck.do")
@@ -441,7 +446,7 @@ public class TestController {
 			return "redirect: jsp/healthInfoDenyForm.jsp";
 		}
 	}
-
+	
 	@RequestMapping("get10Disease.do")
 	public @ResponseBody ArrayList<search> getListOfSearch(HttpSession session) {
 		String id = (String) session.getAttribute("muid");
@@ -457,6 +462,7 @@ public class TestController {
 			}
 		}
 		sList = tservice.getListOfSearch(age);
+
 		return sList;
 	}
 
@@ -466,6 +472,14 @@ public class TestController {
 		id = (String) session.getAttribute("muid");
 		return id;
 	}
+	@RequestMapping("getSessionStatus.do")
+	public @ResponseBody int getSessionStatus(HttpSession session) {
+		int status=0;
+		if(session.getAttribute("status")!=null) {
+		status = (int) session.getAttribute("status");}
+		return status;
+	}
+
 
 	@RequestMapping("todacMainForm.do")
 	public void todacMain() {

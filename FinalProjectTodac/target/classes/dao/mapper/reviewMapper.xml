@@ -54,4 +54,7 @@
 	<select id="averageRate" parameterType="String" resultType="Double">
 		select round(avg(grade),2) from review where hpid like #{hpid}
 	</select>
+	<delete id="Reviewdelete" parameterType="int">
+		delete from review where rid = #{rid}
+	</delete>
  </mapper>

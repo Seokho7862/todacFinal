@@ -62,9 +62,11 @@ width: 100%;
 
 	</table>
 	</div>
-
+<c:if test="${sessionScope.status==7}">
 <input class="btn btn-outline-secondary" type="button" value="공지사항 작성" onclick="location.href='noticeWriteForm.do'">
-
-
+</c:if>
+	<!--::header part start::-->
+	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Header part end-->
 </body>
 </html>
