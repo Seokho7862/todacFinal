@@ -19,13 +19,11 @@ $(function(){
 	var reid="";
 	$('.reportAcc').on('click',function(){
 		reportedid = $(this).parents('tr').find('input.reportedid').val();
-		alert(reportedid);
 		var reviewcon = $(this).parents('tr').find('input.reCon').val();
 		var redate = $(this).parents('tr').find('input.reDate').val();
 		var remuid = $(this).parents('tr').find('input.reDate').val();
 		reid = $(this).parents('tr').find('input.reportid').val();
 		deltr = $(this).parent('td').parent('tr');
-		alert(reviewcon);
 		$('.reviewCon').text(reviewcon);
 		$('.reviewdate').text(redate);
 		$('.reMuid').text(reportedid);
@@ -34,14 +32,12 @@ $(function(){
 		
 	});
 	$('#confirm').on('click',function(){
-		alert(reportedid);
 		$.ajax({
 			url : 'confirm_report.do',
 			data:{
 				muid : reportedid
 			},
 			success:function(data){
-				alert(data);
 				if(data==1){
 				alert("신고가 완료되었습니다.");
 				deltr.remove();
@@ -61,14 +57,12 @@ $(function(){
 	
 	
 	$('#deleteU').on('click',function(){
-		alert(reid);
 		$.ajax({
 			url : 'delete_report.do',
 			data:{
 				reportid : reid
 			},
 			success:function(data){
-				alert(data);
 				if(data==1){
 				alert("신고가 삭제되었습니다.");
 				history.go(0);

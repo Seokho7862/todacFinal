@@ -40,7 +40,6 @@
 $(function(){
 
 	$('#sel1').on('change',function(){
-		alert($('#sel1').val());
 			$.ajax({
 				url : 'getaddress.do',
 				data:{
@@ -53,8 +52,6 @@ $(function(){
 				,
 				success :function(data){
 					$('#spins').hide();
-					alert("alert");
-					alert(data);
 					
 					$('#sel2 > option:gt(0)').remove();
 					var adop="";
@@ -144,7 +141,6 @@ $(function(){
 		list[index] = test;
 		index++;
 	});
-		alert(list);
 		jQuery.ajaxSettings.traditional = true;
 
 		$.ajax({
@@ -163,7 +159,6 @@ $(function(){
 				
 			 	$('#ratebody').empty();
 			 	
-			 	alert("성공");
 			 	var key = data.key;
 			 	var newlist = data.newlist;
 			 	var input ="";
@@ -209,7 +204,6 @@ $(function(){
 	
 		$('#nextBtn').on('click',function(){
 			num++;
-			alert(num);
 			var page = num;
 			var list = [];
 			var index = 0;
@@ -218,7 +212,6 @@ $(function(){
 				list[index] = test;
 				index++;
 			});
-				alert(list);
 				jQuery.ajaxSettings.traditional = true;
 
 			$.ajax({
@@ -237,7 +230,6 @@ $(function(){
 					
 				 	//$('#ratebody tr:gt(0)').remove();
 				 	
-				 	alert("성공");
 				 	var key = data.key;
 				 	var newlist = data.newlist;
 				 	var input ="";

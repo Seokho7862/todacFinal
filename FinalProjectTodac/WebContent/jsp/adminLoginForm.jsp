@@ -21,7 +21,6 @@ $(function(){
 			},
 		
 			success : function(data){
-				alert(data);
 				if(data=="1"){
 					alert($('#maid').val()+" 님 환영합니다.");
 					

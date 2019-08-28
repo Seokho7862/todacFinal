@@ -23,7 +23,6 @@ $(function(){
 			type : 'post',
 			success:function(data){
 				if(data!=""){
-					alert("??");
 					var input = "";
 					input += "<input type='text' id='checknum'><br>";
 					input += "<input type='button' id='chk' value='확인'>";
@@ -36,23 +35,17 @@ $(function(){
 						},
 						type : "post",
 						success :  function(d){
-							alert(d.key);
 							if(d.result==true){
 								$('#chk').on('click',function(){
-								alert($('#checknum').val()+" 입력값");
 									if(d.key==$('#checknum').val()){
 										
-										alert(data);
 										var table ="";
 										table +="<input type='text' id='pwd' placeholder='비밀번호 재설정'><br>";
 										table +="<input type='text' id='ckpwd' placeholder='비밀번호 재설정 확인'><br>";
 								table += "<input type='button' id='renewbtn' value='재설정'>";
 								$('#chk').after(table);
 	$('#renewbtn').on('click',function(){
-			alert($('#pwd').val());
-			alert($('#ckpwd').val());
 		if($('#pwd').val()==$('#ckpwd').val()){
-			alert("되냐");
 			$.post('renew_pwd.do',{muid : $('#muid').val(),pwd:$('#pwd').val()},function(){
 				alert("비밀번호가 재설정 되었습니다.");
 			});

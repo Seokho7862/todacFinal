@@ -20,7 +20,6 @@ $(function(){
 			type : 'post',
 			success:function(data){
 				if(data!=""){
-					alert("??");
 					var input = "";
 					input += "<input type='text' id='checknum'><br>";
 					input += "<input type='button' id='chk' value='id찾기'>";
@@ -33,13 +32,10 @@ $(function(){
 						},
 						type : "post",
 						success :  function(d){
-							alert(d.key);
 							if(d.result==true){
 								$('#chk').on('click',function(){
-								alert($('#checknum').val()+" 입력값");
 									if(d.key==$('#checknum').val()){
 										
-										alert(data);
 										location.href='loginForm.do';
 									}
 									else{
