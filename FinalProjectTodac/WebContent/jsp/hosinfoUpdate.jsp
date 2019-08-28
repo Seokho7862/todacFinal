@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Todac</title>
+<title>토닥&mdash;Todac</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -79,84 +79,84 @@ $(function(){
 	
 	<h2 >병원정보</h2>
 	
-	<div >
+	<div>
     <div>
-      병원이름 <input type="text" name="dutyname" value="${hoslist.DUTYNAME}" >
+      병원이름&nbsp;	 <input type="text" name="dutyname" value="${hoslist.DUTYNAME}" >
     </div>
 	</div>
 	
 	<div>
     <div>
-      대표 <input type="text" value="${hoslist.NAME }" disabled="disabled">
+      대표 &nbsp;	<input type="text" value="${hoslist.NAME }" disabled="disabled">
     </div>
 	
 	<div>
 	
     <div>
-     월<c:choose>
+     월&nbsp;	<c:choose>
      <c:when test="${hoslist.DUTYTIME1S!=null}">
-     <input type="text" name="dutyTime1s" value="${hoslist.DUTYTIME1S}">~<input type="text" name="dutyTime1c" value="${hoslist.DUTYTIME1C}">
+     <input type="text" name="dutyTime1s" value="${hoslist.DUTYTIME1S}">~<input type="text" name="dutyTime1c" value="${hoslist.DUTYTIME1C}"><br>
      </c:when>
      <c:otherwise>
-     <input type="text" name="dutyTime1s" value="" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime1c" placeholder="시간을 설정해주세요">
+     월&nbsp;	<input type="text" name="dutyTime1s" value="" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime1c" placeholder="시간을 설정해주세요"><br>
      </c:otherwise>
      </c:choose>
      
      <c:choose>
      <c:when test="${hoslist.DUTYTIME2S!=null}">
-  	화<input type="text" name="dutyTime2s" value="${hoslist.DUTYTIME2S}">~<input type="text" name="dutyTime2c" value="${hoslist.DUTYTIME2C}">
+  	화&nbsp;	<input type="text" name="dutyTime2s" value="${hoslist.DUTYTIME2S}">~<input type="text" name="dutyTime2c" value="${hoslist.DUTYTIME2C}"><br>
      </c:when>
      <c:otherwise>
-     <input type="text" name="dutyTime2s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime2c" placeholder="시간을 설정해주세요">
+     화&nbsp;	<input type="text" name="dutyTime2s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime2c" placeholder="시간을 설정해주세요"><br>
      </c:otherwise>
      </c:choose>
      
      <c:choose>
      <c:when test="${hoslist.DUTYTIME3S!=null}">
-        수<input type="text" name="dutyTime3s" value="${hoslist.DUTYTIME3S}">~<input type="text" name="dutyTime3c" value="${hoslist.DUTYTIME3C}">
+        수&nbsp;	<input type="text" name="dutyTime3s" value="${hoslist.DUTYTIME3S}">~<input type="text" name="dutyTime3c" value="${hoslist.DUTYTIME3C}"><br>
      </c:when>
      <c:otherwise>
-     <input type="text" name="dutyTime3s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime3c" placeholder="시간을 설정해주세요">
+     수&nbsp;	<input type="text" name="dutyTime3s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime3c" placeholder="시간을 설정해주세요"><br>
      </c:otherwise>
      </c:choose>
      <c:choose>
      <c:when test="${hoslist.DUTYTIME4S!=null}">
- 	 목<input type="text" name="dutyTime4s" value="${hoslist.DUTYTIME4S}">~<input type="text" name="dutyTime4c" value="${hoslist.DUTYTIME4C}">
+ 	 목&nbsp;	<input type="text" name="dutyTime4s" value="${hoslist.DUTYTIME4S}">~<input type="text" name="dutyTime4c" value="${hoslist.DUTYTIME4C}"><br>
      </c:when>
      <c:otherwise>
-     <input type="text" name="dutyTime4s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime4c" placeholder="시간을 설정해주세요">
+     목&nbsp;	<input type="text" name="dutyTime4s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime4c" placeholder="시간을 설정해주세요"><br>
      </c:otherwise>
      </c:choose>
      <c:choose>
      <c:when test="${hoslist.DUTYTIME5S!=null}">
-  	금<input type="text" name="dutyTime5s" value="${hoslist.DUTYTIME5S}">~<input type="text" name="dutyTime5c" value="${hoslist.DUTYTIME5C}">
+  	금&nbsp;	<input type="text" name="dutyTime5s" value="${hoslist.DUTYTIME5S}">~<input type="text" name="dutyTime5c" value="${hoslist.DUTYTIME5C}"><br>
      </c:when>
      <c:otherwise>
-     <input type="text" name="dutyTime5s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime5c" placeholder="시간을 설정해주세요">
+     금&nbsp;	<input type="text" name="dutyTime5s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime5c" placeholder="시간을 설정해주세요"><br>
      </c:otherwise>
      </c:choose>
      <c:choose>
      <c:when test="${hoslist.DUTYTIME6S!=null}">
- 	 토<input type="text" name="dutyTime6s" value="${hoslist.DUTYTIME6S}">~<input type="text" name="dutyTime6c" value="${hoslist.DUTYTIME6C}">
+ 	 토&nbsp;	<input type="text" name="dutyTime6s" value="${hoslist.DUTYTIME6S}">~<input type="text" name="dutyTime6c" value="${hoslist.DUTYTIME6C}"><br>
      </c:when>
      <c:otherwise>
-     <input type="text" name="dutyTime6s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime6c" placeholder="시간을 설정해주세요">
+     토&nbsp;	<input type="text" name="dutyTime6s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime6c" placeholder="시간을 설정해주세요"><br>
      </c:otherwise>
      </c:choose>
      <c:choose>
      <c:when test="${hoslist.DUTYTIME7S!=null}">
-       일<input type="text" name="dutyTime7s" value="${hoslist.DUTYTIME7S}">~<input type="text" name="dutyTime7c" value="${hoslist.DUTYTIME7C }">
+       일&nbsp;	<input type="text" name="dutyTime7s" value="${hoslist.DUTYTIME7S}">~<input type="text" name="dutyTime7c" value="${hoslist.DUTYTIME7C }"><br>
      </c:when>
      <c:otherwise>
-     <input type="text" name="dutyTime7s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime7c" placeholder="시간을 설정해주세요">
+     일&nbsp;	<input type="text" name="dutyTime7s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime7c" placeholder="시간을 설정해주세요"><br>
      </c:otherwise>
      </c:choose>
      <c:choose>
      <c:when test="${hoslist.DUTYTIME8S!=null}">
-     공휴일<input type="text" name="dutyTime8s" value="${hoslist.DUTYTIME8S}">~<input type="text" name="dutyTime8c" value="${hoslist.DUTYTIME8S}">
+     공휴일&nbsp;	<input type="text" name="dutyTime8s" value="${hoslist.DUTYTIME8S}">~<input type="text" name="dutyTime8c" value="${hoslist.DUTYTIME8S}"><br>
      </c:when>
      <c:otherwise>
-     <input type="text" name="dutyTime8s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime8c" placeholder="시간을 설정해주세요">
+     공휴일&nbsp;	<input type="text" name="dutyTime8s" placeholder="시간을 설정해주세요">~<input type="text" name="dutyTime8c" placeholder="시간을 설정해주세요"><br>
      </c:otherwise>
      </c:choose>
      
@@ -165,36 +165,36 @@ $(function(){
 	</div>
 	
 	<div>
-      번호 <input type="text" name="dutyTel1" value="${hoslist.DUTYTEL1 }" >
+      번호 &nbsp;	<input type="text" name="dutyTel1" value="${hoslist.DUTYTEL1 }" ><br>
     </div>
 	
 	<div>
        <div class="w3-rest">
-     주소 <input type="text" name="dutyAddr" value="${hoslist.DUTYADDR}" ><br>
+     주소&nbsp;	 <input type="text" name="dutyAddr" value="${hoslist.DUTYADDR}" ><br>
      <tr>
-					<th>우편번호</th>
+					<th>우편번호&nbsp;	</th>
 					<td>
 					    <input type="hidden" id="confmKey" name="confmKey" value="">
 						<input type="text" id="post_num" name="post_num" readonly style="width:100px" value="${hoslist.POSTCDN1}${hoslist.POSTCDN2}">
-						<input type="button"  value="주소검색" onclick="goPopup();">
+						<input type="button"  value="주소검색" onclick="goPopup();"><br>
 					</td>
 				</tr>
 				<tr>
-					<th><label>도로명주소</label></th>
-					<td><input type="text" id="address_road" name="address_road" style="width:85%" value="${hoslist.DUTYADDR}"></td>
+					<th><label>도로명주소&nbsp;	</label></th>
+					<td><input type="text" id="address_road" name="address_road" style="width:85%" value="${hoslist.DUTYADDR}"></td><br>
 				</tr>
 				<tr>
-					<th><label>지번주소</label></th>
-					<td><input type="text" id="address_base" name="address_base" style="width:85%" value="${hoslist.DUTYADDR}"></td>
+					<th><label>지번주소&nbsp;	</label></th>
+					<td><input type="text" id="address_base" name="address_base" style="width:85%" value="${hoslist.DUTYADDR}"></td><br>
 				</tr>
 				<tr>
-					<th>상세주소</th>
+					<th>상세주소&nbsp;	</th>
 					<td>
-						<input type="text" id="address_detail" name="address_detail" style="width:40%" value="${hoslist.DUTYADDR}">
+						<input type="text" id="address_detail" name="address_detail" style="width:40%" value="${hoslist.DUTYADDR}"><br>
 					</td>
 				</tr>
 				<tr>
-					<th>좌표정보</th>
+					<th>좌표정보&nbsp;	</th>
 					<td>
 						<input type="text" id="latitude" name="latitude" style="width:40%" value="${hoslist.WGS84LAT}">
 						<input type="text" id="longitude" name="longitude" style="width:40%" value="${hoslist.WGS84LON}">
@@ -203,12 +203,12 @@ $(function(){
 	</div>
 	
       <div>
-     병원사진 <a id="modPic">&#x02A01 사진수정</a>
-     <img src="${hoslist.HFILE}">
+     병원사진&nbsp;	 <a id="modPic">&#x02A01 사진수정</a>
+     <img src="${hoslist.HFILE}" style="width:300px">
     </div>
 		
      <div>
-      병원 설명<input type="text" name="content" placeholder="병원을 소개해주세요">
+      병원 설명&nbsp;	<input type="text" name="content" placeholder="병원을 소개해주세요">
     </div>
 	
 			

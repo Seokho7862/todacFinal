@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>토닥&mdash;Todac</title>
 </head>
 <body>
 <h1 onclick="location.href='healthInfoList.do'">건강정보 게시판</h1> 

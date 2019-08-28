@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>토닥&mdash;Todac</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 
@@ -89,9 +89,8 @@ $(function(){
 <div class="col-4" style="text-align: center">
 <form>
 <h1>아이디 찾기</h1>
-이름<input type="text" id="name"> <br>
-핸드폰<input type="text" id="phone" placeholder="-없이 숫자만 입력해주세요">
-<div id="message"></div>
+이름&nbsp;	<input type="text" id="name"> <br>
+핸드폰&nbsp;	<input type="text" id="phone" placeholder="-없이 숫자만 입력해주세요">
 <input type="button" id="authPhone" value="인증하기">
 </form>
 <hr>

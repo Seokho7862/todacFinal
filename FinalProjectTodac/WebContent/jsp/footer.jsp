@@ -64,6 +64,7 @@ function hos5(){
                             <li><a href="rateinfoform.do">HOSPITAL RATE</a></li>
                             <li><a href="diseaseSearchForm.do">DISEASE</a></li>
                             <li><a href="healthInfoList.do">HEALTH INFO</a></li>
+                            <li><a href="managerApplyForm.do">MANAGER APPLY</a></li>
                         </ul>
                     </div>
                     <div class="col-xl-2 col-sm-6 col-md-4 single-footer-widget">

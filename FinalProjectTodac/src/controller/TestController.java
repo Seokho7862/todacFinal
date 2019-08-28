@@ -265,9 +265,8 @@ public class TestController {
 
 	@RequestMapping("diseaseSearch.do")
 	public @ResponseBody HashMap<String, Object> diseaseSearch(String keyword, HttpSession session) {
-		System.out.println("확인 작업:"+keyword);
-		
-		
+		System.out.println("확인 작업:" + keyword);
+
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		HashMap<String, String> dis = new HashMap<String, String>();
 		dis.put("disease", keyword);
@@ -281,8 +280,8 @@ public class TestController {
 			param.put("muid", id);
 			s.setAge(ms.findUserById(id).getAge());
 		}
-		if(!keyword.isEmpty()) {
-		tservice.Search(s);
+		if (!keyword.isEmpty()) {
+			tservice.Search(s);
 		}
 		return result;
 	}
@@ -292,8 +291,8 @@ public class TestController {
 	}
 
 	@RequestMapping("signUp.do")
-	public String signUp(String muid, String pwd, String name, String birth, String email, String phone, String latitude,
-			String longitude, String sample4_postcode, String sample4_detailAddress,
+	public String signUp(String muid, String pwd, String name, String birth, String email, String phone,
+			String latitude, String longitude, String sample4_postcode, String sample4_detailAddress,
 			@RequestParam(defaultValue = "") String sample4_jibunAddress, String sample4_roadAddress) {
 
 		int age = 0;
@@ -313,17 +312,18 @@ public class TestController {
 
 		add_base = add_base + tk.nextToken() + " ";
 		add_base = add_base + tk.nextToken();
-		int realAge=0;
-		realAge=age/10;
+		int realAge = 0;
+		realAge = age / 10;
 		java.sql.Date birthd = java.sql.Date.valueOf(birth);
 
-		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birthd, realAge, email, phone, Double.parseDouble(latitude),
-				Double.parseDouble(longitude), sample4_postcode, sample4_jibunAddress, add_base, sample4_roadAddress);
+		MEMBER_USER member = new MEMBER_USER(muid, pwd, name, birthd, realAge, email, phone,
+				Double.parseDouble(latitude), Double.parseDouble(longitude), sample4_postcode, sample4_jibunAddress,
+				add_base, sample4_roadAddress);
 
 		System.out.println(member);
 		tservice.createMember_user(member);
 		System.out.println("회원 삽입");
-		
+
 		return "redirect: service_info.do";
 	}
 
@@ -345,7 +345,15 @@ public class TestController {
 	}
 
 	@RequestMapping("managerApplyForm.do")
-	public void managerApplyForm() {
+	public ModelAndView managerApplyForm(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		if (session.getAttribute("status") != null && 1 == (int) session.getAttribute("status")) {
+			mav.setViewName("managerApplyForm");
+		} else {
+			mav.setViewName("healthInfoDenyForm");
+		}
+
+		return mav;
 	}
 
 	@RequestMapping("hospitalSearch.do")
@@ -356,7 +364,7 @@ public class TestController {
 	}
 
 	@RequestMapping("managerApply.do")
-	public void managerApply(apply_manager apply, MultipartFile file) {
+	public String managerApply(apply_manager apply, MultipartFile file) {
 
 		if (!file.isEmpty()) {
 			ArrayList<String> fileResult = ManagerApplyFileUploadClass.FileUpload(file);
@@ -366,6 +374,7 @@ public class TestController {
 			apply.setRelFile(relLoc);
 		}
 		tservice.ApplyManager(apply);
+		return "redirect: service_info.do";
 	}
 
 	@RequestMapping("noticeWriteForm.do")
@@ -447,7 +456,7 @@ public class TestController {
 			return "redirect: jsp/healthInfoDenyForm.jsp";
 		}
 	}
-	
+
 	@RequestMapping("get10Disease.do")
 	public @ResponseBody ArrayList<search> getListOfSearch(HttpSession session) {
 		String id = (String) session.getAttribute("muid");
@@ -473,14 +482,15 @@ public class TestController {
 		id = (String) session.getAttribute("muid");
 		return id;
 	}
+
 	@RequestMapping("getSessionStatus.do")
 	public @ResponseBody int getSessionStatus(HttpSession session) {
-		int status=0;
-		if(session.getAttribute("status")!=null) {
-		status = (int) session.getAttribute("status");}
+		int status = 0;
+		if (session.getAttribute("status") != null) {
+			status = (int) session.getAttribute("status");
+		}
 		return status;
 	}
-
 
 	@RequestMapping("todacMainForm.do")
 	public void todacMain() {

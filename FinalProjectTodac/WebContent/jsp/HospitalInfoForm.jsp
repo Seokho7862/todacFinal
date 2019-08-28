@@ -6,6 +6,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -113,7 +114,7 @@
   		}
   	
   	</style>
-<title>Insert title here</title>
+<title>토닥&mdash;Todac</title>
 </head>
 <body>
 

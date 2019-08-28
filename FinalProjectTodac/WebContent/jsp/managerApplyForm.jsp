@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>토닥&mdash;Todac</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -29,6 +29,8 @@ function check(){
 
 
 	$('document').ready(function() {
+		
+		
 		function readURL(input) {
 			  if (input.files && input.files[0]) {
 			    var reader = new FileReader();
@@ -141,7 +143,7 @@ max-height: 600px;
 				</select>
 			</td>
 			<td>
-				<input type="text" name="keyword" value="성모내과">
+				<input type="text" name="keyword">
 				<input type="button" id="hospitalSearchBtn" value="검색">
 				</td>
 			</tr>
@@ -164,7 +166,7 @@ max-height: 600px;
 			</tr>
 
 		</table>
-<input type="hidden" id="hpid" name="hpid">
+<input type="hidden" id="hpid" name="hpid" value="${sessionScope.muid }">
 
 
 	</form>

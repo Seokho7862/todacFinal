@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
     
-<title>Insert title here</title>
+<title>토닥&mdash;Todac</title>
 
 <style type="text/css">
 .overlay_info {border-radius: 5px; margin-bottom: 7px; float:left;position: relative; border: 1px solid #ccc; border-bottom: 2px solid #ddd;background-color:#fff;}
