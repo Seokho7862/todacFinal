@@ -70,6 +70,15 @@ public class apply_manager {
 	public apply_manager() {}
 	
 
+	public apply_manager(String hpid, String dutyName, String muid, String bisunessNumber, String relFile,
+			String absFile) {
+		this.hpid = hpid;
+		this.dutyName = dutyName;
+		this.muid = muid;
+		this.bisunessNumber = bisunessNumber;
+		this.relFile = relFile;
+		this.absFile = absFile;
+	}
 	public apply_manager(int aid, String name, String hpid, String dutyName, String muid, String bisunessNumber,
 			String relFile, String absFile) {
 		this.aid = aid;

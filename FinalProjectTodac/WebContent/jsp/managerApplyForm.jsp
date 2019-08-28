@@ -166,7 +166,8 @@ max-height: 600px;
 			</tr>
 
 		</table>
-<input type="hidden" id="hpid" name="hpid" value="${sessionScope.muid }">
+<input type="hidden" id="muid" name="muid" value="${sessionScope.muid }">
+<input type="text" id="hpid" name="hpid">
 
 
 	</form>
