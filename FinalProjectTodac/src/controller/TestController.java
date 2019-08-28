@@ -373,6 +373,7 @@ public class TestController {
 			apply.setAbsFile(absLoc);
 			apply.setRelFile(relLoc);
 		}
+		System.out.println(apply);
 		tservice.ApplyManager(apply);
 		return "redirect: service_info.do";
 	}
