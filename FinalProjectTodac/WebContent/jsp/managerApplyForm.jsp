@@ -128,6 +128,7 @@ max-height: 600px;
 	<!-- Header part end-->
 
 	<form action="managerApply.do" enctype="multipart/form-data" method="post" onsubmit="return check();">
+		
 		<table class="table-bordered">
 
 			<tr>
@@ -166,8 +167,10 @@ max-height: 600px;
 			</tr>
 
 		</table>
+
 <input type="hidden" id="muid" name="muid" value="${sessionScope.muid }">
-<input type="text" id="hpid" name="hpid">
+<input type="hidden" id="hpid" name="hpid">
+
 
 
 	</form>
