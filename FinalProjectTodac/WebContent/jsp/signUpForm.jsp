@@ -187,6 +187,10 @@ font-weight: bold;
 }
 .form-control{
 width: 50%;}
+#signUpTable{
+width: 40%;
+margin-right: auto;
+}
 
 </style>
 
@@ -195,9 +199,9 @@ width: 50%;}
 <!--::header part start::-->
 	<jsp:include page="header2.jsp"></jsp:include>
 	<!-- Header part end-->
-<h1>회원가입</h1>
+<h1>　　　　　　　　　회원가입</h1><br>
 <form action="signUp.do" method="get" onsubmit='return signUpCheck()' class="form-group"> 
-<table class="table-borderless">
+<table class="table-borderless" id="signUpTable">
 <tr><td>이름:<br><input type="text" name="name" id="name" class="form-control"></td></tr>
 <tr><td>아이디 <br><input type="text" name="muid" id="muid" class="form-control"><br><div id="idCheckDiv" style="color: red"></div></td></tr>
 
@@ -233,9 +237,12 @@ width: 50%;}
 </td></tr>
 
 <tr><td ><br><input type="hidden" name="latitude" id="latitude" class="form-control"></td></tr>
-<tr><td ><br><input type="hidden" name="longitude" id="longitude" class="form-control"><br><input name="birth" type="hidden" id="birth" class="form-control"></td></tr>
+<tr><td ><br><input type="hidden" name="longitude" id="longitude" class="form-control"><br>
 
-<tr><td><input type="submit" value="회원가입 완료" id="submitBtn"></td></tr>
+
+<input name="birth" type="hidden" id="birth" class="form-control"></td></tr>
+
+<tr><td><input type="submit" value="회원가입 완료" id="submitBtn" class="btn btn-primary"></td></tr>
 </table>
 </form>
 <input type="button" id="changBtn" hidden="true">
