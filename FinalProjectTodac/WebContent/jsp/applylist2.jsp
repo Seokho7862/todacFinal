@@ -37,14 +37,8 @@ $(function(){
 	var business;
 	var photo;
 	$('.acceptHos').on('click',function(){
-		alert("승인하시겠습니까?");//시간나면 모달로 받아서 승인,거부 다시 물어보기
-		alert($(this).parent('td').siblings('td.userId').text());
-		alert($(this).parent('td').siblings('td').find('input.hpid').val());
-		alert($(this).parent('td').siblings('td').find('input.aid').val());
-		alert($(this).parent('td').siblings('td').find('input.username').val());
-		alert($(this).parent('td').siblings('td').find('input.business').val());
-		alert($(this).parent('td').siblings('td').find('input.photo').val());
-		
+		alert("승인하시겠습니까?");
+
 		var findb = $(this).parents('tr').find('td').find('button.acceptHos');
 		muid = $(this).parent('td').siblings('td.userId').text();
 		hpid = $(this).parent('td').siblings('td').find('input.hpid').val();

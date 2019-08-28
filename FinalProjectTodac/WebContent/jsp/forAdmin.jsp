@@ -57,7 +57,7 @@ $('.col-sm-8').find('h5').text(date);
     <div class="col-sm-4">
       <h2>관리자 모드</h2>
       <h5>${muid}님</h5>
-      <div class="fakeimg">Fake Image</div>
+      <div class="fakeimg"><img src="img/to_icon.png" style="width:100px"></div>
       <p></p>
       <hr>
       <h3 style="margin-top: 30px"><a href="admin_main.do">관리 목록</a></h3>
