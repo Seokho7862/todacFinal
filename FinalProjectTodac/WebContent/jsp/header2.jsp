@@ -105,7 +105,7 @@
 						if (data != "") {
 						var text = "";
 							text = text	+ '<div class="card" style="margin-top:40px;">'
-							text = text	+ '<div class="card-header" style="height: 30px; text-align:left; padding: 0px;">'+ data + '님 환영합니다!</div>'
+							text = text	+ '<div class="card-header" style="height: 30px; text-align:center; padding: 0px;">'+ data + '님 환영합니다!</div>'
 							if (sessionStatus==7) {
 								text = text+ '<div class="card-body" style="height: 70px;"><a href="admin_main.do">내 정보  </a> 　<a href="logout.do">로그아웃 </a></div>'
 							} else {
