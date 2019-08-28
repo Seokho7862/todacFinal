@@ -192,6 +192,9 @@ width: 50%;}
 
 </head>
 <body>
+<!--::header part start::-->
+	<jsp:include page="header2.jsp"></jsp:include>
+	<!-- Header part end-->
 <h1>회원가입</h1>
 <form action="signUp.do" method="get" onsubmit='return signUpCheck()' class="form-group"> 
 <table class="table-borderless">
@@ -236,6 +239,8 @@ width: 50%;}
 </table>
 </form>
 <input type="button" id="changBtn" hidden="true">
-
+	<!--::header part start::-->
+	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Header part end-->
 </body>
 </html>
