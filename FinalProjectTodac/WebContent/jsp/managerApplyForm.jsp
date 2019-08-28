@@ -29,6 +29,8 @@ function check(){
 
 
 	$('document').ready(function() {
+		
+		
 		function readURL(input) {
 			  if (input.files && input.files[0]) {
 			    var reader = new FileReader();
@@ -141,7 +143,7 @@ max-height: 600px;
 				</select>
 			</td>
 			<td>
-				<input type="text" name="keyword" value="성모내과">
+				<input type="text" name="keyword">
 				<input type="button" id="hospitalSearchBtn" value="검색">
 				</td>
 			</tr>
@@ -164,7 +166,7 @@ max-height: 600px;
 			</tr>
 
 		</table>
-<input type="hidden" id="hpid" name="hpid">
+<input type="hidden" id="hpid" name="hpid" value="${sessionScope.muid }">
 
 
 	</form>
