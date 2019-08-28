@@ -51,17 +51,14 @@ public class HospitalInfoService {
 			params.put("keyword", keyword);
 			return hdao.getFirstMarker(params);
 		}
-		//����� split������ 10�� �̻� �Ǵ� �͸�
 		else if(keyword.equals("종합")) {
 			params.put("keyword", keyword);
 			return hdao.getMarkerByKeyword_GHosp(params);
 		}
-		//�̸����� �˻�
 		else if(keyword.equals("한의원")) {
 			params.put("keyword", keyword);
 			return hdao.getMarkerByKeyword_SHosp(params);
 		}
-		//������� �˻�
 		else {
 			params.put("keyword", keyword);
 			return hdao.getMarkerByKeyword_Diag(params);

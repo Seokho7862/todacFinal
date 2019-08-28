@@ -317,7 +317,6 @@
 								list += '<hr>'
 							}
 							$('#hospitalList').append(list);
-							
 				    	},
 				    	error :function(){
 							alert("error");
@@ -628,8 +627,6 @@
 	        minLevel: 4, // 클러스터 할 최소 지도 레벨
 	        disableClickZoom: true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 	    });
-		
-	
 		$.ajax({
 	    	url : "HospitalInfo_FirstMarker.do",
 	    	type : "post",
@@ -641,9 +638,7 @@
 	    	},
 	    	datatype :  "json",
 	    	success : function(data){
-	    		
 				$('#hospitalList li').remove();
-				
 				var list= "";
 				for(var i = 0; i < data.length ; i++){
 					
@@ -651,43 +646,25 @@
 					list += '<a style="font-size: 7px; margin-left : 15px;">' + data[i].DUTYADDR+ '</a> </li>';
 					list += '<hr>';
 				}
-				
 				$('#hospitalList').append(list);
-				
-				
-				
 	    		var markers = $(data).map(function(i, position) {
-	                //마커를 하나 새로 만드는데, 위치값을 지정하고 클릭이 가능하게 설정함.
-	               
 	                imageSize = new kakao.maps.Size(10, 21); // 마커이미지의 크기입니다
-					      
-					//var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-    
 	                var marker = new kakao.maps.Marker({
 	                    position : new kakao.maps.LatLng(position.WGS84LAT, position.WGS84LON),
 	                    clickable : true, 
 	                });
 	                marker.setImage(markerImage);
-	                
-	                           //띄울 인포윈도우 정의
 	                var iwContent = '<div style="padding:5px;">'
 		                        +'<a href="HospitalInfo_InfoForm.do?hpid='+position.HPID+'" style="font-size: 15px; text-align : center;" >'+position.DUTYNAME+'</a><br/>'
-		                        //+position.DUTYNAME+
 		                        + '<a style="font-size: 9px; float : inherit;">'+position.DUTYADDR+'</a>' 
-		                        '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-	                            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-								
-	                            // 인포윈도우를 생성합니다
+		                        '</div>', 
+	                            iwRemoveable = true; 
 	                var infowindow = new kakao.maps.InfoWindow({
 	                      content : iwContent,
 	                      removable : iwRemoveable
 	                });
-	            	// 마커에 클릭이벤트를 등록합니다
 	                kakao.maps.event.addListener(marker, 'mouseover', function() {
 	                	infowindow.open(map, marker); 
-	                	//marker.setImage(null);
-	                	
-	                	
 	                	var markeremp = new kakao.maps.MarkerImage(
 	                		    'image/markerEmp3.png',
 	                		    new kakao.maps.Size(50, 50));
@@ -701,9 +678,6 @@
 	                kakao.maps.event.addListener(marker, 'click', function() {
 	                	location.href="HospitalInfo_InfoForm.do?hpid="+position.HPID;      
 	                });
-	                
-	                           
-	                //생성된 마커를 반환합니다.
 	                return marker;
 	    		});
 	    		kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
