@@ -21,7 +21,6 @@
 $(function(){
 	
 	$('#managerbtn').on('click',function(){
-		alert("확인");
 		
 		$.ajax({
 			url : 'loginManager.do',
@@ -31,7 +30,6 @@ $(function(){
 			},
 		
 			success : function(data){
-				alert(data);
 				if(data=="1"){
 					alert($('#muid').val()+" 님 환영합니다.");
 					

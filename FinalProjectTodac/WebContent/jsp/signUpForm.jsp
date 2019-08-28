@@ -205,8 +205,8 @@ margin-right: auto;
 <tr><td>이름:<br><input type="text" name="name" id="name" class="form-control"></td></tr>
 <tr><td>아이디 <br><input type="text" name="muid" id="muid" class="form-control"><br><div id="idCheckDiv" style="color: red"></div></td></tr>
 
-<tr><td>비밀번호 : <br><input type="text" name="pwd" id="pwd" class="form-control"></td></tr>
-<tr><td>비밀번호 확인: <br><input type="text" name="pwchk" id="pwchk" class="form-control"></td></tr>
+<tr><td>비밀번호 : <br><input type="password" name="pwd" id="pwd" class="form-control"></td></tr>
+<tr><td>비밀번호 확인: <br><input type="password" name="pwchk" id="pwchk" class="form-control"></td></tr>
 <tr><td>생년월일: <br>
 <div class="form-inline">
 <select id="birth1" class="form-control" style="width: 100px;">

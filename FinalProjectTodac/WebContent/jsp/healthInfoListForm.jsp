@@ -88,6 +88,8 @@ margin-bottom: -15px;
 	<!-- Header part end-->
 
 		<h1>　　　인기 게시물</h1>
+		<h3>　　　　　 -${pageinfo.page } Page</h3>
+		
 <div id="top3Div">
 	<div class="btn-group" style="margin-left: 1000px;" >
 		<input type="button" value="주간" id="weeklyBest" class="btn btn-outline-secondary">
@@ -154,7 +156,7 @@ margin-bottom: -15px;
 		<input type="button" value="${nums}"
 			onclick="location.href='healthInfoList.do?page=${nums}&keyword=${pageinfo.keyword}&searchType=${pageinfo.searchType}'"class="btn btn-outline-secondary" style="margin: 5px;">
 	</c:forEach>
-	<c:if test="${pageinfo.lastPage!=pageinfo.endPage }">
+	<c:if test="${pageinfo.lastPage!=pageinfo.page }">
 	<input type="button" value=">"
 			onclick="location.href='healthInfoList.do?page=${pageinfo.page+1}&keyword=${pageinfo.keyword}&searchType=${pageinfo.searchType}'"class="btn btn-outline-secondary" style="margin: 5px;">
 	</c:if>

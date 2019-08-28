@@ -55,7 +55,7 @@ p {
 				src="${healthInfo.hfile}"
 				style="margin-top: 0px; padding-top: 0px; margin-left: 400px; width: 400px; height: auto;">
 				<input type="hidden" value="${healthInfo.hfile}" id="healthInfoText">
-				${healthInfo.hfile}<br>${healthInfo.content }</td>
+				<br>${healthInfo.content }</td>
 		</tr>
 
 
