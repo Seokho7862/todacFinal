@@ -470,7 +470,7 @@
 		location.href = "HospitalInfo_ReviewBoard.do?rid="+rid;
 	});
 	
-	//신고 버튼 클릭시 <신고 폼> -> 모달로 할 계획
+	//신고 버튼 클릭시 <신고 폼> -> 모달
 	$('.reportBtn').on('click',function(){
 		var rid = $(this).find('input:eq(0)').val();
 		var muid = $(this).find('input:eq(1)').val();
