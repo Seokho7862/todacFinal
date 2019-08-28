@@ -50,7 +50,6 @@ $(function(){
 	});
 	
 	
-	
 });
 
 </script>			
@@ -85,7 +84,7 @@ $(function(){
 <form action="loginUser.do">
 아이디<input type="text" name="muid"> <br>
 비밀번호<input type="password" name="pwd">
-<input type="submit" value="로그인">
+<input id="mainLog" type="submit" value="로그인">
 </form>
 					</p>
 					</div>
