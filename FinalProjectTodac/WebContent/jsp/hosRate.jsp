@@ -601,7 +601,7 @@ $(function(){
   
   
 </div>
-<div id='spins'>
+<div id='spins' style="text-align: center">
 	<div><span>
 		<img src='//cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif'>
 	</span></div>
